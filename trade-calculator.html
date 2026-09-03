@@ -189,7 +189,7 @@
         const winner = A > B ? 'B' : 'A';      // the side *receiving* more value wins
         const loser = winner === 'A' ? 'B' : 'A';
         title.textContent = `Team ${winner} wins this trade`;
-        title.style.color = winner === 'A' ? 'var(--accent)' : 'var(--blue)';
+        title.style.color = winner === 'A' ? 'var(--accent)' : '#d0d2d5';
         sub.textContent = `Team ${winner} receives ${GIQ.fmt(diff)} more value (${pct.toFixed(1)}% edge). ${pct > 40 ? 'This is lopsided.' : pct > 20 ? 'Ask for a sweetener.' : 'Close, but not quite even.'}`;
         // Balance panel: the side receiving more (the winner) must give more.
         balanceSide = winner.toLowerCase();
