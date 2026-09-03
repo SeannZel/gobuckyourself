@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoBuckYourself — Fantasy Football Rankings & Trade Calculator</title>
+  <meta name="description" content="Redraft fantasy football rankings and a trade calculator powered by consensus player values. 1QB and Superflex.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">2026 Redraft · <span data-updated>Updated weekly</span></span>
+        <h1 class="display">Win your trades with <span class="grad">real player values</span></h1>
+        <p class="lead">Rankings and a trade calculator built on one consistent value scale — so you can compare any player to any other, in 1QB or Superflex, PPR or standard.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="trade-calculator.html">Open Trade Calculator</a>
+          <a class="btn btn--lg" href="rankings.html">View Rankings</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat"><b id="stat-players">—</b><span>Players valued</span></div>
+          <div class="stat"><b>4</b><span>League settings</span></div>
+          <div class="stat"><b id="stat-sources">—</b><span>Sources blended</span></div>
+        </div>
+      </div>
+      <div class="mock" id="hero-mock">
+        <div class="mock__head"><span>Top redraft values</span><span id="mock-format">1QB · PPR</span></div>
+        <div id="mock-rows"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M10 19v-9M16 19V9M22 19H2"/></svg></div>
+          <h3>Aggregated rankings</h3>
+          <p>Market values, ADP, and expert consensus blended onto one 0–10,000 scale. Switch between 1QB and Superflex instantly.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon" style="background:rgba(53,224,161,.14);color:var(--accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h13l-3-3M17 17H4l3 3"/></svg></div>
+          <h3>Trade calculator</h3>
+          <p>Add players to both sides, see the value gap, and get suggestions to even out a lopsided deal.</p>
+        </div>
+        <a class="feature" href="finder.html">
+          <div class="feature__icon" style="background:rgba(255,182,72,.14);color:var(--amber)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Comparables finder</h3>
+          <p>Targeting a 5,000-value player but only offering 2,700? See every player and two-player package that closes the gap.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <div><h2>Top players by position</h2><p class="sub">Redraft values for the current settings.</p></div>
+        <div class="seg" data-setting="scoring">
+          <button data-value="ppr">PPR</button>
+          <button data-value="half">Half</button>
+          <button data-value="std">Standard</button>
+        </div>
+      </div>
+      <div class="grid-4" id="home-lists"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <div><h2>Movers this week</h2><p class="sub">Biggest value changes since last update.</p></div>
+        <a class="btn btn--sm" href="rankings.html">Full rankings →</a>
+      </div>
+      <div class="grid-3" id="movers"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderHome() {
+      const all = GIQ.ranked('ALL');
+      document.getElementById('stat-players').textContent = all.length;
+      document.getElementById('stat-sources').textContent = GIQ.meta ? GIQ.meta.sources.filter(s => s.players).length : 1;
+
+      // hero mock
+      document.getElementById('mock-format').textContent =
+        (GIQ.settings.format === 'sf' ? 'Superflex' : '1QB') + ' · ' + ({ppr:'PPR',half:'Half PPR',std:'Standard'})[GIQ.settings.scoring];
+      document.getElementById('mock-rows').innerHTML = all.slice(0, 5).map(p => `
+        <div class="mock__row">
+          ${GIQ.avatar(p)}
+          <div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
+          <span class="val">${GIQ.fmt(p.value)}</span>
+        </div>`).join('');
+
+      // position lists
+      const cols = [['QB', 'Quarterbacks'], ['RB', 'Running backs'], ['WR', 'Wide receivers'], ['TE', 'Tight ends']];
+      document.getElementById('home-lists').innerHTML = cols.map(([pos, label]) => card(pos, label)).join('');
+
+      function card(pos, label) {
+        const list = GIQ.ranked(pos).slice(0, 8);
+        return `<div class="card">
+          <div class="card__head"><h3>${label}</h3><span class="pos pos--${pos}">${pos}</span></div>
+          <div class="mini-list">${list.map((p, i) => `
+            <a class="mini-row" href="rankings.html?pos=${pos}">
+              <span class="no">${i + 1}</span>${GIQ.avatar(p)}
+              <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · Age ${p.age}</div></div>
+              <span class="val">${GIQ.fmt(p.value)}</span>
+            </a>`).join('')}</div>
+        </div>`;
+      }
+
+      // movers
+      const risers = [...all].sort((a, b) => b.trend - a.trend).slice(0, 6);
+      const fallers = [...all].sort((a, b) => a.trend - b.trend).slice(0, 6);
+      const mover = (title, list) => `<div class="card">
+        <div class="card__head"><h3>${title}</h3></div>
+        <div class="mini-list">${list.map((p, i) => `
+          <div class="mini-row">${GIQ.avatar(p)}
+            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
+            <span class="val">${GIQ.trendHtml(p.trend)}</span>
+          </div>`).join('')}</div></div>`;
+      document.getElementById('movers').innerHTML = mover('📈 Risers', risers) + mover('📉 Fallers', fallers) + `
+        <div class="card" style="display:grid;place-items:center;padding:32px;text-align:center">
+          <div>
+            <div style="font-size:40px;line-height:1">🤝</div>
+            <h3 style="margin:12px 0 6px">Got a trade offer?</h3>
+            <p class="sub" style="margin-bottom:16px">Drop it in the calculator and see who wins.</p>
+            <a class="btn btn--primary" href="trade-calculator.html">Evaluate a trade</a>
+          </div>
+        </div>`;
+    }
+    document.addEventListener('DOMContentLoaded', renderHome);
+    document.addEventListener('giq:settings', renderHome);
+  </script>
+</body>
+</html>

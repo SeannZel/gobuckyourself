@@ -1,0 +1,29 @@
+name: Update player values
+
+on:
+  schedule:
+    - cron: '0 11 * * 2'   # Tuesdays 11:00 UTC (7am ET), after Monday night games
+  workflow_dispatch:        # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build values
+        env:
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
+        run: npm run build:values
+      - name: Commit if changed
+        run: |
+          git config user.name "gobuckyourself-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add js/players.js data/values.json
+          git diff --cached --quiet || git commit -m "chore: refresh player values $(date -u +%Y-%m-%d)"
+          git push

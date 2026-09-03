@@ -1,0 +1,13 @@
+{
+  "name": "gobuckyourself",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fantasy football rankings and trade calculator with aggregated player values.",
+  "scripts": {
+    "build:values": "node scripts/build-values.mjs",
+    "build:values:offline": "GBY_FIXTURES=scripts/fixtures node scripts/build-values.mjs",
+    "serve": "npx --yes serve -l 3000 ."
+  },
+  "engines": { "node": ">=18" }
+}

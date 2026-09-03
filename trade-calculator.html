@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Calculator — GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>Trade Calculator</h1>
+      <p>Add the players each side is giving up. We'll total the value, call the winner, and suggest how to balance it.</p>
+    </div>
+
+    <div class="settings">
+      <div class="seg" data-setting="scoring">
+        <button data-value="ppr">PPR</button>
+        <button data-value="half">Half PPR</button>
+        <button data-value="std">Standard</button>
+      </div>
+      <label>Fair range <input id="tolerance" type="range" min="2" max="15" value="6" style="accent-color:var(--accent)"> <span id="tol-label">±6%</span></label>
+      <button class="btn btn--sm btn--ghost" id="swap">⇄ Swap sides</button>
+      <button class="btn btn--sm btn--ghost" id="clear">Clear</button>
+      <button class="btn btn--sm" id="share">Copy share link</button>
+    </div>
+
+    <div class="calc">
+      <div class="card side side--a" data-side="a">
+        <div class="side__head"><h3><span class="dot"></span> Team A gives</h3><span class="side__total" id="total-a">0</span></div>
+        <div class="side__list" id="list-a"></div>
+        <div class="side__search">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            <input type="search" placeholder="Add a player…" autocomplete="off" data-side="a">
+          </div>
+          <div class="dropdown" id="dd-a"></div>
+        </div>
+      </div>
+
+      <div class="card side side--b" data-side="b">
+        <div class="side__head"><h3><span class="dot"></span> Team B gives</h3><span class="side__total" id="total-b">0</span></div>
+        <div class="side__list" id="list-b"></div>
+        <div class="side__search">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            <input type="search" placeholder="Add a player…" autocomplete="off" data-side="b">
+          </div>
+          <div class="dropdown" id="dd-b"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card verdict" id="verdict">
+      <p class="verdict__title" id="v-title">Add players to both sides</p>
+      <p class="verdict__sub" id="v-sub">Values update instantly as you build the trade.</p>
+      <div class="meter"><div class="meter__a" id="m-a" style="width:50%"></div><div class="meter__b" id="m-b" style="width:50%"></div><div class="meter__mid"></div></div>
+      <div class="meter__labels"><span id="m-la">Team A · 0</span><span id="m-lb">Team B · 0</span></div>
+      <div class="balance" id="suggest" hidden>
+        <div class="balance__head">
+          <div>
+            <h4>Balance this trade</h4>
+            <p class="sub" style="font-size:13px"><span id="s-who"></span> needs to add about <b id="s-gap"></b> more value.</p>
+          </div>
+          <div class="balance__controls">
+            <div class="search search--sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input id="s-q" type="search" placeholder="Filter by name or team" autocomplete="off">
+            </div>
+            <div class="chips chips--sm" id="s-pos">
+              <button class="chip active" data-pos="ALL">All</button>
+              <button class="chip" data-pos="QB">QB</button>
+              <button class="chip" data-pos="RB">RB</button>
+              <button class="chip" data-pos="WR">WR</button>
+              <button class="chip" data-pos="TE">TE</button>
+            </div>
+          </div>
+        </div>
+        <div class="balance__grid">
+          <div>
+            <h5>One player</h5>
+            <div class="balance__list" id="s-singles"></div>
+          </div>
+          <div>
+            <h5>Two-player combos</h5>
+            <div class="balance__list" id="s-pairs"></div>
+          </div>
+        </div>
+        <p class="sub" style="font-size:12px;margin-top:12px">Results account for the bundling discount — each suggestion shows what the trade would look like after adding it. Want to explore from scratch? <a href="finder.html" style="color:var(--accent)">Open Comparables →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const trade = { a: [], b: [] };
+    const byId = Object.fromEntries(PLAYERS.map(p => [p.id, p]));
+    let tolerance = 6;
+
+    // ----- load from URL (?a=1,2&b=3) or from a click on the rankings page -----
+    (function init() {
+      const qs = new URLSearchParams(location.search);
+      trade.a = (qs.get('a') || '').split(',').map(Number).filter(id => byId[id]);
+      trade.b = (qs.get('b') || '').split(',').map(Number).filter(id => byId[id]);
+      const pending = JSON.parse(sessionStorage.getItem('giq-pending') || '[]');
+      sessionStorage.removeItem('giq-pending');
+      pending.forEach(id => { if (byId[id] && !inTrade(id)) trade.a.push(id); });
+    })();
+
+    function inTrade(id) { return trade.a.includes(id) || trade.b.includes(id); }
+    function total(side) { return trade[side].reduce((s, id) => s + GIQ.valueOf(byId[id]), 0); }
+
+    // Bundling penalty: 2-for-1 trades favor the side receiving the best player.
+    // Depth-adjusted total shrinks lesser pieces, mirroring how roster spots matter in redraft.
+    function adjusted(side) { return GIQ.adjustedTotal(trade[side].map(id => GIQ.valueOf(byId[id]))); }
+
+    function render() {
+      ['a', 'b'].forEach(side => {
+        const list = document.getElementById('list-' + side);
+        list.innerHTML = trade[side].length ? trade[side].map(id => {
+          const p = byId[id];
+          return `<div class="asset">${GIQ.avatar(p)}
+            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span> · Age ${p.age}</div></div>
+            <span class="val">${GIQ.fmt(GIQ.valueOf(p))}</span>
+            <button class="rm" data-rm="${id}" data-side="${side}" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          </div>`;
+        }).join('') : `<div class="empty">No players yet — search below to add.</div>`;
+        document.getElementById('total-' + side).textContent = GIQ.fmt(total(side));
+      });
+      renderVerdict();
+      history.replaceState(null, '', trade.a.length || trade.b.length ? `?a=${trade.a.join(',')}&b=${trade.b.join(',')}` : location.pathname);
+    }
+
+    function renderVerdict() {
+      const A = adjusted('a'), B = adjusted('b');
+      const title = document.getElementById('v-title'), sub = document.getElementById('v-sub');
+      const sug = document.getElementById('suggest');
+      document.getElementById('m-la').textContent = `Team A · ${GIQ.fmt(A)}`;
+      document.getElementById('m-lb').textContent = `Team B · ${GIQ.fmt(B)}`;
+
+      if (!A && !B) {
+        title.textContent = 'Add players to both sides';
+        sub.textContent = 'Values update instantly as you build the trade.';
+        setMeter(50); sug.hidden = true; return;
+      }
+      const share = A + B ? A / (A + B) * 100 : 50;
+      setMeter(share);
+      const diff = Math.abs(A - B);
+      const pct = A + B ? diff / Math.max(A, B) * 100 : 0;
+
+      if (pct <= tolerance) {
+        title.textContent = '⚖️ Fair trade';
+        title.style.color = 'var(--text)';
+        sub.textContent = `Only ${GIQ.fmt(diff)} points apart (${pct.toFixed(1)}%) — both sides can feel good about this one.`;
+        sug.hidden = true;
+      } else {
+        const winner = A > B ? 'B' : 'A';      // the side *receiving* more value wins
+        const loser = winner === 'A' ? 'B' : 'A';
+        title.textContent = `Team ${winner} wins this trade`;
+        title.style.color = winner === 'A' ? 'var(--accent)' : 'var(--blue)';
+        sub.textContent = `Team ${winner} receives ${GIQ.fmt(diff)} more value (${pct.toFixed(1)}% edge). ${pct > 40 ? 'This is lopsided.' : pct > 20 ? 'Ask for a sweetener.' : 'Close, but not quite even.'}`;
+        // Balance panel: the side receiving more (the winner) must give more.
+        balanceSide = winner.toLowerCase();
+        document.getElementById('s-who').textContent = `Team ${winner}`;
+        renderBalance();
+        sug.hidden = false;
+      }
+    }
+
+    let balanceSide = 'a';
+    const balanceState = { q: '', pos: 'ALL' };
+
+    function renderBalance() {
+      const side = balanceSide, other = side === 'a' ? 'b' : 'a';
+      const sideVals = trade[side].map(id => GIQ.valueOf(byId[id]));
+      const target = adjusted(other);
+      const exclude = new Set([...trade.a, ...trade.b]);
+      const res = GIQ.findBalancers(sideVals, target, { exclude, pos: balanceState.pos, q: balanceState.q, combos: true, limit: 8 });
+      document.getElementById('s-gap').textContent = GIQ.fmt(Math.max(0, res.gap));
+
+      const row = (r) => {
+        const ids = r.players.map(p => p.id).join(',');
+        const after = Math.abs(r.diff) / Math.max(r.total, target) * 100;
+        const cls = after <= tolerance ? 'ok' : r.diff > 0 ? 'over' : 'under';
+        const signed = (r.diff >= 0 ? '+' : '') + GIQ.fmt(r.diff);
+        const label = after <= tolerance ? `Fair · ${signed}` : (r.diff > 0 ? `${signed} over` : `${signed} short`);
+        return `<button class="brow" data-add-many="${ids}" data-side="${side}" title="Add to Team ${side.toUpperCase()}">
+          <div class="brow__players">${r.players.map(p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${GIQ.esc(p.name)}</b><small>${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`).join('<span class="brow__plus">+</span>')}</div>
+          <span class="brow__after brow__after--${cls}">${label}</span>
+        </button>`;
+      };
+      document.getElementById('s-singles').innerHTML = res.singles.length ? res.singles.map(row).join('') : '<div class="empty" style="padding:14px">No single player fits. Try a combo or widen the filter.</div>';
+      document.getElementById('s-pairs').innerHTML = res.pairs.length ? res.pairs.map(row).join('') : '<div class="empty" style="padding:14px">No combos in range.</div>';
+    }
+
+    document.getElementById('s-q').addEventListener('input', e => { balanceState.q = e.target.value; renderBalance(); });
+    document.getElementById('s-pos').addEventListener('click', e => {
+      const c = e.target.closest('.chip'); if (!c) return;
+      balanceState.pos = c.dataset.pos;
+      document.querySelectorAll('#s-pos .chip').forEach(x => x.classList.toggle('active', x === c));
+      renderBalance();
+    });
+
+    function setMeter(pctA) {
+      document.getElementById('m-a').style.width = pctA + '%';
+      document.getElementById('m-b').style.width = (100 - pctA) + '%';
+    }
+
+    // ----- search dropdowns -----
+    let hl = -1;
+    document.querySelectorAll('.side__search input').forEach(input => {
+      const side = input.dataset.side;
+      const dd = document.getElementById('dd-' + side);
+      const show = () => {
+        const q = input.value.trim().toLowerCase();
+        const list = GIQ.ranked('ALL').filter(p => !inTrade(p.id) && (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q)).slice(0, 8);
+        hl = -1;
+        dd.innerHTML = list.map(p => `<button data-add="${p.id}" data-side="${side}">${GIQ.avatar(p)}<div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div><span class="val">${GIQ.fmt(p.value)}</span></button>`).join('');
+        dd.classList.toggle('open', list.length > 0);
+      };
+      input.addEventListener('focus', show);
+      input.addEventListener('input', show);
+      input.addEventListener('keydown', e => {
+        const items = dd.querySelectorAll('button');
+        if (e.key === 'ArrowDown') { hl = Math.min(hl + 1, items.length - 1); }
+        else if (e.key === 'ArrowUp') { hl = Math.max(hl - 1, 0); }
+        else if (e.key === 'Enter') { (items[hl] || items[0])?.click(); return; }
+        else if (e.key === 'Escape') { dd.classList.remove('open'); return; }
+        else return;
+        e.preventDefault();
+        items.forEach((b, i) => b.classList.toggle('hl', i === hl));
+      });
+      input.addEventListener('blur', () => setTimeout(() => dd.classList.remove('open'), 150));
+    });
+
+    // ----- delegated clicks: add / remove -----
+    document.addEventListener('click', e => {
+      const many = e.target.closest('[data-add-many]');
+      if (many) {
+        const side = many.dataset.side;
+        const ids = many.dataset.addMany.split(',').map(Number);
+        ids.forEach(id => { if (!inTrade(id)) trade[side].push(id); });
+        render();
+        GIQ.toast(`${ids.map(id => byId[id].name).join(' + ')} added to Team ${side.toUpperCase()}`);
+        return;
+      }
+      const add = e.target.closest('[data-add]');
+      if (add) {
+        const id = +add.dataset.add, side = add.dataset.side;
+        if (!inTrade(id)) trade[side].push(id);
+        const input = document.querySelector(`.side__search input[data-side="${side}"]`);
+        if (input) { input.value = ''; }
+        render();
+        GIQ.toast(`${byId[id].name} added to Team ${side.toUpperCase()}`);
+        return;
+      }
+      const rm = e.target.closest('[data-rm]');
+      if (rm) {
+        const id = +rm.dataset.rm, side = rm.dataset.side;
+        trade[side] = trade[side].filter(x => x !== id);
+        render();
+      }
+    });
+
+    document.getElementById('swap').addEventListener('click', () => { [trade.a, trade.b] = [trade.b, trade.a]; render(); });
+    document.getElementById('clear').addEventListener('click', () => { trade.a = []; trade.b = []; render(); });
+    document.getElementById('share').addEventListener('click', () => {
+      navigator.clipboard?.writeText(location.href).then(() => GIQ.toast('Link copied')).catch(() => GIQ.toast(location.href));
+    });
+    document.getElementById('tolerance').addEventListener('input', e => {
+      tolerance = +e.target.value;
+      document.getElementById('tol-label').textContent = `±${tolerance}%`;
+      renderVerdict();
+    });
+
+    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('giq:settings', render);
+  </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rankings — GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>Redraft Rankings</h1>
+      <p>Blended from <span data-sources>multiple sources</span> · <span data-updated></span>. Click a column to sort; click a player to add them to the trade calculator.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search players or teams…" autocomplete="off">
+      </div>
+      <div class="chips" id="pos-chips">
+        <button class="chip active" data-pos="ALL">All</button>
+        <button class="chip" data-pos="QB">QB</button>
+        <button class="chip" data-pos="RB">RB</button>
+        <button class="chip" data-pos="WR">WR</button>
+        <button class="chip" data-pos="TE">TE</button>
+      </div>
+      <div class="seg" data-setting="scoring">
+        <button data-value="ppr">PPR</button>
+        <button data-value="half">Half</button>
+        <button data-value="std">Standard</button>
+      </div>
+      <button class="btn btn--sm" id="export">Export CSV</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <thead>
+          <tr>
+            <th data-sort="rank">#</th>
+            <th data-sort="name">Player</th>
+            <th data-sort="pos">Pos</th>
+            <th>Pos rank</th>
+            <th data-sort="age" class="num">Age</th>
+            <th data-sort="bye" class="num">Bye</th>
+            <th data-sort="value" class="num">Value</th>
+            <th></th>
+            <th data-sort="trend" class="num">30d Trend</th>
+            <th data-sort="nSources" class="num" title="How many sources value this player, and how far apart they are">Sources</th>
+            <th>Tier</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin:14px 0 0;font-size:13px" id="count"></p>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const state = { pos: new URLSearchParams(location.search).get('pos') || 'ALL', q: '', sort: 'value', dir: -1 };
+
+    function sourcesCell(p) {
+      if (!p.sources) return '<span style="color:var(--text-3)">—</span>';
+      const names = { fantasycalc: 'FantasyCalc', espn: 'ESPN ADP', fantasypros: 'FantasyPros' };
+      const tip = Object.entries(p.sources).map(([k, v]) => `${names[k] || k}: ${GIQ.fmt(v)}`).join('\n');
+      const agree = p.spread < 800 ? 'agree' : p.spread < 2000 ? 'mixed' : 'split';
+      return `<span class="src src--${agree}" title="${tip}">${p.nSources} · ${agree}</span>`;
+    }
+
+    function render() {
+      const all = GIQ.ranked('ALL');
+      const posRank = {};
+      all.forEach(p => { posRank[p.id] = (posRank[p.pos] = (posRank[p.pos] || 0) + 1); });
+      const max = all[0].value;
+
+      let rows = all.filter(p => state.pos === 'ALL' || p.pos === state.pos);
+      if (state.q) {
+        const q = state.q.toLowerCase();
+        rows = rows.filter(p => p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q);
+      }
+      rows.sort((a, b) => {
+        const va = a[state.sort], vb = b[state.sort];
+        return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * state.dir;
+      });
+
+      document.getElementById('rows').innerHTML = rows.map(p => `
+        <tr data-id="${p.id}" style="cursor:pointer" title="Add to trade calculator">
+          <td class="rank-no">${p.rank}</td>
+          <td class="player">${GIQ.avatar(p)}<div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${p.team}${p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
+          <td><span class="pos pos--${p.pos}">${p.pos}</span></td>
+          <td style="color:var(--text-2)">${p.pos}${posRank[p.id]}</td>
+          <td class="num">${p.age}</td>
+          <td class="num">${p.bye}</td>
+          <td class="value num">${GIQ.fmt(p.value)}</td>
+          <td><div class="bar"><i style="width:${Math.round(p.value / max * 100)}%"></i></div></td>
+          <td class="num">${GIQ.trendHtml(p.trend)}</td>
+          <td class="num">${sourcesCell(p)}</td>
+          <td><span class="tier">Tier ${GIQ.tierOf(p.value)}</span></td>
+        </tr>`).join('') || `<tr><td colspan="11" class="empty">No players match.</td></tr>`;
+      document.getElementById('count').textContent = `${rows.length} players · ${GIQ.settings.format === 'sf' ? 'Superflex' : '1QB'} · ${({ppr:'PPR',half:'Half PPR',std:'Standard'})[GIQ.settings.scoring]}`;
+
+      document.querySelectorAll('#pos-chips .chip').forEach(c => c.classList.toggle('active', c.dataset.pos === state.pos));
+      document.querySelectorAll('th[data-sort]').forEach(th => {
+        th.style.cursor = 'pointer';
+        th.textContent = th.textContent.replace(/ [▲▼]$/, '') + (th.dataset.sort === state.sort ? (state.dir > 0 ? ' ▲' : ' ▼') : '');
+      });
+    }
+
+    document.getElementById('pos-chips').addEventListener('click', e => {
+      const c = e.target.closest('.chip'); if (!c) return;
+      state.pos = c.dataset.pos; render();
+    });
+    document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim(); render(); });
+    document.querySelector('thead').addEventListener('click', e => {
+      const th = e.target.closest('th[data-sort]'); if (!th) return;
+      if (state.sort === th.dataset.sort) state.dir *= -1;
+      else { state.sort = th.dataset.sort; state.dir = ['name', 'pos', 'rank', 'age', 'bye'].includes(state.sort) ? 1 : -1; }
+      render();
+    });
+    document.getElementById('rows').addEventListener('click', e => {
+      const tr = e.target.closest('tr[data-id]'); if (!tr) return;
+      const pending = JSON.parse(sessionStorage.getItem('giq-pending') || '[]');
+      pending.push(+tr.dataset.id);
+      sessionStorage.setItem('giq-pending', JSON.stringify(pending));
+      location.href = 'trade-calculator.html';
+    });
+    document.getElementById('export').addEventListener('click', () => {
+      const rows = GIQ.ranked(state.pos);
+      const csv = ['rank,name,pos,team,age,bye,value,adp,sources'].concat(rows.map(p => [p.rank, `"${p.name}"`, p.pos, p.team, p.age, p.bye, p.value, p.adp ?? '', p.nSources ?? ''].join(','))).join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      a.download = `gobuckyourself-${GIQ.settings.format}-${GIQ.settings.scoring}.csv`;
+      a.click();
+      GIQ.toast('Rankings exported');
+    });
+
+    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('giq:settings', render);
+  </script>
+</body>
+</html>

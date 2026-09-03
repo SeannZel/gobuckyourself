@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" style="max-width:820px">
+    <div class="page-head">
+      <h1>How the values work</h1>
+      <p>Where the numbers come from, how they're blended, and how the trade calculator uses them.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <div class="card__head"><h3>The GoBuckYourself value</h3></div>
+      <div class="card__body">
+        <p>Every player gets one number on a 0–10,000 scale, where the best player in a given format is 10,000. That number isn't a single site's opinion — it's a weighted blend of three independent views of a player's worth, nudged by a fourth signal for momentum. Because everything lands on the same scale, a quarterback, a tight end, and a two-for-one package can all be compared directly.</p>
+        <p>Current sources: <strong data-sources>multiple sources</strong>. <span data-updated></span>.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <div class="card__head"><h3>The sources and what each contributes</h3></div>
+      <div class="card__body">
+        <p><strong>FantasyCalc market values (50%).</strong> Derived from thousands of real trades across leagues, so it reflects what managers actually pay, not what pundits think. Fetched separately for 1QB and Superflex and for PPR, half-PPR, and standard scoring, so no guesswork is needed to translate between formats.</p>
+        <p><strong>ESPN average draft position (30%).</strong> The draft market: where players are being taken in real ESPN drafts, along with percent rostered. ADP is converted to the value scale with the same exponential curve that shapes trade values, so pick 1 ≈ 10,000 and value falls steeply through the first two rounds before flattening.</p>
+        <p><strong>FantasyPros expert consensus (20%).</strong> The aggregated rankings of dozens of analysts, per scoring format. This is the "expert" leg that catches injuries and role changes before the trade market fully reprices them. (Requires an API key; if it's not configured the other weights are renormalized.)</p>
+        <p><strong>Sleeper waiver momentum (±3% max).</strong> Net adds minus drops over the past week across Sleeper leagues. A player being scooped everywhere gets a small bump; one being cut everywhere gets a small haircut. It's capped so hype can't override the fundamentals.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <div class="card__head"><h3>How the blend works</h3></div>
+      <div class="card__body">
+        <p>For each format and scoring combination, every source's number is normalized to 0–10,000, then averaged using the weights above. If a source doesn't cover a player, its weight is dropped and the others are scaled up, so a deep-bench player known only to ADP still gets a sensible value. Superflex uplift for quarterbacks is learned from FantasyCalc's own 1QB-versus-Superflex ratio and applied to the ADP and consensus legs, rather than hard-coded. Finally the whole pool is rescaled so the top player is exactly 10,000, and tiers are assigned from the result.</p>
+        <p>The rankings page shows how many sources value each player and whether they <em>agree</em>, are <em>mixed</em>, or are <em>split</em> — a wide split usually means an injury or role question that the market and the experts read differently, which is exactly where trade edges live.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <div class="card__head"><h3>The trade calculator</h3></div>
+      <div class="card__body">
+        <p>The calculator sums each side's values, but not linearly. In redraft, roster spots are scarce and the best player in a deal usually decides it, so the second, third, and fourth pieces on a side are discounted (85%, 72%, 61% and so on). This is why a 3-for-1 that "adds up" on paper often still loses.</p>
+        <p>A trade is called <em>fair</em> when the adjusted totals are within your chosen tolerance (default ±6%). Otherwise the calculator names the side receiving more value and suggests players the winning side could add to balance the deal.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__head"><h3>Tiers</h3></div>
+      <div class="card__body">
+        <p>Tier 1 (8,000+) are league-winners you should almost never trade. Tier 2 (6,000–8,000) are weekly locks. Tier 3 (4,000–6,000) are strong starters. Tier 4 (2,500–4,000) are flex plays. Tier 5 and 6 are bench depth and streamers — useful as sweeteners, rarely as centerpieces.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
