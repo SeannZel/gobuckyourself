@@ -131,9 +131,34 @@ const GIQ = (() => {
     return `<span class="trend trend--${cls}">${arrow} ${fmt(Math.abs(t))}</span>`;
   }
 
-  function avatar(p) {
-    return `<span class="avatar avatar--${p.pos}">${initials(p.name)}</span>`;
+  // ---------- images ----------
+  // Headshots: Sleeper CDN by sleeperId, then ESPN by espnId, then initials. Logos: Sleeper, then ESPN.
+  const ESPN_LOGO = { WAS: 'wsh', JAX: 'jax', LAR: 'lar', LAC: 'lac' };
+  function headshotUrls(p) {
+    const u = [];
+    if (p.sleeperId) u.push(`https://sleepercdn.com/content/nfl/players/thumb/${p.sleeperId}.jpg`);
+    if (p.espnId) u.push(`https://a.espncdn.com/i/headshots/nfl/players/full/${p.espnId}.png`);
+    return u;
   }
+  function logoUrls(team) {
+    if (!team || team === 'FA') return [];
+    const t = team.toLowerCase();
+    return [`https://sleepercdn.com/images/team_logos/nfl/${t}.png`, `https://a.espncdn.com/i/teamlogos/nfl/500/${ESPN_LOGO[team] || t}.png`];
+  }
+  // onerror walks the data-alt list; when exhausted the <img> hides and the initials underneath show through.
+  const FALLBACK = "var a=(this.dataset.alt||'').split('|').filter(Boolean);if(a.length){this.src=a.shift();this.dataset.alt=a.join('|')}else{this.style.display='none'}";
+  function avatar(p) {
+    const [first, ...rest] = headshotUrls(p);
+    const img = first ? `<img src="${first}" data-alt="${rest.join('|')}" alt="" loading="lazy" onload="this.classList.add('ok')" onerror="${FALLBACK}">` : '';
+    return `<span class="avatar avatar--${p.pos}"><span class="avatar__init">${initials(p.name)}</span>${img}</span>`;
+  }
+  function logo(team, size = 16) {
+    const [first, ...rest] = logoUrls(team);
+    if (!first) return '';
+    return `<img class="logo" width="${size}" height="${size}" src="${first}" data-alt="${rest.join('|')}" alt="" loading="lazy" onload="this.classList.add('ok')" onerror="${FALLBACK}">`;
+  }
+  /** "DET" rendered as logo + abbreviation. */
+  function teamHtml(team) { return `<span class="team">${logo(team)}${esc(team || 'FA')}</span>`; }
 
   function toast(msg) {
     let el = document.querySelector('.toast');
@@ -173,5 +198,5 @@ const GIQ = (() => {
     document.querySelectorAll('[data-sources]').forEach(el => el.textContent = sourcesLabel());
   });
 
-  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, injuryHtml, toast };
+  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, injuryHtml, toast };
 })();

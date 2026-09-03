@@ -152,7 +152,7 @@
         list.innerHTML = trade[side].length ? trade[side].map(id => {
           const p = byId[id];
           return `<div class="asset">${GIQ.avatar(p)}
-            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span> · Age ${p.age}</div></div>
+            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · Age ${p.age}</div></div>
             <span class="val">${GIQ.fmt(GIQ.valueOf(p))}</span>
             <button class="rm" data-rm="${id}" data-side="${side}" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
           </div>`;
@@ -217,7 +217,7 @@
         const signed = (r.diff >= 0 ? '+' : '') + GIQ.fmt(r.diff);
         const label = after <= tolerance ? `Fair · ${signed}` : (r.diff > 0 ? `${signed} over` : `${signed} short`);
         return `<button class="brow" data-add-many="${ids}" data-side="${side}" title="Add to Team ${side.toUpperCase()}">
-          <div class="brow__players">${r.players.map(p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${GIQ.esc(p.name)}</b><small>${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`).join('<span class="brow__plus">+</span>')}</div>
+          <div class="brow__players">${r.players.map(p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${GIQ.esc(p.name)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`).join('<span class="brow__plus">+</span>')}</div>
           <span class="brow__after brow__after--${cls}">${label}</span>
         </button>`;
       };
@@ -247,7 +247,7 @@
         const q = input.value.trim().toLowerCase();
         const list = GIQ.ranked('ALL').filter(p => !inTrade(p.id) && (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q)).slice(0, 8);
         hl = -1;
-        dd.innerHTML = list.map(p => `<button data-add="${p.id}" data-side="${side}">${GIQ.avatar(p)}<div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div><span class="val">${GIQ.fmt(p.value)}</span></button>`).join('');
+        dd.innerHTML = list.map(p => `<button data-add="${p.id}" data-side="${side}">${GIQ.avatar(p)}<div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div><span class="val">${GIQ.fmt(p.value)}</span></button>`).join('');
         dd.classList.toggle('open', list.length > 0);
       };
       input.addEventListener('focus', show);

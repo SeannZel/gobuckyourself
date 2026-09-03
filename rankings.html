@@ -119,7 +119,7 @@
       document.getElementById('rows').innerHTML = rows.map(p => `
         <tr data-id="${p.id}" style="cursor:pointer" title="Add to trade calculator">
           <td class="rank-no">${p.rank}</td>
-          <td class="player">${GIQ.avatar(p)}<div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${p.team}${p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
+          <td class="player">${GIQ.avatar(p)}<div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)}${p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
           <td><span class="pos pos--${p.pos}">${p.pos}</span></td>
           <td style="color:var(--text-2)">${p.pos}${posRank[p.id]}</td>
           <td class="num">${p.age}</td>

@@ -122,7 +122,7 @@
       document.getElementById('mock-rows').innerHTML = all.slice(0, 5).map(p => `
         <div class="mock__row">
           ${GIQ.avatar(p)}
-          <div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
+          <div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
           <span class="val">${GIQ.fmt(p.value)}</span>
         </div>`).join('');
 
@@ -137,7 +137,7 @@
           <div class="mini-list">${list.map((p, i) => `
             <a class="mini-row" href="rankings.html?pos=${pos}">
               <span class="no">${i + 1}</span>${GIQ.avatar(p)}
-              <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · Age ${p.age}</div></div>
+              <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${GIQ.teamHtml(p.team)} · Age ${p.age}</div></div>
               <span class="val">${GIQ.fmt(p.value)}</span>
             </a>`).join('')}</div>
         </div>`;
@@ -150,7 +150,7 @@
         <div class="card__head"><h3>${title}</h3></div>
         <div class="mini-list">${list.map((p, i) => `
           <div class="mini-row">${GIQ.avatar(p)}
-            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${p.team} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
+            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div>
             <span class="val">${GIQ.trendHtml(p.trend)}</span>
           </div>`).join('')}</div></div>`;
       document.getElementById('movers').innerHTML = mover('📈 Risers', risers) + mover('📉 Fallers', fallers) + `

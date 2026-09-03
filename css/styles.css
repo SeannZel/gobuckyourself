@@ -363,3 +363,15 @@ td.value { font-family: var(--mono); font-weight: 700; }
 .fh { margin: 0 0 8px; font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
 a.feature { display: block; }
 @media (max-width: 960px) { .finder { grid-template-columns: 1fr; } }
+
+/* ---------- Player photos & team logos ---------- */
+.avatar { position: relative; overflow: hidden; }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; background: var(--surface-2); opacity: 0; transition: opacity .2s; }
+.avatar img.ok { opacity: 1; }
+.avatar__init { position: relative; z-index: 0; }
+.team { display: inline-flex; align-items: center; gap: 4px; vertical-align: middle; }
+.team .logo { width: 16px; height: 16px; object-fit: contain; opacity: 0; transition: opacity .2s; }
+.team .logo.ok { opacity: 1; }
+.team .logo[style*="none"] + * { margin-left: 0; }
+td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
+.mock__row .avatar { width: 40px; height: 40px; }
