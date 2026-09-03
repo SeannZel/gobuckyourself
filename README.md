@@ -52,6 +52,10 @@ Tune weights, momentum cap, tier cutoffs, and scoring multipliers in `scripts/co
 
 `.github/workflows/update-values.yml` runs every Tuesday morning (and on demand via *Actions → Run workflow*), rebuilds the data, and commits it if anything changed. Add `FANTASYPROS_API_KEY` under *Settings → Secrets → Actions* to enable the FantasyPros leg.
 
+## Access code gate
+
+`middleware.js` (Vercel Edge Middleware) redirects every request to `/gate` until the visitor enters the code. Set **`ACCESS_CODE`** in Vercel → Project → Settings → Environment Variables and redeploy. Leave it unset to make the site public. A correct code sets a 90-day HttpOnly cookie; `/api/gate/logout` clears it.
+
 ## Deploying (GitHub + Vercel)
 
 1. Push this folder to a GitHub repo.

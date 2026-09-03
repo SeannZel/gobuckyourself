@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .gate { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .gate__card { width: min(440px, 100%); background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 36px 32px; box-shadow: var(--shadow); text-align: center; animation: pop .25s ease-out; }
+    .gate__mark { width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 18px; font-size: 24px; background: linear-gradient(135deg, #e0242f, #8a0000); display: grid; place-items: center; color: #fff; font-weight: 900; box-shadow: 0 10px 30px rgba(187,0,0,.45); }
+    .gate h1 { font-size: 26px; letter-spacing: -.03em; margin: 0 0 6px; }
+    .gate p { color: var(--text-2); margin: 0 0 24px; font-size: 14px; }
+    .gate input {
+      width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-2); outline: none;
+      font-size: 18px; letter-spacing: .12em; text-align: center; transition: border-color .15s, box-shadow .15s;
+    }
+    .gate input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(224,36,47,.22); }
+    .gate .btn { width: 100%; margin-top: 12px; }
+    .gate__err { display: none; color: var(--red); font-size: 13px; margin: 12px 0 0; }
+    .gate__err.show { display: block; }
+    .gate__foot { margin-top: 22px; font-size: 12px; color: var(--text-3); }
+  </style>
+</head>
+<body>
+  <main class="gate">
+    <form class="gate__card" method="post" action="/api/gate">
+      <div class="gate__mark">GB</div>
+      <h1>GoBuckYourself</h1>
+      <p>This site is invite-only. Enter your access code to continue.</p>
+      <input type="password" name="code" placeholder="Access code" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus required>
+      <input type="hidden" name="next" id="next" value="/">
+      <button class="btn btn--primary btn--lg" type="submit">Enter</button>
+      <p class="gate__err" id="err">That code didn't match. Try again.</p>
+      <div class="gate__foot">Fantasy football rankings &amp; trade calculator</div>
+    </form>
+  </main>
+  <script>
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('error')) document.getElementById('err').classList.add('show');
+    const next = qs.get('next'); if (next && next.startsWith('/')) document.getElementById('next').value = next;
+  </script>
+</body>
+</html>
