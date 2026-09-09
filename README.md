@@ -31,9 +31,10 @@ Requires Node 18+. The script is resilient: any source that fails is logged and 
 
 | Source | What it provides | Weight | Auth |
 |---|---|---|---|
-| **FantasyCalc** `api.fantasycalc.com/values/current` | Trade-market values for 1QB/SF × PPR/half/std, 30-day trend, tiers | 50% | none |
-| **ESPN Fantasy** `lm-api-reads.fantasy.espn.com` | ADP, % rostered, injury status, team bye weeks | 30% | none (undocumented public endpoint) |
-| **FantasyPros** `api.fantasypros.com` | Expert consensus rankings per scoring format | 20% | `FANTASYPROS_API_KEY` env var — skipped if unset |
+| **FantasyCalc** `api.fantasycalc.com/values/current` | Trade-market values for 1QB/SF × PPR/half/std, 30-day trend, tiers | 40% | none |
+| **ESPN Fantasy** `lm-api-reads.fantasy.espn.com` | ADP, % rostered, injury status, team bye weeks | 25% | none (undocumented public endpoint) |
+| **FantasyPros** `api.fantasypros.com` | Expert consensus rankings per scoring format | 15% | `FANTASYPROS_API_KEY` env var — skipped if unset |
+| **PeakedInHighSkool** (Patreon Google Sheet) | Weekly trade value chart, 0–100 scale, per format | 20% | `PIHS_SHEETS` env var — JSON map of `"<format>.<scoring>"` → sheet URL; skipped if unset |
 | **Sleeper** `api.sleeper.app` | Player metadata (team, age, injury) + weekly trending adds/drops | ±3% momentum | none |
 
 ### The algorithm (`scripts/aggregate.mjs`)
@@ -50,7 +51,12 @@ Tune weights, momentum cap, tier cutoffs, and scoring multipliers in `scripts/co
 
 ### Weekly refresh
 
-`.github/workflows/update-values.yml` runs every Tuesday morning (and on demand via *Actions → Run workflow*), rebuilds the data, and commits it if anything changed. Add `FANTASYPROS_API_KEY` under *Settings → Secrets → Actions* to enable the FantasyPros leg.
+`.github/workflows/update-values.yml` runs every Wednesday morning (after PeakedInHighSkool's Tuesday-night update) (and on demand via *Actions → Run workflow*), rebuilds the data, and commits it if anything changed. Add `FANTASYPROS_API_KEY` under *Settings → Secrets → Actions* to enable the FantasyPros leg, and `PIHS_SHEETS` to enable PeakedInHighSkool, e.g.
+
+```
+{"1qb.ppr":"https://docs.google.com/spreadsheets/d/<id>/edit?gid=<gid>","1qb.half":"...","1qb.std":"...","sf.ppr":"..."}
+```
+The sheet must be link-viewable (it is for Patreon subscribers' links). The parser finds the Wide Receiver / Running Back / Tight End / Quarterback blocks by their headers, so it copes with column reshuffles.
 
 ## Access code gate
 

@@ -2,7 +2,7 @@
 export default {
   numTeams: 12,
   // Relative weight of each source in the blended value. Missing sources are dropped and the rest renormalized.
-  weights: { fantasycalc: 0.50, espn: 0.30, fantasypros: 0.20 },
+  weights: { fantasycalc: 0.40, espn: 0.25, pihs: 0.20, fantasypros: 0.15 },
   // Sleeper add/drop momentum can move a value by at most this fraction (±).
   momentumCap: 0.03,
   // Sources that only provide one scoring format get these multipliers for other formats.

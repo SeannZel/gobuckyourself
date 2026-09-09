@@ -7,7 +7,7 @@ const SCORINGS = ['ppr', 'half', 'std'];
 const median = a => { const s = [...a].sort((x, y) => x - y); return s.length ? s[Math.floor(s.length / 2)] : 1; };
 const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
 
-export function aggregate({ fc, espn, sleeper, fp }) {
+export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() } }) {
   const cfg = config;
   // How much more a QB is worth in Superflex, learned from FantasyCalc so ADP/ECR sources get the same treatment.
   const qbRatios = [];
@@ -15,13 +15,13 @@ export function aggregate({ fc, espn, sleeper, fp }) {
   const qbUplift = clamp(median(qbRatios), 1, 3);
 
   // Union of every player any source knows about.
-  const keys = new Set([...fc.players.keys(), ...espn.players.keys(), ...fp.players.keys()]);
+  const keys = new Set([...fc.players.keys(), ...espn.players.keys(), ...fp.players.keys(), ...pihs.players.keys()]);
   const maxMomentum = Math.max(1, ...[...sleeper.momentum.values()].map(Math.abs));
 
   const out = [];
   for (const key of keys) {
-    const a = fc.players.get(key), b = espn.players.get(key), c = fp.players.get(key);
-    const base = a || b || c;
+    const a = fc.players.get(key), b = espn.players.get(key), c = fp.players.get(key), d = pihs.players.get(key);
+    const base = a || b || c || d;
     const [, pos] = key.split('|');
     const sleeperId = a?.sleeperId || sleeper.byKey.get(key) || null;
     const meta = sleeperId ? sleeper.meta.get(sleeperId) : null;
@@ -43,6 +43,19 @@ export function aggregate({ fc, espn, sleeper, fp }) {
         if (!c) return null;
         let v = c.values[scoring] ?? c.values.ppr; if (v == null) return null;
         if (format === 'sf' && pos === 'QB') v *= qbUplift;
+        return v;
+      }
+      if (src === 'pihs') {
+        if (!d) return null;
+        const f = d.values[format];
+        if (f) { // exact format available: use its scoring, or nearest scoring with a multiplier
+          if (f[scoring] != null) return f[scoring];
+          const any = f.ppr ?? f.half ?? f.std; return any == null ? null : any * cfg.scoringMult[scoring][pos];
+        }
+        // only the other format is configured: borrow it and apply/undo the QB uplift
+        const o = d.values[format === 'sf' ? '1qb' : 'sf']; if (!o) return null;
+        let v = (o[scoring] ?? o.ppr ?? o.half ?? o.std); if (v == null) return null;
+        if (pos === 'QB') v = format === 'sf' ? v * qbUplift : v / qbUplift;
         return v;
       }
     };
@@ -69,8 +82,8 @@ export function aggregate({ fc, espn, sleeper, fp }) {
 
     const svals = Object.values(sources);
     out.push({
-      name: base.name, pos, team: meta?.team || a?.team || b?.team || c?.team || 'FA',
-      age: meta?.age ?? a?.age ?? null, bye: espn.byes?.[meta?.team || a?.team || b?.team] ?? null,
+      name: base.name, pos, team: meta?.team || a?.team || b?.team || c?.team || d?.team || 'FA',
+      age: meta?.age ?? a?.age ?? d?.age ?? null, bye: espn.byes?.[meta?.team || a?.team || b?.team] ?? null,
       injury: meta?.injury || b?.injury || null,
       sleeperId, espnId: a?.espnId || b?.espnId || null,
       values, sources, nSources,

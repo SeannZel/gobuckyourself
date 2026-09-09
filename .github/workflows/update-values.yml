@@ -2,7 +2,7 @@ name: Update player values
 
 on:
   schedule:
-    - cron: '0 11 * * 2'   # Tuesdays 11:00 UTC (7am ET), after Monday night games
+    - cron: '0 11 * * 3'   # Wednesdays 11:00 UTC (7am ET) — after PIHS publishes Tuesday night
   workflow_dispatch:        # manual "Run workflow" button
 
 permissions:
@@ -19,6 +19,7 @@ jobs:
       - name: Build values
         env:
           FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
+          PIHS_SHEETS: ${{ secrets.PIHS_SHEETS }}
         run: npm run build:values
       - name: Commit if changed
         run: |

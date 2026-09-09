@@ -40,7 +40,7 @@
     <div class="card" style="margin-bottom:18px">
       <div class="card__head"><h3>The GoBuckYourself value</h3></div>
       <div class="card__body">
-        <p>Every player gets one number on a 0–10,000 scale, where the best player in a given format is 10,000. That number isn't a single site's opinion — it's a weighted blend of three independent views of a player's worth, nudged by a fourth signal for momentum. Because everything lands on the same scale, a quarterback, a tight end, and a two-for-one package can all be compared directly.</p>
+        <p>Every player gets one number on a 0–10,000 scale, where the best player in a given format is 10,000. That number isn't a single site's opinion — it's a weighted blend of up to four independent views of a player's worth, nudged by a fourth signal for momentum. Because everything lands on the same scale, a quarterback, a tight end, and a two-for-one package can all be compared directly.</p>
         <p>Current sources: <strong data-sources>multiple sources</strong>. <span data-updated></span>.</p>
       </div>
     </div>
@@ -48,9 +48,10 @@
     <div class="card" style="margin-bottom:18px">
       <div class="card__head"><h3>The sources and what each contributes</h3></div>
       <div class="card__body">
-        <p><strong>FantasyCalc market values (50%).</strong> Derived from thousands of real trades across leagues, so it reflects what managers actually pay, not what pundits think. Fetched separately for 1QB and Superflex and for PPR, half-PPR, and standard scoring, so no guesswork is needed to translate between formats.</p>
-        <p><strong>ESPN average draft position (30%).</strong> The draft market: where players are being taken in real ESPN drafts, along with percent rostered. ADP is converted to the value scale with the same exponential curve that shapes trade values, so pick 1 ≈ 10,000 and value falls steeply through the first two rounds before flattening.</p>
-        <p><strong>FantasyPros expert consensus (20%).</strong> The aggregated rankings of dozens of analysts, per scoring format. This is the "expert" leg that catches injuries and role changes before the trade market fully reprices them. (Requires an API key; if it's not configured the other weights are renormalized.)</p>
+        <p><strong>FantasyCalc market values (40%).</strong> Derived from thousands of real trades across leagues, so it reflects what managers actually pay, not what pundits think. Fetched separately for 1QB and Superflex and for PPR, half-PPR, and standard scoring, so no guesswork is needed to translate between formats.</p>
+        <p><strong>ESPN average draft position (25%).</strong> The draft market: where players are being taken in real ESPN drafts, along with percent rostered. ADP is converted to the value scale with the same exponential curve that shapes trade values, so pick 1 ≈ 10,000 and value falls steeply through the first two rounds before flattening.</p>
+        <p><strong>PeakedInHighSkool trade value chart (20%).</strong> A widely used weekly chart built from expert rankings, community data, and analytics, refreshed every Tuesday night. It's the "what does the fantasy community think this player is worth in a trade" leg, and often the first to move on news.</p>
+        <p><strong>FantasyPros expert consensus (15%).</strong> The aggregated rankings of dozens of analysts, per scoring format. This is the "expert" leg that catches injuries and role changes before the trade market fully reprices them. (Requires an API key; if it's not configured the other weights are renormalized.)</p>
         <p><strong>Sleeper waiver momentum (±3% max).</strong> Net adds minus drops over the past week across Sleeper leagues. A player being scooped everywhere gets a small bump; one being cut everywhere gets a small haircut. It's capped so hype can't override the fundamentals.</p>
       </div>
     </div>

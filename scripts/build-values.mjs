@@ -12,18 +12,19 @@ import * as fantasycalc from './sources/fantasycalc.mjs';
 import * as espn from './sources/espn.mjs';
 import * as sleeper from './sources/sleeper.mjs';
 import * as fantasypros from './sources/fantasypros.mjs';
+import * as pihs from './sources/pihs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const [fc, es, sl, fp] = await Promise.all([
-  fantasycalc.load({ numTeams: config.numTeams }), espn.load(), sleeper.load(), fantasypros.load(),
+const [fc, es, sl, fp, ph] = await Promise.all([
+  fantasycalc.load({ numTeams: config.numTeams }), espn.load(), sleeper.load(), fantasypros.load(), pihs.load(),
 ]);
 
 if (fc.players.size === 0 && es.players.size === 0 && fp.players.size === 0) {
   log('no source returned data — keeping existing js/players.js'); process.exit(1);
 }
 
-const { players, qbUplift } = aggregate({ fc, espn: es, sleeper: sl, fp });
+const { players, qbUplift } = aggregate({ fc, espn: es, sleeper: sl, fp, pihs: ph });
 const meta = {
   generatedAt: new Date().toISOString(),
   weights: config.weights,
@@ -32,6 +33,7 @@ const meta = {
     { id: 'fantasycalc', label: fantasycalc.label, players: fc.players.size },
     { id: 'espn', label: espn.label, players: es.players.size },
     { id: 'fantasypros', label: fantasypros.label, players: fp.players.size, skipped: !!fp.skipped },
+    { id: 'pihs', label: pihs.label, players: ph.players.size, skipped: !!ph.skipped },
     { id: 'sleeper', label: sleeper.label, players: sl.momentum.size },
   ],
   count: players.length,

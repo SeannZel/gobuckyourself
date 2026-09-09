@@ -94,7 +94,7 @@
 
     function sourcesCell(p) {
       if (!p.sources) return '<span style="color:var(--text-3)">—</span>';
-      const names = { fantasycalc: 'FantasyCalc', espn: 'ESPN ADP', fantasypros: 'FantasyPros' };
+      const names = { fantasycalc: 'FantasyCalc', espn: 'ESPN ADP', fantasypros: 'FantasyPros', pihs: 'PeakedInHighSkool' };
       const tip = Object.entries(p.sources).map(([k, v]) => `${names[k] || k}: ${GIQ.fmt(v)}`).join('\n');
       const agree = p.spread < 800 ? 'agree' : p.spread < 2000 ? 'mixed' : 'split';
       return `<span class="src src--${agree}" title="${tip}">${p.nSources} · ${agree}</span>`;
