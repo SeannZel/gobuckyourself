@@ -111,6 +111,72 @@ const GIQ = (() => {
     return { gap, base, singles, pairs };
   }
 
+  /**
+   * Trade-block recommendations. Given players you're willing to move, suggest what to target.
+   *   swaps:  1-for-1, a target worth about the same as one block player
+   *   consolidate: 2-3 of your block players → one better player (true upgrade: target > your best piece)
+   *   split:  one of your block players → two players that add up to it (depth)
+   * Every result is scored with the same bundling-adjusted totals the trade calculator uses, and
+   * `fairPct` is how far apart the two sides would be (positive = you receive more).
+   * opts: { pos: Set of wanted positions (empty = any), exclude: Set<id>, tol: 0.06, limit: 8 }
+   */
+  function tradeBlockIdeas(block, opts = {}) {
+    const { pos = new Set(), exclude = new Set(), tol = 0.06, limit = 8 } = opts;
+    const blockIds = new Set(block.map(p => p.id));
+    const wanted = p => !pos.size || pos.has(p.pos);
+    const pool = ranked('ALL').filter(p => !blockIds.has(p.id) && !exclude.has(p.id));
+    const targets = pool.filter(wanted);
+    const score = (give, get) => {
+      const g = adjustedTotal(give.map(p => p.value)), r = adjustedTotal(get.map(p => p.value));
+      return { giveTotal: g, getTotal: r, diff: r - g, fairPct: (r - g) / Math.max(g, r) };
+    };
+    const byCloseness = (a, b) => Math.abs(a.fairPct) - Math.abs(b.fairPct);
+
+    // 1-for-1 swaps: up to 3 per block player
+    const swaps = [];
+    for (const b of block) {
+      targets.filter(t => Math.abs(t.value - b.value) <= b.value * 0.12)
+        .map(t => ({ give: [b], get: [t], ...score([b], [t]) }))
+        .sort(byCloseness).slice(0, 3).forEach(x => swaps.push(x));
+    }
+    swaps.sort(byCloseness);
+
+    // Consolidation: every 2- and 3-player subset of the block → one target worth more than its best piece
+    const subsets = [];
+    for (let i = 0; i < block.length; i++) for (let j = i + 1; j < block.length; j++) {
+      subsets.push([block[i], block[j]]);
+      for (let k = j + 1; k < block.length; k++) subsets.push([block[i], block[j], block[k]]);
+    }
+    const consolidate = [];
+    for (const give of subsets) {
+      const g = adjustedTotal(give.map(p => p.value)), best = Math.max(...give.map(p => p.value));
+      targets.filter(t => t.value > best * 1.08 && t.value >= g * (1 - tol * 1.5) && t.value <= g * (1 + tol))
+        .forEach(t => consolidate.push({ give, get: [t], ...score(give, [t]) }));
+    }
+    // keep the tightest deal per target, prefer fewer pieces given
+    const bestPer = new Map();
+    for (const x of consolidate.sort((a, b) => byCloseness(a, b) || a.give.length - b.give.length)) {
+      if (!bestPer.has(x.get[0].id)) bestPer.set(x.get[0].id, x);
+    }
+    const consolidated = [...bestPer.values()].sort((a, b) => b.getTotal - a.getTotal).slice(0, limit);
+
+    // Split: each block player → two targets (both at wanted positions) that together match it
+    const split = [];
+    for (const b of block) {
+      const cand = targets.filter(t => t.value < b.value * 0.8 && t.value >= b.value * 0.25)
+        .sort((x, y) => Math.abs(x.value - b.value * 0.55) - Math.abs(y.value - b.value * 0.55)).slice(0, 30);
+      const found = [];
+      for (let i = 0; i < cand.length; i++) for (let j = i + 1; j < cand.length; j++) {
+        const s = score([b], [cand[i], cand[j]]);
+        if (Math.abs(s.fairPct) <= tol) found.push({ give: [b], get: [cand[i], cand[j]], ...s });
+      }
+      found.sort(byCloseness).slice(0, 3).forEach(x => split.push(x));
+    }
+    split.sort(byCloseness);
+
+    return { swaps: swaps.slice(0, limit), consolidate: consolidated, split: split.slice(0, limit) };
+  }
+
   /** Players within ±pct of a value (excluding ids). */
   function similarValue(value, { pct = 0.15, exclude = new Set(), pos = 'ALL', limit = 12 } = {}) {
     return ranked('ALL')
@@ -198,5 +264,5 @@ const GIQ = (() => {
     document.querySelectorAll('[data-sources]').forEach(el => el.textContent = sourcesLabel());
   });
 
-  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, injuryHtml, toast };
+  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, tradeBlockIdeas, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, injuryHtml, toast };
 })();

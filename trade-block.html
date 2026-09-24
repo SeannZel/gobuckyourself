@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Block — GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="trade-block.html">Trade Block</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>Trade Block</h1>
+      <p>List the players you're willing to move and what you need back. We'll recommend who to target — straight swaps, consolidation upgrades, and depth splits.</p>
+    </div>
+
+    <div class="block-top">
+      <div class="card">
+        <div class="card__head"><h3><span class="dot dot--a"></span> My trade block</h3><span class="side__total" id="block-total">0</span></div>
+        <div class="side__list" id="block-list"></div>
+        <div class="side__search">
+          <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><input type="search" placeholder="Add a player you'd trade…" autocomplete="off" id="block-q"></div>
+          <div class="dropdown" id="dd-block"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h3><span class="dot dot--b"></span> What I need back</h3></div>
+        <div class="card__body">
+          <p class="sub" style="font-size:13px;margin-bottom:10px">Positions to target (none selected = any)</p>
+          <div class="chips" id="need-pos">
+            <button class="chip" data-pos="QB">QB</button><button class="chip" data-pos="RB">RB</button><button class="chip" data-pos="WR">WR</button><button class="chip" data-pos="TE">TE</button>
+          </div>
+          <p class="sub" style="font-size:13px;margin:18px 0 10px">Avoid players on these teams (optional)</p>
+          <div class="search search--sm" style="max-width:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="avoid" type="search" placeholder="e.g. KC, DAL" autocomplete="off"></div>
+          <p class="sub" style="font-size:12px;margin-top:18px">Tip: your block is saved in this browser, so it'll be here next time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="ideas" hidden>
+      <div class="ideas-grid">
+        <div class="card">
+          <div class="card__head"><div><h3>🔁 Straight swaps</h3><p class="sub" style="font-size:12px;margin-top:2px">1-for-1, similar value, different player</p></div></div>
+          <div class="card__body balance__list" id="i-swaps"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><div><h3>⬆️ Consolidate & upgrade</h3><p class="sub" style="font-size:12px;margin-top:2px">Package 2–3 of yours for one better player</p></div></div>
+          <div class="card__body balance__list" id="i-consolidate"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><div><h3>➗ Split for depth</h3><p class="sub" style="font-size:12px;margin-top:2px">Turn one of yours into two starters</p></div></div>
+          <div class="card__body balance__list" id="i-split"></div>
+        </div>
+      </div>
+      <p class="sub" style="font-size:12px;margin-top:12px">Click any idea to open it in the trade calculator. "Fair" means within ±6% after the bundling discount; "+" means you'd receive more.</p>
+    </div>
+
+    <div class="card" style="margin-top:18px" id="hint">
+      <div class="card__body" style="text-align:center;padding:36px">
+        <div style="font-size:36px;line-height:1">📋</div>
+        <h3 style="margin:12px 0 6px">Start your trade block</h3>
+        <p class="sub" style="max-width:560px;margin:0 auto">Add the players you're open to moving. Pick the positions you need, and we'll surface who to go after. Add two or more players to unlock consolidation upgrades.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const KEY = 'gby-trade-block';
+    const byId = Object.fromEntries(PLAYERS.map(p => [p.id, p]));
+    const byName = Object.fromEntries(PLAYERS.map(p => [p.name + '|' + p.pos, p]));
+    let block = [], need = new Set(), avoid = '';
+
+    (function init() {
+      const qs = new URLSearchParams(location.search);
+      if (qs.get('block')) block = qs.get('block').split(',').map(Number).filter(id => byId[id]);
+      else {
+        // stored by name so it survives weekly id reshuffles
+        try { block = (JSON.parse(localStorage.getItem(KEY) || '[]')).map(k => byName[k]?.id).filter(Boolean); } catch (_) {}
+      }
+      (qs.get('need') || '').split(',').filter(Boolean).forEach(p => need.add(p));
+    })();
+
+    function save() {
+      try { localStorage.setItem(KEY, JSON.stringify(block.map(id => byId[id].name + '|' + byId[id].pos))); } catch (_) {}
+      const q = new URLSearchParams(); if (block.length) q.set('block', block.join(',')); if (need.size) q.set('need', [...need].join(','));
+      history.replaceState(null, '', q.toString() ? '?' + q : location.pathname);
+    }
+
+    const current = () => { const m = Object.fromEntries(GIQ.ranked('ALL').map(p => [p.id, p])); return block.map(id => m[id]).filter(Boolean); };
+
+    function render() {
+      const players = current();
+      document.getElementById('block-list').innerHTML = players.length ? players.map(p => `<div class="asset">${GIQ.avatar(p)}
+        <div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.trendHtml(p.trend)}</div></div>
+        <span class="val">${GIQ.fmt(p.value)}</span>
+        <button class="rm" data-rm="${p.id}" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`).join('')
+        : '<div class="empty">Who are you willing to trade?</div>';
+      document.getElementById('block-total').textContent = GIQ.fmt(players.reduce((s, p) => s + p.value, 0));
+      document.querySelectorAll('#need-pos .chip').forEach(c => c.classList.toggle('active', need.has(c.dataset.pos)));
+      document.getElementById('ideas').hidden = !players.length;
+      document.getElementById('hint').hidden = !!players.length;
+      save();
+      if (players.length) renderIdeas(players);
+    }
+
+    function renderIdeas(players) {
+      const avoidTeams = new Set(avoid.toUpperCase().split(/[\s,]+/).filter(Boolean));
+      const exclude = new Set(PLAYERS.filter(p => avoidTeams.has(p.team)).map(p => p.id));
+      const r = GIQ.tradeBlockIdeas(players, { pos: need, exclude });
+      const chip = p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${GIQ.esc(p.name)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`;
+      const idea = x => {
+        const pct = x.fairPct * 100, cls = Math.abs(pct) <= 6 ? 'ok' : pct > 0 ? 'over' : 'under';
+        const signed = (x.diff >= 0 ? '+' : '') + GIQ.fmt(x.diff);
+        const label = Math.abs(pct) <= 6 ? `Fair · ${signed}` : pct > 0 ? `${signed} (you win)` : `${signed} (you pay up)`;
+        const href = `trade-calculator.html?a=${x.give.map(p => p.id).join(',')}&b=${x.get.map(p => p.id).join(',')}`;
+        return `<a class="brow idea" href="${href}" title="Open in trade calculator">
+          <div class="idea__side"><span class="idea__lbl">Give</span><div class="brow__players">${x.give.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+          <div class="idea__side"><span class="idea__lbl idea__lbl--get">Get</span><div class="brow__players">${x.get.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+          <span class="brow__after brow__after--${cls}">${label}</span></a>`;
+      };
+      const empty = msg => `<div class="empty" style="padding:14px">${msg}</div>`;
+      document.getElementById('i-swaps').innerHTML = r.swaps.length ? r.swaps.map(idea).join('') : empty('No similar-value players at those positions.');
+      document.getElementById('i-consolidate').innerHTML = players.length < 2 ? empty('Add at least two players to your block to see upgrades.')
+        : r.consolidate.length ? r.consolidate.map(idea).join('') : empty('No clean upgrades — try adding another piece or widening positions.');
+      document.getElementById('i-split').innerHTML = r.split.length ? r.split.map(idea).join('') : empty('No two-player packages match — works best with higher-value players.');
+    }
+
+    // search
+    const input = document.getElementById('block-q'), dd = document.getElementById('dd-block'); let hl = -1;
+    const show = () => {
+      const q = input.value.trim().toLowerCase();
+      const list = GIQ.ranked('ALL').filter(p => !block.includes(p.id) && (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q)).slice(0, 8);
+      hl = -1;
+      dd.innerHTML = list.map(p => `<button data-pick="${p.id}">${GIQ.avatar(p)}<div><div style="font-weight:600">${GIQ.esc(p.name)}</div><div style="font-size:12px;color:var(--text-3)">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span></div></div><span class="val">${GIQ.fmt(p.value)}</span></button>`).join('');
+      dd.classList.toggle('open', list.length > 0);
+    };
+    input.addEventListener('focus', show); input.addEventListener('input', show);
+    input.addEventListener('keydown', e => {
+      const items = dd.querySelectorAll('button');
+      if (e.key === 'ArrowDown') hl = Math.min(hl + 1, items.length - 1);
+      else if (e.key === 'ArrowUp') hl = Math.max(hl - 1, 0);
+      else if (e.key === 'Enter') { (items[hl] || items[0])?.click(); return; }
+      else if (e.key === 'Escape') { dd.classList.remove('open'); return; }
+      else return;
+      e.preventDefault(); items.forEach((b, i) => b.classList.toggle('hl', i === hl));
+    });
+    input.addEventListener('blur', () => setTimeout(() => dd.classList.remove('open'), 150));
+
+    document.addEventListener('click', e => {
+      const pick = e.target.closest('[data-pick]');
+      if (pick) { if (block.length >= 8) return GIQ.toast('Trade block is limited to 8 players'); block.push(+pick.dataset.pick); input.value = ''; render(); input.focus(); return; }
+      const rm = e.target.closest('[data-rm]');
+      if (rm) { block = block.filter(x => x !== +rm.dataset.rm); render(); return; }
+      const c = e.target.closest('#need-pos .chip');
+      if (c) { need.has(c.dataset.pos) ? need.delete(c.dataset.pos) : need.add(c.dataset.pos); render(); }
+    });
+    document.getElementById('avoid').addEventListener('input', e => { avoid = e.target.value; if (block.length) renderIdeas(current()); });
+    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('giq:settings', render);
+  </script>
+</body>
+</html>

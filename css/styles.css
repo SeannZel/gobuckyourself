@@ -171,7 +171,7 @@ h2 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -.03em; margin: 0 0 6px;
 .avatar--QB { color: var(--qb); } .avatar--RB { color: var(--rb); } .avatar--WR { color: var(--wr); } .avatar--TE { color: var(--te); }
 
 .trend { font-family: var(--mono); font-size: 12px; font-weight: 600; }
-.trend--up { color: var(--accent); } .trend--down { color: var(--red); } .trend--flat { color: var(--text-3); }
+.trend--up { color: #3ecf8e; } .trend--down { color: var(--red); } .trend--flat { color: var(--text-3); }
 
 /* ---------- Toolbar & inputs ---------- */
 .toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
@@ -349,9 +349,9 @@ td.value { font-family: var(--mono); font-weight: 700; }
 .brow__p small { color: var(--text-3); font-size: 11px; }
 .brow__plus { color: var(--text-3); font-weight: 700; }
 .brow__after { font-family: var(--mono); font-size: 12px; font-weight: 700; white-space: nowrap; padding: 3px 8px; border-radius: 6px; }
-.brow__after--ok { background: rgba(224,36,47,.16); color: var(--accent); }
+.brow__after--ok { background: rgba(62,207,142,.14); color: #3ecf8e; }
 .brow__after--over { background: rgba(167,169,172,.16); color: #d0d2d5; }
-.brow__after--under { background: rgba(255,182,72,.14); color: var(--amber); }
+.brow__after--under { background: rgba(245,185,66,.14); color: var(--amber); }
 @media (max-width: 720px) { .balance__grid { grid-template-columns: 1fr; } }
 
 /* ---------- Comparables ---------- */
@@ -375,3 +375,26 @@ a.feature { display: block; }
 .team .logo[style*="none"] + * { margin-left: 0; }
 td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
 .mock__row .avatar { width: 40px; height: 40px; }
+
+/* ---------- Trade block ---------- */
+.block-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+.ideas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; align-items: start; }
+.ideas-grid .card__body { display: flex; flex-direction: column; gap: 8px; }
+.idea { flex-direction: column; align-items: stretch; gap: 8px; text-decoration: none; color: inherit; }
+.idea__side { display: flex; align-items: center; gap: 10px; }
+.idea__lbl { flex: none; width: 36px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.idea__lbl--get { color: var(--accent); }
+.idea .brow__after { align-self: flex-end; }
+@media (max-width: 1100px) { .ideas-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .block-top { grid-template-columns: 1fr; } }
+
+/* ---------- Small phones: keep brand, format toggle and menu on one line ---------- */
+@media (max-width: 480px) {
+  .nav__inner { gap: 10px; }
+  .brand { font-size: 15px; gap: 8px; }
+  .brand__mark { width: 28px; height: 28px; font-size: 12px; }
+  .nav__right { gap: 8px; }
+  .nav__right .seg { padding: 3px; }
+  .nav__right .seg button { padding: 6px 8px; font-size: 12px; }
+  .nav__toggle { width: 36px; height: 36px; flex: none; }
+}
