@@ -75,12 +75,46 @@ export function parseChart(csvText) {
   return out;
 }
 
+/** Manual charts: CSV with name,pos,value (any scale). '# updated=YYYY-MM-DD' comment marks the chart date. */
+function loadManual(players) {
+  const dir = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../data/manual');
+  if (!fs.existsSync(dir)) return;
+  for (const file of fs.readdirSync(dir)) {
+    const m = file.match(/^pihs_(1qb|sf)_(ppr|half|std)\.csv$/); if (!m) continue;
+    const [, format, scoring] = m;
+    const text = fs.readFileSync(path.join(dir, file), 'utf8');
+    const updated = (text.match(/#\s*updated=(\d{4}-\d{2}-\d{2})/) || [])[1];
+    if (updated) {
+      const days = (Date.now() - new Date(updated + 'T00:00:00Z')) / 864e5;
+      if (days > 10) log(`pihs manual ${file}: chart is ${Math.round(days)} days old — consider updating it`);
+    }
+    const rows = parseCSV(text.split('\n').filter(l => !l.startsWith('#')).join('\n')).filter(r => r.length >= 3 && r[0] && r[0] !== 'name');
+    const vals = rows.map(r => parseFloat(r[2])).filter(Number.isFinite);
+    const max = Math.max(...vals);
+    for (const [name, pos, v] of rows) {
+      const P = pos.trim().toUpperCase(), value = parseFloat(v);
+      if (!POSITIONS.has(P) || !Number.isFinite(value)) continue;
+      const k = `${normName(name)}|${P}`;
+      const rec = players.get(k) || { name: name.trim(), pos: P, team: null, age: null, values: {} };
+      rec.values[format] ??= {};
+      rec.values[format][scoring] = Math.round(value / max * 10000);
+      players.set(k, rec);
+    }
+    log(`pihs manual ${format}.${scoring}: ${rows.length} players${updated ? ` (chart ${updated})` : ''}`);
+  }
+}
+
 export async function load() {
   const players = new Map(); // key -> { name,pos,team, values:{[format]:{[scoring]:value}} }
   let sheets = {};
   try { sheets = JSON.parse(process.env.PIHS_SHEETS || '{}'); } catch { log('pihs: PIHS_SHEETS is not valid JSON'); }
   if (FIXTURE_DIR) sheets = { '1qb.ppr': 'fixture', 'sf.ppr': 'fixture' };
-  if (!Object.keys(sheets).length) { log('pihs: no PIHS_SHEETS configured, skipping'); return { players, skipped: true }; }
+  if (!Object.keys(sheets).length) {
+    // No live sheet configured: fall back to hand-entered charts in data/manual/pihs_<format>_<scoring>.csv
+    loadManual(players);
+    if (!players.size) { log('pihs: no PIHS_SHEETS and no manual charts, skipping'); return { players, skipped: true }; }
+    return { players };
+  }
 
   for (const [key, url] of Object.entries(sheets)) {
     const [format, scoring] = key.split('.');

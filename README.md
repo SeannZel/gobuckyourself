@@ -56,7 +56,9 @@ Tune weights, momentum cap, tier cutoffs, and scoring multipliers in `scripts/co
 ```
 {"1qb.ppr":"https://docs.google.com/spreadsheets/d/<id>/edit?gid=<gid>","1qb.half":"...","1qb.std":"...","sf.ppr":"..."}
 ```
-The sheet must be link-viewable (it is for Patreon subscribers' links). The parser finds the Wide Receiver / Running Back / Tight End / Quarterback blocks by their headers, so it copes with column reshuffles.
+The sheet must be link-viewable (it is for Patreon subscribers' links).
+
+**Manual fallback:** when `PIHS_SHEETS` isn't set, the adapter reads hand-entered charts from `data/manual/pihs_<format>_<scoring>.csv` (`name,pos,value`, any scale; add `# updated=YYYY-MM-DD`). The build logs a warning when a manual chart is more than 10 days old. The parser finds the Wide Receiver / Running Back / Tight End / Quarterback blocks by their headers, so it copes with column reshuffles.
 
 ## Access code gate
 
