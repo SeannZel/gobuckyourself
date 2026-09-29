@@ -76,7 +76,7 @@ export function parseChart(csvText) {
 }
 
 /** Manual charts: CSV with name,pos,value (any scale). '# updated=YYYY-MM-DD' comment marks the chart date. */
-function loadManual(players) {
+function loadManual(players, dates) {
   const dir = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../data/manual');
   if (!fs.existsSync(dir)) return;
   for (const file of fs.readdirSync(dir)) {
@@ -84,6 +84,7 @@ function loadManual(players) {
     const [, format, scoring] = m;
     const text = fs.readFileSync(path.join(dir, file), 'utf8');
     const updated = (text.match(/#\s*updated=(\d{4}-\d{2}-\d{2})/) || [])[1];
+    if (updated) dates[`${format}.${scoring}`] = updated;
     if (updated) {
       const days = (Date.now() - new Date(updated + 'T00:00:00Z')) / 864e5;
       if (days > 10) log(`pihs manual ${file}: chart is ${Math.round(days)} days old — consider updating it`);
@@ -111,9 +112,10 @@ export async function load() {
   if (FIXTURE_DIR) sheets = { '1qb.ppr': 'fixture', 'sf.ppr': 'fixture' };
   if (!Object.keys(sheets).length) {
     // No live sheet configured: fall back to hand-entered charts in data/manual/pihs_<format>_<scoring>.csv
-    loadManual(players);
-    if (!players.size) { log('pihs: no PIHS_SHEETS and no manual charts, skipping'); return { players, skipped: true }; }
-    return { players };
+    const dates = {};
+    loadManual(players, dates);
+    if (!players.size) { log('pihs: no PIHS_SHEETS and no manual charts, skipping'); return { players, dates, skipped: true }; }
+    return { players, dates };
   }
 
   for (const [key, url] of Object.entries(sheets)) {

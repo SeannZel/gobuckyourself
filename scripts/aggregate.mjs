@@ -18,6 +18,9 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
   const keys = new Set([...fc.players.keys(), ...espn.players.keys(), ...fp.players.keys(), ...pihs.players.keys()]);
   const maxMomentum = Math.max(1, ...[...sleeper.momentum.values()].map(Math.abs));
 
+  const pihsDates = pihs.dates || {};
+  const pihsNewest = fmt => Object.entries(pihsDates).filter(([k]) => k.startsWith(fmt + '.')).map(([, v]) => v).sort().pop() || null;
+
   const out = [];
   for (const key of keys) {
     const a = fc.players.get(key), b = espn.players.get(key), c = fp.players.get(key), d = pihs.players.get(key);
@@ -47,16 +50,22 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
       }
       if (src === 'pihs') {
         if (!d) return null;
-        const f = d.values[format];
-        if (f) { // exact format available: use its scoring, or nearest scoring with a multiplier
-          if (f[scoring] != null) return f[scoring];
-          const any = f.ppr ?? f.half ?? f.std; return any == null ? null : any * cfg.scoringMult[scoring][pos];
-        }
-        // only the other format is configured: borrow it and apply/undo the QB uplift
-        const o = d.values[format === 'sf' ? '1qb' : 'sf']; if (!o) return null;
-        let v = (o[scoring] ?? o.ppr ?? o.half ?? o.std); if (v == null) return null;
-        if (pos === 'QB') v = format === 'sf' ? v * qbUplift : v / qbUplift;
-        return v;
+        // Charts come in specific formats (e.g. 1QB PPR one week, Superflex standard the next).
+        // Prefer the exact format if that chart is recent; otherwise use the freshest chart and convert.
+        const mult = cfg.scoringMult;
+        const convScoring = (v, from) => v / mult[from][pos] * mult[scoring][pos];
+        const fromChart = (fmt) => {
+          const f = d.values[fmt]; if (!f) return null;
+          const from = f[scoring] != null ? scoring : ['ppr', 'half', 'std'].find(s => f[s] != null);
+          if (!from) return null;
+          let v = convScoring(f[from], from);
+          if (fmt !== format && pos === 'QB') v = format === 'sf' ? v * qbUplift : v / qbUplift;
+          return { v, date: pihsNewest(fmt) };
+        };
+        const exact = fromChart(format), other = fromChart(format === 'sf' ? '1qb' : 'sf');
+        const age = x => x?.date ? (Date.now() - new Date(x.date + 'T00:00:00Z')) / 864e5 : 0;
+        if (exact && (age(exact) <= 10 || !other)) return exact.v;
+        return (other || exact)?.v ?? null;
       }
     };
 
