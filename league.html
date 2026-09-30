@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My League — GoBuckYourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
+      <nav class="nav__links">
+        <a href="rankings.html">Rankings</a>
+        <a href="trade-calculator.html">Trade Calculator</a>
+        <a href="finder.html">Comparables</a>
+        <a href="trade-block.html">Trade Block</a>
+        <a href="league.html">My League</a>
+        <a href="about.html">Methodology</a>
+      </nav>
+      <div class="nav__right">
+        <div class="seg" data-setting="format" title="League format">
+          <button data-value="1qb">1QB</button>
+          <button data-value="sf">Superflex</button>
+        </div>
+        <button class="nav__toggle" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>My League</h1>
+      <p>Connect your Sleeper league to see power rankings, find trades that improve your lineup, and grade trades by their real lineup impact.</p>
+    </div>
+
+    <!-- Connect -->
+    <div class="card" id="connect" hidden>
+      <div class="card__head"><h3>Connect your Sleeper league</h3></div>
+      <div class="card__body">
+        <form id="find-form" class="lg-form">
+          <div class="search" style="flex:1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><input id="username" placeholder="Your Sleeper username" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+          <button class="btn btn--primary" type="submit">Find my leagues</button>
+        </form>
+        <p class="sub lg-small">No password needed. Sleeper league data is public. Or <a href="#" id="by-id" class="lg-link">enter a league ID</a> directly.</p>
+        <form id="id-form" class="lg-form" hidden>
+          <div class="search" style="flex:1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg><input id="league-id" placeholder="Sleeper league ID (from the league URL)" autocomplete="off" inputmode="numeric"></div>
+          <button class="btn" type="submit">Connect</button>
+        </form>
+        <div id="league-list" class="lg-list"></div>
+        <p class="lg-err" id="connect-err" hidden></p>
+      </div>
+    </div>
+
+    <div id="loading" class="card lg-loading" hidden><div class="card__body">Loading your league from Sleeper…</div></div>
+
+    <!-- Connected -->
+    <div id="connected" hidden>
+      <div class="card lg-head">
+        <div class="lg-head__main">
+          <span class="lg-avatar" id="lg-avatar"></span>
+          <div><h2 id="lg-name" style="margin:0"></h2><p class="sub" id="lg-meta" style="font-size:13px"></p></div>
+        </div>
+        <div class="lg-head__side">
+          <label class="lg-label">I am
+            <select class="select" id="me-select"></select>
+          </label>
+          <button class="btn btn--sm" id="refresh">↻ Refresh</button>
+          <button class="btn btn--sm btn--ghost" id="disconnect">Disconnect</button>
+        </div>
+      </div>
+      <p class="sub lg-small" id="settings-note" hidden></p>
+
+      <div class="card" style="margin-top:18px">
+        <div class="card__head"><div><h3>🏆 Power rankings</h3><p class="sub lg-small" style="margin:2px 0 0">Power = optimal starting lineup value + 20% of the top four bench players. Position columns rank each team's starters (1 = strongest, greener = stronger). Click a team to see its roster.</p></div></div>
+        <div class="table-wrap" style="border:0;border-radius:0 0 var(--radius) var(--radius)">
+          <table class="rank lg-power"><thead><tr><th>#</th><th>Team</th><th class="num">Record</th><th class="num" title="Lineup + 20% of top-4 bench">Power</th><th class="num">Lineup</th><th class="num">Depth</th><th class="num">QB</th><th class="num">RB</th><th class="num">WR</th><th class="num">TE</th></tr></thead><tbody id="power"></tbody></table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px" id="finder-card">
+        <div class="card__head" style="flex-wrap:wrap">
+          <div><h3>🔎 Trade finder</h3><p class="sub lg-small" style="margin:2px 0 0">Deals with each leaguemate that improve your starting lineup without hurting theirs, and are close on value.</p></div>
+          <div class="balance__controls">
+            <div class="chips chips--sm" id="want-pos"><button class="chip" data-pos="QB">QB</button><button class="chip" data-pos="RB">RB</button><button class="chip" data-pos="WR">WR</button><button class="chip" data-pos="TE">TE</button></div>
+            <label class="lg-check"><input type="checkbox" id="block-only"> Only offer my Trade Block</label>
+          </div>
+        </div>
+        <div class="card__body"><div id="trades" class="lg-trades"></div></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="card__head"><h3>📋 Rosters</h3><select class="select" id="roster-select"></select></div>
+        <div class="card__body lg-roster" id="roster"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 GoBuckYourself · <span data-updated>Values</span> · Blended from <span data-sources>multiple sources</span></div>
+      <div>Values are for entertainment purposes. Not affiliated with the NFL.</div>
+    </div>
+  </footer>
+
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/league.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const want = new Set();
+    let viewRoster = null;
+    const pct = x => (x >= 0 ? '+' : '') + (x * 100).toFixed(1) + '%';
+    const plink = p => `<a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a>`;
+    const chip = p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${plink(p)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`;
+    const teamBadge = t => `<span class="lg-tavatar">${t.avatar ? `<img src="${t.avatar}" alt="">` : GIQ.esc(t.name.slice(0, 2).toUpperCase())}</span>`;
+
+    function show(which) { ['connect', 'loading', 'connected'].forEach(k => $(k).hidden = k !== which); }
+
+    async function boot(force) {
+      if (!LEAGUE.configured()) { show('connect'); return; }
+      show('loading');
+      try {
+        const d = await LEAGUE.load(force);
+        // match site settings to the league the first time we see it
+        const s = GIQ.settings, det = d.detected;
+        if (s.format !== det.format || s.scoring !== det.scoring) {
+          GIQ.setSetting('format', det.format); GIQ.setSetting('scoring', det.scoring);
+          $('settings-note').hidden = false;
+          $('settings-note').textContent = `Matched the site to your league: ${det.format === 'sf' ? 'Superflex' : '1QB'} · ${({ ppr: 'PPR', half: 'Half PPR', std: 'Standard' })[det.scoring]}.`;
+        }
+        show('connected'); render();
+      } catch (e) {
+        show('connect'); $('connect-err').hidden = false; $('connect-err').textContent = e.message + ' — check the league ID or try again.';
+      }
+    }
+
+    function render() {
+      const d = LEAGUE.data; if (!d) return;
+      $('lg-avatar').innerHTML = d.avatar ? `<img src="${d.avatar}" alt="">` : '🏈';
+      $('lg-name').textContent = d.name;
+      $('lg-meta').textContent = `${d.season} · ${d.size} teams · ${d.detected.format === 'sf' ? 'Superflex' : '1QB'} · ${({ ppr: 'PPR', half: 'Half PPR', std: 'Standard' })[d.detected.scoring]} · Starters: ${d.slots.map(s => LEAGUE.SLOT_LABEL[s] || s).join(', ')}`;
+      const me = LEAGUE.myTeam();
+      $('me-select').innerHTML = (me ? '' : '<option value="">Pick your team…</option>') + d.teams.map(t => `<option value="${t.rosterId}" ${t.isMe ? 'selected' : ''}>${GIQ.esc(t.name)}${t.owner && t.owner !== t.name ? ' (' + GIQ.esc(t.owner) + ')' : ''}</option>`).join('');
+      renderPower(); renderTrades(); renderRosterSelect(); renderRoster();
+    }
+
+    function renderPower() {
+      const rows = LEAGUE.powerRankings(), n = rows.length;
+      const heat = r => { const a = (0.08 + 0.5 * (n - r) / Math.max(1, n - 1)).toFixed(2); return `style="background:rgba(62,207,142,${a})"`; };
+      $('power').innerHTML = rows.map(r => `<tr class="${r.team.isMe ? 'lg-me' : ''}" data-roster="${r.team.rosterId}" style="cursor:pointer">
+        <td class="rank-no">${r.rank}</td>
+        <td class="player">${teamBadge(r.team)}<div><div class="name">${GIQ.esc(r.team.name)}${r.team.isMe ? ' <span class="tier">You</span>' : ''}</div><div class="meta">${GIQ.esc(r.team.owner)}</div></div></td>
+        <td class="num">${r.team.wins}-${r.team.losses}${r.team.ties ? '-' + r.team.ties : ''}</td>
+        <td class="num value">${GIQ.fmt(Math.round(r.score))}</td>
+        <td class="num">${GIQ.fmt(Math.round(r.lineup.starterValue))}</td>
+        <td class="num">${GIQ.fmt(Math.round(r.lineup.benchValue))}</td>
+        ${['QB', 'RB', 'WR', 'TE'].map(p => `<td class="num"><span class="lg-heat" ${heat(r.posRank[p])} title="${p} starters: ${GIQ.fmt(Math.round(r.byPos[p]))}">${r.posRank[p]}</span></td>`).join('')}
+      </tr>`).join('');
+    }
+
+    function blockIds() {
+      try {
+        const names = JSON.parse(localStorage.getItem('gby-trade-block') || '[]');
+        const byName = Object.fromEntries(PLAYERS.map(p => [p.name + '|' + p.pos, p.id]));
+        return new Set(names.map(n => byName[n]).filter(Boolean));
+      } catch (_) { return new Set(); }
+    }
+
+    function renderTrades() {
+      const box = $('trades');
+      if (!LEAGUE.myTeam()) { box.innerHTML = '<div class="empty">Pick your team above to find trades.</div>'; return; }
+      const onlyBlock = $('block-only').checked, ids = blockIds();
+      if (onlyBlock && !ids.size) { box.innerHTML = '<div class="empty">Your Trade Block is empty. <a class="lg-link" href="trade-block.html">Add players to it</a> or uncheck the box.</div>'; return; }
+      box.innerHTML = '<div class="empty">Scanning every roster…</div>';
+      setTimeout(() => {
+        const deals = LEAGUE.findTrades({ wantPos: want, offerOnly: onlyBlock ? ids : null });
+        box.innerHTML = deals.length ? deals.map(d => {
+          const fair = d.fairPct * 100, fcls = Math.abs(fair) <= 6 ? 'ok' : fair > 0 ? 'over' : 'under';
+          const flabel = Math.abs(fair) <= 6 ? 'Fair value' : fair > 0 ? `You get +${Math.abs(fair).toFixed(0)}% value` : `You pay +${Math.abs(fair).toFixed(0)}% value`;
+          return `<div class="lg-deal">
+            <div class="lg-deal__head">${teamBadge(d.team)}<b>${GIQ.esc(d.team.name)}</b>
+              ${d.mutual ? '<span class="lg-tag lg-tag--good">Helps both lineups</span>' : '<span class="lg-tag">Neutral for them</span>'}</div>
+            <div class="idea__side"><span class="idea__lbl">Give</span><div class="brow__players">${d.give.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+            <div class="idea__side"><span class="idea__lbl idea__lbl--get">Get</span><div class="brow__players">${d.get.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+            <div class="lg-deal__foot">
+              <span class="lg-stat">Your lineup <b class="${d.myPct >= 0 ? 'up' : 'down'}">${pct(d.myPct)}</b></span>
+              <span class="lg-stat">Theirs <b class="${d.theirPct >= 0 ? 'up' : 'down'}">${pct(d.theirPct)}</b></span>
+              <span class="brow__after brow__after--${fcls}">${flabel}</span>
+              <a class="btn btn--sm" href="trade-calculator.html?a=${d.give.map(p => p.id).join(',')}&b=${d.get.map(p => p.id).join(',')}">Open in calculator →</a>
+            </div></div>`;
+        }).join('') : '<div class="empty">No trades found that improve your lineup at fair value. Try widening positions or adding to your Trade Block.</div>';
+      }, 20);
+    }
+
+    function renderRosterSelect() {
+      const d = LEAGUE.data; const me = LEAGUE.myTeam();
+      if (viewRoster == null) viewRoster = me ? me.rosterId : d.teams[0]?.rosterId;
+      $('roster-select').innerHTML = d.teams.map(t => `<option value="${t.rosterId}" ${t.rosterId === viewRoster ? 'selected' : ''}>${GIQ.esc(t.name)}${t.isMe ? ' (you)' : ''}</option>`).join('');
+    }
+    function renderRoster() {
+      const t = LEAGUE.team(viewRoster); if (!t) return;
+      const { players, unvalued } = LEAGUE.roster(t);
+      const lu = LEAGUE.lineup(players);
+      const row = (label, p) => p ? `<div class="asset"><span class="lg-slot">${label}</span>${GIQ.avatar(p)}
+          <div><div class="name">${plink(p)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.trendHtml(p.trend)}</div></div>
+          <span class="val">${GIQ.fmt(p.value)}</span></div>` : `<div class="asset"><span class="lg-slot">${label}</span><span class="sub">Empty</span></div>`;
+      $('roster').innerHTML = `<div><h5 class="fh">Starting lineup · ${GIQ.fmt(Math.round(lu.starterValue))}</h5>${lu.starters.map(s => row(s.label, s.p)).join('')}</div>
+        <div><h5 class="fh">Bench</h5>${lu.bench.map(p => row('BN', p)).join('') || '<div class="empty">No bench players valued.</div>'}
+        ${unvalued ? `<p class="sub lg-small">${unvalued} more (K, DEF, or deep players) not in the value pool.</p>` : ''}</div>`;
+    }
+
+    // ---- events ----
+    $('find-form').addEventListener('submit', async e => {
+      e.preventDefault(); const u = $('username').value.trim(); if (!u) return;
+      $('connect-err').hidden = true; $('league-list').innerHTML = '<div class="empty">Looking up leagues…</div>';
+      try {
+        const { user, leagues } = await LEAGUE.findLeagues(u);
+        $('league-list').innerHTML = leagues.length ? '<h5 class="fh">Pick a league</h5>' + leagues.map(l => `<button class="brow" data-league="${l.league_id}" data-user="${GIQ.esc(user.display_name || u)}">
+          <span class="lg-tavatar">${l.avatar ? `<img src="https://sleepercdn.com/avatars/thumbs/${l.avatar}" alt="">` : '🏈'}</span>
+          <span style="flex:1;text-align:left"><b>${GIQ.esc(l.name)}</b><br><small class="sub">${l.total_rosters} teams · ${l.season}</small></span><span class="lg-link">Connect →</span></button>`).join('')
+          : '<div class="empty">No NFL leagues found for this season.</div>';
+      } catch (err) { $('league-list').innerHTML = ''; $('connect-err').hidden = false; $('connect-err').textContent = err.message; }
+    });
+    $('by-id').addEventListener('click', e => { e.preventDefault(); $('id-form').hidden = false; $('league-id').focus(); });
+    $('id-form').addEventListener('submit', e => { e.preventDefault(); const id = $('league-id').value.trim(); if (id) { LEAGUE.connect({ leagueId: id }); boot(); } });
+    $('league-list').addEventListener('click', e => {
+      const b = e.target.closest('[data-league]'); if (!b) return;
+      LEAGUE.connect({ leagueId: b.dataset.league, username: b.dataset.user }); boot();
+    });
+    $('me-select').addEventListener('change', e => { LEAGUE.setMyTeam(e.target.value); viewRoster = +e.target.value; render(); });
+    $('roster-select').addEventListener('change', e => { viewRoster = +e.target.value; renderRoster(); });
+    $('power').addEventListener('click', e => { const tr = e.target.closest('tr[data-roster]'); if (!tr) return; viewRoster = +tr.dataset.roster; renderRosterSelect(); renderRoster(); $('roster').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+    $('refresh').addEventListener('click', () => boot(true));
+    $('disconnect').addEventListener('click', () => { LEAGUE.disconnect(); viewRoster = null; show('connect'); });
+    $('want-pos').addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; want.has(c.dataset.pos) ? want.delete(c.dataset.pos) : want.add(c.dataset.pos); c.classList.toggle('active'); renderTrades(); });
+    $('block-only').addEventListener('change', renderTrades);
+    document.addEventListener('giq:settings', () => { if (LEAGUE.data) render(); });
+    document.addEventListener('DOMContentLoaded', () => boot());
+  </script>
+</body>
+</html>

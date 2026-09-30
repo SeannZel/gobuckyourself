@@ -13,11 +13,11 @@
     <div class="container nav__inner">
       <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
       <nav class="nav__links">
-        <a href="index.html">Home</a>
         <a href="rankings.html">Rankings</a>
         <a href="trade-calculator.html">Trade Calculator</a>
         <a href="finder.html">Comparables</a>
         <a href="trade-block.html">Trade Block</a>
+        <a href="league.html">My League</a>
         <a href="about.html">Methodology</a>
       </nav>
       <div class="nav__right">
@@ -120,7 +120,7 @@
       document.getElementById('rows').innerHTML = rows.map(p => `
         <tr data-id="${p.id}" style="cursor:pointer" title="Add to trade calculator">
           <td class="rank-no">${p.rank}</td>
-          <td class="player">${GIQ.avatar(p)}<div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)}${p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
+          <td class="player">${GIQ.avatar(p)}<div><div class="name"><a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a> ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)}${p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
           <td><span class="pos pos--${p.pos}">${p.pos}</span></td>
           <td style="color:var(--text-2)">${p.pos}${posRank[p.id]}</td>
           <td class="num">${p.age}</td>
@@ -152,6 +152,7 @@
       render();
     });
     document.getElementById('rows').addEventListener('click', e => {
+      if (e.target.closest('a')) return;
       const tr = e.target.closest('tr[data-id]'); if (!tr) return;
       const pending = JSON.parse(sessionStorage.getItem('giq-pending') || '[]');
       pending.push(+tr.dataset.id);

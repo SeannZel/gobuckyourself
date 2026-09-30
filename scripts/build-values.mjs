@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import config from './config.mjs';
 import { aggregate } from './aggregate.mjs';
 import { log } from './lib.mjs';
+import { appendHistory } from './history.mjs';
 import * as fantasycalc from './sources/fantasycalc.mjs';
 import * as espn from './sources/espn.mjs';
 import * as sleeper from './sources/sleeper.mjs';
@@ -44,3 +45,7 @@ fs.writeFileSync(path.join(root, 'js/players.js'), `${banner}const PLAYERS = ${J
 fs.mkdirSync(path.join(root, 'data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'data/values.json'), JSON.stringify({ meta, players }, null, 1));
 log(`wrote ${players.length} players (QB superflex uplift ×${qbUplift})`);
+
+// ---- value history: one snapshot per day, used by the player pages' charts ----
+const hist = appendHistory(path.join(root, 'data/history.json'), meta.generatedAt.slice(0, 10), players);
+log(`history: ${hist.dates.length} snapshots, ${Object.keys(hist.players).length} players`);

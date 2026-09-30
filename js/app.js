@@ -223,6 +223,10 @@ const GIQ = (() => {
     if (!first) return '';
     return `<img class="logo" width="${size}" height="${size}" src="${first}" data-alt="${rest.join('|')}" alt="" loading="lazy" onload="this.classList.add('ok')" onerror="${FALLBACK}">`;
   }
+  /** Link to a player's detail page (Sleeper id when known, else name|pos). */
+  function playerUrl(p) {
+    return 'player.html?' + (p.sleeperId ? 'sid=' + encodeURIComponent(p.sleeperId) : 'k=' + encodeURIComponent(p.name + '|' + p.pos));
+  }
   /** "DET" rendered as logo + abbreviation. */
   function teamHtml(team) { return `<span class="team">${logo(team)}${esc(team || 'FA')}</span>`; }
 
@@ -264,5 +268,5 @@ const GIQ = (() => {
     document.querySelectorAll('[data-sources]').forEach(el => el.textContent = sourcesLabel());
   });
 
-  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, tradeBlockIdeas, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, injuryHtml, toast };
+  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, tradeBlockIdeas, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, playerUrl, injuryHtml, toast };
 })();

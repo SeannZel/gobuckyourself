@@ -60,6 +60,12 @@ The sheet must be link-viewable (it is for Patreon subscribers' links).
 
 **Manual fallback:** when `PIHS_SHEETS` isn't set, the adapter reads hand-entered charts from `data/manual/pihs_<format>_<scoring>.csv` (`name,pos,value`, any scale; add `# updated=YYYY-MM-DD`). The build logs a warning when a manual chart is more than 10 days old. The parser finds the Wide Receiver / Running Back / Tight End / Quarterback blocks by their headers, so it copes with column reshuffles.
 
+## League sync, trade finder, player pages
+
+- `league.html` + `js/league.js` — connects to a Sleeper league from the browser (public API, no key), caches responses for 10 minutes per session, and stores the league/team choice in localStorage. Provides the lineup optimizer (league's real starting slots, greedy most-restrictive-slot-first), power rankings, trade finder (1-1, 2-1, 1-2 deals that raise your lineup ≥1% without hurting theirs >0.5%, within 15% on value), and `tradeImpact()` used by the calculator.
+- `player.html?sid=<sleeperId>` — player page: value, sources, similar-value players, league ownership, and a weekly value-history chart.
+- `data/history.json` — one snapshot per build day, written by `scripts/history.mjs` from `build-values.mjs`. `node scripts/backfill-history.mjs` rebuilds it from past commits of `data/values.json`.
+
 ## Access code gate
 
 `middleware.js` (Vercel Edge Middleware) redirects every request to `/gate` until the visitor enters the code. Set **`ACCESS_CODE`** in Vercel → Project → Settings → Environment Variables and redeploy. Leave it unset to make the site public. A correct code sets a 90-day HttpOnly cookie; `/api/gate/logout` clears it.

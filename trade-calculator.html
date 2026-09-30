@@ -13,11 +13,11 @@
     <div class="container nav__inner">
       <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
       <nav class="nav__links">
-        <a href="index.html">Home</a>
         <a href="rankings.html">Rankings</a>
         <a href="trade-calculator.html">Trade Calculator</a>
         <a href="finder.html">Comparables</a>
         <a href="trade-block.html">Trade Block</a>
+        <a href="league.html">My League</a>
         <a href="about.html">Methodology</a>
       </nav>
       <div class="nav__right">
@@ -52,7 +52,7 @@
 
     <div class="calc">
       <div class="card side side--a" data-side="a">
-        <div class="side__head"><h3><span class="dot"></span> Team A gives</h3><span class="side__total" id="total-a">0</span></div>
+        <div class="side__head"><h3><span class="dot"></span> <span id="title-a">Team A gives</span></h3><span class="side__total" id="total-a">0</span></div>
         <div class="side__list" id="list-a"></div>
         <div class="side__search">
           <div class="search">
@@ -64,7 +64,7 @@
       </div>
 
       <div class="card side side--b" data-side="b">
-        <div class="side__head"><h3><span class="dot"></span> Team B gives</h3><span class="side__total" id="total-b">0</span></div>
+        <div class="side__head"><h3><span class="dot"></span> <span id="title-b">Team B gives</span></h3><span class="side__total" id="total-b">0</span></div>
         <div class="side__list" id="list-b"></div>
         <div class="side__search">
           <div class="search">
@@ -81,6 +81,7 @@
       <p class="verdict__sub" id="v-sub">Values update instantly as you build the trade.</p>
       <div class="meter"><div class="meter__a" id="m-a" style="width:50%"></div><div class="meter__b" id="m-b" style="width:50%"></div><div class="meter__mid"></div></div>
       <div class="meter__labels"><span id="m-la">Team A · 0</span><span id="m-lb">Team B · 0</span></div>
+      <div class="impact" id="impact" hidden></div>
       <div class="balance" id="suggest" hidden>
         <div class="balance__head">
           <div>
@@ -125,6 +126,7 @@
 
   <script src="js/players.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/league.js"></script>
   <script>
     const trade = { a: [], b: [] };
     const byId = Object.fromEntries(PLAYERS.map(p => [p.id, p]));
@@ -161,6 +163,7 @@
         document.getElementById('total-' + side).textContent = GIQ.fmt(total(side));
       });
       renderVerdict();
+      renderImpact();
       history.replaceState(null, '', trade.a.length || trade.b.length ? `?a=${trade.a.join(',')}&b=${trade.b.join(',')}` : location.pathname);
     }
 
@@ -233,6 +236,57 @@
       document.querySelectorAll('#s-pos .chip').forEach(x => x.classList.toggle('active', x === c));
       renderBalance();
     });
+
+    // ---- lineup impact (needs a connected Sleeper league; both sides must each come from one roster) ----
+    function renderImpact() {
+      const box = document.getElementById('impact');
+      const A = trade.a.map(id => byId[id]), B = trade.b.map(id => byId[id]);
+      document.getElementById('title-a').textContent = 'Team A gives';
+      document.getElementById('title-b').textContent = 'Team B gives';
+      if (!A.length || !B.length) { box.hidden = true; return; }
+      if (!LEAGUE.configured()) {
+        box.hidden = false;
+        box.innerHTML = '<p class="sub impact__hint"><a class="lg-link" href="league.html">Connect your Sleeper league</a> to see how this trade changes each team\'s starting lineup.</p>';
+        return;
+      }
+      if (!LEAGUE.data) { LEAGUE.load().then(renderImpact).catch(() => {}); return; }
+      const ta = LEAGUE.teamOfAll(A), tb = LEAGUE.teamOfAll(B);
+      if (ta) document.getElementById('title-a').textContent = `${ta.name} gives`;
+      if (tb) document.getElementById('title-b').textContent = `${tb.name} gives`;
+      if (ta && tb && ta.rosterId !== tb.rosterId) {
+        // speak in team names instead of "Team A / Team B" in the verdict and balance panel
+        ['v-title', 'v-sub', 'm-la', 'm-lb', 's-who'].forEach(id => {
+          const el = document.getElementById(id); if (!el) return;
+          el.textContent = el.textContent.replace(/Team A/g, ta.name).replace(/Team B/g, tb.name);
+        });
+      }
+      if (!ta || !tb || ta.rosterId === tb.rosterId) {
+        box.hidden = false;
+        box.innerHTML = `<p class="sub impact__hint">Lineup impact appears when each side's players all come from one team in <b>${GIQ.esc(LEAGUE.data.name)}</b>.</p>`;
+        return;
+      }
+      const vm = LEAGUE.valueMap(), cur = id => vm.get(String(byId[id].sleeperId)) || { ...byId[id], value: GIQ.valueOf(byId[id]) };
+      const give = trade.a.map(cur), get = trade.b.map(cur);
+      const ia = LEAGUE.tradeImpact(ta, give, get, vm), ib = LEAGUE.tradeImpact(tb, get, give, vm);
+      const card = (i) => {
+        const up = i.delta >= 0, sign = v => (v >= 0 ? '+' : '') + GIQ.fmt(Math.round(v));
+        const moves = [...i.startersIn.map(x => `<span class="impact__in">▲ ${GIQ.esc(x.p.name)} <small>${x.label}</small></span>`), ...i.startersOut.map(x => `<span class="impact__out">▼ ${GIQ.esc(x.p.name)} <small>${x.label}</small></span>`)];
+        return `<div class="impact__team">
+          <div class="impact__name">${GIQ.esc(i.team.name)}${i.team.isMe ? ' <span class="tier">You</span>' : ''}</div>
+          <div class="impact__num ${up ? 'up' : 'down'}">${(i.pct * 100 >= 0 ? '+' : '') + (i.pct * 100).toFixed(1)}%</div>
+          <div class="impact__sub">Starting lineup ${GIQ.fmt(Math.round(i.before.starterValue))} → ${GIQ.fmt(Math.round(i.after.starterValue))} (${sign(i.starterDelta)})</div>
+          <div class="impact__moves">${moves.join('') || '<span class="sub">No change to the starting lineup — depth only.</span>'}</div>
+        </div>`;
+      };
+      const gain = i => i.pct > 0.001, both = gain(ia) && gain(ib), winner = ia.pct > ib.pct ? ia : ib;
+      const headline = both ? 'Both lineups get better — this is a real win-win.' : !gain(ia) && !gain(ib) ? 'Neither lineup meaningfully improves. Probably not worth doing.' : `Only ${GIQ.esc(winner.team.name)}'s lineup improves.`;
+      box.hidden = false;
+      box.innerHTML = `<h4>Lineup impact <span class="sub" style="text-transform:none;letter-spacing:0;font-weight:500">· ${GIQ.esc(LEAGUE.data.name)}</span></h4>
+        <p class="impact__headline">${headline}</p>
+        <div class="impact__grid">${card(ia)}${card(ib)}</div>
+        <p class="sub impact__hint">Value says who wins the trade on paper; lineup impact says whose weekly starting lineup actually gets better. Depth counts at 20%.</p>`;
+    }
+    document.addEventListener('giq:league', renderImpact);
 
     function setMeter(pctA) {
       document.getElementById('m-a').style.width = pctA + '%';

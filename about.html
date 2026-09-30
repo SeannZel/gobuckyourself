@@ -13,11 +13,11 @@
     <div class="container nav__inner">
       <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
       <nav class="nav__links">
-        <a href="index.html">Home</a>
         <a href="rankings.html">Rankings</a>
         <a href="trade-calculator.html">Trade Calculator</a>
         <a href="finder.html">Comparables</a>
         <a href="trade-block.html">Trade Block</a>
+        <a href="league.html">My League</a>
         <a href="about.html">Methodology</a>
       </nav>
       <div class="nav__right">
@@ -70,6 +70,16 @@
       <div class="card__body">
         <p>The calculator sums each side's values, but not linearly. In redraft, roster spots are scarce and the best player in a deal usually decides it, so the second, third, and fourth pieces on a side are discounted (85%, 72%, 61% and so on). This is why a 3-for-1 that "adds up" on paper often still loses.</p>
         <p>A trade is called <em>fair</em> when the adjusted totals are within your chosen tolerance (default ±6%). Otherwise the calculator names the side receiving more value and suggests players the winning side could add to balance the deal.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <div class="card__head"><h3>League sync & lineup impact</h3></div>
+      <div class="card__body">
+        <p>Connect a Sleeper league on the <a class="lg-link" href="league.html">My League</a> page and the site reads every roster straight from Sleeper, right in your browser (no login; Sleeper league data is public). It also switches the site to your league's QB format and scoring.</p>
+        <p><strong>Lineup value.</strong> For each team we fill your league's actual starting slots (QB, RB, WR, TE, FLEX, superflex and so on) with the best available players, then add 20% of the top four bench players for depth. Power rankings sort teams by that number.</p>
+        <p><strong>Trade finder.</strong> It tries every 1-for-1, 2-for-1 and 1-for-2 deal between you and each leaguemate, and keeps the ones that raise your lineup value by at least 1%, don't meaningfully hurt theirs, and are within 15% on trade value. Deals that help both lineups rank first, because those are the ones that get accepted.</p>
+        <p><strong>Lineup impact in the calculator.</strong> When each side of a trade comes from one team in your league, the calculator shows how each team's starting lineup changes. That can disagree with the value verdict, and that's the point: a trade can "lose" on paper and still make your weekly lineup better.</p>
       </div>
     </div>
 

@@ -13,11 +13,11 @@
     <div class="container nav__inner">
       <a class="brand" href="index.html"><span class="brand__mark">GB</span> GoBuckYourself</a>
       <nav class="nav__links">
-        <a href="index.html">Home</a>
         <a href="rankings.html">Rankings</a>
         <a href="trade-calculator.html">Trade Calculator</a>
         <a href="finder.html">Comparables</a>
         <a href="trade-block.html">Trade Block</a>
+        <a href="league.html">My League</a>
         <a href="about.html">Methodology</a>
       </nav>
       <div class="nav__right">
@@ -56,7 +56,12 @@
           </div>
           <p class="sub" style="font-size:13px;margin:18px 0 10px">Avoid players on these teams (optional)</p>
           <div class="search search--sm" style="max-width:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="avoid" type="search" placeholder="e.g. KC, DAL" autocomplete="off"></div>
-          <p class="sub" style="font-size:12px;margin-top:18px">Tip: your block is saved in this browser, so it'll be here next time.</p>
+          <div class="tb-league" id="tb-league" hidden>
+            <p class="sub" style="font-size:13px;margin:18px 0 10px">Your Sleeper league · <b id="tb-lname"></b></p>
+            <button class="btn btn--sm" id="load-bench">Load my bench players</button>
+            <label class="lg-check" style="margin-top:10px"><input type="checkbox" id="rostered-only" checked> Only target players on leaguemates' rosters</label>
+          </div>
+          <p class="sub" style="font-size:12px;margin-top:18px">Tip: your block is saved in this browser, so it'll be here next time. <span id="tb-connect"><a class="lg-link" href="league.html">Connect your Sleeper league</a> to load your bench and target real rosters.</span></p>
         </div>
       </div>
     </div>
@@ -97,6 +102,7 @@
 
   <script src="js/players.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/league.js"></script>
   <script>
     const KEY = 'gby-trade-block';
     const byId = Object.fromEntries(PLAYERS.map(p => [p.id, p]));
@@ -139,6 +145,12 @@
     function renderIdeas(players) {
       const avoidTeams = new Set(avoid.toUpperCase().split(/[\s,]+/).filter(Boolean));
       const exclude = new Set(PLAYERS.filter(p => avoidTeams.has(p.team)).map(p => p.id));
+      // with a league connected, only suggest players leaguemates actually roster (and never my own)
+      if (LEAGUE.data && document.getElementById('rostered-only').checked) {
+        const me = LEAGUE.myTeam();
+        const others = new Set(LEAGUE.data.teams.filter(t => !t.isMe).flatMap(t => t.sids));
+        PLAYERS.forEach(p => { if (!p.sleeperId || !others.has(String(p.sleeperId))) exclude.add(p.id); });
+      }
       const r = GIQ.tradeBlockIdeas(players, { pos: need, exclude });
       const chip = p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${GIQ.esc(p.name)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`;
       const idea = x => {
@@ -188,6 +200,24 @@
       if (c) { need.has(c.dataset.pos) ? need.delete(c.dataset.pos) : need.add(c.dataset.pos); render(); }
     });
     document.getElementById('avoid').addEventListener('input', e => { avoid = e.target.value; if (block.length) renderIdeas(current()); });
+    // ---- league hookup ----
+    async function hookLeague() {
+      if (!LEAGUE.configured()) return;
+      try {
+        const d = await LEAGUE.load();
+        document.getElementById('tb-league').hidden = false; document.getElementById('tb-connect').hidden = true;
+        document.getElementById('tb-lname').textContent = d.name;
+        if (block.length) renderIdeas(current());
+      } catch (_) {}
+    }
+    document.getElementById('load-bench').addEventListener('click', () => {
+      const me = LEAGUE.myTeam(); if (!me) return GIQ.toast('Pick your team on the My League page first');
+      const lu = LEAGUE.lineup(LEAGUE.roster(me).players);
+      const add = lu.bench.filter(p => !block.includes(p.id)).slice(0, 8 - block.length).map(p => p.id);
+      block.push(...add); render(); GIQ.toast(add.length ? `Added ${add.length} bench player${add.length > 1 ? 's' : ''}` : 'Your bench is already on the block');
+    });
+    document.getElementById('rostered-only').addEventListener('change', () => { if (block.length) renderIdeas(current()); });
+    document.addEventListener('DOMContentLoaded', hookLeague);
     document.addEventListener('DOMContentLoaded', render);
     document.addEventListener('giq:settings', render);
   </script>
