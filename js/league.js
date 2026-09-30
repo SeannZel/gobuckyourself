@@ -198,65 +198,102 @@ const LEAGUE = (() => {
   // ---------- trade finder ----------
   /**
    * Scan every other roster for deals that raise my lineup score without hurting theirs (much),
-   * and are roughly fair on value. Shapes: 1-for-1, 2-for-1 (consolidate), 1-for-2 (depth).
+   * and are roughly fair on value. Shapes: 1-for-1, 2-for-1 (consolidate), 1-for-2 (depth), 2-for-2.
    * opts: { offerOnly: Set<id> (my players I'm willing to move), wantPos: Set<pos> (every player I get must be one of these),
    *         givePos: Set<pos> (every player I send must be one of these), mustStart: every player I get must start for me,
    *         edge: value edge I'm looking for (0 = fair, 0.2 = I receive ~20% more), perTeam, max }
-   * With edge e, a deal qualifies when the value I receive is between e-5% and e+8% of the bigger side.
+   * Value window: fair = ±10%; with an edge e, e-6% … e+10%.
+   * Runs a strict pass; if that finds fewer than 10 deals, a looser "close call" pass tops the list up.
+   * Returns an array of deals with a `.stats` property: { teams, strict, stretch }.
    */
+  const PASSES = {
+    strict:  { minMine: 0.005, theirFloor: -0.005, widen: 0,    perTeam: 4 },
+    stretch: { minMine: 0.002, theirFloor: -0.015, widen: 0.05, perTeam: 2 },
+  };
   function findTrades(opts = {}) {
-    const me = myTeam(); if (!me) return [];
-    const { offerOnly = null, wantPos = new Set(), givePos = new Set(), mustStart = false, edge = 0, perTeam = 3, max = 18 } = opts;
-    const lo = edge - 0.05, hi = edge + 0.08;
+    const me = myTeam(); if (!me) return Object.assign([], { stats: { teams: 0, strict: 0, stretch: 0 } });
+    const { offerOnly = null, wantPos = new Set(), givePos = new Set(), mustStart = false, edge = 0, max = 24 } = opts;
     const vm = valueMap();
     const mine = roster(me, vm).players;
     const myBase = lineup(mine);
-    const minMine = myBase.score * 0.01;          // must improve my lineup by at least 1%
-    const myPool = mine.filter(p => p.value >= 250 && (!offerOnly || !offerOnly.size || offerOnly.has(p.id)) && (!givePos.size || givePos.has(p.pos))).slice(0, 16);
-    const out = [];
-
-    for (const t of data.teams) {
-      if (t.isMe) continue;
+    const myPool = mine.filter(p => p.value >= 250 && (!offerOnly || !offerOnly.size || offerOnly.has(p.id)) && (!givePos.size || givePos.has(p.pos))).slice(0, 20);
+    const others = data.teams.filter(t => !t.isMe).map(t => {
       const theirs = roster(t, vm).players;
-      const theirBase = lineup(theirs);
-      // only players at the positions I asked for — every piece I receive must match
-      const theirPool = theirs.filter(p => p.value >= 250 && (!wantPos.size || wantPos.has(p.pos))).slice(0, 16);
-      const found = [];
-      const tryDeal = (give, get) => {
-        const gv = GIQ.adjustedTotal(give.map(p => p.value)), rv = GIQ.adjustedTotal(get.map(p => p.value));
-        const fair = (rv - gv) / Math.max(gv, rv);
-        if (fair < lo || fair > hi) return;
-        const giveIds = new Set(give.map(p => p.id)), getIds = new Set(get.map(p => p.id));
-        const meAfter = lineup(mine.filter(p => !giveIds.has(p.id)).concat(get));
-        const themAfter = lineup(theirs.filter(p => !getIds.has(p.id)).concat(give));
-        const myGain = meAfter.score - myBase.score, theirGain = themAfter.score - theirBase.score;
-        if (mustStart) {   // skip deals where something I receive would just sit on my bench
-          const starters = new Set(meAfter.starters.filter(x => x.p).map(x => x.p.id));
-          if (!get.every(p => starters.has(p.id))) return;
-        }
-        if (myGain < minMine || theirGain < -theirBase.score * 0.005) return;
-        found.push({
-          team: t, give, get, fairPct: fair, myGain, theirGain,
-          myPct: myGain / myBase.score, theirPct: theirGain / theirBase.score,
-          mutual: theirGain > theirBase.score * 0.001,
-          // deals that help both sides get accepted, so they rank first
-          rank: myGain / myBase.score + 0.75 * Math.max(0, theirGain) / theirBase.score + (theirGain > theirBase.score * 0.001 ? 0.03 : 0)
-            + (edge > 0 ? 0.15 * fair : 0),   // when hunting for an edge, bigger value wins rank higher
-          // how likely the other manager says yes: needs a lineup reason, and gets harder as the value gap grows
-          odds: theirGain > theirBase.score * 0.001 && fair <= 0.10 ? 'likely' : fair <= 0.22 && theirGain > -theirBase.score * 0.002 ? 'maybe' : 'long',
+      // every piece I receive must match the positions I asked for
+      return { t, theirs, base: lineup(theirs), pool: theirs.filter(p => p.value >= 250 && (!wantPos.size || wantPos.has(p.pos))).slice(0, 20) };
+    });
+    const pairs = arr => { const o = []; for (let i = 0; i < arr.length; i++) for (let j = i + 1; j < arr.length; j++) o.push([arr[i], arr[j]]); return o; };
+    const myPairs = pairs(myPool.slice(0, 12));
+    const key = d => d.team.rosterId + ':' + d.give.map(p => p.id).sort().join('+') + '>' + d.get.map(p => p.id).sort().join('+');
+
+    function scan(pass, taken) {
+      const P = PASSES[pass];
+      const lo = (edge === 0 ? -0.10 : edge - 0.06) - P.widen, hi = (edge === 0 ? 0.10 : edge + 0.10) + P.widen;
+      const out = [];
+      for (const { t, theirs, base: theirBase, pool } of others) {
+        const found = [];
+        const tryDeal = (give, get) => {
+          const gv = GIQ.adjustedTotal(give.map(p => p.value)), rv = GIQ.adjustedTotal(get.map(p => p.value));
+          const fair = (rv - gv) / Math.max(gv, rv);
+          if (fair < lo || fair > hi) return;
+          const giveIds = new Set(give.map(p => p.id)), getIds = new Set(get.map(p => p.id));
+          const meAfter = lineup(mine.filter(p => !giveIds.has(p.id)).concat(get));
+          const myGain = meAfter.score - myBase.score;
+          if (myGain < myBase.score * P.minMine) return;
+          if (mustStart) {   // skip deals where something I receive would just sit on my bench
+            const starters = new Set(meAfter.starters.filter(x => x.p).map(x => x.p.id));
+            if (!get.every(p => starters.has(p.id))) return;
+          }
+          const themAfter = lineup(theirs.filter(p => !getIds.has(p.id)).concat(give));
+          const theirGain = themAfter.score - theirBase.score;
+          if (theirGain < theirBase.score * P.theirFloor) return;
+          const mutual = theirGain > theirBase.score * 0.001;
+          const d = {
+            team: t, give, get, fairPct: fair, myGain, theirGain, stretch: pass === 'stretch',
+            myPct: myGain / myBase.score, theirPct: theirGain / theirBase.score, mutual,
+            // deals that help both sides get accepted, so they rank first
+            rank: myGain / myBase.score + 0.75 * Math.max(0, theirGain) / theirBase.score + (mutual ? 0.03 : 0)
+              + (edge > 0 ? 0.15 * fair : 0) - (give.length + get.length - 2) * 0.002,   // slight preference for simpler deals
+            // how likely the other manager says yes: needs a lineup reason, and gets harder as the value gap grows
+            odds: mutual && fair <= 0.10 ? 'likely' : fair <= 0.22 && theirGain > -theirBase.score * 0.003 ? 'maybe' : 'long',
+          };
+          if (!taken.has(key(d))) found.push(d);
+        };
+        const theirPairs = pairs(pool.slice(0, 12));
+        for (const a of myPool) for (const b of pool) tryDeal([a], [b]);            // 1-for-1
+        for (const g of myPairs) for (const b of pool) tryDeal(g, [b]);             // 2-for-1: consolidate
+        for (const a of myPool) for (const g of theirPairs) tryDeal([a], g);        // 1-for-2: depth
+        const my10 = myPairs.filter(g => myPool.indexOf(g[1]) < 10), their10 = theirPairs.filter(g => pool.indexOf(g[1]) < 10);
+        for (const g of my10) for (const h of their10) tryDeal(g, h);               // 2-for-2
+        // best few per team, no repeated target
+        const seen = new Set();
+        found.sort((x, y) => y.rank - x.rank).forEach(d => {
+          const k = d.get.map(p => p.id).sort().join('+');
+          if (seen.has(k) || seen.size >= P.perTeam) return; seen.add(k); out.push(d);
         });
-      };
-      for (const a of myPool) for (const b of theirPool) tryDeal([a], [b]);
-      for (let i = 0; i < myPool.length; i++) for (let j = i + 1; j < Math.min(myPool.length, 14); j++) for (const b of theirPool) tryDeal([myPool[i], myPool[j]], [b]);
-      for (const a of myPool) for (let i = 0; i < theirPool.length; i++) for (let j = i + 1; j < Math.min(theirPool.length, 14); j++) tryDeal([a], [theirPool[i], theirPool[j]]);
-      // best few per team, no repeated target
-      const seen = new Set();
-      found.sort((x, y) => y.rank - x.rank).forEach(d => {
-        const k = d.get.map(p => p.id).sort().join('+');
-        if (seen.has(k) || seen.size >= perTeam) return; seen.add(k); out.push(d);
-      });
+      }
+      return out;
     }
-    return out.sort((x, y) => y.rank - x.rank).slice(0, max);
+
+    const strict = scan('strict', new Set());
+    let stretch = [];
+    if (strict.length < 10) stretch = scan('stretch', new Set(strict.map(key)));
+    // spread the list across leaguemates: each team's best deal first, then their second-best, and so on
+    const diversify = list => {
+      const byTeam = new Map();
+      list.sort((x, y) => y.rank - x.rank).forEach(d => { if (!byTeam.has(d.team.rosterId)) byTeam.set(d.team.rosterId, []); byTeam.get(d.team.rosterId).push(d); });
+      const out = [];
+      for (let round = 0; out.length < list.length; round++) {
+        const tier = [...byTeam.values()].map(ds => ds[round]).filter(Boolean).sort((x, y) => y.rank - x.rank);
+        if (!tier.length) break; out.push(...tier);
+      }
+      return out;
+    };
+    const all = diversify(strict).concat(diversify(stretch)).slice(0, max);
+    return Object.assign(all, { stats: {
+      teams: new Set(all.map(d => d.team.rosterId)).size,
+      strict: all.filter(d => !d.stretch).length, stretch: all.filter(d => d.stretch).length,
+    } });
   }
 
   return {

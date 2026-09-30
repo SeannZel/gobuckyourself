@@ -196,12 +196,15 @@
       box.innerHTML = '<div class="empty">Scanning every roster…</div>';
       setTimeout(() => {
         const deals = LEAGUE.findTrades({ wantPos: want, givePos: give, mustStart: $('must-start').checked, offerOnly: onlyBlock ? ids : null, edge: +$('edge').value / 100 });
-        box.innerHTML = deals.length ? deals.map(d => {
+        const st = deals.stats || { teams: 0, strict: deals.length, stretch: 0 };
+        const summary = deals.length ? `<p class="lg-summary"><b>${deals.length} deal${deals.length > 1 ? 's' : ''}</b> with ${st.teams} leaguemate${st.teams > 1 ? 's' : ''}${st.stretch ? ` · ${st.strict} strong match${st.strict === 1 ? '' : 'es'} + ${st.stretch} close call${st.stretch > 1 ? 's' : ''} (slightly looser criteria, marked below)` : ''}</p>` : '';
+        box.innerHTML = summary + (deals.length ? deals.map(d => {
           const fair = d.fairPct * 100, fcls = Math.abs(fair) <= 6 ? 'ok' : fair > 0 ? 'over' : 'under';
           const flabel = Math.abs(fair) <= 6 ? 'Fair value' : fair > 0 ? `You get +${Math.abs(fair).toFixed(0)}% value` : `You pay +${Math.abs(fair).toFixed(0)}% value`;
           return `<div class="lg-deal">
             <div class="lg-deal__head">${teamBadge(d.team)}<b>${GIQ.esc(d.team.name)}</b>
               ${d.mutual ? '<span class="lg-tag lg-tag--good">Helps both lineups</span>' : '<span class="lg-tag">Neutral for them</span>'}
+              ${d.stretch ? '<span class="lg-tag" title="Found with slightly looser rules: a smaller gain for you or a small dip for them">Close call</span>' : ''}
               ${({ likely: '<span class="lg-tag lg-tag--good" title="Fair-ish and helps their lineup">Likely accepted</span>', maybe: '<span class="lg-tag lg-tag--warn" title="You win on value; they need a reason to say yes">Worth a shot</span>', long: '<span class="lg-tag lg-tag--bad" title="Big value gap — expect a counter">Long shot</span>' })[d.odds]}</div>
             <div class="idea__side"><span class="idea__lbl">Give</span><div class="brow__players">${d.give.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
             <div class="idea__side"><span class="idea__lbl idea__lbl--get">Get</span><div class="brow__players">${d.get.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
@@ -211,7 +214,7 @@
               <span class="brow__after brow__after--${fcls}">${flabel}</span>
               <a class="btn btn--sm" href="trade-calculator.html?a=${d.give.map(p => p.id).join(',')}&b=${d.get.map(p => p.id).join(',')}">Open in calculator →</a>
             </div></div>`;
-        }).join('') : `<div class="empty">No trades match these filters. Try ${+$('edge').value ? 'sliding toward Fair, ' : ''}adding positions, or unchecking "start for me".</div>`;
+        }).join('') : `<div class="empty">No trades match these filters. Try ${+$('edge').value ? 'sliding toward Fair, ' : ''}adding positions, or unchecking "start for me".</div>`);
       }, 20);
     }
 
@@ -271,10 +274,10 @@
     try { $('must-start').checked = localStorage.getItem('gby-tf-start') === '1'; } catch (_) {}
     $('must-start').addEventListener('change', () => { try { localStorage.setItem('gby-tf-start', $('must-start').checked ? '1' : '0'); } catch (_) {} renderTrades(); });
     $('block-only').addEventListener('change', renderTrades);
-    const EDGE_TEXT = e => e === 0 ? 'Fair: value within about 5% either way. The easiest trades to get accepted.'
-      : e <= 10 ? `Slight edge: you receive ${e - 5}–${e + 8}% more value. Still reasonable offers.`
-      : e <= 20 ? `Solid edge: you receive ${e - 5}–${e + 8}% more value. Works best when it also fixes their lineup.`
-      : `Lopsided: you receive ${e - 5}–${e + 8}% more value. Fun to look at; expect counters.`;
+    const EDGE_TEXT = e => e === 0 ? 'Fair: value within about 10% either way. The easiest trades to get accepted.'
+      : e <= 10 ? `Slight edge: you receive about ${e - 6}–${e + 10}% more value. Still reasonable offers.`
+      : e <= 20 ? `Solid edge: you receive about ${e - 6}–${e + 10}% more value. Works best when it also fixes their lineup.`
+      : `Lopsided: you receive about ${e - 6}–${e + 10}% more value. Fun to look at; expect counters.`;
     const setEdgeLabel = () => { $('edge-label').textContent = EDGE_TEXT(+$('edge').value); };
     try { const saved = localStorage.getItem('gby-edge'); if (saved != null) $('edge').value = saved; } catch (_) {}
     setEdgeLabel();

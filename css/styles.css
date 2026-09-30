@@ -502,3 +502,5 @@ td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
 .lg-filter__lbl { font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
 .lg-filter__hint { font-size: 12px; color: var(--text-2); min-width: 80px; }
 .lg-filter--checks { gap: 18px; }
+
+.lg-summary { grid-column: 1 / -1; margin: 0 0 4px; font-size: 13px; color: var(--text-2); }
