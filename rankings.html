@@ -70,6 +70,8 @@
             <th data-sort="bye" class="num">Bye</th>
             <th data-sort="value" class="num">Value</th>
             <th></th>
+            <th data-sort="lastPts" class="num" id="th-last" title="Fantasy points last week, in your scoring format">Last wk</th>
+            <th data-sort="avgPts" class="num" title="Average fantasy points per game this season">Avg</th>
             <th data-sort="trend" class="num">30d Trend</th>
             <th data-sort="nSources" class="num" title="How many sources value this player, and how far apart they are">Sources</th>
             <th>Tier</th>
@@ -107,7 +109,10 @@
       all.forEach(p => { posRank[p.id] = (posRank[p.pos] = (posRank[p.pos] || 0) + 1); });
       const max = all[0].value;
 
-      let rows = all.filter(p => state.pos === 'ALL' || p.pos === state.pos);
+      let rows = all.filter(p => state.pos === 'ALL' || p.pos === state.pos).map(p => {
+        const s = GIQ.scoring(p);   // null until data/scoring.json loads
+        return { ...p, sc: s, lastPts: s && s.last && s.last.pts != null ? s.last.pts : -1, avgPts: s && s.avg != null ? s.avg : -1 };
+      });
       if (state.q) {
         const q = state.q.toLowerCase();
         rows = rows.filter(p => p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q);
@@ -127,10 +132,12 @@
           <td class="num">${p.bye}</td>
           <td class="value num">${GIQ.fmt(p.value)}</td>
           <td><div class="bar"><i style="width:${Math.round(p.value / max * 100)}%"></i></div></td>
+          <td class="num pts">${!p.sc || !p.sc.last ? '<span class="sub">—</span>' : p.sc.last.bye ? '<span class="sub">BYE</span>' : p.sc.last.pts == null ? '<span class="sub">—</span>' : p.sc.last.pts.toFixed(1)}</td>
+          <td class="num pts sub-num">${p.sc && p.sc.avg != null ? p.sc.avg.toFixed(1) : '<span class="sub">—</span>'}</td>
           <td class="num">${GIQ.trendHtml(p.trend)}</td>
           <td class="num">${sourcesCell(p)}</td>
           <td><span class="tier">Tier ${GIQ.tierOf(p.value)}</span></td>
-        </tr>`).join('') || `<tr><td colspan="11" class="empty">No players match.</td></tr>`;
+        </tr>`).join('') || `<tr><td colspan="13" class="empty">No players match.</td></tr>`;
       document.getElementById('count').textContent = `${rows.length} players · ${GIQ.settings.format === 'sf' ? 'Superflex' : '1QB'} · ${({ppr:'PPR',half:'Half PPR',std:'Standard'})[GIQ.settings.scoring]}`;
 
       document.querySelectorAll('#pos-chips .chip').forEach(c => c.classList.toggle('active', c.dataset.pos === state.pos));
@@ -171,6 +178,12 @@
 
     document.addEventListener('DOMContentLoaded', render);
     document.addEventListener('giq:settings', render);
+    document.addEventListener('giq:scoring', () => {
+      const s = GIQ.scoring(PLAYERS.find(p => p.sleeperId));
+      if (s && s.through) document.getElementById('th-last').textContent = `Wk ${s.through}`;
+      render();
+    });
+    GIQ.loadScoring();
   </script>
 </body>
 </html>

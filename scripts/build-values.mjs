@@ -9,6 +9,7 @@ import config from './config.mjs';
 import { aggregate } from './aggregate.mjs';
 import { log } from './lib.mjs';
 import { appendHistory } from './history.mjs';
+import { buildScoring } from './scoring.mjs';
 import * as fantasycalc from './sources/fantasycalc.mjs';
 import * as espn from './sources/espn.mjs';
 import * as sleeper from './sources/sleeper.mjs';
@@ -49,3 +50,6 @@ log(`wrote ${players.length} players (QB superflex uplift ×${qbUplift})`);
 // ---- value history: one snapshot per day, used by the player pages' charts ----
 const hist = appendHistory(path.join(root, 'data/history.json'), meta.generatedAt.slice(0, 10), players);
 log(`history: ${hist.dates.length} snapshots, ${Object.keys(hist.players).length} players`);
+
+// ---- weekly fantasy points (Sleeper stats) for player pages, rankings, rosters ----
+await buildScoring(path.join(root, 'data/scoring.json'), players);

@@ -65,6 +65,14 @@
             <details class="pp-table"><summary>Show as table</summary><div id="hist-table"></div></details>
           </div>
         </div>
+        <div class="card pp-scoring">
+          <div class="card__head"><div><h3>Weekly scoring</h3><p class="sub lg-small" style="margin:2px 0 0" id="sc-sub">Loading…</p></div>
+            <div class="pp-sc-tiles" id="sc-tiles"></div></div>
+          <div class="card__body">
+            <div class="pp-chart" id="sc-chart"></div>
+            <details class="pp-table"><summary>Stat lines by week</summary><div id="sc-table"></div></details>
+          </div>
+        </div>
         <div class="pp-side">
           <div class="card">
             <div class="card__head"><h3>Where the value comes from</h3></div>
@@ -130,7 +138,7 @@
         $('pp-change').innerHTML = `${GIQ.trendHtml(d)} <span class="sub" style="font-size:12px">since ${new Date(pts[pts.length - 2].date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>`;
       } else $('pp-change').innerHTML = `${GIQ.trendHtml(p.trend)} <span class="sub" style="font-size:12px">30-day trend</span>`;
       $('to-comps').href = `finder.html?want=${p.id}`;
-      renderSources(p); renderSimilar(p); renderChart(pts);
+      renderSources(p); renderSimilar(p); renderChart(pts); renderScoring(p);
     }
 
     function renderSources(p) {
@@ -189,6 +197,59 @@
       $('hit').addEventListener('pointermove', move); $('hit').addEventListener('pointerleave', hide);
       $('hist-table').innerHTML = `<table class="pp-htable"><thead><tr><th>Week of</th><th class="num">Value</th><th class="num">Change</th></tr></thead><tbody>${pts.map((p, i) => `<tr><td>${lab(p.date)}</td><td class="num">${GIQ.fmt(p.v)}</td><td class="num">${i ? GIQ.trendHtml(p.v - pts[i - 1].v) : '—'}</td></tr>`).join('')}</tbody></table>`;
     }
+    // ---- weekly scoring: one series (points in the active format), bars from a zero baseline, hover tooltip ----
+    function renderScoring(p) {
+      const s = GIQ.scoring(p), box = $('sc-chart');
+      const fmtName = ({ ppr: 'PPR', half: 'Half PPR', std: 'Standard' })[GIQ.settings.scoring];
+      if (!s) { $('sc-sub').textContent = 'Scoring data not available yet.'; box.innerHTML = ''; $('sc-tiles').innerHTML = ''; $('sc-table').innerHTML = ''; return; }
+      $('sc-sub').textContent = `${s.season} · ${fmtName} points · weeks 1–${s.through}`;
+      const last = s.last;
+      $('sc-tiles').innerHTML = [
+        [`Wk ${last ? last.week : '–'}`, last ? (last.bye ? 'BYE' : last.pts == null ? '—' : last.pts.toFixed(1)) : '—'],
+        ['Avg', s.avg != null ? s.avg.toFixed(1) : '—'],
+        ['Total', s.games ? s.total.toFixed(1) : '—'],
+      ].map(([k, v]) => `<div class="pp-tile"><span>${k}</span><b>${v}</b></div>`).join('');
+      if (!s.weeks.length) { box.innerHTML = '<div class="empty">No games played yet this season.</div>'; $('sc-table').innerHTML = ''; return; }
+      const W = box.clientWidth || 640, H = 200, m = { t: 14, r: 12, b: 28, l: 40 };
+      const hiV = Math.max(10, ...s.weeks.map(x => x.pts || 0));
+      const step = niceStep(hiV / 4), top = Math.ceil(hiV / step) * step;
+      const n = s.weeks.length, slot = (W - m.l - m.r) / n, bw = Math.min(38, slot * 0.62);
+      const x = i => m.l + slot * i + (slot - bw) / 2, y = v => m.t + (H - m.t - m.b) * (1 - v / top);
+      const ticks = []; for (let v = 0; v <= top + 0.01; v += step) ticks.push(v);
+      const best = s.weeks.reduce((b, w) => (w.pts != null && (b == null || w.pts > b.pts) ? w : b), null);
+      box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${GIQ.esc(p.name)} fantasy points by week">
+        ${ticks.map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" class="pp-grid-line"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" class="pp-axis">${v}</text>`).join('')}
+        ${s.weeks.map((w, i) => {
+          const lbl = `<text x="${x(i) + bw / 2}" y="${H - 9}" text-anchor="middle" class="pp-axis">${w.week}</text>`;
+          if (w.pts == null) return lbl + `<text x="${x(i) + bw / 2}" y="${y(0) - 6}" text-anchor="middle" class="pp-axis pp-miss">${w.bye ? 'BYE' : 'DNP'}</text>`;
+          const bh = Math.max(2, y(0) - y(w.pts)), r = Math.min(4, bw / 2, bh);
+          const x0 = x(i), y0 = y(0) - bh, x1 = x0 + bw, y1 = y(0);
+          const path = `M${x0},${y1} V${y0 + r} Q${x0},${y0} ${x0 + r},${y0} H${x1 - r} Q${x1},${y0} ${x1},${y0 + r} V${y1} Z`;
+          return lbl + `<path d="${path}" class="pp-bar${w === s.last ? ' pp-bar--last' : ''}"/>` + (w === best ? `<text x="${x0 + bw / 2}" y="${y0 - 6}" text-anchor="middle" class="pp-axis pp-best">${w.pts.toFixed(1)}</text>` : '');
+        }).join('')}
+        ${s.weeks.map((w, i) => `<rect x="${m.l + slot * i}" y="${m.t}" width="${slot}" height="${H - m.t - m.b}" fill="transparent" data-wk="${i}"/>`).join('')}
+      </svg><div class="pp-tip" id="sc-tip" hidden></div>`;
+      const svg = box.querySelector('svg'), tip = $('sc-tip');
+      svg.addEventListener('pointermove', e => {
+        const t = e.target.closest('rect[data-wk]'); if (!t) { tip.hidden = true; return; }
+        const w = s.weeks[+t.dataset.wk], r = svg.getBoundingClientRect();
+        tip.innerHTML = `<b>${w.pts == null ? (w.bye ? 'Bye week' : 'Did not play') : w.pts.toFixed(1) + ' pts'}</b><span>Week ${w.week}${w.line ? ' · ' + statLine(p.pos, w.line) : ''}</span>`;
+        tip.hidden = false; tip.style.width = '180px';
+        const cx = (x(+t.dataset.wk) + bw / 2) * (r.width / W);
+        tip.style.left = Math.min(r.width - 180, Math.max(0, cx - 90)) + 'px'; tip.style.top = '0px';
+      });
+      svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+      $('sc-table').innerHTML = `<table class="pp-htable"><thead><tr><th>Week</th><th class="num">Pts</th><th>Stat line</th></tr></thead><tbody>${s.weeks.map(w => `<tr><td>${w.week}</td><td class="num">${w.pts == null ? (w.bye ? 'BYE' : '—') : w.pts.toFixed(1)}</td><td>${w.line ? statLine(p.pos, w.line) : (w.bye ? 'Bye week' : 'Did not play')}</td></tr>`).join('')}</tbody></table>`;
+    }
+    function statLine(pos, l) {
+      const f = n => Math.round(n);
+      const parts = [];
+      if (pos === 'QB') parts.push(`${f(l.pass_yd)} pass yd`, `${f(l.pass_td)} TD`, `${f(l.pass_int)} INT`);
+      if (pos === 'QB' || pos === 'RB') { if (l.rush_att || l.rush_yd) parts.push(`${f(l.rush_att)}-${f(l.rush_yd)} rush`); if (l.rush_td) parts.push(`${f(l.rush_td)} rush TD`); }
+      if (pos !== 'QB') { parts.push(`${f(l.rec)}/${f(l.rec_tgt)} rec, ${f(l.rec_yd)} yd`); if (l.rec_td) parts.push(`${f(l.rec_td)} rec TD`); if (pos !== 'RB' && (l.rush_yd || l.rush_td)) parts.push(`${f(l.rush_yd)} rush yd`); }
+      return parts.join(' · ');
+    }
+
     function niceStep(raw) { const e = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / e; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * e; }
 
     // ---- actions ----
@@ -206,6 +267,7 @@
 
     document.addEventListener('DOMContentLoaded', async () => {
       render();
+      GIQ.loadScoring().then(() => base && renderScoring(GIQ.ranked('ALL').find(x => x.id === base.id)));
       try { const r = await fetch('data/history.json', { cache: 'no-cache' }); if (r.ok) { history = await r.json(); render(); } } catch (_) {}
       if (base && LEAGUE.configured()) {
         try {
@@ -216,7 +278,7 @@
       }
     });
     document.addEventListener('giq:settings', render);
-    window.addEventListener('resize', () => { clearTimeout(window._rz); window._rz = setTimeout(() => base && renderChart(points()), 150); });
+    window.addEventListener('resize', () => { clearTimeout(window._rz); window._rz = setTimeout(() => { if (!base) return; renderChart(points()); renderScoring(GIQ.ranked('ALL').find(x => x.id === base.id)); }, 150); });
   </script>
 </body>
 </html>

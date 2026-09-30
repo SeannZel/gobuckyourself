@@ -130,7 +130,7 @@
     function render() {
       const players = current();
       document.getElementById('block-list').innerHTML = players.length ? players.map(p => `<div class="asset">${GIQ.avatar(p)}
-        <div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.trendHtml(p.trend)}</div></div>
+        <div><div class="name">${GIQ.esc(p.name)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.trendHtml(p.trend)}${GIQ.scoring(p) ? ' · ' + GIQ.lastWeekHtml(p) : ''}</div></div>
         <span class="val">${GIQ.fmt(p.value)}</span>
         <button class="rm" data-rm="${p.id}" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`).join('')
         : '<div class="empty">Who are you willing to trade?</div>';
@@ -218,6 +218,8 @@
     });
     document.getElementById('rostered-only').addEventListener('change', () => { if (block.length) renderIdeas(current()); });
     document.addEventListener('DOMContentLoaded', hookLeague);
+    document.addEventListener('giq:scoring', render);
+    GIQ.loadScoring();
     document.addEventListener('DOMContentLoaded', render);
     document.addEventListener('giq:settings', render);
   </script>

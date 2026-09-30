@@ -155,7 +155,7 @@
         list.innerHTML = trade[side].length ? trade[side].map(id => {
           const p = byId[id];
           return `<div class="asset">${GIQ.avatar(p)}
-            <div><div class="name">${GIQ.esc(p.name)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · Age ${p.age}</div></div>
+            <div><div class="name"><a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a></div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · Age ${p.age ?? '—'}${GIQ.scoring(p) ? ' · ' + GIQ.lastWeekHtml(p) : ''}</div></div>
             <span class="val">${GIQ.fmt(GIQ.valueOf(p))}</span>
             <button class="rm" data-rm="${id}" data-side="${side}" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
           </div>`;
@@ -287,6 +287,8 @@
         <p class="sub impact__hint">Value says who wins the trade on paper; lineup impact says whose weekly starting lineup actually gets better. Depth counts at 20%.</p>`;
     }
     document.addEventListener('giq:league', renderImpact);
+    document.addEventListener('giq:scoring', () => render());
+    GIQ.loadScoring();
 
     function setMeter(pctA) {
       document.getElementById('m-a').style.width = pctA + '%';

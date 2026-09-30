@@ -185,6 +185,42 @@ const GIQ = (() => {
       .slice(0, limit);
   }
 
+  // ---------- weekly fantasy scoring (data/scoring.json, built weekly from Sleeper stats) ----------
+  let scoringData = null, scoringLoad = null;
+  function loadScoring() {
+    if (scoringData) return Promise.resolve(scoringData);
+    if (!scoringLoad) scoringLoad = fetch('data/scoring.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : null).then(d => { scoringData = d; if (d) document.dispatchEvent(new CustomEvent('giq:scoring')); return d; })
+      .catch(() => null);
+    return scoringLoad;
+  }
+  const PTS_FIELD = { ppr: 'pts_ppr', half: 'pts_half_ppr', std: 'pts_std' };
+  /**
+   * A player's weekly points in the active scoring format.
+   * → { weeks: [{ week, pts, bye, dnp, line }], last, total, avg, games } or null before data loads.
+   */
+  function scoring(p) {
+    const d = scoringData; if (!d || !p || !p.sleeperId) return null;
+    const F = d.fields, fi = F.indexOf(PTS_FIELD[settings.scoring]), gi = F.indexOf('gp');
+    const weeks = [];
+    for (let w = 1; w <= d.throughWeek; w++) {
+      const row = (d.weeks[w] || {})[String(p.sleeperId)];
+      const bye = p.bye === w;
+      if (!row || (!row[gi] && !row[fi])) { weeks.push({ week: w, pts: null, bye, dnp: !bye, line: null }); continue; }
+      const line = Object.fromEntries(F.map((k, i) => [k, row[i]]));
+      weeks.push({ week: w, pts: Math.round(row[fi] * 10) / 10, bye: false, dnp: false, line });
+    }
+    const played = weeks.filter(x => x.pts != null);
+    const total = played.reduce((s, x) => s + x.pts, 0);
+    return { weeks, last: weeks[weeks.length - 1] || null, total: Math.round(total * 10) / 10, games: played.length, avg: played.length ? Math.round(total / played.length * 10) / 10 : null, through: d.throughWeek, season: d.season };
+  }
+  /** Compact "Wk 3: 18.4" / "Wk 3: BYE" / "Wk 3: —" label. */
+  function lastWeekHtml(p) {
+    const s = scoring(p); if (!s || !s.last) return '';
+    const l = s.last;
+    return `<span class="lastwk" title="Week ${l.week} fantasy points (${({ ppr: 'PPR', half: 'Half PPR', std: 'Standard' })[settings.scoring]})">Wk ${l.week}: <b>${l.bye ? 'BYE' : l.pts == null ? '—' : l.pts.toFixed(1)}</b></span>`;
+  }
+
   // ---------- helpers ----------
   const fmt = n => n.toLocaleString('en-US');
   const initials = name => name.split(' ').filter(Boolean).map(s => s[0]).slice(0, 2).join('').toUpperCase();
@@ -268,5 +304,5 @@ const GIQ = (() => {
     document.querySelectorAll('[data-sources]').forEach(el => el.textContent = sourcesLabel());
   });
 
-  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, tradeBlockIdeas, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, playerUrl, injuryHtml, toast };
+  return { settings, setSetting, valueOf, ranked, tierOf, meta, adjustedTotal, findBalancers, tradeBlockIdeas, similarValue, BUNDLE, updatedLabel, sourcesLabel, fmt, initials, esc, trendHtml, avatar, logo, teamHtml, playerUrl, loadScoring, scoring, lastWeekHtml, injuryHtml, toast };
 })();

@@ -31,6 +31,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -504,3 +505,22 @@ td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
 .lg-filter--checks { gap: 18px; }
 
 .lg-summary { grid-column: 1 / -1; margin: 0 0 4px; font-size: 13px; color: var(--text-2); }
+
+/* ---------- Weekly scoring ---------- */
+td.pts { font-family: var(--mono); font-weight: 600; }
+td.sub-num { color: var(--text-2); font-weight: 500; }
+.lastwk { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+.lastwk b { font-family: var(--mono); color: var(--text-2); }
+
+.pp-scoring { grid-column: 1; }
+.pp-sc-tiles { display: flex; gap: 8px; }
+.pp-tile { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 6px 12px; text-align: center; min-width: 64px; }
+.pp-tile span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); }
+.pp-tile b { font-family: var(--mono); font-size: 16px; }
+.pp-bar { fill: #e0242f; opacity: .55; }
+.pp-bar--last { opacity: 1; }
+.pp-best { fill: var(--text-2); font-weight: 700; }
+.pp-miss { font-size: 10px; }
+.pp-grid > .card:first-child, .pp-grid > .pp-scoring { grid-column: 1; }
+.pp-grid > .pp-side { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 900px) { .pp-grid > .pp-side { grid-column: 1; grid-row: auto; } }

@@ -133,7 +133,7 @@
     let viewRoster = null;
     const pct = x => (x >= 0 ? '+' : '') + (x * 100).toFixed(1) + '%';
     const plink = p => `<a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a>`;
-    const chip = p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${plink(p)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}</small></span></span>`;
+    const chip = p => `<span class="brow__p">${GIQ.avatar(p)}<span><b>${plink(p)}</b><small>${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.fmt(p.value)}${GIQ.scoring(p) ? ' · ' + GIQ.lastWeekHtml(p) : ''}</small></span></span>`;
     const teamBadge = t => `<span class="lg-tavatar">${t.avatar ? `<img src="${t.avatar}" alt="">` : GIQ.esc(t.name.slice(0, 2).toUpperCase())}</span>`;
 
     function show(which) { ['connect', 'loading', 'connected'].forEach(k => $(k).hidden = k !== which); }
@@ -228,7 +228,7 @@
       const { players, unvalued } = LEAGUE.roster(t);
       const lu = LEAGUE.lineup(players);
       const row = (label, p) => p ? `<div class="asset"><span class="lg-slot">${label}</span>${GIQ.avatar(p)}
-          <div><div class="name">${plink(p)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.trendHtml(p.trend)}</div></div>
+          <div><div class="name">${plink(p)} ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)} · <span class="pos pos--${p.pos}">${p.pos}</span> · ${GIQ.lastWeekHtml(p) || GIQ.trendHtml(p.trend)}</div></div>
           <span class="val">${GIQ.fmt(p.value)}</span></div>` : `<div class="asset"><span class="lg-slot">${label}</span><span class="sub">Empty</span></div>`;
       $('roster').innerHTML = `<div><h5 class="fh">Starting lineup · ${GIQ.fmt(Math.round(lu.starterValue))}</h5>${lu.starters.map(s => row(s.label, s.p)).join('')}</div>
         <div><h5 class="fh">Bench</h5>${lu.bench.map(p => row('BN', p)).join('') || '<div class="empty">No bench players valued.</div>'}
@@ -287,6 +287,8 @@
       clearTimeout(edgeTimer); edgeTimer = setTimeout(renderTrades, 120);
     });
     document.addEventListener('giq:settings', () => { if (LEAGUE.data) render(); });
+    document.addEventListener('giq:scoring', () => { if (LEAGUE.data) { renderRoster(); renderTrades(); } });
+    GIQ.loadScoring();
     document.addEventListener('DOMContentLoaded', () => boot());
   </script>
 </body>
