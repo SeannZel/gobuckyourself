@@ -495,3 +495,10 @@ td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
 .lg-tag--warn { background: rgba(245,185,66,.14); color: var(--amber); }
 .lg-tag--bad { background: rgba(255,107,107,.14); color: var(--red); }
 .lg-deal__head { flex-wrap: wrap; }
+
+/* ---------- Trade finder filters ---------- */
+.lg-filters { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+.lg-filter { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lg-filter__lbl { font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
+.lg-filter__hint { font-size: 12px; color: var(--text-2); min-width: 80px; }
+.lg-filter--checks { gap: 18px; }

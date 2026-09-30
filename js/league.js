@@ -199,30 +199,30 @@ const LEAGUE = (() => {
   /**
    * Scan every other roster for deals that raise my lineup score without hurting theirs (much),
    * and are roughly fair on value. Shapes: 1-for-1, 2-for-1 (consolidate), 1-for-2 (depth).
-   * opts: { offerOnly: Set<id> (my players I'm willing to move), wantPos: Set<pos>,
+   * opts: { offerOnly: Set<id> (my players I'm willing to move), wantPos: Set<pos> (every player I get must be one of these),
+   *         givePos: Set<pos> (every player I send must be one of these), mustStart: every player I get must start for me,
    *         edge: value edge I'm looking for (0 = fair, 0.2 = I receive ~20% more), perTeam, max }
    * With edge e, a deal qualifies when the value I receive is between e-5% and e+8% of the bigger side.
    */
   function findTrades(opts = {}) {
     const me = myTeam(); if (!me) return [];
-    const { offerOnly = null, wantPos = new Set(), edge = 0, perTeam = 3, max = 18 } = opts;
+    const { offerOnly = null, wantPos = new Set(), givePos = new Set(), mustStart = false, edge = 0, perTeam = 3, max = 18 } = opts;
     const lo = edge - 0.05, hi = edge + 0.08;
     const vm = valueMap();
     const mine = roster(me, vm).players;
     const myBase = lineup(mine);
     const minMine = myBase.score * 0.01;          // must improve my lineup by at least 1%
-    const myPool = mine.filter(p => p.value >= 250 && (!offerOnly || !offerOnly.size || offerOnly.has(p.id))).slice(0, 16);
+    const myPool = mine.filter(p => p.value >= 250 && (!offerOnly || !offerOnly.size || offerOnly.has(p.id)) && (!givePos.size || givePos.has(p.pos))).slice(0, 16);
     const out = [];
 
     for (const t of data.teams) {
       if (t.isMe) continue;
       const theirs = roster(t, vm).players;
       const theirBase = lineup(theirs);
-      const theirPool = theirs.filter(p => p.value >= 250).slice(0, 16);
-      const wanted = p => !wantPos.size || wantPos.has(p.pos);
+      // only players at the positions I asked for — every piece I receive must match
+      const theirPool = theirs.filter(p => p.value >= 250 && (!wantPos.size || wantPos.has(p.pos))).slice(0, 16);
       const found = [];
       const tryDeal = (give, get) => {
-        if (!get.some(wanted)) return;
         const gv = GIQ.adjustedTotal(give.map(p => p.value)), rv = GIQ.adjustedTotal(get.map(p => p.value));
         const fair = (rv - gv) / Math.max(gv, rv);
         if (fair < lo || fair > hi) return;
@@ -230,6 +230,10 @@ const LEAGUE = (() => {
         const meAfter = lineup(mine.filter(p => !giveIds.has(p.id)).concat(get));
         const themAfter = lineup(theirs.filter(p => !getIds.has(p.id)).concat(give));
         const myGain = meAfter.score - myBase.score, theirGain = themAfter.score - theirBase.score;
+        if (mustStart) {   // skip deals where something I receive would just sit on my bench
+          const starters = new Set(meAfter.starters.filter(x => x.p).map(x => x.p.id));
+          if (!get.every(p => starters.has(p.id))) return;
+        }
         if (myGain < minMine || theirGain < -theirBase.score * 0.005) return;
         found.push({
           team: t, give, get, fairPct: fair, myGain, theirGain,

@@ -85,12 +85,21 @@
       <div class="card" style="margin-top:18px" id="finder-card">
         <div class="card__head" style="flex-wrap:wrap">
           <div><h3>🔎 Trade finder</h3><p class="sub lg-small" style="margin:2px 0 0">Deals with each leaguemate that improve your starting lineup without hurting theirs. Use Fairness to hunt for trades that tilt value your way.</p></div>
-          <div class="balance__controls">
-            <div class="chips chips--sm" id="want-pos"><button class="chip" data-pos="QB">QB</button><button class="chip" data-pos="RB">RB</button><button class="chip" data-pos="WR">WR</button><button class="chip" data-pos="TE">TE</button></div>
-            <label class="lg-check"><input type="checkbox" id="block-only"> Only offer my Trade Block</label>
-          </div>
+
         </div>
         <div class="card__body">
+          <div class="lg-filters">
+            <div class="lg-filter"><span class="lg-filter__lbl">I want back</span>
+              <div class="chips chips--sm" id="want-pos" data-key="gby-tf-want"><button class="chip" data-pos="QB">QB</button><button class="chip" data-pos="RB">RB</button><button class="chip" data-pos="WR">WR</button><button class="chip" data-pos="TE">TE</button></div>
+              <span class="lg-filter__hint" id="want-hint">Any position</span></div>
+            <div class="lg-filter"><span class="lg-filter__lbl">I'll give up</span>
+              <div class="chips chips--sm" id="give-pos" data-key="gby-tf-give"><button class="chip" data-pos="QB">QB</button><button class="chip" data-pos="RB">RB</button><button class="chip" data-pos="WR">WR</button><button class="chip" data-pos="TE">TE</button></div>
+              <span class="lg-filter__hint" id="give-hint">Any position</span></div>
+            <div class="lg-filter lg-filter--checks">
+              <label class="lg-check"><input type="checkbox" id="must-start"> Only players who'd start for me</label>
+              <label class="lg-check"><input type="checkbox" id="block-only"> Only offer my Trade Block</label>
+            </div>
+          </div>
           <div class="lg-fair">
             <label for="edge">Fairness</label>
             <input type="range" id="edge" min="0" max="40" step="5" value="0" aria-describedby="edge-label">
@@ -120,7 +129,7 @@
   <script src="js/league.js"></script>
   <script>
     const $ = id => document.getElementById(id);
-    const want = new Set();
+    const want = new Set(), give = new Set();
     let viewRoster = null;
     const pct = x => (x >= 0 ? '+' : '') + (x * 100).toFixed(1) + '%';
     const plink = p => `<a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a>`;
@@ -186,7 +195,7 @@
       if (onlyBlock && !ids.size) { box.innerHTML = '<div class="empty">Your Trade Block is empty. <a class="lg-link" href="trade-block.html">Add players to it</a> or uncheck the box.</div>'; return; }
       box.innerHTML = '<div class="empty">Scanning every roster…</div>';
       setTimeout(() => {
-        const deals = LEAGUE.findTrades({ wantPos: want, offerOnly: onlyBlock ? ids : null, edge: +$('edge').value / 100 });
+        const deals = LEAGUE.findTrades({ wantPos: want, givePos: give, mustStart: $('must-start').checked, offerOnly: onlyBlock ? ids : null, edge: +$('edge').value / 100 });
         box.innerHTML = deals.length ? deals.map(d => {
           const fair = d.fairPct * 100, fcls = Math.abs(fair) <= 6 ? 'ok' : fair > 0 ? 'over' : 'under';
           const flabel = Math.abs(fair) <= 6 ? 'Fair value' : fair > 0 ? `You get +${Math.abs(fair).toFixed(0)}% value` : `You pay +${Math.abs(fair).toFixed(0)}% value`;
@@ -202,7 +211,7 @@
               <span class="brow__after brow__after--${fcls}">${flabel}</span>
               <a class="btn btn--sm" href="trade-calculator.html?a=${d.give.map(p => p.id).join(',')}&b=${d.get.map(p => p.id).join(',')}">Open in calculator →</a>
             </div></div>`;
-        }).join('') : `<div class="empty">No trades found at this fairness level. ${+$('edge').value ? 'Slide toward Fair, ' : ''}widen positions, or add to your Trade Block.</div>`;
+        }).join('') : `<div class="empty">No trades match these filters. Try ${+$('edge').value ? 'sliding toward Fair, ' : ''}adding positions, or unchecking "start for me".</div>`;
       }, 20);
     }
 
@@ -246,7 +255,21 @@
     $('power').addEventListener('click', e => { const tr = e.target.closest('tr[data-roster]'); if (!tr) return; viewRoster = +tr.dataset.roster; renderRosterSelect(); renderRoster(); $('roster').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
     $('refresh').addEventListener('click', () => boot(true));
     $('disconnect').addEventListener('click', () => { LEAGUE.disconnect(); viewRoster = null; show('connect'); });
-    $('want-pos').addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; want.has(c.dataset.pos) ? want.delete(c.dataset.pos) : want.add(c.dataset.pos); c.classList.toggle('active'); renderTrades(); });
+    // position filters (remembered per browser)
+    function bindPosChips(id, set, hintId, verb) {
+      const el = $(id), key = el.dataset.key;
+      const sync = () => {
+        el.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', set.has(c.dataset.pos)));
+        $(hintId).textContent = set.size ? `Only ${[...set].join(' / ')}` : 'Any position';
+        try { localStorage.setItem(key, JSON.stringify([...set])); } catch (_) {}
+      };
+      try { JSON.parse(localStorage.getItem(key) || '[]').forEach(p => set.add(p)); } catch (_) {}
+      el.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; set.has(c.dataset.pos) ? set.delete(c.dataset.pos) : set.add(c.dataset.pos); sync(); renderTrades(); });
+      sync();
+    }
+    bindPosChips('want-pos', want, 'want-hint'); bindPosChips('give-pos', give, 'give-hint');
+    try { $('must-start').checked = localStorage.getItem('gby-tf-start') === '1'; } catch (_) {}
+    $('must-start').addEventListener('change', () => { try { localStorage.setItem('gby-tf-start', $('must-start').checked ? '1' : '0'); } catch (_) {} renderTrades(); });
     $('block-only').addEventListener('change', renderTrades);
     const EDGE_TEXT = e => e === 0 ? 'Fair: value within about 5% either way. The easiest trades to get accepted.'
       : e <= 10 ? `Slight edge: you receive ${e - 5}–${e + 8}% more value. Still reasonable offers.`
