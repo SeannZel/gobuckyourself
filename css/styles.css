@@ -486,3 +486,12 @@ td.player .avatar, .asset .avatar { width: 40px; height: 40px; }
 .impact__in small, .impact__out small { opacity: .75; font-weight: 700; }
 .impact__hint { font-size: 12px; margin: 12px 0 0; }
 @media (max-width: 720px) { .impact__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Trade finder fairness slider ---------- */
+.lg-fair { max-width: 520px; margin-bottom: 16px; }
+.lg-fair label { font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
+.lg-fair input[type=range] { width: 100%; margin: 8px 0 2px; accent-color: var(--accent); }
+.lg-fair__scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-3); }
+.lg-tag--warn { background: rgba(245,185,66,.14); color: var(--amber); }
+.lg-tag--bad { background: rgba(255,107,107,.14); color: var(--red); }
+.lg-deal__head { flex-wrap: wrap; }

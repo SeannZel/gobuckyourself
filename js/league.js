@@ -199,11 +199,14 @@ const LEAGUE = (() => {
   /**
    * Scan every other roster for deals that raise my lineup score without hurting theirs (much),
    * and are roughly fair on value. Shapes: 1-for-1, 2-for-1 (consolidate), 1-for-2 (depth).
-   * opts: { offerOnly: Set<id> (my players I'm willing to move), wantPos: Set<pos>, tol, perTeam, max }
+   * opts: { offerOnly: Set<id> (my players I'm willing to move), wantPos: Set<pos>,
+   *         edge: value edge I'm looking for (0 = fair, 0.2 = I receive ~20% more), perTeam, max }
+   * With edge e, a deal qualifies when the value I receive is between e-5% and e+8% of the bigger side.
    */
   function findTrades(opts = {}) {
     const me = myTeam(); if (!me) return [];
-    const { offerOnly = null, wantPos = new Set(), tol = 0.15, perTeam = 3, max = 18 } = opts;
+    const { offerOnly = null, wantPos = new Set(), edge = 0, perTeam = 3, max = 18 } = opts;
+    const lo = edge - 0.05, hi = edge + 0.08;
     const vm = valueMap();
     const mine = roster(me, vm).players;
     const myBase = lineup(mine);
@@ -222,7 +225,7 @@ const LEAGUE = (() => {
         if (!get.some(wanted)) return;
         const gv = GIQ.adjustedTotal(give.map(p => p.value)), rv = GIQ.adjustedTotal(get.map(p => p.value));
         const fair = (rv - gv) / Math.max(gv, rv);
-        if (Math.abs(fair) > tol) return;
+        if (fair < lo || fair > hi) return;
         const giveIds = new Set(give.map(p => p.id)), getIds = new Set(get.map(p => p.id));
         const meAfter = lineup(mine.filter(p => !giveIds.has(p.id)).concat(get));
         const themAfter = lineup(theirs.filter(p => !getIds.has(p.id)).concat(give));
@@ -233,7 +236,10 @@ const LEAGUE = (() => {
           myPct: myGain / myBase.score, theirPct: theirGain / theirBase.score,
           mutual: theirGain > theirBase.score * 0.001,
           // deals that help both sides get accepted, so they rank first
-          rank: myGain / myBase.score + 0.75 * Math.max(0, theirGain) / theirBase.score + (theirGain > theirBase.score * 0.001 ? 0.03 : 0),
+          rank: myGain / myBase.score + 0.75 * Math.max(0, theirGain) / theirBase.score + (theirGain > theirBase.score * 0.001 ? 0.03 : 0)
+            + (edge > 0 ? 0.15 * fair : 0),   // when hunting for an edge, bigger value wins rank higher
+          // how likely the other manager says yes: needs a lineup reason, and gets harder as the value gap grows
+          odds: theirGain > theirBase.score * 0.001 && fair <= 0.10 ? 'likely' : fair <= 0.22 && theirGain > -theirBase.score * 0.002 ? 'maybe' : 'long',
         });
       };
       for (const a of myPool) for (const b of theirPool) tryDeal([a], [b]);
