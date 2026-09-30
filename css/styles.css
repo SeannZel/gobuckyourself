@@ -524,3 +524,33 @@ td.sub-num { color: var(--text-2); font-weight: 500; }
 .pp-grid > .card:first-child, .pp-grid > .pp-scoring { grid-column: 1; }
 .pp-grid > .pp-side { grid-column: 2; grid-row: 1 / span 2; }
 @media (max-width: 900px) { .pp-grid > .pp-side { grid-column: 1; grid-row: auto; } }
+
+/* ---------- Trade Advisor ---------- */
+.adv { border-color: rgba(224,36,47,.35); box-shadow: 0 0 0 1px rgba(224,36,47,.08), var(--shadow); }
+.adv-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.adv-positions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.adv-pos { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.adv-pos b { font-family: var(--mono); font-size: 20px; line-height: 1.1; margin-top: 4px; }
+.adv-pos small { color: var(--text-3); font-size: 11px; }
+.adv-pos em { font-style: normal; font-size: 11px; font-weight: 700; margin-top: 2px; }
+.adv-pos--need { border-color: rgba(255,107,107,.45); } .adv-pos--need em { color: var(--red); }
+.adv-pos--str { border-color: rgba(62,207,142,.45); } .adv-pos--str em { color: #3ecf8e; }
+.adv-pos--ok em { color: var(--text-2); }
+.adv-chip { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 5px; background: rgba(245,185,66,.14); color: var(--amber); margin-top: 4px; }
+.adv-partner { display: flex; flex-direction: column; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.adv-partner:last-child { border-bottom: 0; }
+.adv-partner span { font-size: 12px; color: var(--text-2); }
+.adv-market { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+.adv-sig { display: flex; gap: 10px; align-items: center; padding: 6px 0; }
+.adv-sig .avatar { width: 32px; height: 32px; font-size: 11px; }
+.adv-sig small { display: block; font-size: 12px; color: var(--text-2); }
+.adv-picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; }
+.adv-picks > .empty { grid-column: 1 / -1; }
+.adv-pick { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.adv-pick__head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.adv-pick__head b { flex: 1; }
+.adv-num { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-2); color: #fff; font-weight: 800; font-size: 12px; }
+.adv-why { list-style: none; margin: 0; padding: 10px 0 0; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--text-2); }
+.adv-why li { display: flex; gap: 8px; }
+.adv-why li span { flex: none; }
+@media (max-width: 900px) { .adv-top, .adv-market { grid-template-columns: 1fr; } .adv-positions { grid-template-columns: repeat(2, 1fr); } .adv-picks { grid-template-columns: 1fr; } }
