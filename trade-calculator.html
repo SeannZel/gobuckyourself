@@ -93,6 +93,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
               <input id="s-q" type="search" placeholder="Filter by name or team" autocomplete="off">
             </div>
+            <div class="chips chips--sm" id="s-src" hidden>
+              <button class="chip active" data-src="roster" id="s-src-roster">Their roster</button>
+              <button class="chip" data-src="any">Any player</button>
+            </div>
             <div class="chips chips--sm" id="s-pos">
               <button class="chip active" data-pos="ALL">All</button>
               <button class="chip" data-pos="QB">QB</button>
@@ -204,14 +208,35 @@
     }
 
     let balanceSide = 'a';
-    const balanceState = { q: '', pos: 'ALL' };
+    const balanceState = { q: '', pos: 'ALL', src: 'roster' };
+
+    // With a connected league, suggest players from the roster of the team that has to add value:
+    // the team that owns that side's players, or — if that side is still empty — the other team's trade partner (you, by default).
+    function balanceTeam(side) {
+      if (!LEAGUE.configured()) return null;
+      if (!LEAGUE.data) { LEAGUE.load().then(() => { if (!document.getElementById('suggest').hidden) renderBalance(); }).catch(() => {}); return null; }
+      const other = side === 'a' ? 'b' : 'a';
+      const own = LEAGUE.teamOfAll(trade[side].map(id => byId[id]));
+      if (own) return own;
+      if (trade[side].length) return null; // mixed rosters on that side — can't tell whose players to use
+      const me = LEAGUE.myTeam(), ot = LEAGUE.teamOfAll(trade[other].map(id => byId[id]));
+      return me && (!ot || ot.rosterId !== me.rosterId) ? me : null;
+    }
+    function rosterIds(team) {
+      const sids = new Set(team.sids);
+      return new Set(PLAYERS.filter(p => p.sleeperId && sids.has(String(p.sleeperId))).map(p => p.id));
+    }
 
     function renderBalance() {
       const side = balanceSide, other = side === 'a' ? 'b' : 'a';
       const sideVals = trade[side].map(id => GIQ.valueOf(byId[id]));
       const target = adjusted(other);
       const exclude = new Set([...trade.a, ...trade.b]);
-      const res = GIQ.findBalancers(sideVals, target, { exclude, pos: balanceState.pos, q: balanceState.q, combos: true, limit: 8 });
+      const team = balanceTeam(side);
+      document.getElementById('s-src').hidden = !team;
+      if (team) { document.getElementById('s-src-roster').textContent = team.isMe ? 'My roster' : `${team.name}'s roster`; document.getElementById('s-who').textContent = team.name; }
+      const only = team && balanceState.src === 'roster' ? rosterIds(team) : null;
+      const res = GIQ.findBalancers(sideVals, target, { exclude, pos: balanceState.pos, q: balanceState.q, combos: true, limit: 8, only });
       document.getElementById('s-gap').textContent = GIQ.fmt(Math.max(0, res.gap));
 
       const row = (r) => {
@@ -225,11 +250,18 @@
           <span class="brow__after brow__after--${cls}">${label}</span>
         </button>`;
       };
-      document.getElementById('s-singles').innerHTML = res.singles.length ? res.singles.map(row).join('') : '<div class="empty" style="padding:14px">No single player fits. Try a combo or widen the filter.</div>';
-      document.getElementById('s-pairs').innerHTML = res.pairs.length ? res.pairs.map(row).join('') : '<div class="empty" style="padding:14px">No combos in range.</div>';
+      const fromTxt = only ? ` on ${team.isMe ? 'your' : GIQ.esc(team.name) + "'s"} roster` : '';
+      document.getElementById('s-singles').innerHTML = res.singles.length ? res.singles.map(row).join('') : `<div class="empty" style="padding:14px">No single player${fromTxt} fits. Try a combo${only ? ' or switch to Any player' : ' or widen the filter'}.</div>`;
+      document.getElementById('s-pairs').innerHTML = res.pairs.length ? res.pairs.map(row).join('') : `<div class="empty" style="padding:14px">No combos${fromTxt} in range.</div>`;
     }
 
     document.getElementById('s-q').addEventListener('input', e => { balanceState.q = e.target.value; renderBalance(); });
+    document.getElementById('s-src').addEventListener('click', e => {
+      const c = e.target.closest('.chip'); if (!c) return;
+      balanceState.src = c.dataset.src;
+      document.querySelectorAll('#s-src .chip').forEach(x => x.classList.toggle('active', x === c));
+      renderBalance();
+    });
     document.getElementById('s-pos').addEventListener('click', e => {
       const c = e.target.closest('.chip'); if (!c) return;
       balanceState.pos = c.dataset.pos;
@@ -249,7 +281,7 @@
         box.innerHTML = '<p class="sub impact__hint"><a class="lg-link" href="league.html">Connect your Sleeper league</a> to see how this trade changes each team\'s starting lineup.</p>';
         return;
       }
-      if (!LEAGUE.data) { LEAGUE.load().then(renderImpact).catch(() => {}); return; }
+      if (!LEAGUE.data) { LEAGUE.load().then(() => { renderImpact(); if (!document.getElementById('suggest').hidden) renderBalance(); }).catch(() => {}); return; }
       const ta = LEAGUE.teamOfAll(A), tb = LEAGUE.teamOfAll(B);
       if (ta) document.getElementById('title-a').textContent = `${ta.name} gives`;
       if (tb) document.getElementById('title-b').textContent = `${tb.name} gives`;
@@ -286,7 +318,7 @@
         <div class="impact__grid">${card(ia)}${card(ib)}</div>
         <p class="sub impact__hint">Value says who wins the trade on paper; lineup impact says whose weekly starting lineup actually gets better. Depth counts at 20%.</p>`;
     }
-    document.addEventListener('giq:league', renderImpact);
+    document.addEventListener('giq:league', () => { renderImpact(); if (!document.getElementById('suggest').hidden) renderBalance(); });
     document.addEventListener('giq:scoring', () => render());
     GIQ.loadScoring();
 

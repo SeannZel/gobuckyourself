@@ -82,12 +82,12 @@ const GIQ = (() => {
    * opts: { exclude:Set<id>, pos:'ALL'|'QB'..., q:'search', combos:boolean, limit }
    */
   function findBalancers(sideValues, targetTotal, opts = {}) {
-    const { exclude = new Set(), pos = 'ALL', q = '', combos = true, limit = 8 } = opts;
+    const { exclude = new Set(), pos = 'ALL', q = '', combos = true, limit = 8, only = null } = opts; // only: Set<id> to restrict the pool (e.g. one roster)
     const base = adjustedTotal(sideValues);
     const gap = targetTotal - base;
     if (gap <= 0) return { gap, singles: [], pairs: [] };
     const ql = q.trim().toLowerCase();
-    const pool = ranked('ALL').filter(p => !exclude.has(p.id) && (pos === 'ALL' || p.pos === pos) && (!ql || p.name.toLowerCase().includes(ql) || p.team.toLowerCase() === ql));
+    const pool = ranked('ALL').filter(p => !exclude.has(p.id) && (!only || only.has(p.id)) && (pos === 'ALL' || p.pos === pos) && (!ql || p.name.toLowerCase().includes(ql) || p.team.toLowerCase() === ql));
     const score = ids => { const t = adjustedTotal([...sideValues, ...ids.map(p => p.value)]); return { total: t, diff: t - targetTotal }; };
 
     const singles = pool
