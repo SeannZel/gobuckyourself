@@ -36,6 +36,16 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
   const modelFor = (key, sid) => (sid && model?.bySleeper.get(String(sid))) || model?.byKey.get(key) || null;
   const maxMomentum = Math.max(1, ...[...sleeper.momentum.values()].map(Math.abs));
 
+  // Trade-market value curves by position (FantasyCalc), used to place rank-only sources on the value scale.
+  const curves = new Map();
+  const posCurve = (pos, format, scoring) => {
+    const k = `${pos}|${format}|${scoring}`;
+    if (!curves.has(k)) curves.set(k, [...fc.players.values()].filter(p => p.pos === pos)
+      .map(p => p.values[format]?.[scoring] ?? (p.values[format]?.ppr != null ? p.values[format].ppr * cfg.scoringMult[scoring][pos] : null))
+      .filter(v => v > 0).sort((x, y) => y - x));
+    return curves.get(k);
+  };
+
   const pihsDates = pihs.dates || {};
   const pihsNewest = fmt => Object.entries(pihsDates).filter(([k]) => k.startsWith(fmt + '.')).map(([, v]) => v).sort().pop() || null;
 
@@ -57,10 +67,10 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
         return v ?? null;
       }
       if (src === 'fantasypros') {
-        if (!c) return null;
-        let v = c.values[scoring] ?? c.values.ppr; if (v == null) return null;
-        if (format === 'sf' && pos === 'QB') v *= qbUplift;
-        return v;
+        // expert position rank -> the trade market's value for that rank at that position (e.g. WR12 -> 12th-best WR value)
+        const r = c?.ranks?.[scoring] ?? c?.ranks?.ppr; if (r == null) return null;
+        const curve = posCurve(pos, format, scoring); if (!curve.length) return null;
+        return r <= curve.length ? curve[r - 1] : curve[curve.length - 1] * Math.pow(0.95, r - curve.length);
       }
       if (src === 'pihs') {
         if (!d) return null;
