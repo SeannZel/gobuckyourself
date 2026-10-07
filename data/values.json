@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generatedAt": "2026-10-07T01:44:27.645Z",
+  "generatedAt": "2026-10-07T01:48:35.529Z",
   "week": 5,
   "season": 2026,
   "weights": {
@@ -25,7 +25,7 @@
    {
     "id": "fantasypros",
     "label": "FantasyPros ROS",
-    "players": 15,
+    "players": 43,
     "skipped": false
    },
    {
@@ -85,7 +85,7 @@
     },
     "sf": {
      "ppr": 10000,
-     "half": 9992,
+     "half": 9898,
      "std": 10000
     }
    },
@@ -137,88 +137,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 9538,
-     "half": 9478,
-     "std": 9479
+     "ppr": 9512,
+     "half": 9451,
+     "std": 9439
     },
     "sf": {
-     "ppr": 9771,
-     "half": 9690,
-     "std": 9719
+     "ppr": 9748,
+     "half": 9592,
+     "std": 9726
     }
    },
    "sources": {
     "fantasycalc": 9686,
     "pihs": 9474,
-    "fantasypros": 9715,
-    "model": 9320
+    "fantasypros": 9686,
+    "model": 9249
    },
    "nSources": 4,
-   "spread": 395,
-   "value1qb": 9538,
-   "valueSf": 9771,
+   "spread": 437,
+   "value1qb": 9512,
+   "valueSf": 9748,
    "tier": 1
   },
   {
    "id": 3,
-   "name": "Jaxon Smith-Njigba",
-   "pos": "WR",
-   "team": "SEA",
-   "age": 24,
-   "bye": 11,
-   "injury": null,
-   "sleeperId": "9488",
-   "espnId": "4430878",
-   "rosterPct": 1,
-   "trend": 649,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 29.2,
-    "xfpg": 19.2,
-    "luck": 10,
-    "tgtShare": 36,
-    "rushShare": 0,
-    "ros": 267,
-    "rosG": 12,
-    "ppg": 22.2,
-    "next": {
-     "wk": 5,
-     "opp": "SF",
-     "home": true,
-     "implied": 24.5
-    },
-    "src": "blend",
-    "sos": 25,
-    "sosN": 32,
-    "playoffSos": 19
-   },
-   "values": {
-    "1qb": {
-     "ppr": 9227,
-     "half": 8842,
-     "std": 8573
-    },
-    "sf": {
-     "ppr": 9860,
-     "half": 9271,
-     "std": 9054
-    }
-   },
-   "sources": {
-    "fantasycalc": 9106,
-    "pihs": 9605,
-    "fantasypros": 9437,
-    "model": 9010
-   },
-   "nSources": 4,
-   "spread": 595,
-   "value1qb": 9227,
-   "valueSf": 9860,
-   "tier": 1
-  },
-  {
-   "id": 4,
    "name": "Kenneth Walker",
    "pos": "RB",
    "team": "KC",
@@ -253,26 +195,84 @@
    },
    "values": {
     "1qb": {
-     "ppr": 9196,
-     "half": 9276,
-     "std": 9278
+     "ppr": 9188,
+     "half": 9189,
+     "std": 9192
     },
     "sf": {
-     "ppr": 9080,
-     "half": 9151,
-     "std": 9178
+     "ppr": 8958,
+     "half": 8860,
+     "std": 8989
     }
    },
    "sources": {
     "fantasycalc": 8864,
     "pihs": 9342,
-    "fantasypros": 8907,
-    "model": 9632
+    "fantasypros": 8864,
+    "model": 9625
    },
    "nSources": 4,
-   "spread": 768,
-   "value1qb": 9196,
-   "valueSf": 9080,
+   "spread": 761,
+   "value1qb": 9188,
+   "valueSf": 8958,
+   "tier": 1
+  },
+  {
+   "id": 4,
+   "name": "Jaxon Smith-Njigba",
+   "pos": "WR",
+   "team": "SEA",
+   "age": 24,
+   "bye": 11,
+   "injury": null,
+   "sleeperId": "9488",
+   "espnId": "4430878",
+   "rosterPct": 1,
+   "trend": 649,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 29.2,
+    "xfpg": 19.2,
+    "luck": 10,
+    "tgtShare": 36,
+    "rushShare": 0,
+    "ros": 267,
+    "rosG": 12,
+    "ppg": 22.2,
+    "next": {
+     "wk": 5,
+     "opp": "SF",
+     "home": true,
+     "implied": 24.5
+    },
+    "src": "blend",
+    "sos": 25,
+    "sosN": 32,
+    "playoffSos": 19
+   },
+   "values": {
+    "1qb": {
+     "ppr": 9174,
+     "half": 8763,
+     "std": 8420
+    },
+    "sf": {
+     "ppr": 9846,
+     "half": 9222,
+     "std": 8931
+    }
+   },
+   "sources": {
+    "fantasycalc": 9106,
+    "pihs": 9605,
+    "fantasypros": 9106,
+    "model": 9001
+   },
+   "nSources": 4,
+   "spread": 604,
+   "value1qb": 9174,
+   "valueSf": 9846,
    "tier": 1
   },
   {
@@ -311,26 +311,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 8313,
-     "half": 8025,
-     "std": 7819
+     "ppr": 8220,
+     "half": 7929,
+     "std": 7672
     },
     "sf": {
-     "ppr": 8656,
-     "half": 8304,
-     "std": 8013
+     "ppr": 8523,
+     "half": 8077,
+     "std": 7910
     }
    },
    "sources": {
     "fantasycalc": 8188,
     "pihs": 8816,
-    "fantasypros": 7935,
-    "model": 8313
+    "fantasypros": 7500,
+    "model": 8220
    },
    "nSources": 4,
-   "spread": 881,
-   "value1qb": 8313,
-   "valueSf": 8656,
+   "spread": 1316,
+   "value1qb": 8220,
+   "valueSf": 8523,
    "tier": 1
   },
   {
@@ -369,26 +369,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 8247,
-     "half": 8166,
-     "std": 8359
+     "ppr": 8085,
+     "half": 8034,
+     "std": 8099
     },
     "sf": {
-     "ppr": 8125,
-     "half": 8096,
-     "std": 8205
+     "ppr": 7858,
+     "half": 7728,
+     "std": 7855
     }
    },
    "sources": {
     "fantasycalc": 7935,
     "pihs": 8487,
-    "fantasypros": 8653,
-    "model": 8247
+    "fantasypros": 7935,
+    "model": 8068
    },
    "nSources": 4,
-   "spread": 718,
-   "value1qb": 8247,
-   "valueSf": 8125,
+   "spread": 552,
+   "value1qb": 8085,
+   "valueSf": 7858,
    "tier": 1
   },
   {
@@ -427,88 +427,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7929,
-     "half": 7556,
-     "std": 7219
+     "ppr": 7779,
+     "half": 7450,
+     "std": 7004
     },
     "sf": {
-     "ppr": 8308,
-     "half": 7740,
-     "std": 7554
+     "ppr": 8102,
+     "half": 7580,
+     "std": 7358
     }
    },
    "sources": {
     "fantasycalc": 7517,
     "pihs": 8553,
-    "fantasypros": 8407,
-    "model": 7754
+    "fantasypros": 7665,
+    "model": 7627
    },
    "nSources": 4,
    "spread": 1036,
-   "value1qb": 7929,
-   "valueSf": 8308,
+   "value1qb": 7779,
+   "valueSf": 8102,
    "tier": 2
   },
   {
    "id": 8,
-   "name": "Christian McCaffrey",
-   "pos": "RB",
-   "team": "SF",
-   "age": 30,
-   "bye": 8,
-   "injury": null,
-   "sleeperId": "4034",
-   "espnId": "3117251",
-   "rosterPct": 1,
-   "trend": -820,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 18.5,
-    "xfpg": 20.8,
-    "luck": -2.3,
-    "tgtShare": 19,
-    "rushShare": 43,
-    "ros": 246,
-    "rosG": 12,
-    "ppg": 20.5,
-    "next": {
-     "wk": 5,
-     "opp": "SEA",
-     "home": false,
-     "implied": 22
-    },
-    "src": "blend",
-    "sos": 24,
-    "sosN": 32,
-    "playoffSos": 14
-   },
-   "values": {
-    "1qb": {
-     "ppr": 7911,
-     "half": 8150,
-     "std": 7836
-    },
-    "sf": {
-     "ppr": 7810,
-     "half": 7837,
-     "std": 7691
-    }
-   },
-   "sources": {
-    "fantasycalc": 7572,
-    "pihs": 7763,
-    "fantasypros": 8167,
-    "model": 8278
-   },
-   "nSources": 4,
-   "spread": 706,
-   "value1qb": 7911,
-   "valueSf": 7810,
-   "tier": 2
-  },
-  {
-   "id": 9,
    "name": "Puka Nacua",
    "pos": "WR",
    "team": "LAR",
@@ -543,26 +485,84 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7853,
-     "half": 7627,
-     "std": 7374
+     "ppr": 7777,
+     "half": 7539,
+     "std": 7213
     },
     "sf": {
-     "ppr": 8076,
-     "half": 7714,
-     "std": 7436
+     "ppr": 7976,
+     "half": 7461,
+     "std": 7300
     }
    },
    "sources": {
     "fantasycalc": 7500,
     "pihs": 8355,
-    "fantasypros": 7709,
-    "model": 8004
+    "fantasypros": 7517,
+    "model": 7845
    },
    "nSources": 4,
    "spread": 855,
-   "value1qb": 7853,
-   "valueSf": 8076,
+   "value1qb": 7777,
+   "valueSf": 7976,
+   "tier": 2
+  },
+  {
+   "id": 9,
+   "name": "Christian McCaffrey",
+   "pos": "RB",
+   "team": "SF",
+   "age": 30,
+   "bye": 8,
+   "injury": null,
+   "sleeperId": "4034",
+   "espnId": "3117251",
+   "rosterPct": 1,
+   "trend": -820,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 18.5,
+    "xfpg": 20.8,
+    "luck": -2.3,
+    "tgtShare": 19,
+    "rushShare": 43,
+    "ros": 246,
+    "rosG": 12,
+    "ppg": 20.5,
+    "next": {
+     "wk": 5,
+     "opp": "SEA",
+     "home": false,
+     "implied": 22
+    },
+    "src": "blend",
+    "sos": 24,
+    "sosN": 32,
+    "playoffSos": 14
+   },
+   "values": {
+    "1qb": {
+     "ppr": 7766,
+     "half": 7917,
+     "std": 7552
+    },
+    "sf": {
+     "ppr": 7543,
+     "half": 7337,
+     "std": 7226
+    }
+   },
+   "sources": {
+    "fantasycalc": 7572,
+    "pihs": 7763,
+    "fantasypros": 7572,
+    "model": 8093
+   },
+   "nSources": 4,
+   "spread": 521,
+   "value1qb": 7766,
+   "valueSf": 7543,
    "tier": 2
   },
   {
@@ -601,25 +601,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7228,
-     "half": 7510,
-     "std": 7765
+     "ppr": 6912,
+     "half": 7265,
+     "std": 7481
     },
     "sf": {
-     "ppr": 6971,
-     "half": 7337,
-     "std": 7531
+     "ppr": 6543,
+     "half": 6886,
+     "std": 7068
     }
    },
    "sources": {
     "fantasycalc": 6743,
     "pihs": 7237,
-    "model": 7789
+    "fantasypros": 5198,
+    "model": 7748
    },
-   "nSources": 3,
-   "spread": 1046,
-   "value1qb": 7228,
-   "valueSf": 6971,
+   "nSources": 4,
+   "spread": 2550,
+   "value1qb": 6912,
+   "valueSf": 6543,
    "tier": 2
   },
   {
@@ -658,26 +659,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7036,
-     "half": 6671,
-     "std": 6699
+     "ppr": 6858,
+     "half": 6707,
+     "std": 6490
     },
     "sf": {
-     "ppr": 7514,
-     "half": 7115,
-     "std": 7151
+     "ppr": 7332,
+     "half": 7093,
+     "std": 6954
     }
    },
    "sources": {
     "fantasycalc": 7665,
     "pihs": 8684,
-    "fantasypros": 9168,
-    "model": 4139
+    "fantasypros": 8188,
+    "model": 4034
    },
    "nSources": 4,
-   "spread": 5029,
-   "value1qb": 7036,
-   "valueSf": 7514,
+   "spread": 4650,
+   "value1qb": 6858,
+   "valueSf": 7332,
    "tier": 2
   },
   {
@@ -716,25 +717,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6609,
-     "half": 7053,
-     "std": 7493
+     "ppr": 6661,
+     "half": 6864,
+     "std": 7247
     },
     "sf": {
-     "ppr": 6170,
-     "half": 6859,
-     "std": 7107
+     "ppr": 6164,
+     "half": 6444,
+     "std": 6664
     }
    },
    "sources": {
     "fantasycalc": 6954,
     "pihs": 7500,
+    "fantasypros": 6954,
     "model": 5612
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 1888,
-   "value1qb": 6609,
-   "valueSf": 6170,
+   "value1qb": 6661,
+   "valueSf": 6164,
    "tier": 2
   },
   {
@@ -773,25 +775,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6479,
-     "half": 6233,
-     "std": 6004
+     "ppr": 6345,
+     "half": 6092,
+     "std": 5876
     },
     "sf": {
-     "ppr": 6607,
-     "half": 6395,
-     "std": 6103
+     "ppr": 6458,
+     "half": 6241,
+     "std": 5895
     }
    },
    "sources": {
     "fantasycalc": 5804,
     "pihs": 7961,
-    "model": 6278
+    "fantasypros": 5804,
+    "model": 6168
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 2157,
-   "value1qb": 6479,
-   "valueSf": 6607,
+   "value1qb": 6345,
+   "valueSf": 6458,
    "tier": 2
   },
   {
@@ -830,25 +833,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6387,
-     "half": 6344,
-     "std": 6458
+     "ppr": 6244,
+     "half": 6206,
+     "std": 5942
     },
     "sf": {
-     "ppr": 5884,
-     "half": 5958,
-     "std": 6103
+     "ppr": 5738,
+     "half": 5662,
+     "std": 5467
     }
    },
    "sources": {
     "fantasycalc": 5767,
     "pihs": 7171,
-    "model": 6588
+    "fantasypros": 5767,
+    "model": 6420
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 1404,
-   "value1qb": 6387,
-   "valueSf": 5884,
+   "value1qb": 6244,
+   "valueSf": 5738,
    "tier": 2
   },
   {
@@ -887,26 +891,27 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6142,
-     "half": 6271,
-     "std": 6497
+     "ppr": 5984,
+     "half": 6035,
+     "std": 6063
     },
     "sf": {
-     "ppr": 5461,
-     "half": 5330,
-     "std": 5858
+     "ppr": 5213,
+     "half": 5054,
+     "std": 5181
     }
    },
    "sources": {
     "fantasycalc": 5027,
     "pihs": 6579,
-    "model": 7153
+    "fantasypros": 5172,
+    "model": 7110
    },
-   "nSources": 3,
-   "spread": 2126,
-   "value1qb": 6142,
-   "valueSf": 5461,
-   "tier": 2
+   "nSources": 4,
+   "spread": 2083,
+   "value1qb": 5984,
+   "valueSf": 5213,
+   "tier": 3
   },
   {
    "id": 16,
@@ -944,143 +949,29 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6075,
-     "half": 6359,
-     "std": 6413
+     "ppr": 5944,
+     "half": 6320,
+     "std": 6289
     },
     "sf": {
-     "ppr": 5442,
-     "half": 5853,
-     "std": 5948
+     "ppr": 5465,
+     "half": 5757,
+     "std": 5845
     }
    },
    "sources": {
     "fantasycalc": 5172,
     "pihs": 6382,
-    "model": 6923
+    "model": 6553
    },
    "nSources": 3,
-   "spread": 1751,
-   "value1qb": 6075,
-   "valueSf": 5442,
-   "tier": 2
+   "spread": 1381,
+   "value1qb": 5944,
+   "valueSf": 5465,
+   "tier": 3
   },
   {
    "id": 17,
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "team": "LV",
-   "age": 23,
-   "bye": 13,
-   "injury": null,
-   "sleeperId": "11604",
-   "espnId": "4432665",
-   "rosterPct": 1,
-   "trend": -19,
-   "momentum": 0,
-   "outlook": {
-    "g": 2,
-    "fpg": 24.1,
-    "xfpg": 21.6,
-    "luck": 2.5,
-    "tgtShare": 28,
-    "rushShare": 0,
-    "ros": 214,
-    "rosG": 12,
-    "ppg": 17.8,
-    "next": {
-     "wk": 5,
-     "opp": "NE",
-     "home": false,
-     "implied": 21
-    },
-    "src": "blend",
-    "sos": 29,
-    "sosN": 32,
-    "playoffSos": 11
-   },
-   "values": {
-    "1qb": {
-     "ppr": 5950,
-     "half": 5689,
-     "std": 5376
-    },
-    "sf": {
-     "ppr": 6322,
-     "half": 5951,
-     "std": 5673
-    }
-   },
-   "sources": {
-    "fantasycalc": 5666,
-    "pihs": 6447,
-    "model": 5950
-   },
-   "nSources": 3,
-   "spread": 781,
-   "value1qb": 5950,
-   "valueSf": 6322,
-   "tier": 3
-  },
-  {
-   "id": 18,
-   "name": "Josh Allen",
-   "pos": "QB",
-   "team": "BUF",
-   "age": 30,
-   "bye": 7,
-   "injury": null,
-   "sleeperId": "4984",
-   "espnId": "3918298",
-   "rosterPct": 1,
-   "trend": 404,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 28.5,
-    "xfpg": 24.2,
-    "luck": 4.3,
-    "tgtShare": 1,
-    "rushShare": 30,
-    "ros": 298,
-    "rosG": 12,
-    "ppg": 24.8,
-    "next": {
-     "wk": 5,
-     "opp": "LAR",
-     "home": false,
-     "implied": 25.8
-    },
-    "src": "blend",
-    "sos": 28,
-    "sosN": 32,
-    "playoffSos": 17
-   },
-   "values": {
-    "1qb": {
-     "ppr": 5777,
-     "half": 5973,
-     "std": 6244
-    },
-    "sf": {
-     "ppr": 9614,
-     "half": 10000,
-     "std": 9908
-    }
-   },
-   "sources": {
-    "fantasycalc": 5663,
-    "pihs": 6711,
-    "model": 5288
-   },
-   "nSources": 3,
-   "spread": 1423,
-   "value1qb": 5777,
-   "valueSf": 9614,
-   "tier": 3
-  },
-  {
-   "id": 19,
    "name": "Chase Brown",
    "pos": "RB",
    "team": "CIN",
@@ -1115,25 +1006,142 @@
    },
    "values": {
     "1qb": {
-     "ppr": 5640,
-     "half": 5552,
-     "std": 5742
+     "ppr": 5822,
+     "half": 5471,
+     "std": 5388
     },
     "sf": {
-     "ppr": 5180,
-     "half": 5000,
-     "std": 5355
+     "ppr": 5340,
+     "half": 4925,
+     "std": 4847
     }
    },
    "sources": {
     "fantasycalc": 5198,
     "pihs": 6776,
-    "model": 5397
+    "fantasypros": 6743,
+    "model": 5455
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 1578,
-   "value1qb": 5640,
-   "valueSf": 5180,
+   "value1qb": 5822,
+   "valueSf": 5340,
+   "tier": 3
+  },
+  {
+   "id": 18,
+   "name": "Brock Bowers",
+   "pos": "TE",
+   "team": "LV",
+   "age": 23,
+   "bye": 13,
+   "injury": null,
+   "sleeperId": "11604",
+   "espnId": "4432665",
+   "rosterPct": 1,
+   "trend": -19,
+   "momentum": 0,
+   "outlook": {
+    "g": 2,
+    "fpg": 24.1,
+    "xfpg": 21.6,
+    "luck": 2.5,
+    "tgtShare": 28,
+    "rushShare": 0,
+    "ros": 214,
+    "rosG": 12,
+    "ppg": 17.8,
+    "next": {
+     "wk": 5,
+     "opp": "NE",
+     "home": false,
+     "implied": 21
+    },
+    "src": "blend",
+    "sos": 29,
+    "sosN": 32,
+    "playoffSos": 11
+   },
+   "values": {
+    "1qb": {
+     "ppr": 5816,
+     "half": 5658,
+     "std": 5392
+    },
+    "sf": {
+     "ppr": 6233,
+     "half": 5906,
+     "std": 5740
+    }
+   },
+   "sources": {
+    "fantasycalc": 5666,
+    "pihs": 6447,
+    "fantasypros": 5324,
+    "model": 5816
+   },
+   "nSources": 4,
+   "spread": 1123,
+   "value1qb": 5816,
+   "valueSf": 6233,
+   "tier": 3
+  },
+  {
+   "id": 19,
+   "name": "Josh Allen",
+   "pos": "QB",
+   "team": "BUF",
+   "age": 30,
+   "bye": 7,
+   "injury": null,
+   "sleeperId": "4984",
+   "espnId": "3918298",
+   "rosterPct": 1,
+   "trend": 404,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 28.5,
+    "xfpg": 24.2,
+    "luck": 4.3,
+    "tgtShare": 1,
+    "rushShare": 30,
+    "ros": 298,
+    "rosG": 12,
+    "ppg": 24.8,
+    "next": {
+     "wk": 5,
+     "opp": "LAR",
+     "home": false,
+     "implied": 25.8
+    },
+    "src": "blend",
+    "sos": 28,
+    "sosN": 32,
+    "playoffSos": 17
+   },
+   "values": {
+    "1qb": {
+     "ppr": 5730,
+     "half": 5877,
+     "std": 5955
+    },
+    "sf": {
+     "ppr": 9736,
+     "half": 10000,
+     "std": 9957
+    }
+   },
+   "sources": {
+    "fantasycalc": 5663,
+    "pihs": 6711,
+    "fantasypros": 5663,
+    "model": 5187
+   },
+   "nSources": 4,
+   "spread": 1524,
+   "value1qb": 5730,
+   "valueSf": 9736,
    "tier": 3
   },
   {
@@ -1172,86 +1180,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 5621,
-     "half": 5191,
-     "std": 4683
+     "ppr": 5607,
+     "half": 5182,
+     "std": 4744
     },
     "sf": {
-     "ppr": 6196,
-     "half": 5590,
-     "std": 5134
+     "ppr": 6157,
+     "half": 5545,
+     "std": 5236
     }
    },
    "sources": {
     "fantasycalc": 5324,
     "pihs": 5526,
-    "model": 6032
+    "fantasypros": 5666,
+    "model": 5962
    },
-   "nSources": 3,
-   "spread": 708,
-   "value1qb": 5621,
-   "valueSf": 6196,
+   "nSources": 4,
+   "spread": 638,
+   "value1qb": 5607,
+   "valueSf": 6157,
    "tier": 3
   },
   {
    "id": 21,
-   "name": "Nico Collins",
-   "pos": "WR",
-   "team": "HOU",
-   "age": 27,
-   "bye": 8,
-   "injury": null,
-   "sleeperId": "7569",
-   "espnId": "4258173",
-   "rosterPct": 0.99,
-   "trend": -486,
-   "momentum": 0,
-   "outlook": {
-    "g": 2,
-    "fpg": 26,
-    "xfpg": 18.9,
-    "luck": 7.1,
-    "tgtShare": 26,
-    "rushShare": 2,
-    "ros": 228,
-    "rosG": 12,
-    "ppg": 19,
-    "next": {
-     "wk": 5,
-     "opp": "TEN",
-     "home": false,
-     "implied": 22.5
-    },
-    "src": "blend",
-    "sos": 4,
-    "sosN": 32,
-    "playoffSos": 6
-   },
-   "values": {
-    "1qb": {
-     "ppr": 5555,
-     "half": 5561,
-     "std": 5407
-    },
-    "sf": {
-     "ppr": 5640,
-     "half": 5585,
-     "std": 5408
-    }
-   },
-   "sources": {
-    "fantasycalc": 4814,
-    "pihs": 6118,
-    "model": 6044
-   },
-   "nSources": 3,
-   "spread": 1304,
-   "value1qb": 5555,
-   "valueSf": 5640,
-   "tier": 3
-  },
-  {
-   "id": 22,
    "name": "Zay Flowers",
    "pos": "WR",
    "team": "BAL",
@@ -1286,25 +1238,84 @@
    },
    "values": {
     "1qb": {
-     "ppr": 5493,
-     "half": 5353,
-     "std": 5218
+     "ppr": 5517,
+     "half": 5354,
+     "std": 5239
     },
     "sf": {
-     "ppr": 5584,
-     "half": 5300,
-     "std": 5062
+     "ppr": 5512,
+     "half": 5257,
+     "std": 5127
     }
    },
    "sources": {
     "fantasycalc": 4897,
     "pihs": 6118,
-    "model": 5772
+    "fantasypros": 5644,
+    "model": 5777
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 1221,
-   "value1qb": 5493,
-   "valueSf": 5584,
+   "value1qb": 5517,
+   "valueSf": 5512,
+   "tier": 3
+  },
+  {
+   "id": 22,
+   "name": "Nico Collins",
+   "pos": "WR",
+   "team": "HOU",
+   "age": 27,
+   "bye": 8,
+   "injury": null,
+   "sleeperId": "7569",
+   "espnId": "4258173",
+   "rosterPct": 0.99,
+   "trend": -486,
+   "momentum": 0,
+   "outlook": {
+    "g": 2,
+    "fpg": 26,
+    "xfpg": 18.9,
+    "luck": 7.1,
+    "tgtShare": 26,
+    "rushShare": 2,
+    "ros": 228,
+    "rosG": 12,
+    "ppg": 19,
+    "next": {
+     "wk": 5,
+     "opp": "TEN",
+     "home": false,
+     "implied": 22.5
+    },
+    "src": "blend",
+    "sos": 4,
+    "sosN": 32,
+    "playoffSos": 6
+   },
+   "values": {
+    "1qb": {
+     "ppr": 5425,
+     "half": 5405,
+     "std": 5215
+    },
+    "sf": {
+     "ppr": 5420,
+     "half": 5331,
+     "std": 5220
+    }
+   },
+   "sources": {
+    "fantasycalc": 4814,
+    "pihs": 6118,
+    "fantasypros": 4814,
+    "model": 5980
+   },
+   "nSources": 4,
+   "spread": 1304,
+   "value1qb": 5425,
+   "valueSf": 5420,
    "tier": 3
   },
   {
@@ -1343,25 +1354,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 5080,
-     "half": 4952,
-     "std": 4775
+     "ppr": 5044,
+     "half": 4921,
+     "std": 4757
     },
     "sf": {
-     "ppr": 5110,
-     "half": 4954,
-     "std": 4783
+     "ppr": 5043,
+     "half": 4853,
+     "std": 4739
     }
    },
    "sources": {
     "fantasycalc": 5644,
     "pihs": 6711,
+    "fantasypros": 4840,
     "model": 3336
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 3375,
-   "value1qb": 5080,
-   "valueSf": 5110,
+   "value1qb": 5044,
+   "valueSf": 5043,
    "tier": 3
   },
   {
@@ -1400,25 +1412,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 4658,
-     "half": 4503,
-     "std": 4295
+     "ppr": 4694,
+     "half": 4545,
+     "std": 4348
     },
     "sf": {
-     "ppr": 4614,
-     "half": 4447,
-     "std": 4231
+     "ppr": 4631,
+     "half": 4438,
+     "std": 4268
     }
    },
    "sources": {
     "fantasycalc": 4840,
     "pihs": 5921,
+    "fantasypros": 4897,
     "model": 3603
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 2318,
-   "value1qb": 4658,
-   "valueSf": 4614,
+   "value1qb": 4694,
+   "valueSf": 4631,
    "tier": 3
   },
   {
@@ -1457,25 +1470,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 4547,
-     "half": 4510,
-     "std": 4685
+     "ppr": 4570,
+     "half": 4536,
+     "std": 4633
     },
     "sf": {
-     "ppr": 3914,
-     "half": 3902,
-     "std": 4143
+     "ppr": 3962,
+     "half": 3894,
+     "std": 4018
     }
    },
    "sources": {
     "fantasycalc": 3871,
     "pihs": 4539,
-    "model": 5341
+    "model": 5406
    },
    "nSources": 3,
-   "spread": 1470,
-   "value1qb": 4547,
-   "valueSf": 3914,
+   "spread": 1535,
+   "value1qb": 4570,
+   "valueSf": 3962,
    "tier": 3
   },
   {
@@ -1514,25 +1527,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 4404,
-     "half": 4463,
-     "std": 4593
+     "ppr": 4372,
+     "half": 4434,
+     "std": 4499
     },
     "sf": {
-     "ppr": 4186,
-     "half": 4313,
-     "std": 4438
+     "ppr": 4161,
+     "half": 4226,
+     "std": 4422
     }
    },
    "sources": {
     "fantasycalc": 3120,
     "pihs": 4868,
-    "model": 5591
+    "model": 5502
    },
    "nSources": 3,
-   "spread": 2471,
-   "value1qb": 4404,
-   "valueSf": 4186,
+   "spread": 2382,
+   "value1qb": 4372,
+   "valueSf": 4161,
    "tier": 3
   },
   {
@@ -1576,9 +1589,9 @@
      "std": 3739
     },
     "sf": {
-     "ppr": 3743,
-     "half": 3553,
-     "std": 3312
+     "ppr": 3761,
+     "half": 3518,
+     "std": 3335
     }
    },
    "sources": {
@@ -1589,7 +1602,7 @@
    "nSources": 3,
    "spread": 1140,
    "value1qb": 3972,
-   "valueSf": 3743,
+   "valueSf": 3761,
    "tier": 4
   },
   {
@@ -1633,9 +1646,9 @@
      "std": 3575
     },
     "sf": {
-     "ppr": 3864,
-     "half": 3627,
-     "std": 3424
+     "ppr": 3906,
+     "half": 3613,
+     "std": 3436
     }
    },
    "sources": {
@@ -1646,7 +1659,7 @@
    "nSources": 3,
    "spread": 1210,
    "value1qb": 3894,
-   "valueSf": 3864,
+   "valueSf": 3906,
    "tier": 4
   },
   {
@@ -1685,25 +1698,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 3890,
+     "ppr": 3865,
      "half": 3764,
-     "std": 3535
+     "std": 3526
     },
     "sf": {
-     "ppr": 4022,
-     "half": 3848,
-     "std": 3580
+     "ppr": 4042,
+     "half": 3833,
+     "std": 3592
     }
    },
    "sources": {
     "fantasycalc": 3990,
     "pihs": 4408,
-    "model": 3427
+    "model": 3358
    },
    "nSources": 3,
-   "spread": 981,
-   "value1qb": 3890,
-   "valueSf": 4022,
+   "spread": 1050,
+   "value1qb": 3865,
+   "valueSf": 4042,
    "tier": 4
   },
   {
@@ -1742,25 +1755,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 3843,
-     "half": 3767,
-     "std": 3634
+     "ppr": 3818,
+     "half": 3738,
+     "std": 3613
     },
     "sf": {
-     "ppr": 3907,
-     "half": 3814,
-     "std": 3688
+     "ppr": 3889,
+     "half": 3754,
+     "std": 3665
     }
    },
    "sources": {
     "fantasycalc": 2781,
     "pihs": 3618,
-    "model": 5233
+    "model": 5161
    },
    "nSources": 3,
-   "spread": 2452,
-   "value1qb": 3843,
-   "valueSf": 3907,
+   "spread": 2380,
+   "value1qb": 3818,
+   "valueSf": 3889,
    "tier": 4
   },
   {
@@ -1799,25 +1812,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 3772,
+     "ppr": 3757,
      "half": 3790,
      "std": 3881
     },
     "sf": {
-     "ppr": 3376,
-     "half": 3375,
-     "std": 3403
+     "ppr": 3386,
+     "half": 3356,
+     "std": 3415
     }
    },
    "sources": {
     "fantasycalc": 4252,
     "pihs": 4737,
-    "model": 2569
+    "model": 2526
    },
    "nSources": 3,
-   "spread": 2168,
-   "value1qb": 3772,
-   "valueSf": 3376,
+   "spread": 2211,
+   "value1qb": 3757,
+   "valueSf": 3386,
    "tier": 4
   },
   {
@@ -1858,12 +1871,12 @@
     "1qb": {
      "ppr": 3708,
      "half": 3657,
-     "std": 3861
+     "std": 3839
     },
     "sf": {
-     "ppr": 3770,
-     "half": 3769,
-     "std": 3759
+     "ppr": 3783,
+     "half": 3749,
+     "std": 3704
     }
    },
    "sources": {
@@ -1874,7 +1887,7 @@
    "nSources": 3,
    "spread": 1035,
    "value1qb": 3708,
-   "valueSf": 3770,
+   "valueSf": 3783,
    "tier": 4
   },
   {
@@ -1918,9 +1931,9 @@
      "std": 3737
     },
     "sf": {
-     "ppr": 3323,
-     "half": 3229,
-     "std": 3216
+     "ppr": 3339,
+     "half": 3216,
+     "std": 3245
     }
    },
    "sources": {
@@ -1931,7 +1944,7 @@
    "nSources": 3,
    "spread": 1263,
    "value1qb": 3670,
-   "valueSf": 3323,
+   "valueSf": 3339,
    "tier": 4
   },
   {
@@ -1975,9 +1988,9 @@
      "std": 3226
     },
     "sf": {
-     "ppr": 3045,
-     "half": 2955,
-     "std": 2867
+     "ppr": 3055,
+     "half": 2943,
+     "std": 2877
     }
    },
    "sources": {
@@ -1988,7 +2001,7 @@
    "nSources": 3,
    "spread": 2722,
    "value1qb": 3428,
-   "valueSf": 3045,
+   "valueSf": 3055,
    "tier": 4
   },
   {
@@ -2028,13 +2041,13 @@
    "values": {
     "1qb": {
      "ppr": 3373,
-     "half": 3310,
+     "half": 3289,
      "std": 3323
     },
     "sf": {
-     "ppr": 3419,
-     "half": 3310,
-     "std": 3264
+     "ppr": 3435,
+     "half": 3297,
+     "std": 3276
     }
    },
    "sources": {
@@ -2045,7 +2058,7 @@
    "nSources": 3,
    "spread": 897,
    "value1qb": 3373,
-   "valueSf": 3419,
+   "valueSf": 3435,
    "tier": 4
   },
   {
@@ -2085,13 +2098,13 @@
    "values": {
     "1qb": {
      "ppr": 3298,
-     "half": 3146,
-     "std": 2933
+     "half": 3116,
+     "std": 2912
     },
     "sf": {
-     "ppr": 3454,
-     "half": 3241,
-     "std": 3080
+     "ppr": 3470,
+     "half": 3229,
+     "std": 3082
     }
    },
    "sources": {
@@ -2102,7 +2115,7 @@
    "nSources": 3,
    "spread": 1272,
    "value1qb": 3298,
-   "valueSf": 3454,
+   "valueSf": 3470,
    "tier": 4
   },
   {
@@ -2146,9 +2159,9 @@
      "std": 3294
     },
     "sf": {
-     "ppr": 3292,
-     "half": 3311,
-     "std": 3342
+     "ppr": 3308,
+     "half": 3298,
+     "std": 3354
     }
    },
    "sources": {
@@ -2159,7 +2172,7 @@
    "nSources": 3,
    "spread": 2223,
    "value1qb": 3275,
-   "valueSf": 3292,
+   "valueSf": 3308,
    "tier": 4
   },
   {
@@ -2203,9 +2216,9 @@
      "std": 3566
     },
     "sf": {
-     "ppr": 2957,
-     "half": 2997,
-     "std": 3234
+     "ppr": 2971,
+     "half": 2986,
+     "std": 3245
     }
    },
    "sources": {
@@ -2216,7 +2229,7 @@
    "nSources": 3,
    "spread": 611,
    "value1qb": 3273,
-   "valueSf": 2957,
+   "valueSf": 2971,
    "tier": 4
   },
   {
@@ -2260,9 +2273,9 @@
      "std": 3116
     },
     "sf": {
-     "ppr": 2850,
-     "half": 2662,
-     "std": 2593
+     "ppr": 2845,
+     "half": 2652,
+     "std": 2602
     }
    },
    "sources": {
@@ -2273,7 +2286,7 @@
    "nSources": 3,
    "spread": 1127,
    "value1qb": 3229,
-   "valueSf": 2850,
+   "valueSf": 2845,
    "tier": 4
   },
   {
@@ -2317,9 +2330,9 @@
      "std": 2954
     },
     "sf": {
-     "ppr": 3028,
-     "half": 2769,
-     "std": 2626
+     "ppr": 3042,
+     "half": 2759,
+     "std": 2635
     }
    },
    "sources": {
@@ -2330,7 +2343,7 @@
    "nSources": 3,
    "spread": 1533,
    "value1qb": 3175,
-   "valueSf": 3028,
+   "valueSf": 3042,
    "tier": 4
   },
   {
@@ -2369,25 +2382,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 3158,
-     "half": 3338,
-     "std": 3350
+     "ppr": 3150,
+     "half": 3300,
+     "std": 3325
     },
     "sf": {
-     "ppr": 6000,
-     "half": 6282,
-     "std": 6515
+     "ppr": 6269,
+     "half": 6402,
+     "std": 6597
     }
    },
    "sources": {
     "fantasycalc": 2453,
     "pihs": 5132,
+    "fantasypros": 3104,
     "model": 2664
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 2679,
-   "value1qb": 3158,
-   "valueSf": 6000,
+   "value1qb": 3150,
+   "valueSf": 6269,
    "tier": 4
   },
   {
@@ -2427,13 +2441,13 @@
    "values": {
     "1qb": {
      "ppr": 3003,
-     "half": 2895,
+     "half": 2883,
      "std": 2802
     },
     "sf": {
-     "ppr": 2850,
-     "half": 2761,
-     "std": 2654
+     "ppr": 2864,
+     "half": 2751,
+     "std": 2642
     }
    },
    "sources": {
@@ -2444,7 +2458,7 @@
    "nSources": 3,
    "spread": 660,
    "value1qb": 3003,
-   "valueSf": 2850,
+   "valueSf": 2864,
    "tier": 4
   },
   {
@@ -2485,12 +2499,12 @@
     "1qb": {
      "ppr": 2905,
      "half": 2977,
-     "std": 3048
+     "std": 3055
     },
     "sf": {
-     "ppr": 2708,
-     "half": 2792,
-     "std": 2831
+     "ppr": 2721,
+     "half": 2781,
+     "std": 2841
     }
    },
    "sources": {
@@ -2501,7 +2515,7 @@
    "nSources": 3,
    "spread": 552,
    "value1qb": 2905,
-   "valueSf": 2708,
+   "valueSf": 2721,
    "tier": 4
   },
   {
@@ -2542,12 +2556,12 @@
     "1qb": {
      "ppr": 2847,
      "half": 2704,
-     "std": 2636
+     "std": 2952
     },
     "sf": {
-     "ppr": 3068,
-     "half": 2962,
-     "std": 2913
+     "ppr": 3083,
+     "half": 2930,
+     "std": 3107
     }
    },
    "sources": {
@@ -2558,7 +2572,7 @@
    "nSources": 3,
    "spread": 1832,
    "value1qb": 2847,
-   "valueSf": 3068,
+   "valueSf": 3083,
    "tier": 4
   },
   {
@@ -2597,86 +2611,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 2785,
-     "half": 2844,
-     "std": 2826
+     "ppr": 2735,
+     "half": 2781,
+     "std": 2758
     },
     "sf": {
-     "ppr": 7114,
-     "half": 7157,
-     "std": 7376
+     "ppr": 7007,
+     "half": 7001,
+     "std": 7110
     }
    },
    "sources": {
     "fantasycalc": 3104,
     "pihs": 2763,
+    "fantasypros": 2453,
     "model": 2427
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 677,
-   "value1qb": 2785,
-   "valueSf": 7114,
+   "value1qb": 2735,
+   "valueSf": 7007,
    "tier": 4
   },
   {
    "id": 46,
-   "name": "George Kittle",
-   "pos": "TE",
-   "team": "SF",
-   "age": 32,
-   "bye": 8,
-   "injury": null,
-   "sleeperId": "4217",
-   "espnId": "3040151",
-   "rosterPct": 0.97,
-   "trend": 1186,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 16.1,
-    "xfpg": 11.5,
-    "luck": 4.6,
-    "tgtShare": 19,
-    "rushShare": 0,
-    "ros": 161,
-    "rosG": 12,
-    "ppg": 13.4,
-    "next": {
-     "wk": 5,
-     "opp": "SEA",
-     "home": false,
-     "implied": 22
-    },
-    "src": "blend",
-    "sos": 14,
-    "sosN": 32,
-    "playoffSos": 23
-   },
-   "values": {
-    "1qb": {
-     "ppr": 2752,
-     "half": 2775,
-     "std": 2740
-    },
-    "sf": {
-     "ppr": 2751,
-     "half": 2699,
-     "std": 2733
-    }
-   },
-   "sources": {
-    "fantasycalc": 2551,
-    "pihs": 2763,
-    "model": 2980
-   },
-   "nSources": 3,
-   "spread": 429,
-   "value1qb": 2752,
-   "valueSf": 2751,
-   "tier": 4
-  },
-  {
-   "id": 47,
    "name": "Quinshon Judkins",
    "pos": "RB",
    "team": "CLE",
@@ -2711,25 +2669,83 @@
    },
    "values": {
     "1qb": {
-     "ppr": 2700,
+     "ppr": 2675,
      "half": 2656,
      "std": 2578
     },
     "sf": {
-     "ppr": 2312,
-     "half": 2235,
-     "std": 2191
+     "ppr": 2323,
+     "half": 2226,
+     "std": 2199
     }
    },
    "sources": {
     "fantasycalc": 2420,
     "pihs": 2829,
-    "model": 2941
+    "model": 2869
    },
    "nSources": 3,
-   "spread": 521,
-   "value1qb": 2700,
-   "valueSf": 2312,
+   "spread": 449,
+   "value1qb": 2675,
+   "valueSf": 2323,
+   "tier": 4
+  },
+  {
+   "id": 47,
+   "name": "George Kittle",
+   "pos": "TE",
+   "team": "SF",
+   "age": 32,
+   "bye": 8,
+   "injury": null,
+   "sleeperId": "4217",
+   "espnId": "3040151",
+   "rosterPct": 0.97,
+   "trend": 1186,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 16.1,
+    "xfpg": 11.5,
+    "luck": 4.6,
+    "tgtShare": 19,
+    "rushShare": 0,
+    "ros": 161,
+    "rosG": 12,
+    "ppg": 13.4,
+    "next": {
+     "wk": 5,
+     "opp": "SEA",
+     "home": false,
+     "implied": 22
+    },
+    "src": "blend",
+    "sos": 14,
+    "sosN": 32,
+    "playoffSos": 23
+   },
+   "values": {
+    "1qb": {
+     "ppr": 2651,
+     "half": 2730,
+     "std": 2703
+    },
+    "sf": {
+     "ppr": 2682,
+     "half": 2669,
+     "std": 2716
+    }
+   },
+   "sources": {
+    "fantasycalc": 2551,
+    "pihs": 2763,
+    "fantasypros": 2152,
+    "model": 2941
+   },
+   "nSources": 4,
+   "spread": 789,
+   "value1qb": 2651,
+   "valueSf": 2682,
    "tier": 4
   },
   {
@@ -2768,25 +2784,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 2597,
+     "ppr": 2611,
      "half": 2684,
      "std": 2834
     },
     "sf": {
-     "ppr": 2555,
-     "half": 2636,
-     "std": 2677
+     "ppr": 2567,
+     "half": 2626,
+     "std": 2687
     }
    },
    "sources": {
     "fantasycalc": 2820,
     "pihs": 3618,
-    "model": 1655
+    "model": 1697
    },
    "nSources": 3,
-   "spread": 1963,
-   "value1qb": 2597,
-   "valueSf": 2555,
+   "spread": 1921,
+   "value1qb": 2611,
+   "valueSf": 2567,
    "tier": 4
   },
   {
@@ -2827,12 +2843,12 @@
     "1qb": {
      "ppr": 2458,
      "half": 2422,
-     "std": 2390
+     "std": 2373
     },
     "sf": {
-     "ppr": 2384,
-     "half": 2324,
-     "std": 2270
+     "ppr": 2394,
+     "half": 2316,
+     "std": 2278
     }
    },
    "sources": {
@@ -2843,7 +2859,7 @@
    "nSources": 3,
    "spread": 1431,
    "value1qb": 2458,
-   "valueSf": 2384,
+   "valueSf": 2394,
    "tier": 5
   },
   {
@@ -2884,12 +2900,12 @@
     "1qb": {
      "ppr": 2405,
      "half": 2280,
-     "std": 2211
+     "std": 2215
     },
     "sf": {
-     "ppr": 2518,
-     "half": 2391,
-     "std": 2321
+     "ppr": 2516,
+     "half": 2382,
+     "std": 2329
     }
    },
    "sources": {
@@ -2900,7 +2916,7 @@
    "nSources": 3,
    "spread": 1161,
    "value1qb": 2405,
-   "valueSf": 2518,
+   "valueSf": 2516,
    "tier": 5
   },
   {
@@ -2944,9 +2960,9 @@
      "std": 2228
     },
     "sf": {
-     "ppr": 2190,
-     "half": 2133,
-     "std": 2083
+     "ppr": 2201,
+     "half": 2125,
+     "std": 2093
     }
    },
    "sources": {
@@ -2957,7 +2973,7 @@
    "nSources": 3,
    "spread": 1592,
    "value1qb": 2363,
-   "valueSf": 2190,
+   "valueSf": 2201,
    "tier": 5
   },
   {
@@ -2996,29 +3012,87 @@
    },
    "values": {
     "1qb": {
-     "ppr": 2264,
+     "ppr": 2243,
      "half": 2295,
      "std": 2359
     },
     "sf": {
-     "ppr": 2219,
-     "half": 2187,
-     "std": 2244
+     "ppr": 2203,
+     "half": 2179,
+     "std": 2252
     }
    },
    "sources": {
     "fantasycalc": 1630,
     "pihs": 2829,
-    "model": 2628
+    "model": 2569
    },
    "nSources": 3,
    "spread": 1199,
-   "value1qb": 2264,
-   "valueSf": 2219,
+   "value1qb": 2243,
+   "valueSf": 2203,
    "tier": 5
   },
   {
    "id": 53,
+   "name": "Tyler Warren",
+   "pos": "TE",
+   "team": "IND",
+   "age": 24,
+   "bye": 13,
+   "injury": null,
+   "sleeperId": "12518",
+   "espnId": "4431459",
+   "rosterPct": 0.99,
+   "trend": -715,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 12.1,
+    "xfpg": 11,
+    "luck": 1.2,
+    "tgtShare": 20,
+    "rushShare": 2,
+    "ros": 137,
+    "rosG": 12,
+    "ppg": 11.4,
+    "next": {
+     "wk": 5,
+     "opp": "PIT",
+     "home": false,
+     "implied": 21
+    },
+    "src": "blend",
+    "sos": 19,
+    "sosN": 32,
+    "playoffSos": 7
+   },
+   "values": {
+    "1qb": {
+     "ppr": 2194,
+     "half": 1982,
+     "std": 1870
+    },
+    "sf": {
+     "ppr": 2481,
+     "half": 2208,
+     "std": 2116
+    }
+   },
+   "sources": {
+    "fantasycalc": 2152,
+    "pihs": 2829,
+    "fantasypros": 2551,
+    "model": 1641
+   },
+   "nSources": 4,
+   "spread": 1188,
+   "value1qb": 2194,
+   "valueSf": 2481,
+   "tier": 5
+  },
+  {
+   "id": 54,
    "name": "Jaylen Waddle",
    "pos": "WR",
    "team": "DEN",
@@ -3053,82 +3127,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 2132,
+     "ppr": 2145,
      "half": 2078,
      "std": 1979
     },
     "sf": {
-     "ppr": 2260,
-     "half": 2185,
-     "std": 2063
+     "ppr": 2249,
+     "half": 2165,
+     "std": 2070
     }
    },
    "sources": {
     "fantasycalc": 2085,
     "pihs": 3026,
-    "model": 1590
+    "model": 1627
    },
    "nSources": 3,
-   "spread": 1436,
-   "value1qb": 2132,
-   "valueSf": 2260,
-   "tier": 5
-  },
-  {
-   "id": 54,
-   "name": "Aaron Jones",
-   "pos": "RB",
-   "team": "MIN",
-   "age": 31,
-   "bye": 6,
-   "injury": null,
-   "sleeperId": "4199",
-   "espnId": "3042519",
-   "rosterPct": 0.93,
-   "trend": 1144,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 12.9,
-    "xfpg": 14.5,
-    "luck": -1.6,
-    "tgtShare": 14,
-    "rushShare": 62,
-    "ros": 141,
-    "rosG": 12,
-    "ppg": 11.8,
-    "next": {
-     "wk": 5,
-     "opp": "NO",
-     "home": false,
-     "implied": 22
-    },
-    "src": "blend",
-    "sos": 5,
-    "sosN": 32,
-    "playoffSos": 16
-   },
-   "values": {
-    "1qb": {
-     "ppr": 2128,
-     "half": 2121,
-     "std": 2024
-    },
-    "sf": {
-     "ppr": 1830,
-     "half": 1839,
-     "std": 1790
-    }
-   },
-   "sources": {
-    "fantasycalc": 1615,
-    "pihs": 2368,
-    "model": 2567
-   },
-   "nSources": 3,
-   "spread": 952,
-   "value1qb": 2128,
-   "valueSf": 1830,
+   "spread": 1399,
+   "value1qb": 2145,
+   "valueSf": 2249,
    "tier": 5
   },
   {
@@ -3172,9 +3189,9 @@
      "std": 2004
     },
     "sf": {
-     "ppr": 2271,
-     "half": 2189,
-     "std": 2083
+     "ppr": 2282,
+     "half": 2181,
+     "std": 2091
     }
    },
    "sources": {
@@ -3185,182 +3202,11 @@
    "nSources": 3,
    "spread": 1974,
    "value1qb": 2123,
-   "valueSf": 2271,
+   "valueSf": 2282,
    "tier": 5
   },
   {
    "id": 56,
-   "name": "Sam LaPorta",
-   "pos": "TE",
-   "team": "DET",
-   "age": 25,
-   "bye": 6,
-   "injury": null,
-   "sleeperId": "10859",
-   "espnId": "4430027",
-   "rosterPct": 0.96,
-   "trend": -288,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 14.2,
-    "xfpg": 15.9,
-    "luck": -1.7,
-    "tgtShare": 20,
-    "rushShare": 0,
-    "ros": 158,
-    "rosG": 12,
-    "ppg": 13.2,
-    "next": {
-     "wk": 5,
-     "opp": "ARI",
-     "home": false,
-     "implied": 29.5
-    },
-    "src": "blend",
-    "sos": 25,
-    "sosN": 32,
-    "playoffSos": 28
-   },
-   "values": {
-    "1qb": {
-     "ppr": 2119,
-     "half": 2020,
-     "std": 1960
-    },
-    "sf": {
-     "ppr": 2219,
-     "half": 2084,
-     "std": 2019
-    }
-   },
-   "sources": {
-    "fantasycalc": 1417,
-    "pihs": 2434,
-    "model": 2727
-   },
-   "nSources": 3,
-   "spread": 1310,
-   "value1qb": 2119,
-   "valueSf": 2219,
-   "tier": 5
-  },
-  {
-   "id": 57,
-   "name": "Joe Burrow",
-   "pos": "QB",
-   "team": "CIN",
-   "age": 29,
-   "bye": 6,
-   "injury": null,
-   "sleeperId": "6770",
-   "espnId": "3915511",
-   "rosterPct": 0.97,
-   "trend": -847,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 19.7,
-    "xfpg": 18.3,
-    "luck": 1.3,
-    "tgtShare": 0,
-    "rushShare": 13,
-    "ros": 223,
-    "rosG": 12,
-    "ppg": 18.6,
-    "next": {
-     "wk": 5,
-     "opp": "MIA",
-     "home": false,
-     "implied": 24.8
-    },
-    "src": "blend",
-    "sos": 8,
-    "sosN": 32,
-    "playoffSos": 5
-   },
-   "values": {
-    "1qb": {
-     "ppr": 2114,
-     "half": 2125,
-     "std": 2111
-    },
-    "sf": {
-     "ppr": 5514,
-     "half": 5678,
-     "std": 5723
-    }
-   },
-   "sources": {
-    "fantasycalc": 2342,
-    "pihs": 2961,
-    "model": 1284
-   },
-   "nSources": 3,
-   "spread": 1677,
-   "value1qb": 2114,
-   "valueSf": 5514,
-   "tier": 5
-  },
-  {
-   "id": 58,
-   "name": "Tyler Warren",
-   "pos": "TE",
-   "team": "IND",
-   "age": 24,
-   "bye": 13,
-   "injury": null,
-   "sleeperId": "12518",
-   "espnId": "4431459",
-   "rosterPct": 0.99,
-   "trend": -715,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 12.1,
-    "xfpg": 11,
-    "luck": 1.2,
-    "tgtShare": 20,
-    "rushShare": 2,
-    "ros": 137,
-    "rosG": 12,
-    "ppg": 11.4,
-    "next": {
-     "wk": 5,
-     "opp": "PIT",
-     "home": false,
-     "implied": 21
-    },
-    "src": "blend",
-    "sos": 19,
-    "sosN": 32,
-    "playoffSos": 7
-   },
-   "values": {
-    "1qb": {
-     "ppr": 2114,
-     "half": 1957,
-     "std": 1843
-    },
-    "sf": {
-     "ppr": 2437,
-     "half": 2232,
-     "std": 2122
-    }
-   },
-   "sources": {
-    "fantasycalc": 2152,
-    "pihs": 2829,
-    "model": 1593
-   },
-   "nSources": 3,
-   "spread": 1236,
-   "value1qb": 2114,
-   "valueSf": 2437,
-   "tier": 5
-  },
-  {
-   "id": 59,
    "name": "Rhamondre Stevenson",
    "pos": "RB",
    "team": "NE",
@@ -3397,84 +3243,200 @@
     "1qb": {
      "ppr": 2086,
      "half": 2017,
-     "std": 1951
+     "std": 1907
     },
     "sf": {
-     "ppr": 1932,
-     "half": 1875,
-     "std": 1772
+     "ppr": 1934,
+     "half": 1857,
+     "std": 1778
     }
    },
    "sources": {
     "fantasycalc": 1511,
     "pihs": 1908,
-    "model": 2869
+    "model": 2867
    },
    "nSources": 3,
-   "spread": 1358,
+   "spread": 1356,
    "value1qb": 2086,
-   "valueSf": 1932,
+   "valueSf": 1934,
    "tier": 5
   },
   {
-   "id": 60,
-   "name": "Carnell Tate",
-   "pos": "WR",
-   "team": "TEN",
-   "age": 21,
-   "bye": 9,
+   "id": 57,
+   "name": "Aaron Jones",
+   "pos": "RB",
+   "team": "MIN",
+   "age": 31,
+   "bye": 6,
    "injury": null,
-   "sleeperId": "13279",
-   "espnId": "4871023",
-   "rosterPct": 0.86,
-   "trend": -266,
+   "sleeperId": "4199",
+   "espnId": "3042519",
+   "rosterPct": 0.93,
+   "trend": 1144,
    "momentum": 0,
    "outlook": {
     "g": 4,
-    "fpg": 11.7,
-    "xfpg": 11.9,
-    "luck": -0.2,
-    "tgtShare": 27,
+    "fpg": 12.9,
+    "xfpg": 14.5,
+    "luck": -1.6,
+    "tgtShare": 14,
+    "rushShare": 62,
+    "ros": 141,
+    "rosG": 12,
+    "ppg": 11.8,
+    "next": {
+     "wk": 5,
+     "opp": "NO",
+     "home": false,
+     "implied": 22
+    },
+    "src": "blend",
+    "sos": 5,
+    "sosN": 32,
+    "playoffSos": 16
+   },
+   "values": {
+    "1qb": {
+     "ppr": 2080,
+     "half": 2063,
+     "std": 2011
+    },
+    "sf": {
+     "ppr": 1839,
+     "half": 1832,
+     "std": 1796
+    }
+   },
+   "sources": {
+    "fantasycalc": 1615,
+    "pihs": 2368,
+    "model": 2431
+   },
+   "nSources": 3,
+   "spread": 816,
+   "value1qb": 2080,
+   "valueSf": 1839,
+   "tier": 5
+  },
+  {
+   "id": 58,
+   "name": "Joe Burrow",
+   "pos": "QB",
+   "team": "CIN",
+   "age": 29,
+   "bye": 6,
+   "injury": null,
+   "sleeperId": "6770",
+   "espnId": "3915511",
+   "rosterPct": 0.97,
+   "trend": -847,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 19.7,
+    "xfpg": 18.3,
+    "luck": 1.3,
+    "tgtShare": 0,
+    "rushShare": 13,
+    "ros": 223,
+    "rosG": 12,
+    "ppg": 18.6,
+    "next": {
+     "wk": 5,
+     "opp": "MIA",
+     "home": false,
+     "implied": 24.8
+    },
+    "src": "blend",
+    "sos": 8,
+    "sosN": 32,
+    "playoffSos": 5
+   },
+   "values": {
+    "1qb": {
+     "ppr": 2017,
+     "half": 2031,
+     "std": 1987
+    },
+    "sf": {
+     "ppr": 5373,
+     "half": 5460,
+     "std": 5508
+    }
+   },
+   "sources": {
+    "fantasycalc": 2342,
+    "pihs": 2961,
+    "fantasypros": 1563,
+    "model": 1237
+   },
+   "nSources": 4,
+   "spread": 1724,
+   "value1qb": 2017,
+   "valueSf": 5373,
+   "tier": 5
+  },
+  {
+   "id": 59,
+   "name": "Sam LaPorta",
+   "pos": "TE",
+   "team": "DET",
+   "age": 25,
+   "bye": 6,
+   "injury": null,
+   "sleeperId": "10859",
+   "espnId": "4430027",
+   "rosterPct": 0.96,
+   "trend": -288,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 14.2,
+    "xfpg": 15.9,
+    "luck": -1.7,
+    "tgtShare": 20,
     "rushShare": 0,
-    "ros": 159,
+    "ros": 158,
     "rosG": 12,
     "ppg": 13.2,
     "next": {
      "wk": 5,
-     "opp": "HOU",
-     "home": true,
-     "implied": 15
+     "opp": "ARI",
+     "home": false,
+     "implied": 29.5
     },
     "src": "blend",
-    "sos": 11,
+    "sos": 25,
     "sosN": 32,
-    "playoffSos": 24
+    "playoffSos": 28
    },
    "values": {
     "1qb": {
-     "ppr": 1973,
-     "half": 1767,
-     "std": 1643
+     "ppr": 2016,
+     "half": 1906,
+     "std": 1851
     },
     "sf": {
-     "ppr": 1784,
-     "half": 1698,
-     "std": 1575
+     "ppr": 2123,
+     "half": 1983,
+     "std": 1938
     }
    },
    "sources": {
-    "fantasycalc": 1421,
-    "pihs": 2303,
-    "model": 2398
+    "fantasycalc": 1417,
+    "pihs": 2434,
+    "fantasypros": 1435,
+    "model": 2727
    },
-   "nSources": 3,
-   "spread": 977,
-   "value1qb": 1973,
-   "valueSf": 1784,
+   "nSources": 4,
+   "spread": 1310,
+   "value1qb": 2016,
+   "valueSf": 2123,
    "tier": 5
   },
   {
-   "id": 61,
+   "id": 60,
    "name": "Luther Burden",
    "pos": "WR",
    "team": "CHI",
@@ -3511,12 +3473,12 @@
     "1qb": {
      "ppr": 1963,
      "half": 1855,
-     "std": 1741
+     "std": 1743
     },
     "sf": {
-     "ppr": 1962,
-     "half": 1886,
-     "std": 1781
+     "ppr": 1969,
+     "half": 1852,
+     "std": 1783
     }
    },
    "sources": {
@@ -3527,7 +3489,64 @@
    "nSources": 3,
    "spread": 1345,
    "value1qb": 1963,
-   "valueSf": 1962,
+   "valueSf": 1969,
+   "tier": 5
+  },
+  {
+   "id": 61,
+   "name": "Carnell Tate",
+   "pos": "WR",
+   "team": "TEN",
+   "age": 21,
+   "bye": 9,
+   "injury": null,
+   "sleeperId": "13279",
+   "espnId": "4871023",
+   "rosterPct": 0.86,
+   "trend": -266,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 11.7,
+    "xfpg": 11.9,
+    "luck": -0.2,
+    "tgtShare": 27,
+    "rushShare": 0,
+    "ros": 159,
+    "rosG": 12,
+    "ppg": 13.2,
+    "next": {
+     "wk": 5,
+     "opp": "HOU",
+     "home": true,
+     "implied": 15
+    },
+    "src": "blend",
+    "sos": 11,
+    "sosN": 32,
+    "playoffSos": 24
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1957,
+     "half": 1767,
+     "std": 1643
+    },
+    "sf": {
+     "ppr": 1792,
+     "half": 1692,
+     "std": 1560
+    }
+   },
+   "sources": {
+    "fantasycalc": 1421,
+    "pihs": 2303,
+    "model": 2352
+   },
+   "nSources": 3,
+   "spread": 931,
+   "value1qb": 1957,
+   "valueSf": 1792,
    "tier": 5
   },
   {
@@ -3571,9 +3590,9 @@
      "std": 1997
     },
     "sf": {
-     "ppr": 2035,
-     "half": 2081,
-     "std": 2081
+     "ppr": 2045,
+     "half": 2073,
+     "std": 2089
     }
    },
    "sources": {
@@ -3584,7 +3603,7 @@
    "nSources": 3,
    "spread": 387,
    "value1qb": 1912,
-   "valueSf": 2035,
+   "valueSf": 2045,
    "tier": 5
   },
   {
@@ -3624,13 +3643,13 @@
    "values": {
     "1qb": {
      "ppr": 1906,
-     "half": 1525,
+     "half": 1539,
      "std": 1315
     },
     "sf": {
-     "ppr": 1458,
-     "half": 1379,
-     "std": 1157
+     "ppr": 1465,
+     "half": 1371,
+     "std": 1161
     }
    },
    "sources": {
@@ -3641,7 +3660,7 @@
    "nSources": 3,
    "spread": 1604,
    "value1qb": 1906,
-   "valueSf": 1458,
+   "valueSf": 1465,
    "tier": 5
   },
   {
@@ -3682,12 +3701,12 @@
     "1qb": {
      "ppr": 1796,
      "half": 1800,
-     "std": 1796
+     "std": 1797
     },
     "sf": {
-     "ppr": 1931,
-     "half": 1966,
-     "std": 1970
+     "ppr": 1940,
+     "half": 1946,
+     "std": 1972
     }
    },
    "sources": {
@@ -3698,7 +3717,7 @@
    "nSources": 3,
    "spread": 1101,
    "value1qb": 1796,
-   "valueSf": 1931,
+   "valueSf": 1940,
    "tier": 5
   },
   {
@@ -3738,13 +3757,13 @@
    "values": {
     "1qb": {
      "ppr": 1746,
-     "half": 1908,
-     "std": 2123
+     "half": 1906,
+     "std": 2104
     },
     "sf": {
-     "ppr": 1572,
-     "half": 1640,
-     "std": 1784
+     "ppr": 1555,
+     "half": 1633,
+     "std": 1790
     }
    },
    "sources": {
@@ -3755,7 +3774,7 @@
    "nSources": 3,
    "spread": 726,
    "value1qb": 1746,
-   "valueSf": 1572,
+   "valueSf": 1555,
    "tier": 5
   },
   {
@@ -3794,25 +3813,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1687,
-     "half": 1700,
-     "std": 1673
+     "ppr": 1710,
+     "half": 1719,
+     "std": 1689
     },
     "sf": {
-     "ppr": 4874,
-     "half": 5080,
-     "std": 5258
+     "ppr": 4926,
+     "half": 5049,
+     "std": 5241
     }
    },
    "sources": {
     "fantasycalc": 1825,
     "pihs": 1711,
+    "fantasypros": 1840,
     "model": 1510
    },
-   "nSources": 3,
-   "spread": 315,
-   "value1qb": 1687,
-   "valueSf": 4874,
+   "nSources": 4,
+   "spread": 330,
+   "value1qb": 1710,
+   "valueSf": 4926,
    "tier": 5
   },
   {
@@ -3851,29 +3871,88 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1648,
-     "half": 1704,
-     "std": 1689
+     "ppr": 1677,
+     "half": 1720,
+     "std": 1701
     },
     "sf": {
-     "ppr": 4729,
-     "half": 4763,
-     "std": 4900
+     "ppr": 4817,
+     "half": 4796,
+     "std": 4905
     }
    },
    "sources": {
     "fantasycalc": 1419,
     "pihs": 1842,
-    "model": 1787
+    "fantasypros": 1825,
+    "model": 1796
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 423,
-   "value1qb": 1648,
-   "valueSf": 4729,
+   "value1qb": 1677,
+   "valueSf": 4817,
    "tier": 5
   },
   {
    "id": 68,
+   "name": "Trevor Lawrence",
+   "pos": "QB",
+   "team": "JAX",
+   "age": 27,
+   "bye": 7,
+   "injury": null,
+   "sleeperId": "7523",
+   "espnId": "4360310",
+   "rosterPct": 0.89,
+   "trend": 70,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 16.3,
+    "xfpg": 15.2,
+    "luck": 1.1,
+    "tgtShare": 0,
+    "rushShare": 10,
+    "ros": 225,
+    "rosG": 12,
+    "ppg": 18.8,
+    "next": {
+     "wk": 5,
+     "opp": "PHI",
+     "home": true,
+     "implied": 24.8
+    },
+    "src": "blend",
+    "sos": 6,
+    "sosN": 32,
+    "playoffSos": 1
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1669,
+     "half": 1677,
+     "std": 1636
+    },
+    "sf": {
+     "ppr": 4616,
+     "half": 4742,
+     "std": 4817
+    }
+   },
+   "sources": {
+    "fantasycalc": 1563,
+    "pihs": 1645,
+    "fantasypros": 2342,
+    "model": 1473
+   },
+   "nSources": 4,
+   "spread": 869,
+   "value1qb": 1669,
+   "valueSf": 4616,
+   "tier": 5
+  },
+  {
+   "id": 69,
    "name": "Ladd McConkey",
    "pos": "WR",
    "team": "LAC",
@@ -3913,9 +3992,9 @@
      "std": 1488
     },
     "sf": {
-     "ppr": 1762,
-     "half": 1709,
-     "std": 1647
+     "ppr": 1770,
+     "half": 1702,
+     "std": 1653
     }
    },
    "sources": {
@@ -3926,11 +4005,11 @@
    "nSources": 3,
    "spread": 1607,
    "value1qb": 1580,
-   "valueSf": 1762,
+   "valueSf": 1770,
    "tier": 5
   },
   {
-   "id": 69,
+   "id": 70,
    "name": "Caleb Williams",
    "pos": "QB",
    "team": "CHI",
@@ -3966,142 +4045,28 @@
    "values": {
     "1qb": {
      "ppr": 1562,
-     "half": 1604,
-     "std": 1549
+     "half": 1600,
+     "std": 1553
     },
     "sf": {
-     "ppr": 4627,
-     "half": 4774,
-     "std": 4837
+     "ppr": 4650,
+     "half": 4756,
+     "std": 4851
     }
    },
    "sources": {
     "fantasycalc": 1840,
     "pihs": 1447,
-    "model": 1313
+    "model": 1315
    },
    "nSources": 3,
-   "spread": 527,
+   "spread": 525,
    "value1qb": 1562,
-   "valueSf": 4627,
-   "tier": 5
-  },
-  {
-   "id": 70,
-   "name": "Trevor Lawrence",
-   "pos": "QB",
-   "team": "JAX",
-   "age": 27,
-   "bye": 7,
-   "injury": null,
-   "sleeperId": "7523",
-   "espnId": "4360310",
-   "rosterPct": 0.89,
-   "trend": 70,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 16.3,
-    "xfpg": 15.2,
-    "luck": 1.1,
-    "tgtShare": 0,
-    "rushShare": 10,
-    "ros": 225,
-    "rosG": 12,
-    "ppg": 18.8,
-    "next": {
-     "wk": 5,
-     "opp": "PHI",
-     "home": true,
-     "implied": 24.8
-    },
-    "src": "blend",
-    "sos": 6,
-    "sosN": 32,
-    "playoffSos": 1
-   },
-   "values": {
-    "1qb": {
-     "ppr": 1556,
-     "half": 1562,
-     "std": 1525
-    },
-    "sf": {
-     "ppr": 4332,
-     "half": 4541,
-     "std": 4704
-    }
-   },
-   "sources": {
-    "fantasycalc": 1563,
-    "pihs": 1645,
-    "model": 1488
-   },
-   "nSources": 3,
-   "spread": 157,
-   "value1qb": 1556,
-   "valueSf": 4332,
+   "valueSf": 4650,
    "tier": 5
   },
   {
    "id": 71,
-   "name": "Juwan Johnson",
-   "pos": "TE",
-   "team": "NO",
-   "age": 30,
-   "bye": 8,
-   "injury": null,
-   "sleeperId": "7002",
-   "espnId": "3929645",
-   "rosterPct": 0.75,
-   "trend": 758,
-   "momentum": 0.04,
-   "outlook": {
-    "g": 4,
-    "fpg": 15.1,
-    "xfpg": 12.3,
-    "luck": 2.7,
-    "tgtShare": 15,
-    "rushShare": 0,
-    "ros": 149,
-    "rosG": 12,
-    "ppg": 12.4,
-    "next": {
-     "wk": 5,
-     "opp": "MIN",
-     "home": true,
-     "implied": 20.5
-    },
-    "src": "blend",
-    "sos": 3,
-    "sosN": 32,
-    "playoffSos": 2
-   },
-   "values": {
-    "1qb": {
-     "ppr": 1536,
-     "half": 1491,
-     "std": 1379
-    },
-    "sf": {
-     "ppr": 1696,
-     "half": 1635,
-     "std": 1579
-    }
-   },
-   "sources": {
-    "fantasycalc": 1197,
-    "pihs": 1053,
-    "model": 2247
-   },
-   "nSources": 3,
-   "spread": 1194,
-   "value1qb": 1536,
-   "valueSf": 1696,
-   "tier": 5
-  },
-  {
-   "id": 72,
    "name": "Tyler Shough",
    "pos": "QB",
    "team": "NO",
@@ -4141,9 +4106,9 @@
      "std": 1516
     },
     "sf": {
-     "ppr": 4405,
-     "half": 4529,
-     "std": 4690
+     "ppr": 4513,
+     "half": 4468,
+     "std": 4578
     }
    },
    "sources": {
@@ -4154,7 +4119,65 @@
    "nSources": 3,
    "spread": 714,
    "value1qb": 1507,
-   "valueSf": 4405,
+   "valueSf": 4513,
+   "tier": 5
+  },
+  {
+   "id": 72,
+   "name": "Juwan Johnson",
+   "pos": "TE",
+   "team": "NO",
+   "age": 30,
+   "bye": 8,
+   "injury": null,
+   "sleeperId": "7002",
+   "espnId": "3929645",
+   "rosterPct": 0.75,
+   "trend": 758,
+   "momentum": 0.04,
+   "outlook": {
+    "g": 4,
+    "fpg": 15.1,
+    "xfpg": 12.3,
+    "luck": 2.7,
+    "tgtShare": 15,
+    "rushShare": 0,
+    "ros": 149,
+    "rosG": 12,
+    "ppg": 12.4,
+    "next": {
+     "wk": 5,
+     "opp": "MIN",
+     "home": true,
+     "implied": 20.5
+    },
+    "src": "blend",
+    "sos": 3,
+    "sosN": 32,
+    "playoffSos": 2
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1485,
+     "half": 1449,
+     "std": 1345
+    },
+    "sf": {
+     "ppr": 1641,
+     "half": 1568,
+     "std": 1531
+    }
+   },
+   "sources": {
+    "fantasycalc": 1197,
+    "pihs": 1053,
+    "fantasypros": 1197,
+    "model": 2247
+   },
+   "nSources": 4,
+   "spread": 1194,
+   "value1qb": 1485,
+   "valueSf": 1641,
    "tier": 5
   },
   {
@@ -4193,25 +4216,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1495,
+     "ppr": 1484,
      "half": 1528,
      "std": 1512
     },
     "sf": {
-     "ppr": 1521,
-     "half": 1553,
-     "std": 1547
+     "ppr": 1524,
+     "half": 1534,
+     "std": 1553
     }
    },
    "sources": {
     "fantasycalc": 1161,
     "pihs": 1645,
-    "model": 1784
+    "model": 1753
    },
    "nSources": 3,
-   "spread": 623,
-   "value1qb": 1495,
-   "valueSf": 1521,
+   "spread": 592,
+   "value1qb": 1484,
+   "valueSf": 1524,
    "tier": 5
   },
   {
@@ -4250,25 +4273,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1449,
+     "ppr": 1448,
      "half": 1449,
      "std": 1395
     },
     "sf": {
-     "ppr": 1503,
-     "half": 1474,
-     "std": 1438
+     "ppr": 1510,
+     "half": 1468,
+     "std": 1443
     }
    },
    "sources": {
     "fantasycalc": 1207,
     "pihs": 2039,
-    "model": 1337
+    "model": 1336
    },
    "nSources": 3,
    "spread": 832,
-   "value1qb": 1449,
-   "valueSf": 1503,
+   "value1qb": 1448,
+   "valueSf": 1510,
    "tier": 5
   },
   {
@@ -4312,9 +4335,9 @@
      "std": 1438
     },
     "sf": {
-     "ppr": 1699,
-     "half": 1678,
-     "std": 1658
+     "ppr": 1704,
+     "half": 1671,
+     "std": 1664
     }
    },
    "sources": {
@@ -4325,7 +4348,7 @@
    "nSources": 3,
    "spread": 998,
    "value1qb": 1447,
-   "valueSf": 1699,
+   "valueSf": 1704,
    "tier": 5
   },
   {
@@ -4364,143 +4387,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1431,
-     "half": 1454,
-     "std": 1479
+     "ppr": 1430,
+     "half": 1448,
+     "std": 1463
     },
     "sf": {
-     "ppr": 4286,
-     "half": 4363,
-     "std": 4439
+     "ppr": 4283,
+     "half": 4255,
+     "std": 4393
     }
    },
    "sources": {
     "fantasycalc": 1237,
     "pihs": 1447,
-    "model": 1641
+    "fantasypros": 1419,
+    "model": 1643
    },
-   "nSources": 3,
-   "spread": 404,
-   "value1qb": 1431,
-   "valueSf": 4286,
+   "nSources": 4,
+   "spread": 406,
+   "value1qb": 1430,
+   "valueSf": 4283,
    "tier": 5
   },
   {
    "id": 77,
-   "name": "Dalton Kincaid",
-   "pos": "TE",
-   "team": "BUF",
-   "age": 26,
-   "bye": 7,
-   "injury": null,
-   "sleeperId": "10236",
-   "espnId": "4385690",
-   "rosterPct": 0.91,
-   "trend": 519,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 11.5,
-    "xfpg": 9.1,
-    "luck": 2.4,
-    "tgtShare": 16,
-    "rushShare": 0,
-    "ros": 128,
-    "rosG": 12,
-    "ppg": 10.6,
-    "next": {
-     "wk": 5,
-     "opp": "LAR",
-     "home": false,
-     "implied": 25.8
-    },
-    "src": "blend",
-    "sos": 16,
-    "sosN": 32,
-    "playoffSos": 14
-   },
-   "values": {
-    "1qb": {
-     "ppr": 1426,
-     "half": 1382,
-     "std": 1423
-    },
-    "sf": {
-     "ppr": 1888,
-     "half": 1834,
-     "std": 1850
-    }
-   },
-   "sources": {
-    "fantasycalc": 1399,
-    "pihs": 1645,
-    "model": 1311
-   },
-   "nSources": 3,
-   "spread": 334,
-   "value1qb": 1426,
-   "valueSf": 1888,
-   "tier": 5
-  },
-  {
-   "id": 78,
-   "name": "Travis Kelce",
-   "pos": "TE",
-   "team": "KC",
-   "age": 37,
-   "bye": 5,
-   "injury": null,
-   "sleeperId": "1466",
-   "espnId": "15847",
-   "rosterPct": 0.95,
-   "trend": 211,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 13.2,
-    "xfpg": 9.1,
-    "luck": 4,
-    "tgtShare": 17,
-    "rushShare": 0,
-    "ros": 135,
-    "rosG": 12,
-    "ppg": 11.3,
-    "next": {
-     "wk": 6,
-     "opp": "LAC",
-     "home": true,
-     "implied": 26.5
-    },
-    "src": "blend",
-    "sos": 24,
-    "sosN": 32,
-    "playoffSos": 32
-   },
-   "values": {
-    "1qb": {
-     "ppr": 1425,
-     "half": 1384,
-     "std": 1371
-    },
-    "sf": {
-     "ppr": 1730,
-     "half": 1663,
-     "std": 1657
-    }
-   },
-   "sources": {
-    "fantasycalc": 1435,
-    "pihs": 1184,
-    "model": 1573
-   },
-   "nSources": 3,
-   "spread": 389,
-   "value1qb": 1425,
-   "valueSf": 1730,
-   "tier": 5
-  },
-  {
-   "id": 79,
    "name": "Jameson Williams",
    "pos": "WR",
    "team": "DET",
@@ -4537,12 +4447,12 @@
     "1qb": {
      "ppr": 1425,
      "half": 1410,
-     "std": 1371
+     "std": 1374
     },
     "sf": {
-     "ppr": 1547,
-     "half": 1526,
-     "std": 1488
+     "ppr": 1554,
+     "half": 1520,
+     "std": 1498
     }
    },
    "sources": {
@@ -4553,7 +4463,123 @@
    "nSources": 3,
    "spread": 786,
    "value1qb": 1425,
-   "valueSf": 1547,
+   "valueSf": 1554,
+   "tier": 5
+  },
+  {
+   "id": 78,
+   "name": "Dalton Kincaid",
+   "pos": "TE",
+   "team": "BUF",
+   "age": 26,
+   "bye": 7,
+   "injury": null,
+   "sleeperId": "10236",
+   "espnId": "4385690",
+   "rosterPct": 0.91,
+   "trend": 519,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 11.5,
+    "xfpg": 9.1,
+    "luck": 2.4,
+    "tgtShare": 16,
+    "rushShare": 0,
+    "ros": 128,
+    "rosG": 12,
+    "ppg": 10.6,
+    "next": {
+     "wk": 5,
+     "opp": "LAR",
+     "home": false,
+     "implied": 25.8
+    },
+    "src": "blend",
+    "sos": 16,
+    "sosN": 32,
+    "playoffSos": 14
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1424,
+     "half": 1381,
+     "std": 1413
+    },
+    "sf": {
+     "ppr": 1839,
+     "half": 1771,
+     "std": 1788
+    }
+   },
+   "sources": {
+    "fantasycalc": 1399,
+    "pihs": 1645,
+    "fantasypros": 1417,
+    "model": 1311
+   },
+   "nSources": 4,
+   "spread": 334,
+   "value1qb": 1424,
+   "valueSf": 1839,
+   "tier": 5
+  },
+  {
+   "id": 79,
+   "name": "Travis Kelce",
+   "pos": "TE",
+   "team": "KC",
+   "age": 37,
+   "bye": 5,
+   "injury": null,
+   "sleeperId": "1466",
+   "espnId": "15847",
+   "rosterPct": 0.95,
+   "trend": 211,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 13.2,
+    "xfpg": 9.1,
+    "luck": 4,
+    "tgtShare": 17,
+    "rushShare": 0,
+    "ros": 135,
+    "rosG": 12,
+    "ppg": 11.3,
+    "next": {
+     "wk": 6,
+     "opp": "LAC",
+     "home": true,
+     "implied": 26.5
+    },
+    "src": "blend",
+    "sos": 24,
+    "sosN": 32,
+    "playoffSos": 32
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1396,
+     "half": 1350,
+     "std": 1336
+    },
+    "sf": {
+     "ppr": 1665,
+     "half": 1587,
+     "std": 1594
+    }
+   },
+   "sources": {
+    "fantasycalc": 1435,
+    "pihs": 1184,
+    "fantasypros": 1210,
+    "model": 1584
+   },
+   "nSources": 4,
+   "spread": 400,
+   "value1qb": 1396,
+   "valueSf": 1665,
    "tier": 5
   },
   {
@@ -4597,9 +4623,9 @@
      "std": 1363
     },
     "sf": {
-     "ppr": 1329,
-     "half": 1257,
-     "std": 1270
+     "ppr": 1336,
+     "half": 1253,
+     "std": 1275
     }
    },
    "sources": {
@@ -4610,7 +4636,7 @@
    "nSources": 3,
    "spread": 1201,
    "value1qb": 1378,
-   "valueSf": 1329,
+   "valueSf": 1336,
    "tier": 5
   },
   {
@@ -4654,9 +4680,9 @@
      "std": 1461
     },
     "sf": {
-     "ppr": 1444,
-     "half": 1501,
-     "std": 1554
+     "ppr": 1451,
+     "half": 1495,
+     "std": 1560
     }
    },
    "sources": {
@@ -4667,7 +4693,7 @@
    "nSources": 3,
    "spread": 730,
    "value1qb": 1371,
-   "valueSf": 1444,
+   "valueSf": 1451,
    "tier": 5
   },
   {
@@ -4707,13 +4733,13 @@
    "values": {
     "1qb": {
      "ppr": 1309,
-     "half": 1246,
-     "std": 1157
+     "half": 1245,
+     "std": 1151
     },
     "sf": {
-     "ppr": 1539,
-     "half": 1469,
-     "std": 1386
+     "ppr": 1547,
+     "half": 1463,
+     "std": 1391
     }
    },
    "sources": {
@@ -4724,7 +4750,7 @@
    "nSources": 3,
    "spread": 929,
    "value1qb": 1309,
-   "valueSf": 1539,
+   "valueSf": 1547,
    "tier": 5
   },
   {
@@ -4764,13 +4790,13 @@
    "values": {
     "1qb": {
      "ppr": 1278,
-     "half": 1294,
+     "half": 1293,
      "std": 1384
     },
     "sf": {
-     "ppr": 1404,
-     "half": 1419,
-     "std": 1483
+     "ppr": 1406,
+     "half": 1414,
+     "std": 1489
     }
    },
    "sources": {
@@ -4781,7 +4807,7 @@
    "nSources": 3,
    "spread": 600,
    "value1qb": 1278,
-   "valueSf": 1404,
+   "valueSf": 1406,
    "tier": 5
   },
   {
@@ -4822,12 +4848,12 @@
     "1qb": {
      "ppr": 1265,
      "half": 1240,
-     "std": 1172
+     "std": 1176
     },
     "sf": {
-     "ppr": 1637,
-     "half": 1587,
-     "std": 1517
+     "ppr": 1645,
+     "half": 1581,
+     "std": 1522
     }
    },
    "sources": {
@@ -4838,7 +4864,7 @@
    "nSources": 3,
    "spread": 978,
    "value1qb": 1265,
-   "valueSf": 1637,
+   "valueSf": 1645,
    "tier": 5
   },
   {
@@ -4877,25 +4903,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1258,
-     "half": 1312,
+     "ppr": 1263,
+     "half": 1315,
      "std": 1311
     },
     "sf": {
-     "ppr": 3765,
-     "half": 3827,
-     "std": 3890
+     "ppr": 3723,
+     "half": 3831,
+     "std": 3868
     }
    },
    "sources": {
     "fantasycalc": 1005,
     "pihs": 1118,
-    "model": 1643
+    "model": 1655
    },
    "nSources": 3,
-   "spread": 638,
-   "value1qb": 1258,
-   "valueSf": 3765,
+   "spread": 650,
+   "value1qb": 1263,
+   "valueSf": 3723,
    "tier": 5
   },
   {
@@ -4934,25 +4960,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1240,
-     "half": 1170,
-     "std": 1078
+     "ppr": 1237,
+     "half": 1173,
+     "std": 1084
     },
     "sf": {
-     "ppr": 1493,
-     "half": 1403,
-     "std": 1307
+     "ppr": 1500,
+     "half": 1404,
+     "std": 1311
     }
    },
    "sources": {
     "fantasycalc": 881,
     "pihs": 1711,
-    "model": 1344
+    "model": 1337
    },
    "nSources": 3,
    "spread": 830,
-   "value1qb": 1240,
-   "valueSf": 1493,
+   "value1qb": 1237,
+   "valueSf": 1500,
    "tier": 5
   },
   {
@@ -4991,29 +5017,87 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1228,
-     "half": 1201,
+     "ppr": 1230,
+     "half": 1203,
      "std": 1211
     },
     "sf": {
      "ppr": 1422,
-     "half": 1385,
-     "std": 1390
+     "half": 1351,
+     "std": 1391
     }
    },
    "sources": {
     "fantasycalc": 1022,
     "pihs": 1053,
-    "model": 1584
+    "model": 1590
    },
    "nSources": 3,
-   "spread": 562,
-   "value1qb": 1228,
+   "spread": 568,
+   "value1qb": 1230,
    "valueSf": 1422,
    "tier": 5
   },
   {
    "id": 88,
+   "name": "Tucker Kraft",
+   "pos": "TE",
+   "team": "GB",
+   "age": 25,
+   "bye": 11,
+   "injury": null,
+   "sleeperId": "9484",
+   "espnId": "4572680",
+   "rosterPct": 0.85,
+   "trend": -787,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 9,
+    "xfpg": 10.5,
+    "luck": -1.5,
+    "tgtShare": 16,
+    "rushShare": 1,
+    "ros": 122,
+    "rosG": 12,
+    "ppg": 10.1,
+    "next": {
+     "wk": 5,
+     "opp": "CHI",
+     "home": true,
+     "implied": 21.3
+    },
+    "src": "blend",
+    "sos": 22,
+    "sosN": 32,
+    "playoffSos": 21
+   },
+   "values": {
+    "1qb": {
+     "ppr": 1214,
+     "half": 1165,
+     "std": 1152
+    },
+    "sf": {
+     "ppr": 1369,
+     "half": 1278,
+     "std": 1292
+    }
+   },
+   "sources": {
+    "fantasycalc": 1210,
+    "pihs": 1250,
+    "fantasypros": 1399,
+    "model": 1103
+   },
+   "nSources": 4,
+   "spread": 296,
+   "value1qb": 1214,
+   "valueSf": 1369,
+   "tier": 5
+  },
+  {
+   "id": 89,
    "name": "Isaiah Likely",
    "pos": "TE",
    "team": "NYG",
@@ -5049,13 +5133,13 @@
    "values": {
     "1qb": {
      "ppr": 1187,
-     "half": 1114,
-     "std": 1012
+     "half": 1130,
+     "std": 1031
     },
     "sf": {
-     "ppr": 1454,
-     "half": 1365,
-     "std": 1227
+     "ppr": 1436,
+     "half": 1359,
+     "std": 1231
     }
    },
    "sources": {
@@ -5066,64 +5150,7 @@
    "nSources": 3,
    "spread": 879,
    "value1qb": 1187,
-   "valueSf": 1454,
-   "tier": 6
-  },
-  {
-   "id": 89,
-   "name": "Tucker Kraft",
-   "pos": "TE",
-   "team": "GB",
-   "age": 25,
-   "bye": 11,
-   "injury": null,
-   "sleeperId": "9484",
-   "espnId": "4572680",
-   "rosterPct": 0.85,
-   "trend": -787,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 9,
-    "xfpg": 10.5,
-    "luck": -1.5,
-    "tgtShare": 16,
-    "rushShare": 1,
-    "ros": 122,
-    "rosG": 12,
-    "ppg": 10.1,
-    "next": {
-     "wk": 5,
-     "opp": "CHI",
-     "home": true,
-     "implied": 21.3
-    },
-    "src": "blend",
-    "sos": 22,
-    "sosN": 32,
-    "playoffSos": 21
-   },
-   "values": {
-    "1qb": {
-     "ppr": 1177,
-     "half": 1132,
-     "std": 1110
-    },
-    "sf": {
-     "ppr": 1341,
-     "half": 1256,
-     "std": 1257
-    }
-   },
-   "sources": {
-    "fantasycalc": 1210,
-    "pihs": 1250,
-    "model": 1090
-   },
-   "nSources": 3,
-   "spread": 160,
-   "value1qb": 1177,
-   "valueSf": 1341,
+   "valueSf": 1436,
    "tier": 6
   },
   {
@@ -5162,25 +5189,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1118,
-     "half": 1131,
-     "std": 1057
+     "ppr": 1136,
+     "half": 1145,
+     "std": 1078
     },
     "sf": {
-     "ppr": 3990,
-     "half": 4125,
-     "std": 4135
+     "ppr": 3976,
+     "half": 4050,
+     "std": 4082
     }
    },
    "sources": {
     "fantasycalc": 1235,
     "pihs": 1184,
+    "fantasypros": 1237,
     "model": 937
    },
-   "nSources": 3,
-   "spread": 298,
-   "value1qb": 1118,
-   "valueSf": 3990,
+   "nSources": 4,
+   "spread": 300,
+   "value1qb": 1136,
+   "valueSf": 3976,
    "tier": 6
   },
   {
@@ -5221,12 +5249,12 @@
     "1qb": {
      "ppr": 1116,
      "half": 1122,
-     "std": 1093
+     "std": 1096
     },
     "sf": {
-     "ppr": 1213,
-     "half": 1233,
-     "std": 1208
+     "ppr": 1219,
+     "half": 1228,
+     "std": 1212
     }
    },
    "sources": {
@@ -5237,7 +5265,7 @@
    "nSources": 3,
    "spread": 887,
    "value1qb": 1116,
-   "valueSf": 1213,
+   "valueSf": 1219,
    "tier": 6
   },
   {
@@ -5276,25 +5304,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1070,
-     "half": 1071,
-     "std": 989
+     "ppr": 1094,
+     "half": 1094,
+     "std": 1020
     },
     "sf": {
-     "ppr": 3603,
-     "half": 3711,
-     "std": 3715
+     "ppr": 3639,
+     "half": 3694,
+     "std": 3717
     }
    },
    "sources": {
     "fantasycalc": 1206,
     "pihs": 1053,
+    "fantasypros": 1235,
     "model": 922
    },
-   "nSources": 3,
-   "spread": 284,
-   "value1qb": 1070,
-   "valueSf": 3603,
+   "nSources": 4,
+   "spread": 313,
+   "value1qb": 1094,
+   "valueSf": 3639,
    "tier": 6
   },
   {
@@ -5333,25 +5362,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1035,
+     "ppr": 1039,
      "half": 940,
      "std": 810
     },
     "sf": {
-     "ppr": 883,
-     "half": 780,
-     "std": 671
+     "ppr": 888,
+     "half": 777,
+     "std": 673
     }
    },
    "sources": {
     "fantasycalc": 836,
     "pihs": 1184,
-    "model": 1145
+    "model": 1156
    },
    "nSources": 3,
    "spread": 348,
-   "value1qb": 1035,
-   "valueSf": 883,
+   "value1qb": 1039,
+   "valueSf": 888,
    "tier": 6
   },
   {
@@ -5395,9 +5424,9 @@
      "std": 1003
     },
     "sf": {
-     "ppr": 1154,
-     "half": 1120,
-     "std": 1101
+     "ppr": 1159,
+     "half": 1116,
+     "std": 1104
     }
    },
    "sources": {
@@ -5408,7 +5437,7 @@
    "nSources": 3,
    "spread": 785,
    "value1qb": 1034,
-   "valueSf": 1154,
+   "valueSf": 1159,
    "tier": 6
   },
   {
@@ -5447,79 +5476,28 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1013,
-     "half": 1010,
-     "std": 1087
+     "ppr": 1015,
+     "half": 1011,
+     "std": 1083
     },
     "sf": {
-     "ppr": 906,
-     "half": 896,
-     "std": 901
+     "ppr": 911,
+     "half": 893,
+     "std": 904
     }
    },
    "sources": {
     "fantasycalc": 802,
-    "model": 1216
+    "model": 1221
    },
    "nSources": 2,
-   "spread": 414,
-   "value1qb": 1013,
-   "valueSf": 906,
+   "spread": 419,
+   "value1qb": 1015,
+   "valueSf": 911,
    "tier": 6
   },
   {
    "id": 96,
-   "name": "Zach Charbonnet",
-   "pos": "RB",
-   "team": "SEA",
-   "age": 25,
-   "bye": 11,
-   "injury": "PUP",
-   "sleeperId": "9753",
-   "espnId": "4426385",
-   "rosterPct": 0.58,
-   "trend": 892,
-   "momentum": 0.07,
-   "outlook": {
-    "ros": 108,
-    "rosG": 12,
-    "ppg": 9,
-    "next": {
-     "wk": 5,
-     "opp": "SF",
-     "home": true,
-     "implied": 24.5
-    },
-    "src": "proj",
-    "sos": 19,
-    "sosN": 32,
-    "playoffSos": 13
-   },
-   "values": {
-    "1qb": {
-     "ppr": 963,
-     "half": 929,
-     "std": 895
-    },
-    "sf": {
-     "ppr": 895,
-     "half": 886,
-     "std": 860
-    }
-   },
-   "sources": {
-    "fantasycalc": 1185,
-    "pihs": 461,
-    "model": 1033
-   },
-   "nSources": 3,
-   "spread": 724,
-   "value1qb": 963,
-   "valueSf": 895,
-   "tier": 6
-  },
-  {
-   "id": 97,
    "name": "Colston Loveland",
    "pos": "TE",
    "team": "CHI",
@@ -5554,25 +5532,77 @@
    },
    "values": {
     "1qb": {
-     "ppr": 956,
-     "half": 899,
-     "std": 896
+     "ppr": 985,
+     "half": 940,
+     "std": 935
     },
     "sf": {
-     "ppr": 1133,
-     "half": 1079,
-     "std": 1061
+     "ppr": 1156,
+     "half": 1099,
+     "std": 1091
     }
    },
    "sources": {
     "fantasycalc": 1149,
     "pihs": 987,
+    "fantasypros": 1149,
     "model": 710
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 439,
-   "value1qb": 956,
-   "valueSf": 1133,
+   "value1qb": 985,
+   "valueSf": 1156,
+   "tier": 6
+  },
+  {
+   "id": 97,
+   "name": "Zach Charbonnet",
+   "pos": "RB",
+   "team": "SEA",
+   "age": 25,
+   "bye": 11,
+   "injury": "PUP",
+   "sleeperId": "9753",
+   "espnId": "4426385",
+   "rosterPct": 0.58,
+   "trend": 892,
+   "momentum": 0.07,
+   "outlook": {
+    "ros": 108,
+    "rosG": 12,
+    "ppg": 9,
+    "next": {
+     "wk": 5,
+     "opp": "SF",
+     "home": true,
+     "implied": 24.5
+    },
+    "src": "proj",
+    "sos": 19,
+    "sosN": 32,
+    "playoffSos": 13
+   },
+   "values": {
+    "1qb": {
+     "ppr": 963,
+     "half": 929,
+     "std": 907
+    },
+    "sf": {
+     "ppr": 899,
+     "half": 882,
+     "std": 863
+    }
+   },
+   "sources": {
+    "fantasycalc": 1185,
+    "pihs": 461,
+    "model": 1033
+   },
+   "nSources": 3,
+   "spread": 724,
+   "value1qb": 963,
+   "valueSf": 899,
    "tier": 6
   },
   {
@@ -5616,9 +5646,9 @@
      "std": 923
     },
     "sf": {
-     "ppr": 1041,
-     "half": 1049,
-     "std": 1060
+     "ppr": 1046,
+     "half": 1045,
+     "std": 1064
     }
    },
    "sources": {
@@ -5629,7 +5659,7 @@
    "nSources": 3,
    "spread": 623,
    "value1qb": 918,
-   "valueSf": 1041,
+   "valueSf": 1046,
    "tier": 6
   },
   {
@@ -5667,9 +5697,9 @@
      "std": 878
     },
     "sf": {
-     "ppr": 1013,
-     "half": 1027,
-     "std": 1066
+     "ppr": 1018,
+     "half": 1023,
+     "std": 1070
     }
    },
    "sources": {
@@ -5680,7 +5710,7 @@
    "nSources": 3,
    "spread": 427,
    "value1qb": 844,
-   "valueSf": 1013,
+   "valueSf": 1018,
    "tier": 6
   },
   {
@@ -5719,25 +5749,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 810,
+     "ppr": 816,
      "half": 811,
      "std": 793
     },
     "sf": {
-     "ppr": 3213,
-     "half": 3223,
-     "std": 3285
+     "ppr": 3228,
+     "half": 3211,
+     "std": 3335
     }
    },
    "sources": {
     "fantasycalc": 564,
     "pihs": 724,
-    "model": 1150
+    "model": 1169
    },
    "nSources": 3,
-   "spread": 586,
-   "value1qb": 810,
-   "valueSf": 3213,
+   "spread": 605,
+   "value1qb": 816,
+   "valueSf": 3228,
    "tier": 6
   },
   {
@@ -5781,9 +5811,9 @@
      "std": 666
     },
     "sf": {
-     "ppr": 807,
-     "half": 721,
-     "std": 642
+     "ppr": 810,
+     "half": 718,
+     "std": 644
     }
    },
    "sources": {
@@ -5794,7 +5824,7 @@
    "nSources": 3,
    "spread": 712,
    "value1qb": 779,
-   "valueSf": 807,
+   "valueSf": 810,
    "tier": 6
   },
   {
@@ -5838,9 +5868,9 @@
      "std": 644
     },
     "sf": {
-     "ppr": 842,
-     "half": 764,
-     "std": 712
+     "ppr": 846,
+     "half": 761,
+     "std": 714
     }
    },
    "sources": {
@@ -5851,7 +5881,7 @@
    "nSources": 3,
    "spread": 641,
    "value1qb": 772,
-   "valueSf": 842,
+   "valueSf": 846,
    "tier": 6
   },
   {
@@ -5895,9 +5925,9 @@
      "std": 878
     },
     "sf": {
-     "ppr": 854,
-     "half": 878,
-     "std": 944
+     "ppr": 858,
+     "half": 875,
+     "std": 948
     }
    },
    "sources": {
@@ -5908,7 +5938,7 @@
    "nSources": 3,
    "spread": 782,
    "value1qb": 771,
-   "valueSf": 854,
+   "valueSf": 858,
    "tier": 6
   },
   {
@@ -5952,9 +5982,9 @@
      "std": 744
     },
     "sf": {
-     "ppr": 879,
-     "half": 896,
-     "std": 886
+     "ppr": 884,
+     "half": 893,
+     "std": 889
     }
    },
    "sources": {
@@ -5965,7 +5995,7 @@
    "nSources": 3,
    "spread": 731,
    "value1qb": 748,
-   "valueSf": 879,
+   "valueSf": 884,
    "tier": 6
   },
   {
@@ -6003,9 +6033,9 @@
      "std": 691
     },
     "sf": {
-     "ppr": 837,
-     "half": 814,
-     "std": 788
+     "ppr": 841,
+     "half": 811,
+     "std": 791
     }
    },
    "sources": {
@@ -6016,7 +6046,7 @@
    "nSources": 3,
    "spread": 464,
    "value1qb": 732,
-   "valueSf": 837,
+   "valueSf": 841,
    "tier": 6
   },
   {
@@ -6060,9 +6090,9 @@
      "std": 787
     },
     "sf": {
-     "ppr": 554,
-     "half": 628,
-     "std": 710
+     "ppr": 557,
+     "half": 626,
+     "std": 712
     }
    },
    "sources": {
@@ -6072,7 +6102,7 @@
    "nSources": 2,
    "spread": 452,
    "value1qb": 715,
-   "valueSf": 554,
+   "valueSf": 557,
    "tier": 6
   },
   {
@@ -6116,9 +6146,9 @@
      "std": 640
     },
     "sf": {
-     "ppr": 986,
-     "half": 938,
-     "std": 907
+     "ppr": 991,
+     "half": 935,
+     "std": 909
     }
    },
    "sources": {
@@ -6129,7 +6159,7 @@
    "nSources": 3,
    "spread": 556,
    "value1qb": 685,
-   "valueSf": 986,
+   "valueSf": 991,
    "tier": 6
   },
   {
@@ -6173,9 +6203,9 @@
      "std": 694
     },
     "sf": {
-     "ppr": 860,
-     "half": 850,
-     "std": 830
+     "ppr": 864,
+     "half": 846,
+     "std": 832
     }
    },
    "sources": {
@@ -6186,7 +6216,7 @@
    "nSources": 3,
    "spread": 665,
    "value1qb": 667,
-   "valueSf": 860,
+   "valueSf": 864,
    "tier": 6
   },
   {
@@ -6230,9 +6260,9 @@
      "std": 642
     },
     "sf": {
-     "ppr": 2219,
-     "half": 2220,
-     "std": 2209
+     "ppr": 2230,
+     "half": 2212,
+     "std": 2217
     }
    },
    "sources": {
@@ -6243,7 +6273,7 @@
    "nSources": 3,
    "spread": 401,
    "value1qb": 647,
-   "valueSf": 2219,
+   "valueSf": 2230,
    "tier": 6
   },
   {
@@ -6287,9 +6317,9 @@
      "std": 714
     },
     "sf": {
-     "ppr": 678,
-     "half": 717,
-     "std": 727
+     "ppr": 681,
+     "half": 714,
+     "std": 729
     }
    },
    "sources": {
@@ -6300,7 +6330,7 @@
    "nSources": 3,
    "spread": 690,
    "value1qb": 644,
-   "valueSf": 678,
+   "valueSf": 681,
    "tier": 6
   },
   {
@@ -6344,9 +6374,9 @@
      "std": 594
     },
     "sf": {
-     "ppr": 2725,
-     "half": 2808,
-     "std": 2915
+     "ppr": 2738,
+     "half": 2797,
+     "std": 2925
     }
    },
    "sources": {
@@ -6357,7 +6387,7 @@
    "nSources": 3,
    "spread": 628,
    "value1qb": 626,
-   "valueSf": 2725,
+   "valueSf": 2738,
    "tier": 6
   },
   {
@@ -6401,9 +6431,9 @@
      "std": 579
     },
     "sf": {
-     "ppr": 589,
-     "half": 573,
-     "std": 552
+     "ppr": 592,
+     "half": 570,
+     "std": 554
     }
    },
    "sources": {
@@ -6414,7 +6444,7 @@
    "nSources": 3,
    "spread": 549,
    "value1qb": 618,
-   "valueSf": 589,
+   "valueSf": 592,
    "tier": 6
   },
   {
@@ -6458,9 +6488,9 @@
      "std": 627
     },
     "sf": {
-     "ppr": 789,
-     "half": 797,
-     "std": 818
+     "ppr": 793,
+     "half": 794,
+     "std": 821
     }
    },
    "sources": {
@@ -6471,7 +6501,7 @@
    "nSources": 3,
    "spread": 549,
    "value1qb": 610,
-   "valueSf": 789,
+   "valueSf": 793,
    "tier": 6
   },
   {
@@ -6515,9 +6545,9 @@
      "std": 572
     },
     "sf": {
-     "ppr": 789,
-     "half": 763,
-     "std": 731
+     "ppr": 793,
+     "half": 760,
+     "std": 734
     }
    },
    "sources": {
@@ -6528,7 +6558,7 @@
    "nSources": 3,
    "spread": 813,
    "value1qb": 609,
-   "valueSf": 789,
+   "valueSf": 793,
    "tier": 6
   },
   {
@@ -6572,9 +6602,9 @@
      "std": 591
     },
     "sf": {
-     "ppr": 2645,
-     "half": 2645,
-     "std": 2681
+     "ppr": 2653,
+     "half": 2635,
+     "std": 2691
     }
    },
    "sources": {
@@ -6585,7 +6615,7 @@
    "nSources": 3,
    "spread": 411,
    "value1qb": 607,
-   "valueSf": 2645,
+   "valueSf": 2653,
    "tier": 6
   },
   {
@@ -6629,9 +6659,9 @@
      "std": 702
     },
     "sf": {
-     "ppr": 773,
-     "half": 839,
-     "std": 896
+     "ppr": 777,
+     "half": 836,
+     "std": 899
     }
    },
    "sources": {
@@ -6642,7 +6672,7 @@
    "nSources": 3,
    "spread": 200,
    "value1qb": 601,
-   "valueSf": 773,
+   "valueSf": 777,
    "tier": 6
   },
   {
@@ -6686,9 +6716,9 @@
      "std": 607
     },
     "sf": {
-     "ppr": 617,
-     "half": 658,
-     "std": 653
+     "ppr": 620,
+     "half": 656,
+     "std": 655
     }
    },
    "sources": {
@@ -6699,7 +6729,7 @@
    "nSources": 3,
    "spread": 729,
    "value1qb": 596,
-   "valueSf": 617,
+   "valueSf": 620,
    "tier": 6
   },
   {
@@ -6743,9 +6773,9 @@
      "std": 570
     },
     "sf": {
-     "ppr": 853,
-     "half": 835,
-     "std": 814
+     "ppr": 857,
+     "half": 832,
+     "std": 817
     }
    },
    "sources": {
@@ -6756,7 +6786,7 @@
    "nSources": 3,
    "spread": 340,
    "value1qb": 587,
-   "valueSf": 853,
+   "valueSf": 857,
    "tier": 6
   },
   {
@@ -6800,9 +6830,9 @@
      "std": 585
     },
     "sf": {
-     "ppr": 2449,
-     "half": 2484,
-     "std": 2474
+     "ppr": 2461,
+     "half": 2468,
+     "std": 2469
     }
    },
    "sources": {
@@ -6813,7 +6843,7 @@
    "nSources": 3,
    "spread": 710,
    "value1qb": 581,
-   "valueSf": 2449,
+   "valueSf": 2461,
    "tier": 6
   },
   {
@@ -6857,9 +6887,9 @@
      "std": 722
     },
     "sf": {
-     "ppr": 683,
-     "half": 709,
-     "std": 799
+     "ppr": 686,
+     "half": 706,
+     "std": 802
     }
    },
    "sources": {
@@ -6870,7 +6900,7 @@
    "nSources": 3,
    "spread": 293,
    "value1qb": 572,
-   "valueSf": 683,
+   "valueSf": 686,
    "tier": 6
   },
   {
@@ -6914,9 +6944,9 @@
      "std": 513
     },
     "sf": {
-     "ppr": 711,
-     "half": 689,
-     "std": 661
+     "ppr": 714,
+     "half": 686,
+     "std": 663
     }
    },
    "sources": {
@@ -6927,7 +6957,7 @@
    "nSources": 3,
    "spread": 314,
    "value1qb": 547,
-   "valueSf": 711,
+   "valueSf": 714,
    "tier": 6
   },
   {
@@ -6971,9 +7001,9 @@
      "std": 503
     },
     "sf": {
-     "ppr": 592,
-     "half": 568,
-     "std": 552
+     "ppr": 595,
+     "half": 566,
+     "std": 554
     }
    },
    "sources": {
@@ -6984,7 +7014,7 @@
    "nSources": 3,
    "spread": 608,
    "value1qb": 541,
-   "valueSf": 592,
+   "valueSf": 595,
    "tier": 6
   },
   {
@@ -7028,9 +7058,9 @@
      "std": 468
     },
     "sf": {
-     "ppr": 2329,
-     "half": 2418,
-     "std": 2452
+     "ppr": 2339,
+     "half": 2409,
+     "std": 2461
     }
    },
    "sources": {
@@ -7041,7 +7071,7 @@
    "nSources": 3,
    "spread": 402,
    "value1qb": 539,
-   "valueSf": 2329,
+   "valueSf": 2339,
    "tier": 6
   },
   {
@@ -7064,9 +7094,9 @@
      "std": 502
     },
     "sf": {
-     "ppr": 508,
-     "half": 499,
-     "std": 492
+     "ppr": 511,
+     "half": 498,
+     "std": 494
     }
    },
    "sources": {
@@ -7075,7 +7105,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 523,
-   "valueSf": 508,
+   "valueSf": 511,
    "tier": 6
   },
   {
@@ -7119,9 +7149,9 @@
      "std": 469
     },
     "sf": {
-     "ppr": 2812,
-     "half": 2925,
-     "std": 2972
+     "ppr": 2824,
+     "half": 2914,
+     "std": 2982
     }
    },
    "sources": {
@@ -7132,7 +7162,7 @@
    "nSources": 3,
    "spread": 393,
    "value1qb": 516,
-   "valueSf": 2812,
+   "valueSf": 2824,
    "tier": 6
   },
   {
@@ -7176,9 +7206,9 @@
      "std": 449
     },
     "sf": {
-     "ppr": 467,
-     "half": 455,
-     "std": 443
+     "ppr": 469,
+     "half": 453,
+     "std": 444
     }
    },
    "sources": {
@@ -7189,7 +7219,7 @@
    "nSources": 3,
    "spread": 311,
    "value1qb": 476,
-   "valueSf": 467,
+   "valueSf": 469,
    "tier": 6
   },
   {
@@ -7233,9 +7263,9 @@
      "std": 449
     },
     "sf": {
-     "ppr": 2226,
-     "half": 2295,
-     "std": 2277
+     "ppr": 2237,
+     "half": 2286,
+     "std": 2285
     }
    },
    "sources": {
@@ -7246,7 +7276,7 @@
    "nSources": 3,
    "spread": 682,
    "value1qb": 476,
-   "valueSf": 2226,
+   "valueSf": 2237,
    "tier": 6
   },
   {
@@ -7290,9 +7320,9 @@
      "std": 417
     },
     "sf": {
-     "ppr": 674,
-     "half": 655,
-     "std": 656
+     "ppr": 677,
+     "half": 653,
+     "std": 658
     }
    },
    "sources": {
@@ -7303,7 +7333,7 @@
    "nSources": 3,
    "spread": 448,
    "value1qb": 472,
-   "valueSf": 674,
+   "valueSf": 677,
    "tier": 6
   },
   {
@@ -7347,9 +7377,9 @@
      "std": 503
     },
     "sf": {
-     "ppr": 757,
-     "half": 730,
-     "std": 726
+     "ppr": 760,
+     "half": 727,
+     "std": 728
     }
    },
    "sources": {
@@ -7360,7 +7390,7 @@
    "nSources": 3,
    "spread": 178,
    "value1qb": 455,
-   "valueSf": 757,
+   "valueSf": 760,
    "tier": 6
   },
   {
@@ -7404,9 +7434,9 @@
      "std": 413
     },
     "sf": {
-     "ppr": 469,
-     "half": 418,
-     "std": 405
+     "ppr": 471,
+     "half": 417,
+     "std": 407
     }
    },
    "sources": {
@@ -7417,7 +7447,7 @@
    "nSources": 3,
    "spread": 480,
    "value1qb": 438,
-   "valueSf": 469,
+   "valueSf": 471,
    "tier": 6
   },
   {
@@ -7461,9 +7491,9 @@
      "std": 375
     },
     "sf": {
-     "ppr": 449,
-     "half": 401,
-     "std": 332
+     "ppr": 451,
+     "half": 399,
+     "std": 333
     }
    },
    "sources": {
@@ -7473,7 +7503,7 @@
    "nSources": 2,
    "spread": 1,
    "value1qb": 429,
-   "valueSf": 449,
+   "valueSf": 451,
    "tier": 6
   },
   {
@@ -7517,9 +7547,9 @@
      "std": 374
     },
     "sf": {
-     "ppr": 427,
-     "half": 390,
-     "std": 350
+     "ppr": 429,
+     "half": 389,
+     "std": 352
     }
    },
    "sources": {
@@ -7530,7 +7560,7 @@
    "nSources": 3,
    "spread": 388,
    "value1qb": 426,
-   "valueSf": 427,
+   "valueSf": 429,
    "tier": 6
   },
   {
@@ -7574,9 +7604,9 @@
      "std": 363
     },
     "sf": {
-     "ppr": 614,
-     "half": 589,
-     "std": 538
+     "ppr": 617,
+     "half": 587,
+     "std": 540
     }
    },
    "sources": {
@@ -7587,7 +7617,7 @@
    "nSources": 3,
    "spread": 306,
    "value1qb": 421,
-   "valueSf": 614,
+   "valueSf": 617,
    "tier": 6
   },
   {
@@ -7631,9 +7661,9 @@
      "std": 404
     },
     "sf": {
-     "ppr": 667,
-     "half": 660,
-     "std": 675
+     "ppr": 670,
+     "half": 658,
+     "std": 678
     }
    },
    "sources": {
@@ -7644,7 +7674,7 @@
    "nSources": 3,
    "spread": 367,
    "value1qb": 395,
-   "valueSf": 667,
+   "valueSf": 670,
    "tier": 6
   },
   {
@@ -7688,9 +7718,9 @@
      "std": 368
     },
     "sf": {
-     "ppr": 666,
-     "half": 645,
-     "std": 618
+     "ppr": 669,
+     "half": 642,
+     "std": 620
     }
    },
    "sources": {
@@ -7701,7 +7731,7 @@
    "nSources": 3,
    "spread": 174,
    "value1qb": 393,
-   "valueSf": 666,
+   "valueSf": 669,
    "tier": 6
   },
   {
@@ -7745,9 +7775,9 @@
      "std": 404
     },
     "sf": {
-     "ppr": 623,
-     "half": 602,
-     "std": 598
+     "ppr": 626,
+     "half": 600,
+     "std": 600
     }
    },
    "sources": {
@@ -7758,7 +7788,7 @@
    "nSources": 3,
    "spread": 240,
    "value1qb": 391,
-   "valueSf": 623,
+   "valueSf": 626,
    "tier": 6
   },
   {
@@ -7802,9 +7832,9 @@
      "std": 335
     },
     "sf": {
-     "ppr": 1841,
-     "half": 1885,
-     "std": 1979
+     "ppr": 1850,
+     "half": 1859,
+     "std": 1986
     }
    },
    "sources": {
@@ -7815,7 +7845,7 @@
    "nSources": 3,
    "spread": 403,
    "value1qb": 376,
-   "valueSf": 1841,
+   "valueSf": 1850,
    "tier": 6
   },
   {
@@ -7859,9 +7889,9 @@
      "std": 354
     },
     "sf": {
-     "ppr": 701,
-     "half": 670,
-     "std": 647
+     "ppr": 704,
+     "half": 668,
+     "std": 649
     }
    },
    "sources": {
@@ -7872,7 +7902,7 @@
    "nSources": 3,
    "spread": 357,
    "value1qb": 375,
-   "valueSf": 701,
+   "valueSf": 704,
    "tier": 6
   },
   {
@@ -7916,9 +7946,9 @@
      "std": 321
     },
     "sf": {
-     "ppr": 839,
-     "half": 728,
-     "std": 683
+     "ppr": 843,
+     "half": 725,
+     "std": 686
     }
    },
    "sources": {
@@ -7929,7 +7959,7 @@
    "nSources": 3,
    "spread": 486,
    "value1qb": 373,
-   "valueSf": 839,
+   "valueSf": 843,
    "tier": 6
   },
   {
@@ -7952,9 +7982,9 @@
      "std": 358
     },
     "sf": {
-     "ppr": 291,
-     "half": 287,
-     "std": 288
+     "ppr": 292,
+     "half": 286,
+     "std": 289
     }
    },
    "sources": {
@@ -7963,7 +7993,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 364,
-   "valueSf": 291,
+   "valueSf": 292,
    "tier": 6
   },
   {
@@ -8007,9 +8037,9 @@
      "std": 333
     },
     "sf": {
-     "ppr": 293,
-     "half": 292,
-     "std": 294
+     "ppr": 295,
+     "half": 291,
+     "std": 295
     }
    },
    "sources": {
@@ -8020,7 +8050,7 @@
    "nSources": 3,
    "spread": 246,
    "value1qb": 345,
-   "valueSf": 293,
+   "valueSf": 295,
    "tier": 6
   },
   {
@@ -8064,8 +8094,8 @@
      "std": 271
     },
     "sf": {
-     "ppr": 310,
-     "half": 255,
+     "ppr": 311,
+     "half": 254,
      "std": 238
     }
    },
@@ -8077,7 +8107,7 @@
    "nSources": 3,
    "spread": 90,
    "value1qb": 336,
-   "valueSf": 310,
+   "valueSf": 311,
    "tier": 6
   },
   {
@@ -8121,9 +8151,9 @@
      "std": 329
     },
     "sf": {
-     "ppr": 1418,
-     "half": 1412,
-     "std": 1378
+     "ppr": 1425,
+     "half": 1407,
+     "std": 1383
     }
    },
    "sources": {
@@ -8134,7 +8164,7 @@
    "nSources": 3,
    "spread": 434,
    "value1qb": 327,
-   "valueSf": 1418,
+   "valueSf": 1425,
    "tier": 6
   },
   {
@@ -8178,9 +8208,9 @@
      "std": 307
     },
     "sf": {
-     "ppr": 312,
-     "half": 301,
-     "std": 297
+     "ppr": 313,
+     "half": 300,
+     "std": 299
     }
    },
    "sources": {
@@ -8191,7 +8221,7 @@
    "nSources": 3,
    "spread": 399,
    "value1qb": 323,
-   "valueSf": 312,
+   "valueSf": 313,
    "tier": 6
   },
   {
@@ -8235,9 +8265,9 @@
      "std": 290
     },
     "sf": {
-     "ppr": 587,
-     "half": 595,
-     "std": 602
+     "ppr": 590,
+     "half": 593,
+     "std": 604
     }
    },
    "sources": {
@@ -8248,7 +8278,7 @@
    "nSources": 3,
    "spread": 68,
    "value1qb": 319,
-   "valueSf": 587,
+   "valueSf": 590,
    "tier": 6
   },
   {
@@ -8292,9 +8322,9 @@
      "std": 296
     },
     "sf": {
-     "ppr": 543,
-     "half": 526,
-     "std": 486
+     "ppr": 545,
+     "half": 524,
+     "std": 488
     }
    },
    "sources": {
@@ -8305,7 +8335,7 @@
    "nSources": 3,
    "spread": 222,
    "value1qb": 315,
-   "valueSf": 543,
+   "valueSf": 545,
    "tier": 6
   },
   {
@@ -8349,9 +8379,9 @@
      "std": 286
     },
     "sf": {
-     "ppr": 264,
-     "half": 260,
-     "std": 256
+     "ppr": 265,
+     "half": 259,
+     "std": 257
     }
    },
    "sources": {
@@ -8361,7 +8391,7 @@
    "nSources": 2,
    "spread": 195,
    "value1qb": 299,
-   "valueSf": 264,
+   "valueSf": 265,
    "tier": 6
   },
   {
@@ -8405,9 +8435,9 @@
      "std": 328
     },
     "sf": {
-     "ppr": 227,
-     "half": 254,
-     "std": 303
+     "ppr": 228,
+     "half": 253,
+     "std": 304
     }
    },
    "sources": {
@@ -8417,7 +8447,7 @@
    "nSources": 2,
    "spread": 36,
    "value1qb": 298,
-   "valueSf": 227,
+   "valueSf": 228,
    "tier": 6
   },
   {
@@ -8461,9 +8491,9 @@
      "std": 250
     },
     "sf": {
-     "ppr": 256,
-     "half": 226,
-     "std": 207
+     "ppr": 257,
+     "half": 225,
+     "std": 208
     }
    },
    "sources": {
@@ -8473,7 +8503,7 @@
    "nSources": 2,
    "spread": 146,
    "value1qb": 290,
-   "valueSf": 256,
+   "valueSf": 257,
    "tier": 6
   },
   {
@@ -8517,9 +8547,9 @@
      "std": 283
     },
     "sf": {
-     "ppr": 245,
-     "half": 248,
-     "std": 265
+     "ppr": 246,
+     "half": 247,
+     "std": 266
     }
    },
    "sources": {
@@ -8530,7 +8560,7 @@
    "nSources": 3,
    "spread": 370,
    "value1qb": 289,
-   "valueSf": 245,
+   "valueSf": 246,
    "tier": 6
   },
   {
@@ -8574,9 +8604,9 @@
      "std": 286
     },
     "sf": {
-     "ppr": 255,
-     "half": 255,
-     "std": 258
+     "ppr": 256,
+     "half": 254,
+     "std": 259
     }
    },
    "sources": {
@@ -8587,7 +8617,7 @@
    "nSources": 3,
    "spread": 235,
    "value1qb": 284,
-   "valueSf": 255,
+   "valueSf": 256,
    "tier": 6
   },
   {
@@ -8631,9 +8661,9 @@
      "std": 301
     },
     "sf": {
-     "ppr": 598,
-     "half": 579,
-     "std": 556
+     "ppr": 601,
+     "half": 577,
+     "std": 558
     }
    },
    "sources": {
@@ -8644,7 +8674,7 @@
    "nSources": 3,
    "spread": 422,
    "value1qb": 275,
-   "valueSf": 598,
+   "valueSf": 601,
    "tier": 6
   },
   {
@@ -8688,9 +8718,9 @@
      "std": 281
     },
     "sf": {
-     "ppr": 1324,
-     "half": 1334,
-     "std": 1270
+     "ppr": 1331,
+     "half": 1329,
+     "std": 1275
     }
    },
    "sources": {
@@ -8701,7 +8731,7 @@
    "nSources": 3,
    "spread": 578,
    "value1qb": 274,
-   "valueSf": 1324,
+   "valueSf": 1331,
    "tier": 6
   },
   {
@@ -8745,9 +8775,9 @@
      "std": 293
     },
     "sf": {
-     "ppr": 282,
-     "half": 271,
-     "std": 256
+     "ppr": 283,
+     "half": 270,
+     "std": 257
     }
    },
    "sources": {
@@ -8757,7 +8787,7 @@
    "nSources": 2,
    "spread": 193,
    "value1qb": 271,
-   "valueSf": 282,
+   "valueSf": 283,
    "tier": 6
   },
   {
@@ -8801,7 +8831,7 @@
      "std": 222
     },
     "sf": {
-     "ppr": 239,
+     "ppr": 240,
      "half": 219,
      "std": 187
     }
@@ -8814,7 +8844,7 @@
    "nSources": 3,
    "spread": 183,
    "value1qb": 254,
-   "valueSf": 239,
+   "valueSf": 240,
    "tier": 6
   },
   {
@@ -8858,9 +8888,9 @@
      "std": 204
     },
     "sf": {
-     "ppr": 214,
-     "half": 192,
-     "std": 147
+     "ppr": 215,
+     "half": 191,
+     "std": 148
     }
    },
    "sources": {
@@ -8870,7 +8900,7 @@
    "nSources": 2,
    "spread": 141,
    "value1qb": 253,
-   "valueSf": 214,
+   "valueSf": 215,
    "tier": 6
   },
   {
@@ -8914,8 +8944,8 @@
      "std": 259
     },
     "sf": {
-     "ppr": 228,
-     "half": 225,
+     "ppr": 229,
+     "half": 224,
      "std": 233
     }
    },
@@ -8927,7 +8957,7 @@
    "nSources": 3,
    "spread": 543,
    "value1qb": 242,
-   "valueSf": 228,
+   "valueSf": 229,
    "tier": 6
   },
   {
@@ -8971,9 +9001,9 @@
      "std": 232
     },
     "sf": {
-     "ppr": 1250,
-     "half": 1249,
-     "std": 1202
+     "ppr": 1245,
+     "half": 1244,
+     "std": 1206
     }
    },
    "sources": {
@@ -8983,7 +9013,7 @@
    "nSources": 2,
    "spread": 129,
    "value1qb": 240,
-   "valueSf": 1250,
+   "valueSf": 1245,
    "tier": 6
   },
   {
@@ -9027,9 +9057,9 @@
      "std": 220
     },
     "sf": {
-     "ppr": 222,
-     "half": 216,
-     "std": 208
+     "ppr": 223,
+     "half": 215,
+     "std": 209
     }
    },
    "sources": {
@@ -9040,7 +9070,7 @@
    "nSources": 3,
    "spread": 244,
    "value1qb": 235,
-   "valueSf": 222,
+   "valueSf": 223,
    "tier": 6
   },
   {
@@ -9084,9 +9114,9 @@
      "std": 213
     },
     "sf": {
-     "ppr": 238,
-     "half": 229,
-     "std": 219
+     "ppr": 239,
+     "half": 228,
+     "std": 220
     }
    },
    "sources": {
@@ -9097,7 +9127,7 @@
    "nSources": 3,
    "spread": 340,
    "value1qb": 232,
-   "valueSf": 238,
+   "valueSf": 239,
    "tier": 6
   },
   {
@@ -9141,9 +9171,9 @@
      "std": 235
     },
     "sf": {
-     "ppr": 1081,
-     "half": 1085,
-     "std": 1084
+     "ppr": 1086,
+     "half": 1081,
+     "std": 1088
     }
    },
    "sources": {
@@ -9154,7 +9184,7 @@
    "nSources": 3,
    "spread": 413,
    "value1qb": 231,
-   "valueSf": 1081,
+   "valueSf": 1086,
    "tier": 6
   },
   {
@@ -9198,9 +9228,9 @@
      "std": 236
     },
     "sf": {
-     "ppr": 1054,
-     "half": 1049,
-     "std": 1040
+     "ppr": 1059,
+     "half": 1045,
+     "std": 1052
     }
    },
    "sources": {
@@ -9211,7 +9241,7 @@
    "nSources": 3,
    "spread": 593,
    "value1qb": 229,
-   "valueSf": 1054,
+   "valueSf": 1059,
    "tier": 6
   },
   {
@@ -9255,9 +9285,9 @@
      "std": 207
     },
     "sf": {
-     "ppr": 219,
-     "half": 210,
-     "std": 203
+     "ppr": 220,
+     "half": 209,
+     "std": 204
     }
    },
    "sources": {
@@ -9268,7 +9298,7 @@
    "nSources": 3,
    "spread": 205,
    "value1qb": 223,
-   "valueSf": 219,
+   "valueSf": 220,
    "tier": 6
   },
   {
@@ -9312,9 +9342,9 @@
      "std": 167
     },
     "sf": {
-     "ppr": 1104,
-     "half": 1146,
-     "std": 1143
+     "ppr": 1109,
+     "half": 1133,
+     "std": 1140
     }
    },
    "sources": {
@@ -9325,7 +9355,7 @@
    "nSources": 3,
    "spread": 291,
    "value1qb": 223,
-   "valueSf": 1104,
+   "valueSf": 1109,
    "tier": 6
   },
   {
@@ -9369,9 +9399,9 @@
      "std": 223
     },
     "sf": {
-     "ppr": 197,
-     "half": 198,
-     "std": 201
+     "ppr": 198,
+     "half": 197,
+     "std": 202
     }
    },
    "sources": {
@@ -9382,7 +9412,7 @@
    "nSources": 3,
    "spread": 205,
    "value1qb": 221,
-   "valueSf": 197,
+   "valueSf": 198,
    "tier": 6
   },
   {
@@ -9426,9 +9456,9 @@
      "std": 220
     },
     "sf": {
-     "ppr": 948,
-     "half": 939,
-     "std": 889
+     "ppr": 952,
+     "half": 936,
+     "std": 893
     }
    },
    "sources": {
@@ -9439,7 +9469,7 @@
    "nSources": 3,
    "spread": 404,
    "value1qb": 217,
-   "valueSf": 948,
+   "valueSf": 952,
    "tier": 6
   },
   {
@@ -9483,9 +9513,9 @@
      "std": 222
     },
     "sf": {
-     "ppr": 995,
-     "half": 999,
-     "std": 926
+     "ppr": 999,
+     "half": 995,
+     "std": 929
     }
    },
    "sources": {
@@ -9496,7 +9526,7 @@
    "nSources": 3,
    "spread": 475,
    "value1qb": 217,
-   "valueSf": 995,
+   "valueSf": 999,
    "tier": 6
   },
   {
@@ -9540,9 +9570,9 @@
      "std": 197
     },
     "sf": {
-     "ppr": 226,
-     "half": 215,
-     "std": 203
+     "ppr": 227,
+     "half": 214,
+     "std": 204
     }
    },
    "sources": {
@@ -9552,7 +9582,7 @@
    "nSources": 2,
    "spread": 156,
    "value1qb": 217,
-   "valueSf": 226,
+   "valueSf": 227,
    "tier": 6
   },
   {
@@ -9596,9 +9626,9 @@
      "std": 223
     },
     "sf": {
-     "ppr": 218,
+     "ppr": 219,
      "half": 220,
-     "std": 223
+     "std": 224
     }
    },
    "sources": {
@@ -9609,7 +9639,7 @@
    "nSources": 3,
    "spread": 547,
    "value1qb": 216,
-   "valueSf": 218,
+   "valueSf": 219,
    "tier": 6
   },
   {
@@ -9653,9 +9683,9 @@
      "std": 195
     },
     "sf": {
-     "ppr": 205,
-     "half": 196,
-     "std": 192
+     "ppr": 206,
+     "half": 195,
+     "std": 193
     }
    },
    "sources": {
@@ -9666,7 +9696,7 @@
    "nSources": 3,
    "spread": 156,
    "value1qb": 209,
-   "valueSf": 205,
+   "valueSf": 206,
    "tier": 6
   },
   {
@@ -9710,9 +9740,9 @@
      "std": 168
     },
     "sf": {
-     "ppr": 1235,
-     "half": 1246,
-     "std": 1217
+     "ppr": 1241,
+     "half": 1241,
+     "std": 1222
     }
    },
    "sources": {
@@ -9723,7 +9753,7 @@
    "nSources": 3,
    "spread": 181,
    "value1qb": 209,
-   "valueSf": 1235,
+   "valueSf": 1241,
    "tier": 6
   },
   {
@@ -9767,9 +9797,9 @@
      "std": 230
     },
     "sf": {
-     "ppr": 139,
-     "half": 162,
-     "std": 200
+     "ppr": 140,
+     "half": 161,
+     "std": 201
     }
    },
    "sources": {
@@ -9780,7 +9810,7 @@
    "nSources": 3,
    "spread": 47,
    "value1qb": 180,
-   "valueSf": 139,
+   "valueSf": 140,
    "tier": 6
   },
   {
@@ -9824,9 +9854,9 @@
      "std": 175
     },
     "sf": {
-     "ppr": 137,
-     "half": 136,
-     "std": 137
+     "ppr": 138,
+     "half": 135,
+     "std": 138
     }
    },
    "sources": {
@@ -9836,7 +9866,7 @@
    "nSources": 2,
    "spread": 116,
    "value1qb": 179,
-   "valueSf": 137,
+   "valueSf": 138,
    "tier": 6
   },
   {
@@ -9938,7 +9968,7 @@
     },
     "sf": {
      "ppr": 152,
-     "half": 132,
+     "half": 131,
      "std": 118
     }
    },
@@ -9992,9 +10022,9 @@
      "std": 140
     },
     "sf": {
-     "ppr": 144,
-     "half": 138,
-     "std": 138
+     "ppr": 145,
+     "half": 137,
+     "std": 139
     }
    },
    "sources": {
@@ -10004,7 +10034,7 @@
    "nSources": 2,
    "spread": 101,
    "value1qb": 147,
-   "valueSf": 144,
+   "valueSf": 145,
    "tier": 6
   },
   {
@@ -10049,8 +10079,8 @@
     },
     "sf": {
      "ppr": 127,
-     "half": 163,
-     "std": 280
+     "half": 162,
+     "std": 281
     }
    },
    "sources": {
@@ -10082,9 +10112,9 @@
      "std": 142
     },
     "sf": {
-     "ppr": 141,
+     "ppr": 142,
      "half": 144,
-     "std": 146
+     "std": 147
     }
    },
    "sources": {
@@ -10093,7 +10123,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 136,
-   "valueSf": 141,
+   "valueSf": 142,
    "tier": 6
   },
   {
@@ -10193,7 +10223,7 @@
      "std": 115
     },
     "sf": {
-     "ppr": 82,
+     "ppr": 83,
      "half": 79,
      "std": 69
     }
@@ -10204,7 +10234,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 127,
-   "valueSf": 82,
+   "valueSf": 83,
    "tier": 6
   },
   {
@@ -10303,9 +10333,9 @@
      "std": 112
     },
     "sf": {
-     "ppr": 86,
+     "ppr": 87,
      "half": 84,
-     "std": 85
+     "std": 86
     }
    },
    "sources": {
@@ -10315,7 +10345,7 @@
    "nSources": 2,
    "spread": 55,
    "value1qb": 120,
-   "valueSf": 86,
+   "valueSf": 87,
    "tier": 6
   },
   {
@@ -10359,7 +10389,7 @@
      "std": 104
     },
     "sf": {
-     "ppr": 114,
+     "ppr": 115,
      "half": 110,
      "std": 106
     }
@@ -10372,7 +10402,7 @@
    "nSources": 3,
    "spread": 124,
    "value1qb": 112,
-   "valueSf": 114,
+   "valueSf": 115,
    "tier": 6
   },
   {
@@ -10417,8 +10447,8 @@
     },
     "sf": {
      "ppr": 97,
-     "half": 95,
-     "std": 93
+     "half": 94,
+     "std": 94
     }
    },
    "sources": {
@@ -10472,8 +10502,8 @@
      "std": 54
     },
     "sf": {
-     "ppr": 82,
-     "half": 59,
+     "ppr": 83,
+     "half": 58,
      "std": 43
     }
    },
@@ -10484,7 +10514,7 @@
    "nSources": 2,
    "spread": 68,
    "value1qb": 99,
-   "valueSf": 82,
+   "valueSf": 83,
    "tier": 6
   },
   {
@@ -10638,9 +10668,9 @@
      "std": 142
     },
     "sf": {
-     "ppr": 60,
+     "ppr": 61,
      "half": 60,
-     "std": 85
+     "std": 86
     }
    },
    "sources": {
@@ -10650,7 +10680,7 @@
    "nSources": 2,
    "spread": 17,
    "value1qb": 92,
-   "valueSf": 60,
+   "valueSf": 61,
    "tier": 6
   },
   {
@@ -10694,8 +10724,8 @@
      "std": 75
     },
     "sf": {
-     "ppr": 60,
-     "half": 59,
+     "ppr": 61,
+     "half": 58,
      "std": 60
     }
    },
@@ -10706,7 +10736,7 @@
    "nSources": 2,
    "spread": 49,
    "value1qb": 76,
-   "valueSf": 60,
+   "valueSf": 61,
    "tier": 6
   },
   {
@@ -10807,7 +10837,7 @@
     },
     "sf": {
      "ppr": 46,
-     "half": 55,
+     "half": 54,
      "std": 54
     }
    },
@@ -10919,7 +10949,7 @@
     },
     "sf": {
      "ppr": 22,
-     "half": 20,
+     "half": 19,
      "std": 18
     }
    },
@@ -11028,7 +11058,7 @@
      "std": 60
     },
     "sf": {
-     "ppr": 35,
+     "ppr": 36,
      "half": 36,
      "std": 43
     }
@@ -11040,7 +11070,7 @@
    "nSources": 2,
    "spread": 5,
    "value1qb": 41,
-   "valueSf": 35,
+   "valueSf": 36,
    "tier": 6
   },
   {
@@ -11084,7 +11114,7 @@
      "std": 39
     },
     "sf": {
-     "ppr": 36,
+     "ppr": 37,
      "half": 36,
      "std": 42
     }
@@ -11096,7 +11126,7 @@
    "nSources": 2,
    "spread": 28,
    "value1qb": 41,
-   "valueSf": 36,
+   "valueSf": 37,
    "tier": 6
   },
   {
@@ -11196,7 +11226,7 @@
      "std": 31
     },
     "sf": {
-     "ppr": 38,
+     "ppr": 39,
      "half": 36,
      "std": 36
     }
@@ -11208,7 +11238,7 @@
    "nSources": 2,
    "spread": 24,
    "value1qb": 35,
-   "valueSf": 38,
+   "valueSf": 39,
    "tier": 6
   },
   {
@@ -11252,7 +11282,7 @@
      "std": 31
     },
     "sf": {
-     "ppr": 37,
+     "ppr": 38,
      "half": 36,
      "std": 36
     }
@@ -11264,7 +11294,7 @@
    "nSources": 2,
    "spread": 23,
    "value1qb": 33,
-   "valueSf": 37,
+   "valueSf": 38,
    "tier": 6
   },
   {
@@ -11310,7 +11340,7 @@
     "sf": {
      "ppr": 32,
      "half": 31,
-     "std": 32
+     "std": 33
     }
    },
    "sources": {
@@ -11475,9 +11505,9 @@
      "std": 27
     },
     "sf": {
-     "ppr": 188,
-     "half": 174,
-     "std": 150
+     "ppr": 189,
+     "half": 173,
+     "std": 151
     }
    },
    "sources": {
@@ -11487,7 +11517,7 @@
    "nSources": 2,
    "spread": 18,
    "value1qb": 28,
-   "valueSf": 188,
+   "valueSf": 189,
    "tier": 6
   },
   {
@@ -11589,7 +11619,7 @@
     "sf": {
      "ppr": 32,
      "half": 31,
-     "std": 31
+     "std": 32
     }
    },
    "sources": {
@@ -11693,7 +11723,7 @@
     },
     "sf": {
      "ppr": 21,
-     "half": 20,
+     "half": 19,
      "std": 19
     }
    },
@@ -11749,7 +11779,7 @@
     },
     "sf": {
      "ppr": 21,
-     "half": 20,
+     "half": 19,
      "std": 19
     }
    },
@@ -11805,7 +11835,7 @@
     },
     "sf": {
      "ppr": 11,
-     "half": 18,
+     "half": 17,
      "std": 37
     }
    },
