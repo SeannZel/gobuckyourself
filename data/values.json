@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generatedAt": "2026-10-07T01:25:56.863Z",
+  "generatedAt": "2026-10-07T01:30:42.598Z",
   "week": 5,
   "season": 2026,
   "weights": {
@@ -255,8 +255,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 26,
-    "sosN": 33,
+    "sos": 25,
+    "sosN": 32,
     "playoffSos": 19
    },
    "values": {
@@ -314,7 +314,7 @@
     },
     "src": "blend",
     "sos": 6,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 14
    },
    "values": {
@@ -430,7 +430,7 @@
     },
     "src": "blend",
     "sos": 14,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 28
    },
    "values": {
@@ -545,8 +545,8 @@
      "implied": 29.5
     },
     "src": "blend",
-    "sos": 23,
-    "sosN": 33,
+    "sos": 22,
+    "sosN": 32,
     "playoffSos": 26
    },
    "values": {
@@ -662,7 +662,7 @@
     },
     "src": "blend",
     "sos": 7,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 10
    },
    "values": {
@@ -777,8 +777,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 25,
-    "sosN": 33,
+    "sos": 24,
+    "sosN": 32,
     "playoffSos": 15
    },
    "values": {
@@ -1242,7 +1242,7 @@
     },
     "src": "blend",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -1300,7 +1300,7 @@
     },
     "src": "blend",
     "sos": 16,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 18
    },
    "values": {
@@ -1358,7 +1358,7 @@
     },
     "src": "blend",
     "sos": 1,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 4
    },
    "values": {
@@ -1415,8 +1415,8 @@
      "implied": 23.5
     },
     "src": "blend",
-    "sos": 24,
-    "sosN": 33,
+    "sos": 23,
+    "sosN": 32,
     "playoffSos": 21
    },
    "values": {
@@ -1589,8 +1589,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 33,
-    "sosN": 33,
+    "sos": 32,
+    "sosN": 32,
     "playoffSos": 29
    },
    "values": {
@@ -1648,7 +1648,7 @@
     },
     "src": "blend",
     "sos": 7,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 10
    },
    "values": {
@@ -1705,8 +1705,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 31,
-    "sosN": 33,
+    "sos": 30,
+    "sosN": 32,
     "playoffSos": 11
    },
    "values": {
@@ -1764,7 +1764,7 @@
     },
     "src": "blend",
     "sos": 14,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 28
    },
    "values": {
@@ -1880,7 +1880,7 @@
     },
     "src": "blend",
     "sos": 15,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 25
    },
    "values": {
@@ -1996,7 +1996,7 @@
     },
     "src": "blend",
     "sos": 2,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 2
    },
    "values": {
@@ -2054,7 +2054,7 @@
     },
     "src": "blend",
     "sos": 3,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 1
    },
    "values": {
@@ -2112,7 +2112,7 @@
     },
     "src": "blend",
     "sos": 12,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 23
    },
    "values": {
@@ -2343,8 +2343,8 @@
      "implied": 25
     },
     "src": "blend",
-    "sos": 28,
-    "sosN": 33,
+    "sos": 27,
+    "sosN": 32,
     "playoffSos": 27
    },
    "values": {
@@ -2576,7 +2576,7 @@
     },
     "src": "blend",
     "sos": 6,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 14
    },
    "values": {
@@ -2866,7 +2866,7 @@
     },
     "src": "blend",
     "sos": 15,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 25
    },
    "values": {
@@ -2924,7 +2924,7 @@
     },
     "src": "blend",
     "sos": 17,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 20
    },
    "values": {
@@ -2981,8 +2981,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 22,
-    "sosN": 33,
+    "sos": 21,
+    "sosN": 32,
     "playoffSos": 30
    },
    "values": {
@@ -3039,8 +3039,8 @@
      "implied": 22
     },
     "src": "blend",
-    "sos": 20,
-    "sosN": 33,
+    "sos": 19,
+    "sosN": 32,
     "playoffSos": 22
    },
    "values": {
@@ -3097,8 +3097,8 @@
      "implied": 23
     },
     "src": "blend",
-    "sos": 30,
-    "sosN": 33,
+    "sos": 29,
+    "sosN": 32,
     "playoffSos": 9
    },
    "values": {
@@ -3213,8 +3213,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 33,
-    "sosN": 33,
+    "sos": 32,
+    "sosN": 32,
     "playoffSos": 29
    },
    "values": {
@@ -3504,7 +3504,7 @@
     },
     "src": "blend",
     "sos": 11,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 24
    },
    "values": {
@@ -3562,7 +3562,7 @@
     },
     "src": "blend",
     "sos": 10,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 3
    },
    "values": {
@@ -3735,8 +3735,8 @@
      "implied": 25.8
     },
     "src": "blend",
-    "sos": 29,
-    "sosN": 33,
+    "sos": 28,
+    "sosN": 32,
     "playoffSos": 31
    },
    "values": {
@@ -3967,8 +3967,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 32,
-    "sosN": 33,
+    "sos": 31,
+    "sosN": 32,
     "playoffSos": 32
    },
    "values": {
@@ -4316,7 +4316,7 @@
     },
     "src": "blend",
     "sos": 9,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 13
    },
    "values": {
@@ -4374,7 +4374,7 @@
     },
     "src": "blend",
     "sos": 5,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 8
    },
    "values": {
@@ -4605,8 +4605,8 @@
      "implied": 29.5
     },
     "src": "blend",
-    "sos": 23,
-    "sosN": 33,
+    "sos": 22,
+    "sosN": 32,
     "playoffSos": 26
    },
    "values": {
@@ -4780,7 +4780,7 @@
     },
     "src": "blend",
     "sos": 5,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 8
    },
    "values": {
@@ -4837,8 +4837,8 @@
      "implied": 18.5
     },
     "src": "blend",
-    "sos": 19,
-    "sosN": 33,
+    "sos": 18,
+    "sosN": 32,
     "playoffSos": 7
    },
    "values": {
@@ -4895,8 +4895,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 21,
-    "sosN": 33,
+    "sos": 20,
+    "sosN": 32,
     "playoffSos": 17
    },
    "values": {
@@ -5012,7 +5012,7 @@
     },
     "src": "blend",
     "sos": 8,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 12
    },
    "values": {
@@ -5301,8 +5301,8 @@
      "implied": 22
     },
     "src": "blend",
-    "sos": 20,
-    "sosN": 33,
+    "sos": 19,
+    "sosN": 32,
     "playoffSos": 22
    },
    "values": {
@@ -5476,7 +5476,7 @@
     },
     "src": "blend",
     "sos": 10,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 3
    },
    "values": {
@@ -5868,8 +5868,8 @@
      "implied": 18.5
     },
     "src": "blend",
-    "sos": 19,
-    "sosN": 33,
+    "sos": 18,
+    "sosN": 32,
     "playoffSos": 7
    },
    "values": {
@@ -5927,7 +5927,7 @@
     },
     "src": "blend",
     "sos": 11,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 24
    },
    "values": {
@@ -6043,7 +6043,7 @@
     },
     "src": "blend",
     "sos": 1,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 4
    },
    "values": {
@@ -6094,8 +6094,8 @@
      "implied": 20.5
     },
     "src": "proj",
-    "sos": 25,
-    "sosN": 33,
+    "sos": 24,
+    "sosN": 32,
     "playoffSos": 15
    },
    "values": {
@@ -6268,7 +6268,7 @@
     },
     "src": "blend",
     "sos": 3,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 1
    },
    "values": {
@@ -6383,8 +6383,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 22,
-    "sosN": 33,
+    "sos": 21,
+    "sosN": 32,
     "playoffSos": 30
    },
    "values": {
@@ -6500,7 +6500,7 @@
     },
     "src": "blend",
     "sos": 13,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 5
    },
    "values": {
@@ -6615,8 +6615,8 @@
      "implied": 23
     },
     "src": "blend",
-    "sos": 30,
-    "sosN": 33,
+    "sos": 29,
+    "sosN": 32,
     "playoffSos": 9
    },
    "values": {
@@ -6711,7 +6711,7 @@
    "sleeperId": "6806",
    "espnId": "4241985",
    "adp": null,
-   "rosterPct": 0.79,
+   "rosterPct": 0.78,
    "trend": -612,
    "momentum": 0,
    "outlook": {
@@ -6789,8 +6789,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 27,
-    "sosN": 33,
+    "sos": 26,
+    "sosN": 32,
     "playoffSos": 16
    },
    "values": {
@@ -6847,8 +6847,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 25,
-    "sosN": 33,
+    "sos": 24,
+    "sosN": 32,
     "playoffSos": 15
    },
    "values": {
@@ -7022,7 +7022,7 @@
     },
     "src": "blend",
     "sos": 17,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 20
    },
    "values": {
@@ -7288,8 +7288,8 @@
      "implied": 25
     },
     "src": "blend",
-    "sos": 28,
-    "sosN": 33,
+    "sos": 27,
+    "sosN": 32,
     "playoffSos": 27
    },
    "values": {
@@ -7579,7 +7579,7 @@
     },
     "src": "blend",
     "sos": 10,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 3
    },
    "values": {
@@ -7635,8 +7635,8 @@
      "implied": 25.8
     },
     "src": "blend",
-    "sos": 29,
-    "sosN": 33,
+    "sos": 28,
+    "sosN": 32,
     "playoffSos": 31
    },
    "values": {
@@ -7809,8 +7809,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 21,
-    "sosN": 33,
+    "sos": 20,
+    "sosN": 32,
     "playoffSos": 17
    },
    "values": {
@@ -7868,7 +7868,7 @@
     },
     "src": "blend",
     "sos": 12,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 23
    },
    "values": {
@@ -8424,8 +8424,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 31,
-    "sosN": 33,
+    "sos": 30,
+    "sosN": 32,
     "playoffSos": 11
    },
    "values": {
@@ -8483,7 +8483,7 @@
     },
     "src": "blend",
     "sos": 12,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 23
    },
    "values": {
@@ -8653,8 +8653,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 32,
-    "sosN": 33,
+    "sos": 31,
+    "sosN": 32,
     "playoffSos": 32
    },
    "values": {
@@ -8770,7 +8770,7 @@
     },
     "src": "blend",
     "sos": 3,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 1
    },
    "values": {
@@ -8885,8 +8885,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 21,
-    "sosN": 33,
+    "sos": 20,
+    "sosN": 32,
     "playoffSos": 17
    },
    "values": {
@@ -8943,7 +8943,7 @@
     },
     "src": "blend",
     "sos": 8,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 12
    },
    "values": {
@@ -9058,7 +9058,7 @@
     },
     "src": "blend",
     "sos": 16,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 18
    },
    "values": {
@@ -9173,7 +9173,7 @@
     },
     "src": "blend",
     "sos": 9,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 13
    },
    "values": {
@@ -9230,8 +9230,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 32,
-    "sosN": 33,
+    "sos": 31,
+    "sosN": 32,
     "playoffSos": 32
    },
    "values": {
@@ -9926,7 +9926,7 @@
     },
     "src": "blend",
     "sos": 8,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 12
    },
    "values": {
@@ -10041,7 +10041,7 @@
     },
     "src": "blend",
     "sos": 9,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 13
    },
    "values": {
@@ -10360,7 +10360,7 @@
     },
     "src": "blend",
     "sos": 6,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 14
    },
    "values": {
@@ -10529,7 +10529,7 @@
     },
     "src": "blend",
     "sos": 13,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 5
    },
    "values": {
@@ -10586,8 +10586,8 @@
      "implied": 25.8
     },
     "src": "blend",
-    "sos": 29,
-    "sosN": 33,
+    "sos": 28,
+    "sosN": 32,
     "playoffSos": 31
    },
    "values": {
@@ -10983,8 +10983,8 @@
      "implied": 23
     },
     "src": "blend",
-    "sos": 30,
-    "sosN": 33,
+    "sos": 29,
+    "sosN": 32,
     "playoffSos": 9
    },
    "values": {
@@ -11098,7 +11098,7 @@
     },
     "src": "blend",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -11209,8 +11209,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 26,
-    "sosN": 33,
+    "sos": 25,
+    "sosN": 32,
     "playoffSos": 19
    },
    "values": {
@@ -11266,8 +11266,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 22,
-    "sosN": 33,
+    "sos": 21,
+    "sosN": 32,
     "playoffSos": 30
    },
    "values": {
@@ -11495,7 +11495,7 @@
     },
     "src": "blend",
     "sos": 13,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 5
    },
    "values": {
@@ -11722,7 +11722,7 @@
     },
     "src": "blend",
     "sos": 5,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 8
    },
    "values": {
@@ -11885,8 +11885,8 @@
      "implied": 22
     },
     "src": "proj",
-    "sos": 20,
-    "sosN": 33,
+    "sos": 19,
+    "sosN": 32,
     "playoffSos": 22
    },
    "values": {
@@ -11943,7 +11943,7 @@
     },
     "src": "blend",
     "sos": 1,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 4
    },
    "values": {
@@ -12000,7 +12000,7 @@
     },
     "src": "blend",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -12055,8 +12055,8 @@
      "implied": 25
     },
     "src": "blend",
-    "sos": 28,
-    "sosN": 33,
+    "sos": 27,
+    "sosN": 32,
     "playoffSos": 27
    },
    "values": {
@@ -12167,8 +12167,8 @@
      "implied": 29.5
     },
     "src": "blend",
-    "sos": 23,
-    "sosN": 33,
+    "sos": 22,
+    "sosN": 32,
     "playoffSos": 26
    },
    "values": {
@@ -12218,7 +12218,7 @@
     },
     "src": "proj",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -12275,7 +12275,7 @@
     },
     "src": "blend",
     "sos": 16,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 18
    },
    "values": {
@@ -12387,8 +12387,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 26,
-    "sosN": 33,
+    "sos": 25,
+    "sosN": 32,
     "playoffSos": 19
    },
    "values": {
@@ -12445,7 +12445,7 @@
     },
     "src": "blend",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -12721,7 +12721,7 @@
     },
     "src": "blend",
     "sos": 2,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 2
    },
    "values": {
@@ -12888,8 +12888,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 27,
-    "sosN": 33,
+    "sos": 26,
+    "sosN": 32,
     "playoffSos": 16
    },
    "values": {
@@ -12944,8 +12944,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 27,
-    "sosN": 33,
+    "sos": 26,
+    "sosN": 32,
     "playoffSos": 16
    },
    "values": {
@@ -13113,7 +13113,7 @@
     },
     "src": "blend",
     "sos": 11,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 24
    },
    "values": {
@@ -13168,8 +13168,8 @@
      "implied": 22
     },
     "src": "blend",
-    "sos": 20,
-    "sosN": 33,
+    "sos": 19,
+    "sosN": 32,
     "playoffSos": 22
    },
    "values": {
@@ -13504,8 +13504,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 32,
-    "sosN": 33,
+    "sos": 31,
+    "sosN": 32,
     "playoffSos": 32
    },
    "values": {
@@ -13560,8 +13560,8 @@
      "implied": 23.5
     },
     "src": "blend",
-    "sos": 24,
-    "sosN": 33,
+    "sos": 23,
+    "sosN": 32,
     "playoffSos": 21
    },
    "values": {
@@ -13616,8 +13616,8 @@
      "implied": 23.5
     },
     "src": "blend",
-    "sos": 24,
-    "sosN": 33,
+    "sos": 23,
+    "sosN": 32,
     "playoffSos": 21
    },
    "values": {
@@ -13729,7 +13729,7 @@
     },
     "src": "blend",
     "sos": 8,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 12
    },
    "values": {
@@ -13841,7 +13841,7 @@
     },
     "src": "blend",
     "sos": 8,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 12
    },
    "values": {
@@ -13897,7 +13897,7 @@
     },
     "src": "blend",
     "sos": 16,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 18
    },
    "values": {
@@ -14009,7 +14009,7 @@
     },
     "src": "blend",
     "sos": 16,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 18
    },
    "values": {
@@ -14177,7 +14177,7 @@
     },
     "src": "blend",
     "sos": 4,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 6
    },
    "values": {
@@ -14288,8 +14288,8 @@
      "implied": 25.8
     },
     "src": "blend",
-    "sos": 29,
-    "sosN": 33,
+    "sos": 28,
+    "sosN": 32,
     "playoffSos": 31
    },
    "values": {
@@ -14456,8 +14456,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 33,
-    "sosN": 33,
+    "sos": 32,
+    "sosN": 32,
     "playoffSos": 29
    },
    "values": {
@@ -14624,8 +14624,8 @@
      "implied": 18.5
     },
     "src": "blend",
-    "sos": 19,
-    "sosN": 33,
+    "sos": 18,
+    "sosN": 32,
     "playoffSos": 7
    },
    "values": {
@@ -14681,7 +14681,7 @@
     },
     "src": "blend",
     "sos": 3,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 1
    },
    "values": {
@@ -15017,7 +15017,7 @@
     },
     "src": "blend",
     "sos": 6,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 14
    },
    "values": {
@@ -15129,7 +15129,7 @@
     },
     "src": "blend",
     "sos": 2,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 2
    },
    "values": {
@@ -15297,7 +15297,7 @@
     },
     "src": "blend",
     "sos": 6,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 14
    },
    "values": {
@@ -15409,7 +15409,7 @@
     },
     "src": "blend",
     "sos": 17,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 20
    },
    "values": {
@@ -15576,8 +15576,8 @@
      "implied": 23
     },
     "src": "blend",
-    "sos": 30,
-    "sosN": 33,
+    "sos": 29,
+    "sosN": 32,
     "playoffSos": 9
    },
    "values": {
@@ -15745,7 +15745,7 @@
     },
     "src": "blend",
     "sos": 15,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 25
    },
    "values": {
@@ -15801,7 +15801,7 @@
     },
     "src": "blend",
     "sos": 15,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 25
    },
    "values": {
@@ -15856,8 +15856,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 27,
-    "sosN": 33,
+    "sos": 26,
+    "sosN": 32,
     "playoffSos": 16
    },
    "values": {
@@ -15912,8 +15912,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 27,
-    "sosN": 33,
+    "sos": 26,
+    "sosN": 32,
     "playoffSos": 16
    },
    "values": {
@@ -16025,7 +16025,7 @@
     },
     "src": "blend",
     "sos": 13,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 5
    },
    "values": {
@@ -16080,8 +16080,8 @@
      "implied": 24.5
     },
     "src": "blend",
-    "sos": 22,
-    "sosN": 33,
+    "sos": 21,
+    "sosN": 32,
     "playoffSos": 30
    },
    "values": {
@@ -16192,8 +16192,8 @@
      "implied": 20.5
     },
     "src": "blend",
-    "sos": 25,
-    "sosN": 33,
+    "sos": 24,
+    "sosN": 32,
     "playoffSos": 15
    },
    "values": {
@@ -16305,7 +16305,7 @@
     },
     "src": "blend",
     "sos": 11,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 24
    },
    "values": {
@@ -16416,8 +16416,8 @@
      "implied": 21
     },
     "src": "blend",
-    "sos": 31,
-    "sosN": 33,
+    "sos": 30,
+    "sosN": 32,
     "playoffSos": 11
    },
    "values": {
@@ -16641,7 +16641,7 @@
     },
     "src": "blend",
     "sos": 14,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 28
    },
    "values": {
@@ -16697,7 +16697,7 @@
     },
     "src": "blend",
     "sos": 14,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 28
    },
    "values": {
@@ -16753,7 +16753,7 @@
     },
     "src": "blend",
     "sos": 7,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 10
    },
    "values": {
@@ -16920,8 +16920,8 @@
      "implied": 19.5
     },
     "src": "blend",
-    "sos": 21,
-    "sosN": 33,
+    "sos": 20,
+    "sosN": 32,
     "playoffSos": 17
    },
    "values": {
@@ -16977,7 +16977,7 @@
     },
     "src": "blend",
     "sos": 7,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 10
    },
    "values": {
@@ -17033,7 +17033,7 @@
     },
     "src": "blend",
     "sos": 5,
-    "sosN": 33,
+    "sosN": 32,
     "playoffSos": 8
    },
    "values": {
