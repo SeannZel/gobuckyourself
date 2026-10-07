@@ -1,14 +1,13 @@
 {
  "meta": {
-  "generatedAt": "2026-10-07T01:30:42.598Z",
+  "generatedAt": "2026-10-07T01:44:27.645Z",
   "week": 5,
   "season": 2026,
   "weights": {
    "fantasycalc": 0.35,
    "model": 0.3,
    "pihs": 0.2,
-   "fantasypros": 0.15,
-   "espn": 0
+   "fantasypros": 0.15
   },
   "qbUplift": 3,
   "sources": [
@@ -24,16 +23,10 @@
     "detail": "Sleeper projections (13 wks) + nflverse usage + matchups + Vegas lines"
    },
    {
-    "id": "espn",
-    "label": "ESPN ADP",
-    "players": 0,
-    "retired": true
-   },
-   {
     "id": "fantasypros",
-    "label": "FantasyPros ECR",
-    "players": 0,
-    "skipped": true
+    "label": "FantasyPros ROS",
+    "players": 15,
+    "skipped": false
    },
    {
     "id": "pihs",
@@ -60,7 +53,6 @@
    "injury": null,
    "sleeperId": "9221",
    "espnId": "4429795",
-   "adp": null,
    "rosterPct": 1,
    "trend": 469,
    "momentum": 0,
@@ -93,16 +85,17 @@
     },
     "sf": {
      "ppr": 10000,
-     "half": 9953,
+     "half": 9992,
      "std": 10000
     }
    },
    "sources": {
     "fantasycalc": 10000,
     "pihs": 10000,
+    "fantasypros": 10000,
     "model": 10000
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 0,
    "value1qb": 10000,
    "valueSf": 10000,
@@ -118,7 +111,6 @@
    "injury": null,
    "sleeperId": "9509",
    "espnId": "4430807",
-   "adp": null,
    "rosterPct": 1,
    "trend": 126,
    "momentum": 0,
@@ -145,87 +137,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 9495,
-     "half": 9410,
-     "std": 9408
+     "ppr": 9538,
+     "half": 9478,
+     "std": 9479
     },
     "sf": {
-     "ppr": 9736,
-     "half": 9654,
-     "std": 9706
+     "ppr": 9771,
+     "half": 9690,
+     "std": 9719
     }
    },
    "sources": {
     "fantasycalc": 9686,
     "pihs": 9474,
-    "model": 9287
+    "fantasypros": 9715,
+    "model": 9320
    },
-   "nSources": 3,
-   "spread": 399,
-   "value1qb": 9495,
-   "valueSf": 9736,
+   "nSources": 4,
+   "spread": 395,
+   "value1qb": 9538,
+   "valueSf": 9771,
    "tier": 1
   },
   {
    "id": 3,
-   "name": "Kenneth Walker",
-   "pos": "RB",
-   "team": "KC",
-   "age": 25,
-   "bye": 5,
-   "injury": null,
-   "sleeperId": "8151",
-   "espnId": "4567048",
-   "adp": null,
-   "rosterPct": 1,
-   "trend": 2879,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 27.5,
-    "xfpg": 24.8,
-    "luck": 2.8,
-    "tgtShare": 15,
-    "rushShare": 74,
-    "ros": 265,
-    "rosG": 12,
-    "ppg": 22.1,
-    "next": {
-     "wk": 6,
-     "opp": "LAC",
-     "home": true,
-     "implied": 26.5
-    },
-    "src": "blend",
-    "sos": 8,
-    "sosN": 32,
-    "playoffSos": 10
-   },
-   "values": {
-    "1qb": {
-     "ppr": 9239,
-     "half": 9241,
-     "std": 9243
-    },
-    "sf": {
-     "ppr": 9124,
-     "half": 9027,
-     "std": 9110
-    }
-   },
-   "sources": {
-    "fantasycalc": 8864,
-    "pihs": 9342,
-    "model": 9609
-   },
-   "nSources": 3,
-   "spread": 745,
-   "value1qb": 9239,
-   "valueSf": 9124,
-   "tier": 1
-  },
-  {
-   "id": 4,
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
    "team": "SEA",
@@ -234,7 +169,6 @@
    "injury": null,
    "sleeperId": "9488",
    "espnId": "4430878",
-   "adp": null,
    "rosterPct": 1,
    "trend": 649,
    "momentum": 0,
@@ -261,25 +195,84 @@
    },
    "values": {
     "1qb": {
-     "ppr": 9199,
-     "half": 8748,
-     "std": 8339
+     "ppr": 9227,
+     "half": 8842,
+     "std": 8573
     },
     "sf": {
-     "ppr": 9900,
-     "half": 9276,
-     "std": 8910
+     "ppr": 9860,
+     "half": 9271,
+     "std": 9054
     }
    },
    "sources": {
     "fantasycalc": 9106,
     "pihs": 9605,
-    "model": 9038
+    "fantasypros": 9437,
+    "model": 9010
    },
-   "nSources": 3,
-   "spread": 567,
-   "value1qb": 9199,
-   "valueSf": 9900,
+   "nSources": 4,
+   "spread": 595,
+   "value1qb": 9227,
+   "valueSf": 9860,
+   "tier": 1
+  },
+  {
+   "id": 4,
+   "name": "Kenneth Walker",
+   "pos": "RB",
+   "team": "KC",
+   "age": 25,
+   "bye": 5,
+   "injury": null,
+   "sleeperId": "8151",
+   "espnId": "4567048",
+   "rosterPct": 1,
+   "trend": 2879,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 27.5,
+    "xfpg": 24.8,
+    "luck": 2.8,
+    "tgtShare": 15,
+    "rushShare": 74,
+    "ros": 265,
+    "rosG": 12,
+    "ppg": 22.1,
+    "next": {
+     "wk": 6,
+     "opp": "LAC",
+     "home": true,
+     "implied": 26.5
+    },
+    "src": "blend",
+    "sos": 8,
+    "sosN": 32,
+    "playoffSos": 10
+   },
+   "values": {
+    "1qb": {
+     "ppr": 9196,
+     "half": 9276,
+     "std": 9278
+    },
+    "sf": {
+     "ppr": 9080,
+     "half": 9151,
+     "std": 9178
+    }
+   },
+   "sources": {
+    "fantasycalc": 8864,
+    "pihs": 9342,
+    "fantasypros": 8907,
+    "model": 9632
+   },
+   "nSources": 4,
+   "spread": 768,
+   "value1qb": 9196,
+   "valueSf": 9080,
    "tier": 1
   },
   {
@@ -292,7 +285,6 @@
    "injury": null,
    "sleeperId": "6786",
    "espnId": "4241389",
-   "adp": null,
    "rosterPct": 1,
    "trend": 1355,
    "momentum": 0,
@@ -319,25 +311,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 8416,
-     "half": 8018,
-     "std": 7725
+     "ppr": 8313,
+     "half": 8025,
+     "std": 7819
     },
     "sf": {
-     "ppr": 8729,
-     "half": 8356,
-     "std": 8009
+     "ppr": 8656,
+     "half": 8304,
+     "std": 8013
     }
    },
    "sources": {
     "fantasycalc": 8188,
     "pihs": 8816,
-    "model": 8416
+    "fantasypros": 7935,
+    "model": 8313
    },
-   "nSources": 3,
-   "spread": 628,
-   "value1qb": 8416,
-   "valueSf": 8729,
+   "nSources": 4,
+   "spread": 881,
+   "value1qb": 8313,
+   "valueSf": 8656,
    "tier": 1
   },
   {
@@ -350,7 +343,6 @@
    "injury": null,
    "sleeperId": "6813",
    "espnId": "4242335",
-   "adp": null,
    "rosterPct": 1,
    "trend": -394,
    "momentum": 0,
@@ -377,145 +369,30 @@
    },
    "values": {
     "1qb": {
-     "ppr": 8100,
-     "half": 8028,
-     "std": 8143
+     "ppr": 8247,
+     "half": 8166,
+     "std": 8359
     },
     "sf": {
-     "ppr": 7999,
-     "half": 7917,
-     "std": 7962
+     "ppr": 8125,
+     "half": 8096,
+     "std": 8205
     }
    },
    "sources": {
     "fantasycalc": 7935,
     "pihs": 8487,
-    "model": 8036
+    "fantasypros": 8653,
+    "model": 8247
    },
-   "nSources": 3,
-   "spread": 552,
-   "value1qb": 8100,
-   "valueSf": 7999,
+   "nSources": 4,
+   "spread": 718,
+   "value1qb": 8247,
+   "valueSf": 8125,
    "tier": 1
   },
   {
    "id": 7,
-   "name": "Puka Nacua",
-   "pos": "WR",
-   "team": "LAR",
-   "age": 25,
-   "bye": 11,
-   "injury": null,
-   "sleeperId": "9493",
-   "espnId": "4426515",
-   "adp": null,
-   "rosterPct": 1,
-   "trend": -782,
-   "momentum": 0,
-   "outlook": {
-    "g": 2,
-    "fpg": 20.1,
-    "xfpg": 19.4,
-    "luck": 0.6,
-    "tgtShare": 27,
-    "rushShare": 2,
-    "ros": 250,
-    "rosG": 12,
-    "ppg": 20.9,
-    "next": {
-     "wk": 5,
-     "opp": "BUF",
-     "home": true,
-     "implied": 28.8
-    },
-    "src": "blend",
-    "sos": 14,
-    "sosN": 32,
-    "playoffSos": 28
-   },
-   "values": {
-    "1qb": {
-     "ppr": 7840,
-     "half": 7606,
-     "std": 7187
-    },
-    "sf": {
-     "ppr": 8144,
-     "half": 7591,
-     "std": 7251
-    }
-   },
-   "sources": {
-    "fantasycalc": 7500,
-    "pihs": 8355,
-    "model": 7894
-   },
-   "nSources": 3,
-   "spread": 855,
-   "value1qb": 7840,
-   "valueSf": 8144,
-   "tier": 2
-  },
-  {
-   "id": 8,
-   "name": "Christian McCaffrey",
-   "pos": "RB",
-   "team": "SF",
-   "age": 30,
-   "bye": 8,
-   "injury": null,
-   "sleeperId": "4034",
-   "espnId": "3117251",
-   "adp": null,
-   "rosterPct": 1,
-   "trend": -820,
-   "momentum": 0,
-   "outlook": {
-    "g": 4,
-    "fpg": 18.5,
-    "xfpg": 20.8,
-    "luck": -2.3,
-    "tgtShare": 19,
-    "rushShare": 43,
-    "ros": 246,
-    "rosG": 12,
-    "ppg": 20.5,
-    "next": {
-     "wk": 5,
-     "opp": "SEA",
-     "home": false,
-     "implied": 22
-    },
-    "src": "blend",
-    "sos": 24,
-    "sosN": 32,
-    "playoffSos": 14
-   },
-   "values": {
-    "1qb": {
-     "ppr": 7816,
-     "half": 8136,
-     "std": 7734
-    },
-    "sf": {
-     "ppr": 7720,
-     "half": 7662,
-     "std": 7562
-    }
-   },
-   "sources": {
-    "fantasycalc": 7572,
-    "pihs": 7763,
-    "model": 8136
-   },
-   "nSources": 3,
-   "spread": 564,
-   "value1qb": 7816,
-   "valueSf": 7720,
-   "tier": 2
-  },
-  {
-   "id": 9,
    "name": "Amon-Ra St. Brown",
    "pos": "WR",
    "team": "DET",
@@ -524,7 +401,6 @@
    "injury": null,
    "sleeperId": "7547",
    "espnId": "4374302",
-   "adp": null,
    "rosterPct": 1,
    "trend": -296,
    "momentum": 0,
@@ -551,25 +427,142 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7805,
-     "half": 7418,
-     "std": 6967
+     "ppr": 7929,
+     "half": 7556,
+     "std": 7219
     },
     "sf": {
-     "ppr": 8192,
-     "half": 7586,
-     "std": 7402
+     "ppr": 8308,
+     "half": 7740,
+     "std": 7554
     }
    },
    "sources": {
     "fantasycalc": 7517,
     "pihs": 8553,
-    "model": 7641
+    "fantasypros": 8407,
+    "model": 7754
    },
-   "nSources": 3,
+   "nSources": 4,
    "spread": 1036,
-   "value1qb": 7805,
-   "valueSf": 8192,
+   "value1qb": 7929,
+   "valueSf": 8308,
+   "tier": 2
+  },
+  {
+   "id": 8,
+   "name": "Christian McCaffrey",
+   "pos": "RB",
+   "team": "SF",
+   "age": 30,
+   "bye": 8,
+   "injury": null,
+   "sleeperId": "4034",
+   "espnId": "3117251",
+   "rosterPct": 1,
+   "trend": -820,
+   "momentum": 0,
+   "outlook": {
+    "g": 4,
+    "fpg": 18.5,
+    "xfpg": 20.8,
+    "luck": -2.3,
+    "tgtShare": 19,
+    "rushShare": 43,
+    "ros": 246,
+    "rosG": 12,
+    "ppg": 20.5,
+    "next": {
+     "wk": 5,
+     "opp": "SEA",
+     "home": false,
+     "implied": 22
+    },
+    "src": "blend",
+    "sos": 24,
+    "sosN": 32,
+    "playoffSos": 14
+   },
+   "values": {
+    "1qb": {
+     "ppr": 7911,
+     "half": 8150,
+     "std": 7836
+    },
+    "sf": {
+     "ppr": 7810,
+     "half": 7837,
+     "std": 7691
+    }
+   },
+   "sources": {
+    "fantasycalc": 7572,
+    "pihs": 7763,
+    "fantasypros": 8167,
+    "model": 8278
+   },
+   "nSources": 4,
+   "spread": 706,
+   "value1qb": 7911,
+   "valueSf": 7810,
+   "tier": 2
+  },
+  {
+   "id": 9,
+   "name": "Puka Nacua",
+   "pos": "WR",
+   "team": "LAR",
+   "age": 25,
+   "bye": 11,
+   "injury": null,
+   "sleeperId": "9493",
+   "espnId": "4426515",
+   "rosterPct": 1,
+   "trend": -782,
+   "momentum": 0,
+   "outlook": {
+    "g": 2,
+    "fpg": 20.1,
+    "xfpg": 19.4,
+    "luck": 0.6,
+    "tgtShare": 27,
+    "rushShare": 2,
+    "ros": 250,
+    "rosG": 12,
+    "ppg": 20.9,
+    "next": {
+     "wk": 5,
+     "opp": "BUF",
+     "home": true,
+     "implied": 28.8
+    },
+    "src": "blend",
+    "sos": 14,
+    "sosN": 32,
+    "playoffSos": 28
+   },
+   "values": {
+    "1qb": {
+     "ppr": 7853,
+     "half": 7627,
+     "std": 7374
+    },
+    "sf": {
+     "ppr": 8076,
+     "half": 7714,
+     "std": 7436
+    }
+   },
+   "sources": {
+    "fantasycalc": 7500,
+    "pihs": 8355,
+    "fantasypros": 7709,
+    "model": 8004
+   },
+   "nSources": 4,
+   "spread": 855,
+   "value1qb": 7853,
+   "valueSf": 8076,
    "tier": 2
   },
   {
@@ -582,7 +575,6 @@
    "injury": null,
    "sleeperId": "3198",
    "espnId": "3043078",
-   "adp": null,
    "rosterPct": 1,
    "trend": 672,
    "momentum": 0,
@@ -609,25 +601,25 @@
    },
    "values": {
     "1qb": {
-     "ppr": 7236,
-     "half": 7355,
-     "std": 7560
+     "ppr": 7228,
+     "half": 7510,
+     "std": 7765
     },
     "sf": {
-     "ppr": 7020,
-     "half": 7134,
-     "std": 7259
+     "ppr": 6971,
+     "half": 7337,
+     "std": 7531
     }
    },
    "sources": {
     "fantasycalc": 6743,
     "pihs": 7237,
-    "model": 7811
+    "model": 7789
    },
    "nSources": 3,
-   "spread": 1068,
-   "value1qb": 7236,
-   "valueSf": 7020,
+   "spread": 1046,
+   "value1qb": 7228,
+   "valueSf": 6971,
    "tier": 2
   },
   {
@@ -640,7 +632,6 @@
    "injury": "Out",
    "sleeperId": "7564",
    "espnId": "4362628",
-   "adp": null,
    "rosterPct": 1,
    "trend": -1431,
    "momentum": 0,
@@ -667,25 +658,26 @@
    },
    "values": {
     "1qb": {
-     "ppr": 6618,
-     "half": 6444,
-     "std": 6208
+     "ppr": 7036,
+     "half": 6671,
+     "std": 6699
     },
     "sf": {
-     "ppr": 7175,
-     "half": 6949,
-     "std": 6745
+     "ppr": 7514,
+     "half": 7115,
+     "std": 7151
     }
    },
    "sources": {
     "fantasycalc": 7665,
     "pihs": 8684,
-    "model": 4018
+    "fantasypros": 9168,
+    "model": 4139
    },
-   "nSources": 3,
-   "spread": 4666,
-   "value1qb": 6618,
-   "valueSf": 7175,
+   "nSources": 4,
+   "spread": 5029,
+   "value1qb": 7036,
+   "valueSf": 7514,
    "tier": 2
   },
   {
@@ -698,7 +690,6 @@
    "injury": null,
    "sleeperId": "8138",
    "espnId": "4379399",
-   "adp": null,
    "rosterPct": 1,
    "trend": -726,
    "momentum": 0,
@@ -726,13 +717,13 @@
    "values": {
     "1qb": {
      "ppr": 6609,
-     "half": 6768,
-     "std": 7160
+     "half": 7053,
+     "std": 7493
     },
     "sf": {
-     "ppr": 6213,
-     "half": 6495,
-     "std": 6632
+     "ppr": 6170,
+     "half": 6859,
+     "std": 7107
     }
    },
    "sources": {
@@ -743,7 +734,7 @@
    "nSources": 3,
    "spread": 1888,
    "value1qb": 6609,
-   "valueSf": 6213,
+   "valueSf": 6170,
    "tier": 2
   },
   {
@@ -756,7 +747,6 @@
    "injury": null,
    "sleeperId": "8144",
    "espnId": "4361370",
-   "adp": null,
    "rosterPct": 1,
    "trend": 1023,
    "momentum": 0,
@@ -784,13 +774,13 @@
    "values": {
     "1qb": {
      "ppr": 6479,
-     "half": 6219,
-     "std": 5971
+     "half": 6233,
+     "std": 6004
     },
     "sf": {
-     "ppr": 6654,
-     "half": 6405,
-     "std": 6053
+     "ppr": 6607,
+     "half": 6395,
+     "std": 6103
     }
    },
    "sources": {
@@ -801,7 +791,7 @@
    "nSources": 3,
    "spread": 2157,
    "value1qb": 6479,
-   "valueSf": 6654,
+   "valueSf": 6607,
    "tier": 2
   },
   {
@@ -814,7 +804,6 @@
    "injury": null,
    "sleeperId": "12527",
    "espnId": "4890973",
-   "adp": null,
    "rosterPct": 1,
    "trend": 141,
    "momentum": 0,
@@ -842,13 +831,13 @@
    "values": {
     "1qb": {
      "ppr": 6387,
-     "half": 6330,
-     "std": 6070
+     "half": 6344,
+     "std": 6458
     },
     "sf": {
-     "ppr": 5925,
-     "half": 5907,
-     "std": 5690
+     "ppr": 5884,
+     "half": 5958,
+     "std": 6103
     }
    },
    "sources": {
@@ -859,7 +848,7 @@
    "nSources": 3,
    "spread": 1404,
    "value1qb": 6387,
-   "valueSf": 5925,
+   "valueSf": 5884,
    "tier": 2
   },
   {
@@ -872,7 +861,6 @@
    "injury": null,
    "sleeperId": "8150",
    "espnId": "4430737",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": 482,
    "momentum": 0,
@@ -900,13 +888,13 @@
    "values": {
     "1qb": {
      "ppr": 6142,
-     "half": 6151,
-     "std": 6218
+     "half": 6271,
+     "std": 6497
     },
     "sf": {
-     "ppr": 5396,
-     "half": 5215,
-     "std": 5426
+     "ppr": 5461,
+     "half": 5330,
+     "std": 5858
     }
    },
    "sources": {
@@ -917,7 +905,7 @@
    "nSources": 3,
    "spread": 2126,
    "value1qb": 6142,
-   "valueSf": 5396,
+   "valueSf": 5461,
    "tier": 2
   },
   {
@@ -930,7 +918,6 @@
    "injury": null,
    "sleeperId": "7588",
    "espnId": "4361579",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": 468,
    "momentum": 0,
@@ -958,13 +945,13 @@
    "values": {
     "1qb": {
      "ppr": 6075,
-     "half": 6334,
-     "std": 6303
+     "half": 6359,
+     "std": 6413
     },
     "sf": {
-     "ppr": 5480,
-     "half": 5821,
-     "std": 5877
+     "ppr": 5442,
+     "half": 5853,
+     "std": 5948
     }
    },
    "sources": {
@@ -975,7 +962,7 @@
    "nSources": 3,
    "spread": 1751,
    "value1qb": 6075,
-   "valueSf": 5480,
+   "valueSf": 5442,
    "tier": 2
   },
   {
@@ -988,7 +975,6 @@
    "injury": null,
    "sleeperId": "11604",
    "espnId": "4432665",
-   "adp": null,
    "rosterPct": 1,
    "trend": -19,
    "momentum": 0,
@@ -1016,13 +1002,13 @@
    "values": {
     "1qb": {
      "ppr": 5950,
-     "half": 5676,
-     "std": 5351
+     "half": 5689,
+     "std": 5376
     },
     "sf": {
-     "ppr": 6366,
-     "half": 5960,
-     "std": 5656
+     "ppr": 6322,
+     "half": 5951,
+     "std": 5673
     }
    },
    "sources": {
@@ -1033,7 +1019,7 @@
    "nSources": 3,
    "spread": 781,
    "value1qb": 5950,
-   "valueSf": 6366,
+   "valueSf": 6322,
    "tier": 3
   },
   {
@@ -1046,7 +1032,6 @@
    "injury": null,
    "sleeperId": "4984",
    "espnId": "3918298",
-   "adp": null,
    "rosterPct": 1,
    "trend": 404,
    "momentum": 0,
@@ -1074,13 +1059,13 @@
    "values": {
     "1qb": {
      "ppr": 5777,
-     "half": 5959,
-     "std": 6104
+     "half": 5973,
+     "std": 6244
     },
     "sf": {
-     "ppr": 9680,
+     "ppr": 9614,
      "half": 10000,
-     "std": 9923
+     "std": 9908
     }
    },
    "sources": {
@@ -1091,7 +1076,7 @@
    "nSources": 3,
    "spread": 1423,
    "value1qb": 5777,
-   "valueSf": 9680,
+   "valueSf": 9614,
    "tier": 3
   },
   {
@@ -1104,7 +1089,6 @@
    "injury": null,
    "sleeperId": "9224",
    "espnId": "4362238",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -1379,
    "momentum": 0,
@@ -1132,13 +1116,13 @@
    "values": {
     "1qb": {
      "ppr": 5640,
-     "half": 5540,
-     "std": 5314
+     "half": 5552,
+     "std": 5742
     },
     "sf": {
-     "ppr": 5217,
-     "half": 5008,
-     "std": 4849
+     "ppr": 5180,
+     "half": 5000,
+     "std": 5355
     }
    },
    "sources": {
@@ -1149,7 +1133,7 @@
    "nSources": 3,
    "spread": 1578,
    "value1qb": 5640,
-   "valueSf": 5217,
+   "valueSf": 5180,
    "tier": 3
   },
   {
@@ -1162,7 +1146,6 @@
    "injury": null,
    "sleeperId": "8130",
    "espnId": "4361307",
-   "adp": null,
    "rosterPct": 1,
    "trend": 129,
    "momentum": 0,
@@ -1190,13 +1173,13 @@
    "values": {
     "1qb": {
      "ppr": 5621,
-     "half": 5180,
-     "std": 4661
+     "half": 5191,
+     "std": 4683
     },
     "sf": {
-     "ppr": 6239,
-     "half": 5599,
-     "std": 5148
+     "ppr": 6196,
+     "half": 5590,
+     "std": 5134
     }
    },
    "sources": {
@@ -1207,7 +1190,7 @@
    "nSources": 3,
    "spread": 708,
    "value1qb": 5621,
-   "valueSf": 6239,
+   "valueSf": 6196,
    "tier": 3
   },
   {
@@ -1220,7 +1203,6 @@
    "injury": null,
    "sleeperId": "7569",
    "espnId": "4258173",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -486,
    "momentum": 0,
@@ -1248,13 +1230,13 @@
    "values": {
     "1qb": {
      "ppr": 5555,
-     "half": 5549,
-     "std": 5322
+     "half": 5561,
+     "std": 5407
     },
     "sf": {
-     "ppr": 5679,
-     "half": 5568,
-     "std": 5423
+     "ppr": 5640,
+     "half": 5585,
+     "std": 5408
     }
    },
    "sources": {
@@ -1265,7 +1247,7 @@
    "nSources": 3,
    "spread": 1304,
    "value1qb": 5555,
-   "valueSf": 5679,
+   "valueSf": 5640,
    "tier": 3
   },
   {
@@ -1278,7 +1260,6 @@
    "injury": null,
    "sleeperId": "9997",
    "espnId": "4429615",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": 1246,
    "momentum": 0,
@@ -1306,13 +1287,13 @@
    "values": {
     "1qb": {
      "ppr": 5493,
-     "half": 5341,
-     "std": 5194
+     "half": 5353,
+     "std": 5218
     },
     "sf": {
-     "ppr": 5623,
-     "half": 5308,
-     "std": 5076
+     "ppr": 5584,
+     "half": 5300,
+     "std": 5062
     }
    },
    "sources": {
@@ -1323,7 +1304,7 @@
    "nSources": 3,
    "spread": 1221,
    "value1qb": 5493,
-   "valueSf": 5623,
+   "valueSf": 5584,
    "tier": 3
   },
   {
@@ -1336,7 +1317,6 @@
    "injury": "Out",
    "sleeperId": "6794",
    "espnId": "4262921",
-   "adp": null,
    "rosterPct": 1,
    "trend": -1419,
    "momentum": 0,
@@ -1364,13 +1344,13 @@
    "values": {
     "1qb": {
      "ppr": 5080,
-     "half": 4941,
-     "std": 4753
+     "half": 4952,
+     "std": 4775
     },
     "sf": {
-     "ppr": 5145,
-     "half": 4961,
-     "std": 4796
+     "ppr": 5110,
+     "half": 4954,
+     "std": 4783
     }
    },
    "sources": {
@@ -1381,7 +1361,7 @@
    "nSources": 3,
    "spread": 3375,
    "value1qb": 5080,
-   "valueSf": 5145,
+   "valueSf": 5110,
    "tier": 3
   },
   {
@@ -1394,7 +1374,6 @@
    "injury": null,
    "sleeperId": "8112",
    "espnId": "4426502",
-   "adp": null,
    "rosterPct": 1,
    "trend": -165,
    "momentum": 0,
@@ -1422,13 +1401,13 @@
    "values": {
     "1qb": {
      "ppr": 4658,
-     "half": 4493,
-     "std": 4275
+     "half": 4503,
+     "std": 4295
     },
     "sf": {
-     "ppr": 4646,
-     "half": 4454,
-     "std": 4243
+     "ppr": 4614,
+     "half": 4447,
+     "std": 4231
     }
    },
    "sources": {
@@ -1439,7 +1418,7 @@
    "nSources": 3,
    "spread": 2318,
    "value1qb": 4658,
-   "valueSf": 4646,
+   "valueSf": 4614,
    "tier": 3
   },
   {
@@ -1452,7 +1431,6 @@
    "injury": null,
    "sleeperId": "7594",
    "espnId": "4241416",
-   "adp": null,
    "rosterPct": 0.94,
    "trend": 2589,
    "momentum": 0,
@@ -1480,13 +1458,13 @@
    "values": {
     "1qb": {
      "ppr": 4547,
-     "half": 4500,
-     "std": 4655
+     "half": 4510,
+     "std": 4685
     },
     "sf": {
-     "ppr": 3942,
-     "half": 3908,
-     "std": 4086
+     "ppr": 3914,
+     "half": 3902,
+     "std": 4143
     }
    },
    "sources": {
@@ -1497,7 +1475,7 @@
    "nSources": 3,
    "spread": 1470,
    "value1qb": 4547,
-   "valueSf": 3942,
+   "valueSf": 3914,
    "tier": 3
   },
   {
@@ -1510,7 +1488,6 @@
    "injury": null,
    "sleeperId": "6790",
    "espnId": "4259545",
-   "adp": null,
    "rosterPct": 0.96,
    "trend": -287,
    "momentum": 0,
@@ -1538,13 +1515,13 @@
    "values": {
     "1qb": {
      "ppr": 4404,
-     "half": 4452,
-     "std": 4490
+     "half": 4463,
+     "std": 4593
     },
     "sf": {
-     "ppr": 4215,
-     "half": 4320,
-     "std": 4417
+     "ppr": 4186,
+     "half": 4313,
+     "std": 4438
     }
    },
    "sources": {
@@ -1555,7 +1532,7 @@
    "nSources": 3,
    "spread": 2471,
    "value1qb": 4404,
-   "valueSf": 4215,
+   "valueSf": 4186,
    "tier": 3
   },
   {
@@ -1568,7 +1545,6 @@
    "injury": null,
    "sleeperId": "12526",
    "espnId": "4685472",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -157,
    "momentum": 0,
@@ -1596,13 +1572,13 @@
    "values": {
     "1qb": {
      "ppr": 3972,
-     "half": 3866,
-     "std": 3722
+     "half": 3875,
+     "std": 3739
     },
     "sf": {
-     "ppr": 3769,
-     "half": 3559,
-     "std": 3321
+     "ppr": 3743,
+     "half": 3553,
+     "std": 3312
     }
    },
    "sources": {
@@ -1613,7 +1589,7 @@
    "nSources": 3,
    "spread": 1140,
    "value1qb": 3972,
-   "valueSf": 3769,
+   "valueSf": 3743,
    "tier": 4
   },
   {
@@ -1626,7 +1602,6 @@
    "injury": "Questionable",
    "sleeperId": "6801",
    "espnId": "4239993",
-   "adp": null,
    "rosterPct": 0.97,
    "trend": -281,
    "momentum": 0,
@@ -1654,13 +1629,13 @@
    "values": {
     "1qb": {
      "ppr": 3894,
-     "half": 3698,
-     "std": 3558
+     "half": 3706,
+     "std": 3575
     },
     "sf": {
-     "ppr": 3892,
-     "half": 3633,
-     "std": 3433
+     "ppr": 3864,
+     "half": 3627,
+     "std": 3424
     }
    },
    "sources": {
@@ -1671,7 +1646,7 @@
    "nSources": 3,
    "spread": 1210,
    "value1qb": 3894,
-   "valueSf": 3892,
+   "valueSf": 3864,
    "tier": 4
   },
   {
@@ -1684,7 +1659,6 @@
    "injury": null,
    "sleeperId": "8146",
    "espnId": "4569618",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": 451,
    "momentum": 0,
@@ -1712,13 +1686,13 @@
    "values": {
     "1qb": {
      "ppr": 3890,
-     "half": 3755,
-     "std": 3518
+     "half": 3764,
+     "std": 3535
     },
     "sf": {
-     "ppr": 4051,
-     "half": 3854,
-     "std": 3590
+     "ppr": 4022,
+     "half": 3848,
+     "std": 3580
     }
    },
    "sources": {
@@ -1729,7 +1703,7 @@
    "nSources": 3,
    "spread": 981,
    "value1qb": 3890,
-   "valueSf": 4051,
+   "valueSf": 4022,
    "tier": 4
   },
   {
@@ -1742,7 +1716,6 @@
    "injury": null,
    "sleeperId": "2133",
    "espnId": "16800",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": 88,
    "momentum": 0,
@@ -1770,13 +1743,13 @@
    "values": {
     "1qb": {
      "ppr": 3843,
-     "half": 3758,
-     "std": 3617
+     "half": 3767,
+     "std": 3634
     },
     "sf": {
-     "ppr": 3934,
-     "half": 3819,
-     "std": 3696
+     "ppr": 3907,
+     "half": 3814,
+     "std": 3688
     }
    },
    "sources": {
@@ -1787,7 +1760,7 @@
    "nSources": 3,
    "spread": 2452,
    "value1qb": 3843,
-   "valueSf": 3934,
+   "valueSf": 3907,
    "tier": 4
   },
   {
@@ -1800,7 +1773,6 @@
    "injury": "Questionable",
    "sleeperId": "13287",
    "espnId": "4870808",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -398,
    "momentum": 0,
@@ -1828,13 +1800,13 @@
    "values": {
     "1qb": {
      "ppr": 3772,
-     "half": 3782,
-     "std": 3863
+     "half": 3790,
+     "std": 3881
     },
     "sf": {
-     "ppr": 3400,
-     "half": 3380,
-     "std": 3413
+     "ppr": 3376,
+     "half": 3375,
+     "std": 3403
     }
    },
    "sources": {
@@ -1845,7 +1817,7 @@
    "nSources": 3,
    "spread": 2168,
    "value1qb": 3772,
-   "valueSf": 3400,
+   "valueSf": 3376,
    "tier": 4
   },
   {
@@ -1858,7 +1830,6 @@
    "injury": null,
    "sleeperId": "8167",
    "espnId": "4248528",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": 1118,
    "momentum": 0,
@@ -1886,13 +1857,13 @@
    "values": {
     "1qb": {
      "ppr": 3708,
-     "half": 3648,
-     "std": 3843
+     "half": 3657,
+     "std": 3861
     },
     "sf": {
-     "ppr": 3796,
-     "half": 3775,
-     "std": 3718
+     "ppr": 3770,
+     "half": 3769,
+     "std": 3759
     }
    },
    "sources": {
@@ -1903,7 +1874,7 @@
    "nSources": 3,
    "spread": 1035,
    "value1qb": 3708,
-   "valueSf": 3796,
+   "valueSf": 3770,
    "tier": 4
   },
   {
@@ -1916,7 +1887,6 @@
    "injury": "Out",
    "sleeperId": "8155",
    "espnId": "4427366",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -1063,
    "momentum": 0,
@@ -1944,13 +1914,13 @@
    "values": {
     "1qb": {
      "ppr": 3670,
-     "half": 3711,
-     "std": 3720
+     "half": 3719,
+     "std": 3737
     },
     "sf": {
-     "ppr": 3346,
-     "half": 3234,
-     "std": 3224
+     "ppr": 3323,
+     "half": 3229,
+     "std": 3216
     }
    },
    "sources": {
@@ -1961,7 +1931,7 @@
    "nSources": 3,
    "spread": 1263,
    "value1qb": 3670,
-   "valueSf": 3346,
+   "valueSf": 3323,
    "tier": 4
   },
   {
@@ -1974,7 +1944,6 @@
    "injury": null,
    "sleeperId": "11632",
    "espnId": "4595348",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -1424,
    "momentum": 0,
@@ -2002,13 +1971,13 @@
    "values": {
     "1qb": {
      "ppr": 3428,
-     "half": 3336,
-     "std": 3211
+     "half": 3343,
+     "std": 3226
     },
     "sf": {
-     "ppr": 3067,
-     "half": 2959,
-     "std": 2875
+     "ppr": 3045,
+     "half": 2955,
+     "std": 2867
     }
    },
    "sources": {
@@ -2019,7 +1988,7 @@
    "nSources": 3,
    "spread": 2722,
    "value1qb": 3428,
-   "valueSf": 3067,
+   "valueSf": 3045,
    "tier": 4
   },
   {
@@ -2032,7 +2001,6 @@
    "injury": null,
    "sleeperId": "9487",
    "espnId": "4432620",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": 902,
    "momentum": 0,
@@ -2060,13 +2028,13 @@
    "values": {
     "1qb": {
      "ppr": 3373,
-     "half": 3302,
-     "std": 3308
+     "half": 3310,
+     "std": 3323
     },
     "sf": {
-     "ppr": 3443,
-     "half": 3315,
-     "std": 3273
+     "ppr": 3419,
+     "half": 3310,
+     "std": 3264
     }
    },
    "sources": {
@@ -2077,7 +2045,7 @@
    "nSources": 3,
    "spread": 897,
    "value1qb": 3373,
-   "valueSf": 3443,
+   "valueSf": 3419,
    "tier": 4
   },
   {
@@ -2090,7 +2058,6 @@
    "injury": "Out",
    "sleeperId": "7525",
    "espnId": "4241478",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -1056,
    "momentum": 0,
@@ -2118,13 +2085,13 @@
    "values": {
     "1qb": {
      "ppr": 3298,
-     "half": 3139,
-     "std": 2919
+     "half": 3146,
+     "std": 2933
     },
     "sf": {
-     "ppr": 3478,
-     "half": 3246,
-     "std": 3088
+     "ppr": 3454,
+     "half": 3241,
+     "std": 3080
     }
    },
    "sources": {
@@ -2135,7 +2102,7 @@
    "nSources": 3,
    "spread": 1272,
    "value1qb": 3298,
-   "valueSf": 3478,
+   "valueSf": 3454,
    "tier": 4
   },
   {
@@ -2148,7 +2115,6 @@
    "injury": "Out",
    "sleeperId": "4866",
    "espnId": "3929630",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -2813,
    "momentum": 0,
@@ -2176,13 +2142,13 @@
    "values": {
     "1qb": {
      "ppr": 3275,
-     "half": 3276,
-     "std": 3279
+     "half": 3284,
+     "std": 3294
     },
     "sf": {
-     "ppr": 3315,
-     "half": 3316,
-     "std": 3352
+     "ppr": 3292,
+     "half": 3311,
+     "std": 3342
     }
    },
    "sources": {
@@ -2193,7 +2159,7 @@
    "nSources": 3,
    "spread": 2223,
    "value1qb": 3275,
-   "valueSf": 3315,
+   "valueSf": 3292,
    "tier": 4
   },
   {
@@ -2206,7 +2172,6 @@
    "injury": null,
    "sleeperId": "12490",
    "espnId": "4882093",
-   "adp": null,
    "rosterPct": 0.93,
    "trend": 696,
    "momentum": 0,
@@ -2234,13 +2199,13 @@
    "values": {
     "1qb": {
      "ppr": 3273,
-     "half": 3391,
-     "std": 3550
+     "half": 3399,
+     "std": 3566
     },
     "sf": {
-     "ppr": 2978,
-     "half": 3002,
-     "std": 3243
+     "ppr": 2957,
+     "half": 2997,
+     "std": 3234
     }
    },
    "sources": {
@@ -2251,7 +2216,7 @@
    "nSources": 3,
    "spread": 611,
    "value1qb": 3273,
-   "valueSf": 2978,
+   "valueSf": 2957,
    "tier": 4
   },
   {
@@ -2264,7 +2229,6 @@
    "injury": null,
    "sleeperId": "8228",
    "espnId": "4569987",
-   "adp": null,
    "rosterPct": 0.91,
    "trend": 893,
    "momentum": 0,
@@ -2292,13 +2256,13 @@
    "values": {
     "1qb": {
      "ppr": 3229,
-     "half": 3144,
-     "std": 3101
+     "half": 3151,
+     "std": 3116
     },
     "sf": {
-     "ppr": 2870,
-     "half": 2666,
-     "std": 2600
+     "ppr": 2850,
+     "half": 2662,
+     "std": 2593
     }
    },
    "sources": {
@@ -2309,7 +2273,7 @@
    "nSources": 3,
    "spread": 1127,
    "value1qb": 3229,
-   "valueSf": 2870,
+   "valueSf": 2850,
    "tier": 4
   },
   {
@@ -2322,10 +2286,9 @@
    "injury": null,
    "sleeperId": "10232",
    "espnId": "4360761",
-   "adp": null,
    "rosterPct": 0.86,
    "trend": 1201,
-   "momentum": 0.08,
+   "momentum": 0.07,
    "outlook": {
     "g": 4,
     "fpg": 14.2,
@@ -2350,13 +2313,13 @@
    "values": {
     "1qb": {
      "ppr": 3175,
-     "half": 3128,
-     "std": 2941
+     "half": 3135,
+     "std": 2954
     },
     "sf": {
-     "ppr": 3049,
-     "half": 2774,
-     "std": 2633
+     "ppr": 3028,
+     "half": 2769,
+     "std": 2626
     }
    },
    "sources": {
@@ -2367,7 +2330,7 @@
    "nSources": 3,
    "spread": 1533,
    "value1qb": 3175,
-   "valueSf": 3049,
+   "valueSf": 3028,
    "tier": 4
   },
   {
@@ -2380,7 +2343,6 @@
    "injury": null,
    "sleeperId": "8183",
    "espnId": "4361741",
-   "adp": null,
    "rosterPct": 0.97,
    "trend": 1574,
    "momentum": 0,
@@ -2408,13 +2370,13 @@
    "values": {
     "1qb": {
      "ppr": 3158,
-     "half": 3331,
-     "std": 3334
+     "half": 3338,
+     "std": 3350
     },
     "sf": {
-     "ppr": 6042,
-     "half": 6292,
-     "std": 6458
+     "ppr": 6000,
+     "half": 6282,
+     "std": 6515
     }
    },
    "sources": {
@@ -2425,7 +2387,7 @@
    "nSources": 3,
    "spread": 2679,
    "value1qb": 3158,
-   "valueSf": 6042,
+   "valueSf": 6000,
    "tier": 4
   },
   {
@@ -2438,7 +2400,6 @@
    "injury": null,
    "sleeperId": "11584",
    "espnId": "4596448",
-   "adp": null,
    "rosterPct": 0.97,
    "trend": -632,
    "momentum": 0,
@@ -2466,13 +2427,13 @@
    "values": {
     "1qb": {
      "ppr": 3003,
-     "half": 2889,
-     "std": 2789
+     "half": 2895,
+     "std": 2802
     },
     "sf": {
-     "ppr": 2870,
-     "half": 2765,
-     "std": 2661
+     "ppr": 2850,
+     "half": 2761,
+     "std": 2654
     }
    },
    "sources": {
@@ -2483,7 +2444,7 @@
    "nSources": 3,
    "spread": 660,
    "value1qb": 3003,
-   "valueSf": 2870,
+   "valueSf": 2850,
    "tier": 4
   },
   {
@@ -2496,7 +2457,6 @@
    "injury": null,
    "sleeperId": "12481",
    "espnId": "4696981",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -558,
    "momentum": 0,
@@ -2524,13 +2484,13 @@
    "values": {
     "1qb": {
      "ppr": 2905,
-     "half": 2971,
-     "std": 3034
+     "half": 2977,
+     "std": 3048
     },
     "sf": {
-     "ppr": 2727,
-     "half": 2796,
-     "std": 2839
+     "ppr": 2708,
+     "half": 2792,
+     "std": 2831
     }
    },
    "sources": {
@@ -2541,7 +2501,7 @@
    "nSources": 3,
    "spread": 552,
    "value1qb": 2905,
-   "valueSf": 2727,
+   "valueSf": 2708,
    "tier": 4
   },
   {
@@ -2554,7 +2514,6 @@
    "injury": null,
    "sleeperId": "8137",
    "espnId": "4426354",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -2197,
    "momentum": 0,
@@ -2582,13 +2541,13 @@
    "values": {
     "1qb": {
      "ppr": 2847,
-     "half": 2698,
-     "std": 2624
+     "half": 2704,
+     "std": 2636
     },
     "sf": {
-     "ppr": 3090,
-     "half": 2966,
-     "std": 2921
+     "ppr": 3068,
+     "half": 2962,
+     "std": 2913
     }
    },
    "sources": {
@@ -2599,7 +2558,7 @@
    "nSources": 3,
    "spread": 1832,
    "value1qb": 2847,
-   "valueSf": 3090,
+   "valueSf": 3068,
    "tier": 4
   },
   {
@@ -2612,7 +2571,6 @@
    "injury": "Questionable",
    "sleeperId": "4881",
    "espnId": "3916387",
-   "adp": null,
    "rosterPct": 1,
    "trend": -1043,
    "momentum": 0,
@@ -2640,13 +2598,13 @@
    "values": {
     "1qb": {
      "ppr": 2785,
-     "half": 2837,
-     "std": 2813
+     "half": 2844,
+     "std": 2826
     },
     "sf": {
-     "ppr": 7163,
-     "half": 7168,
-     "std": 7354
+     "ppr": 7114,
+     "half": 7157,
+     "std": 7376
     }
    },
    "sources": {
@@ -2657,7 +2615,7 @@
    "nSources": 3,
    "spread": 677,
    "value1qb": 2785,
-   "valueSf": 7163,
+   "valueSf": 7114,
    "tier": 4
   },
   {
@@ -2670,7 +2628,6 @@
    "injury": null,
    "sleeperId": "4217",
    "espnId": "3040151",
-   "adp": null,
    "rosterPct": 0.97,
    "trend": 1186,
    "momentum": 0,
@@ -2698,13 +2655,13 @@
    "values": {
     "1qb": {
      "ppr": 2752,
-     "half": 2769,
-     "std": 2728
+     "half": 2775,
+     "std": 2740
     },
     "sf": {
-     "ppr": 2771,
-     "half": 2703,
-     "std": 2741
+     "ppr": 2751,
+     "half": 2699,
+     "std": 2733
     }
    },
    "sources": {
@@ -2715,7 +2672,7 @@
    "nSources": 3,
    "spread": 429,
    "value1qb": 2752,
-   "valueSf": 2771,
+   "valueSf": 2751,
    "tier": 4
   },
   {
@@ -2728,7 +2685,6 @@
    "injury": null,
    "sleeperId": "12512",
    "espnId": "4685702",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": -608,
    "momentum": 0,
@@ -2756,13 +2712,13 @@
    "values": {
     "1qb": {
      "ppr": 2700,
-     "half": 2650,
-     "std": 2566
+     "half": 2656,
+     "std": 2578
     },
     "sf": {
-     "ppr": 2328,
-     "half": 2238,
-     "std": 2197
+     "ppr": 2312,
+     "half": 2235,
+     "std": 2191
     }
    },
    "sources": {
@@ -2773,7 +2729,7 @@
    "nSources": 3,
    "spread": 521,
    "value1qb": 2700,
-   "valueSf": 2328,
+   "valueSf": 2312,
    "tier": 4
   },
   {
@@ -2786,7 +2742,6 @@
    "injury": null,
    "sleeperId": "12507",
    "espnId": "4685382",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -3683,
    "momentum": 0,
@@ -2814,13 +2769,13 @@
    "values": {
     "1qb": {
      "ppr": 2597,
-     "half": 2678,
-     "std": 2821
+     "half": 2684,
+     "std": 2834
     },
     "sf": {
-     "ppr": 2573,
-     "half": 2641,
-     "std": 2685
+     "ppr": 2555,
+     "half": 2636,
+     "std": 2677
     }
    },
    "sources": {
@@ -2831,7 +2786,7 @@
    "nSources": 3,
    "spread": 1963,
    "value1qb": 2597,
-   "valueSf": 2573,
+   "valueSf": 2555,
    "tier": 4
   },
   {
@@ -2844,10 +2799,9 @@
    "injury": null,
    "sleeperId": "12501",
    "espnId": "4701936",
-   "adp": null,
    "rosterPct": 0.87,
    "trend": 1159,
-   "momentum": 0.05,
+   "momentum": 0.04,
    "outlook": {
     "g": 4,
     "fpg": 14.5,
@@ -2872,13 +2826,13 @@
    "values": {
     "1qb": {
      "ppr": 2458,
-     "half": 2417,
-     "std": 2379
+     "half": 2422,
+     "std": 2390
     },
     "sf": {
-     "ppr": 2401,
-     "half": 2328,
-     "std": 2277
+     "ppr": 2384,
+     "half": 2324,
+     "std": 2270
     }
    },
    "sources": {
@@ -2889,7 +2843,7 @@
    "nSources": 3,
    "spread": 1431,
    "value1qb": 2458,
-   "valueSf": 2401,
+   "valueSf": 2384,
    "tier": 5
   },
   {
@@ -2902,7 +2856,6 @@
    "injury": "Questionable",
    "sleeperId": "10229",
    "espnId": "4428331",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -1926,
    "momentum": 0,
@@ -2930,13 +2883,13 @@
    "values": {
     "1qb": {
      "ppr": 2405,
-     "half": 2275,
-     "std": 2201
+     "half": 2280,
+     "std": 2211
     },
     "sf": {
-     "ppr": 2536,
-     "half": 2395,
-     "std": 2327
+     "ppr": 2518,
+     "half": 2391,
+     "std": 2321
     }
    },
    "sources": {
@@ -2947,7 +2900,7 @@
    "nSources": 3,
    "spread": 1161,
    "value1qb": 2405,
-   "valueSf": 2536,
+   "valueSf": 2518,
    "tier": 5
   },
   {
@@ -2960,7 +2913,6 @@
    "injury": "IR",
    "sleeperId": "5859",
    "espnId": "4047646",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": -3231,
    "momentum": 0,
@@ -2988,13 +2940,13 @@
    "values": {
     "1qb": {
      "ppr": 2363,
-     "half": 2301,
-     "std": 2218
+     "half": 2306,
+     "std": 2228
     },
     "sf": {
-     "ppr": 2205,
-     "half": 2136,
-     "std": 2089
+     "ppr": 2190,
+     "half": 2133,
+     "std": 2083
     }
    },
    "sources": {
@@ -3005,7 +2957,7 @@
    "nSources": 3,
    "spread": 1592,
    "value1qb": 2363,
-   "valueSf": 2205,
+   "valueSf": 2190,
    "tier": 5
   },
   {
@@ -3018,7 +2970,6 @@
    "injury": null,
    "sleeperId": "2216",
    "espnId": "16737",
-   "adp": null,
    "rosterPct": 0.91,
    "trend": -190,
    "momentum": 0,
@@ -3046,13 +2997,13 @@
    "values": {
     "1qb": {
      "ppr": 2264,
-     "half": 2290,
-     "std": 2348
+     "half": 2295,
+     "std": 2359
     },
     "sf": {
-     "ppr": 2235,
-     "half": 2191,
-     "std": 2250
+     "ppr": 2219,
+     "half": 2187,
+     "std": 2244
     }
    },
    "sources": {
@@ -3063,7 +3014,7 @@
    "nSources": 3,
    "spread": 1199,
    "value1qb": 2264,
-   "valueSf": 2235,
+   "valueSf": 2219,
    "tier": 5
   },
   {
@@ -3076,7 +3027,6 @@
    "injury": null,
    "sleeperId": "7526",
    "espnId": "4372016",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": -1846,
    "momentum": 0,
@@ -3104,13 +3054,13 @@
    "values": {
     "1qb": {
      "ppr": 2132,
-     "half": 2073,
-     "std": 1970
+     "half": 2078,
+     "std": 1979
     },
     "sf": {
-     "ppr": 2275,
-     "half": 2189,
-     "std": 2069
+     "ppr": 2260,
+     "half": 2185,
+     "std": 2063
     }
    },
    "sources": {
@@ -3121,7 +3071,7 @@
    "nSources": 3,
    "spread": 1436,
    "value1qb": 2132,
-   "valueSf": 2275,
+   "valueSf": 2260,
    "tier": 5
   },
   {
@@ -3134,7 +3084,6 @@
    "injury": null,
    "sleeperId": "4199",
    "espnId": "3042519",
-   "adp": null,
    "rosterPct": 0.93,
    "trend": 1144,
    "momentum": 0,
@@ -3162,13 +3111,13 @@
    "values": {
     "1qb": {
      "ppr": 2128,
-     "half": 2116,
-     "std": 2015
+     "half": 2121,
+     "std": 2024
     },
     "sf": {
-     "ppr": 1843,
-     "half": 1842,
-     "std": 1795
+     "ppr": 1830,
+     "half": 1839,
+     "std": 1790
     }
    },
    "sources": {
@@ -3179,7 +3128,7 @@
    "nSources": 3,
    "spread": 952,
    "value1qb": 2128,
-   "valueSf": 1843,
+   "valueSf": 1830,
    "tier": 5
   },
   {
@@ -3192,7 +3141,6 @@
    "injury": "Out",
    "sleeperId": "11646",
    "espnId": "4695883",
-   "adp": null,
    "rosterPct": 0.87,
    "trend": 612,
    "momentum": 0,
@@ -3220,13 +3168,13 @@
    "values": {
     "1qb": {
      "ppr": 2123,
-     "half": 2054,
-     "std": 1995
+     "half": 2058,
+     "std": 2004
     },
     "sf": {
-     "ppr": 2287,
-     "half": 2193,
-     "std": 2089
+     "ppr": 2271,
+     "half": 2189,
+     "std": 2083
     }
    },
    "sources": {
@@ -3237,7 +3185,7 @@
    "nSources": 3,
    "spread": 1974,
    "value1qb": 2123,
-   "valueSf": 2287,
+   "valueSf": 2271,
    "tier": 5
   },
   {
@@ -3250,7 +3198,6 @@
    "injury": null,
    "sleeperId": "10859",
    "espnId": "4430027",
-   "adp": null,
    "rosterPct": 0.96,
    "trend": -288,
    "momentum": 0,
@@ -3278,13 +3225,13 @@
    "values": {
     "1qb": {
      "ppr": 2119,
-     "half": 2015,
-     "std": 1951
+     "half": 2020,
+     "std": 1960
     },
     "sf": {
-     "ppr": 2235,
-     "half": 2088,
-     "std": 2025
+     "ppr": 2219,
+     "half": 2084,
+     "std": 2019
     }
    },
    "sources": {
@@ -3295,7 +3242,7 @@
    "nSources": 3,
    "spread": 1310,
    "value1qb": 2119,
-   "valueSf": 2235,
+   "valueSf": 2219,
    "tier": 5
   },
   {
@@ -3308,7 +3255,6 @@
    "injury": null,
    "sleeperId": "6770",
    "espnId": "3915511",
-   "adp": null,
    "rosterPct": 0.97,
    "trend": -847,
    "momentum": 0,
@@ -3336,13 +3282,13 @@
    "values": {
     "1qb": {
      "ppr": 2114,
-     "half": 2120,
-     "std": 2101
+     "half": 2125,
+     "std": 2111
     },
     "sf": {
-     "ppr": 5553,
-     "half": 5686,
-     "std": 5739
+     "ppr": 5514,
+     "half": 5678,
+     "std": 5723
     }
    },
    "sources": {
@@ -3353,7 +3299,7 @@
    "nSources": 3,
    "spread": 1677,
    "value1qb": 2114,
-   "valueSf": 5553,
+   "valueSf": 5514,
    "tier": 5
   },
   {
@@ -3366,7 +3312,6 @@
    "injury": null,
    "sleeperId": "12518",
    "espnId": "4431459",
-   "adp": null,
    "rosterPct": 0.99,
    "trend": -715,
    "momentum": 0,
@@ -3394,13 +3339,13 @@
    "values": {
     "1qb": {
      "ppr": 2114,
-     "half": 1953,
-     "std": 1835
+     "half": 1957,
+     "std": 1843
     },
     "sf": {
-     "ppr": 2454,
-     "half": 2235,
-     "std": 2128
+     "ppr": 2437,
+     "half": 2232,
+     "std": 2122
     }
    },
    "sources": {
@@ -3411,7 +3356,7 @@
    "nSources": 3,
    "spread": 1236,
    "value1qb": 2114,
-   "valueSf": 2454,
+   "valueSf": 2437,
    "tier": 5
   },
   {
@@ -3424,7 +3369,6 @@
    "injury": null,
    "sleeperId": "7611",
    "espnId": "4569173",
-   "adp": null,
    "rosterPct": 0.89,
    "trend": -420,
    "momentum": 0.04,
@@ -3452,13 +3396,13 @@
    "values": {
     "1qb": {
      "ppr": 2086,
-     "half": 2012,
-     "std": 1942
+     "half": 2017,
+     "std": 1951
     },
     "sf": {
-     "ppr": 1946,
-     "half": 1878,
-     "std": 1777
+     "ppr": 1932,
+     "half": 1875,
+     "std": 1772
     }
    },
    "sources": {
@@ -3469,7 +3413,7 @@
    "nSources": 3,
    "spread": 1358,
    "value1qb": 2086,
-   "valueSf": 1946,
+   "valueSf": 1932,
    "tier": 5
   },
   {
@@ -3482,7 +3426,6 @@
    "injury": null,
    "sleeperId": "13279",
    "espnId": "4871023",
-   "adp": null,
    "rosterPct": 0.86,
    "trend": -266,
    "momentum": 0,
@@ -3510,13 +3453,13 @@
    "values": {
     "1qb": {
      "ppr": 1973,
-     "half": 1763,
-     "std": 1635
+     "half": 1767,
+     "std": 1643
     },
     "sf": {
-     "ppr": 1796,
-     "half": 1701,
-     "std": 1579
+     "ppr": 1784,
+     "half": 1698,
+     "std": 1575
     }
    },
    "sources": {
@@ -3527,7 +3470,7 @@
    "nSources": 3,
    "spread": 977,
    "value1qb": 1973,
-   "valueSf": 1796,
+   "valueSf": 1784,
    "tier": 5
   },
   {
@@ -3540,7 +3483,6 @@
    "injury": null,
    "sleeperId": "12519",
    "espnId": "4685278",
-   "adp": null,
    "rosterPct": 0.9,
    "trend": -1027,
    "momentum": 0,
@@ -3568,13 +3510,13 @@
    "values": {
     "1qb": {
      "ppr": 1963,
-     "half": 1851,
-     "std": 1733
+     "half": 1855,
+     "std": 1741
     },
     "sf": {
-     "ppr": 1976,
-     "half": 1889,
-     "std": 1786
+     "ppr": 1962,
+     "half": 1886,
+     "std": 1781
     }
    },
    "sources": {
@@ -3585,7 +3527,7 @@
    "nSources": 3,
    "spread": 1345,
    "value1qb": 1963,
-   "valueSf": 1976,
+   "valueSf": 1962,
    "tier": 5
   },
   {
@@ -3598,7 +3540,6 @@
    "injury": null,
    "sleeperId": "5892",
    "espnId": "4035538",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": -1304,
    "momentum": 0,
@@ -3626,13 +3567,13 @@
    "values": {
     "1qb": {
      "ppr": 1912,
-     "half": 1956,
-     "std": 1988
+     "half": 1960,
+     "std": 1997
     },
     "sf": {
-     "ppr": 2049,
-     "half": 2085,
-     "std": 2087
+     "ppr": 2035,
+     "half": 2081,
+     "std": 2081
     }
    },
    "sources": {
@@ -3643,7 +3584,7 @@
    "nSources": 3,
    "spread": 387,
    "value1qb": 1912,
-   "valueSf": 2049,
+   "valueSf": 2035,
    "tier": 5
   },
   {
@@ -3656,7 +3597,6 @@
    "injury": null,
    "sleeperId": "12489",
    "espnId": "4568490",
-   "adp": null,
    "rosterPct": 0.71,
    "trend": -271,
    "momentum": 0.03,
@@ -3684,13 +3624,13 @@
    "values": {
     "1qb": {
      "ppr": 1906,
-     "half": 1521,
-     "std": 1308
+     "half": 1525,
+     "std": 1315
     },
     "sf": {
-     "ppr": 1468,
-     "half": 1381,
-     "std": 1161
+     "ppr": 1458,
+     "half": 1379,
+     "std": 1157
     }
    },
    "sources": {
@@ -3701,7 +3641,7 @@
    "nSources": 3,
    "spread": 1604,
    "value1qb": 1906,
-   "valueSf": 1468,
+   "valueSf": 1458,
    "tier": 5
   },
   {
@@ -3714,7 +3654,6 @@
    "injury": "Questionable",
    "sleeperId": "4983",
    "espnId": "3915416",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": -1247,
    "momentum": 0,
@@ -3742,13 +3681,13 @@
    "values": {
     "1qb": {
      "ppr": 1796,
-     "half": 1795,
-     "std": 1788
+     "half": 1800,
+     "std": 1796
     },
     "sf": {
-     "ppr": 1945,
-     "half": 1969,
-     "std": 1975
+     "ppr": 1931,
+     "half": 1966,
+     "std": 1970
     }
    },
    "sources": {
@@ -3759,7 +3698,7 @@
    "nSources": 3,
    "spread": 1101,
    "value1qb": 1796,
-   "valueSf": 1945,
+   "valueSf": 1931,
    "tier": 5
   },
   {
@@ -3772,7 +3711,6 @@
    "injury": "Questionable",
    "sleeperId": "12534",
    "espnId": "4608686",
-   "adp": null,
    "rosterPct": 0.77,
    "trend": 706,
    "momentum": 0.08,
@@ -3799,14 +3737,14 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1747,
-     "half": 1903,
-     "std": 2113
+     "ppr": 1746,
+     "half": 1908,
+     "std": 2123
     },
     "sf": {
-     "ppr": 1583,
-     "half": 1642,
-     "std": 1789
+     "ppr": 1572,
+     "half": 1640,
+     "std": 1784
     }
    },
    "sources": {
@@ -3816,8 +3754,8 @@
    },
    "nSources": 3,
    "spread": 726,
-   "value1qb": 1747,
-   "valueSf": 1583,
+   "value1qb": 1746,
+   "valueSf": 1572,
    "tier": 5
   },
   {
@@ -3830,7 +3768,6 @@
    "injury": null,
    "sleeperId": "4046",
    "espnId": "3139477",
-   "adp": null,
    "rosterPct": 0.96,
    "trend": 396,
    "momentum": 0,
@@ -3858,13 +3795,13 @@
    "values": {
     "1qb": {
      "ppr": 1687,
-     "half": 1697,
-     "std": 1666
+     "half": 1700,
+     "std": 1673
     },
     "sf": {
-     "ppr": 4908,
-     "half": 5088,
-     "std": 5254
+     "ppr": 4874,
+     "half": 5080,
+     "std": 5258
     }
    },
    "sources": {
@@ -3875,7 +3812,7 @@
    "nSources": 3,
    "spread": 315,
    "value1qb": 1687,
-   "valueSf": 4908,
+   "valueSf": 4874,
    "tier": 5
   },
   {
@@ -3888,7 +3825,6 @@
    "injury": null,
    "sleeperId": "3294",
    "espnId": "2577417",
-   "adp": null,
    "rosterPct": 0.94,
    "trend": -543,
    "momentum": 0,
@@ -3916,13 +3852,13 @@
    "values": {
     "1qb": {
      "ppr": 1648,
-     "half": 1700,
-     "std": 1681
+     "half": 1704,
+     "std": 1689
     },
     "sf": {
-     "ppr": 4762,
-     "half": 4771,
-     "std": 4857
+     "ppr": 4729,
+     "half": 4763,
+     "std": 4900
     }
    },
    "sources": {
@@ -3933,7 +3869,7 @@
    "nSources": 3,
    "spread": 423,
    "value1qb": 1648,
-   "valueSf": 4762,
+   "valueSf": 4729,
    "tier": 5
   },
   {
@@ -3946,7 +3882,6 @@
    "injury": "Out",
    "sleeperId": "11635",
    "espnId": "4612826",
-   "adp": null,
    "rosterPct": 0.96,
    "trend": -2267,
    "momentum": 0,
@@ -3974,13 +3909,13 @@
    "values": {
     "1qb": {
      "ppr": 1580,
-     "half": 1534,
-     "std": 1481
+     "half": 1538,
+     "std": 1488
     },
     "sf": {
-     "ppr": 1774,
-     "half": 1711,
-     "std": 1651
+     "ppr": 1762,
+     "half": 1709,
+     "std": 1647
     }
    },
    "sources": {
@@ -3991,7 +3926,7 @@
    "nSources": 3,
    "spread": 1607,
    "value1qb": 1580,
-   "valueSf": 1774,
+   "valueSf": 1762,
    "tier": 5
   },
   {
@@ -4004,7 +3939,6 @@
    "injury": "Out",
    "sleeperId": "11560",
    "espnId": "4431611",
-   "adp": null,
    "rosterPct": 0.89,
    "trend": -584,
    "momentum": 0,
@@ -4032,13 +3966,13 @@
    "values": {
     "1qb": {
      "ppr": 1562,
-     "half": 1601,
-     "std": 1541
+     "half": 1604,
+     "std": 1549
     },
     "sf": {
-     "ppr": 4660,
-     "half": 4782,
-     "std": 4850
+     "ppr": 4627,
+     "half": 4774,
+     "std": 4837
     }
    },
    "sources": {
@@ -4049,7 +3983,7 @@
    "nSources": 3,
    "spread": 527,
    "value1qb": 1562,
-   "valueSf": 4660,
+   "valueSf": 4627,
    "tier": 5
   },
   {
@@ -4062,7 +3996,6 @@
    "injury": null,
    "sleeperId": "7523",
    "espnId": "4360310",
-   "adp": null,
    "rosterPct": 0.89,
    "trend": 70,
    "momentum": 0,
@@ -4090,13 +4023,13 @@
    "values": {
     "1qb": {
      "ppr": 1556,
-     "half": 1558,
-     "std": 1518
+     "half": 1562,
+     "std": 1525
     },
     "sf": {
-     "ppr": 4363,
-     "half": 4548,
-     "std": 4672
+     "ppr": 4332,
+     "half": 4541,
+     "std": 4704
     }
    },
    "sources": {
@@ -4107,7 +4040,7 @@
    "nSources": 3,
    "spread": 157,
    "value1qb": 1556,
-   "valueSf": 4363,
+   "valueSf": 4332,
    "tier": 5
   },
   {
@@ -4120,7 +4053,6 @@
    "injury": null,
    "sleeperId": "7002",
    "espnId": "3929645",
-   "adp": null,
    "rosterPct": 0.75,
    "trend": 758,
    "momentum": 0.04,
@@ -4148,13 +4080,13 @@
    "values": {
     "1qb": {
      "ppr": 1536,
-     "half": 1488,
-     "std": 1374
+     "half": 1491,
+     "std": 1379
     },
     "sf": {
-     "ppr": 1709,
-     "half": 1638,
-     "std": 1583
+     "ppr": 1696,
+     "half": 1635,
+     "std": 1579
     }
    },
    "sources": {
@@ -4165,7 +4097,7 @@
    "nSources": 3,
    "spread": 1194,
    "value1qb": 1536,
-   "valueSf": 1709,
+   "valueSf": 1696,
    "tier": 5
   },
   {
@@ -4178,7 +4110,6 @@
    "injury": null,
    "sleeperId": "12545",
    "espnId": "4360689",
-   "adp": null,
    "rosterPct": 0.87,
    "trend": 904,
    "momentum": 0.06,
@@ -4205,14 +4136,14 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1508,
-     "half": 1606,
-     "std": 1509
+     "ppr": 1507,
+     "half": 1609,
+     "std": 1516
     },
     "sf": {
-     "ppr": 4437,
-     "half": 4536,
-     "std": 4576
+     "ppr": 4405,
+     "half": 4529,
+     "std": 4690
     }
    },
    "sources": {
@@ -4222,8 +4153,8 @@
    },
    "nSources": 3,
    "spread": 714,
-   "value1qb": 1508,
-   "valueSf": 4437,
+   "value1qb": 1507,
+   "valueSf": 4405,
    "tier": 5
   },
   {
@@ -4236,7 +4167,6 @@
    "injury": null,
    "sleeperId": "5967",
    "espnId": "3916148",
-   "adp": null,
    "rosterPct": 0.86,
    "trend": -106,
    "momentum": 0,
@@ -4264,13 +4194,13 @@
    "values": {
     "1qb": {
      "ppr": 1495,
-     "half": 1524,
-     "std": 1505
+     "half": 1528,
+     "std": 1512
     },
     "sf": {
-     "ppr": 1531,
-     "half": 1555,
-     "std": 1552
+     "ppr": 1521,
+     "half": 1553,
+     "std": 1547
     }
    },
    "sources": {
@@ -4281,7 +4211,7 @@
    "nSources": 3,
    "spread": 623,
    "value1qb": 1495,
-   "valueSf": 1531,
+   "valueSf": 1521,
    "tier": 5
   },
   {
@@ -4294,7 +4224,6 @@
    "injury": null,
    "sleeperId": "5846",
    "espnId": "4047650",
-   "adp": null,
    "rosterPct": 0.88,
    "trend": -60,
    "momentum": 0,
@@ -4322,13 +4251,13 @@
    "values": {
     "1qb": {
      "ppr": 1449,
-     "half": 1445,
-     "std": 1389
+     "half": 1449,
+     "std": 1395
     },
     "sf": {
-     "ppr": 1514,
-     "half": 1476,
-     "std": 1442
+     "ppr": 1503,
+     "half": 1474,
+     "std": 1438
     }
    },
    "sources": {
@@ -4339,7 +4268,7 @@
    "nSources": 3,
    "spread": 832,
    "value1qb": 1449,
-   "valueSf": 1514,
+   "valueSf": 1503,
    "tier": 5
   },
   {
@@ -4352,7 +4281,6 @@
    "injury": "Out",
    "sleeperId": "5927",
    "espnId": "3121422",
-   "adp": null,
    "rosterPct": 0.93,
    "trend": -1099,
    "momentum": 0,
@@ -4380,13 +4308,13 @@
    "values": {
     "1qb": {
      "ppr": 1447,
-     "half": 1437,
-     "std": 1432
+     "half": 1441,
+     "std": 1438
     },
     "sf": {
-     "ppr": 1711,
-     "half": 1680,
-     "std": 1663
+     "ppr": 1699,
+     "half": 1678,
+     "std": 1658
     }
    },
    "sources": {
@@ -4397,7 +4325,7 @@
    "nSources": 3,
    "spread": 998,
    "value1qb": 1447,
-   "valueSf": 1711,
+   "valueSf": 1699,
    "tier": 5
   },
   {
@@ -4410,7 +4338,6 @@
    "injury": null,
    "sleeperId": "3163",
    "espnId": "3046779",
-   "adp": null,
    "rosterPct": 0.82,
    "trend": 376,
    "momentum": 0.05,
@@ -4438,13 +4365,13 @@
    "values": {
     "1qb": {
      "ppr": 1431,
-     "half": 1451,
-     "std": 1472
+     "half": 1454,
+     "std": 1479
     },
     "sf": {
-     "ppr": 4317,
-     "half": 4369,
-     "std": 4433
+     "ppr": 4286,
+     "half": 4363,
+     "std": 4439
     }
    },
    "sources": {
@@ -4455,7 +4382,7 @@
    "nSources": 3,
    "spread": 404,
    "value1qb": 1431,
-   "valueSf": 4317,
+   "valueSf": 4286,
    "tier": 5
   },
   {
@@ -4468,7 +4395,6 @@
    "injury": null,
    "sleeperId": "10236",
    "espnId": "4385690",
-   "adp": null,
    "rosterPct": 0.91,
    "trend": 519,
    "momentum": 0,
@@ -4496,13 +4422,13 @@
    "values": {
     "1qb": {
      "ppr": 1426,
-     "half": 1379,
-     "std": 1416
+     "half": 1382,
+     "std": 1423
     },
     "sf": {
-     "ppr": 1901,
-     "half": 1837,
-     "std": 1855
+     "ppr": 1888,
+     "half": 1834,
+     "std": 1850
     }
    },
    "sources": {
@@ -4513,7 +4439,7 @@
    "nSources": 3,
    "spread": 334,
    "value1qb": 1426,
-   "valueSf": 1901,
+   "valueSf": 1888,
    "tier": 5
   },
   {
@@ -4526,7 +4452,6 @@
    "injury": null,
    "sleeperId": "1466",
    "espnId": "15847",
-   "adp": null,
    "rosterPct": 0.95,
    "trend": 211,
    "momentum": 0,
@@ -4554,13 +4479,13 @@
    "values": {
     "1qb": {
      "ppr": 1425,
-     "half": 1381,
-     "std": 1364
+     "half": 1384,
+     "std": 1371
     },
     "sf": {
-     "ppr": 1742,
-     "half": 1666,
-     "std": 1662
+     "ppr": 1730,
+     "half": 1663,
+     "std": 1657
     }
    },
    "sources": {
@@ -4571,7 +4496,7 @@
    "nSources": 3,
    "spread": 389,
    "value1qb": 1425,
-   "valueSf": 1742,
+   "valueSf": 1730,
    "tier": 5
   },
   {
@@ -4584,7 +4509,6 @@
    "injury": null,
    "sleeperId": "8148",
    "espnId": "4426388",
-   "adp": null,
    "rosterPct": 0.91,
    "trend": -997,
    "momentum": 0,
@@ -4612,13 +4536,13 @@
    "values": {
     "1qb": {
      "ppr": 1425,
-     "half": 1407,
-     "std": 1364
+     "half": 1410,
+     "std": 1371
     },
     "sf": {
-     "ppr": 1557,
-     "half": 1529,
-     "std": 1493
+     "ppr": 1547,
+     "half": 1526,
+     "std": 1488
     }
    },
    "sources": {
@@ -4629,7 +4553,7 @@
    "nSources": 3,
    "spread": 786,
    "value1qb": 1425,
-   "valueSf": 1557,
+   "valueSf": 1547,
    "tier": 5
   },
   {
@@ -4642,7 +4566,6 @@
    "injury": "IR",
    "sleeperId": "7543",
    "espnId": "4239996",
-   "adp": null,
    "rosterPct": 0.9,
    "trend": -2803,
    "momentum": -0.07,
@@ -4670,13 +4593,13 @@
    "values": {
     "1qb": {
      "ppr": 1378,
-     "half": 1353,
-     "std": 1356
+     "half": 1356,
+     "std": 1363
     },
     "sf": {
-     "ppr": 1339,
-     "half": 1259,
-     "std": 1274
+     "ppr": 1329,
+     "half": 1257,
+     "std": 1270
     }
    },
    "sources": {
@@ -4687,7 +4610,7 @@
    "nSources": 3,
    "spread": 1201,
    "value1qb": 1378,
-   "valueSf": 1339,
+   "valueSf": 1329,
    "tier": 5
   },
   {
@@ -4700,7 +4623,6 @@
    "injury": null,
    "sleeperId": "12529",
    "espnId": "4432710",
-   "adp": null,
    "rosterPct": 0.89,
    "trend": -621,
    "momentum": 0,
@@ -4728,13 +4650,13 @@
    "values": {
     "1qb": {
      "ppr": 1371,
-     "half": 1399,
-     "std": 1454
+     "half": 1402,
+     "std": 1461
     },
     "sf": {
-     "ppr": 1454,
-     "half": 1503,
-     "std": 1559
+     "ppr": 1444,
+     "half": 1501,
+     "std": 1554
     }
    },
    "sources": {
@@ -4745,7 +4667,7 @@
    "nSources": 3,
    "spread": 730,
    "value1qb": 1371,
-   "valueSf": 1454,
+   "valueSf": 1444,
    "tier": 5
   },
   {
@@ -4758,7 +4680,6 @@
    "injury": null,
    "sleeperId": "2449",
    "espnId": "2976212",
-   "adp": null,
    "rosterPct": 0.86,
    "trend": -21,
    "momentum": 0,
@@ -4786,13 +4707,13 @@
    "values": {
     "1qb": {
      "ppr": 1309,
-     "half": 1243,
-     "std": 1152
+     "half": 1246,
+     "std": 1157
     },
     "sf": {
-     "ppr": 1550,
-     "half": 1471,
-     "std": 1390
+     "ppr": 1539,
+     "half": 1469,
+     "std": 1386
     }
    },
    "sources": {
@@ -4803,7 +4724,7 @@
    "nSources": 3,
    "spread": 929,
    "value1qb": 1309,
-   "valueSf": 1550,
+   "valueSf": 1539,
    "tier": 5
   },
   {
@@ -4816,7 +4737,6 @@
    "injury": null,
    "sleeperId": "13346",
    "espnId": "4832800",
-   "adp": null,
    "rosterPct": 0.69,
    "trend": 1004,
    "momentum": 0,
@@ -4844,13 +4764,13 @@
    "values": {
     "1qb": {
      "ppr": 1278,
-     "half": 1291,
-     "std": 1378
+     "half": 1294,
+     "std": 1384
     },
     "sf": {
-     "ppr": 1414,
-     "half": 1421,
-     "std": 1487
+     "ppr": 1404,
+     "half": 1419,
+     "std": 1483
     }
    },
    "sources": {
@@ -4861,7 +4781,7 @@
    "nSources": 3,
    "spread": 600,
    "value1qb": 1278,
-   "valueSf": 1414,
+   "valueSf": 1404,
    "tier": 5
   },
   {
@@ -4874,7 +4794,6 @@
    "injury": null,
    "sleeperId": "12514",
    "espnId": "4567750",
-   "adp": null,
    "rosterPct": 0.96,
    "trend": -2054,
    "momentum": 0,
@@ -4902,13 +4821,13 @@
    "values": {
     "1qb": {
      "ppr": 1265,
-     "half": 1238,
-     "std": 1167
+     "half": 1240,
+     "std": 1172
     },
     "sf": {
-     "ppr": 1649,
-     "half": 1589,
-     "std": 1521
+     "ppr": 1637,
+     "half": 1587,
+     "std": 1517
     }
    },
    "sources": {
@@ -4919,7 +4838,7 @@
    "nSources": 3,
    "spread": 978,
    "value1qb": 1265,
-   "valueSf": 1649,
+   "valueSf": 1637,
    "tier": 5
   },
   {
@@ -4932,7 +4851,6 @@
    "injury": null,
    "sleeperId": "9228",
    "espnId": "4685720",
-   "adp": null,
    "rosterPct": 0.84,
    "trend": 918,
    "momentum": 0.04,
@@ -4960,13 +4878,13 @@
    "values": {
     "1qb": {
      "ppr": 1258,
-     "half": 1309,
-     "std": 1305
+     "half": 1312,
+     "std": 1311
     },
     "sf": {
-     "ppr": 3791,
-     "half": 3833,
-     "std": 3865
+     "ppr": 3765,
+     "half": 3827,
+     "std": 3890
     }
    },
    "sources": {
@@ -4977,7 +4895,7 @@
    "nSources": 3,
    "spread": 638,
    "value1qb": 1258,
-   "valueSf": 3791,
+   "valueSf": 3765,
    "tier": 5
   },
   {
@@ -4990,7 +4908,6 @@
    "injury": null,
    "sleeperId": "9500",
    "espnId": "4688813",
-   "adp": null,
    "rosterPct": 0.84,
    "trend": 163,
    "momentum": 0,
@@ -5018,13 +4935,13 @@
    "values": {
     "1qb": {
      "ppr": 1240,
-     "half": 1167,
-     "std": 1073
+     "half": 1170,
+     "std": 1078
     },
     "sf": {
-     "ppr": 1503,
-     "half": 1405,
-     "std": 1310
+     "ppr": 1493,
+     "half": 1403,
+     "std": 1307
     }
    },
    "sources": {
@@ -5035,7 +4952,7 @@
    "nSources": 3,
    "spread": 830,
    "value1qb": 1240,
-   "valueSf": 1503,
+   "valueSf": 1493,
    "tier": 5
   },
   {
@@ -5048,7 +4965,6 @@
    "injury": null,
    "sleeperId": "12506",
    "espnId": "5083076",
-   "adp": null,
    "rosterPct": 0.92,
    "trend": -448,
    "momentum": 0,
@@ -5076,13 +4992,13 @@
    "values": {
     "1qb": {
      "ppr": 1228,
-     "half": 1198,
-     "std": 1206
+     "half": 1201,
+     "std": 1211
     },
     "sf": {
-     "ppr": 1432,
-     "half": 1387,
-     "std": 1394
+     "ppr": 1422,
+     "half": 1385,
+     "std": 1390
     }
    },
    "sources": {
@@ -5093,7 +5009,7 @@
    "nSources": 3,
    "spread": 562,
    "value1qb": 1228,
-   "valueSf": 1432,
+   "valueSf": 1422,
    "tier": 5
   },
   {
@@ -5106,7 +5022,6 @@
    "injury": null,
    "sleeperId": "8131",
    "espnId": "4361050",
-   "adp": null,
    "rosterPct": 0.89,
    "trend": -96,
    "momentum": 0,
@@ -5134,13 +5049,13 @@
    "values": {
     "1qb": {
      "ppr": 1187,
-     "half": 1112,
-     "std": 1007
+     "half": 1114,
+     "std": 1012
     },
     "sf": {
-     "ppr": 1464,
-     "half": 1367,
-     "std": 1230
+     "ppr": 1454,
+     "half": 1365,
+     "std": 1227
     }
    },
    "sources": {
@@ -5151,7 +5066,7 @@
    "nSources": 3,
    "spread": 879,
    "value1qb": 1187,
-   "valueSf": 1464,
+   "valueSf": 1454,
    "tier": 6
   },
   {
@@ -5164,7 +5079,6 @@
    "injury": null,
    "sleeperId": "9484",
    "espnId": "4572680",
-   "adp": null,
    "rosterPct": 0.85,
    "trend": -787,
    "momentum": 0,
@@ -5192,13 +5106,13 @@
    "values": {
     "1qb": {
      "ppr": 1177,
-     "half": 1130,
-     "std": 1105
+     "half": 1132,
+     "std": 1110
     },
     "sf": {
-     "ppr": 1350,
-     "half": 1258,
-     "std": 1260
+     "ppr": 1341,
+     "half": 1256,
+     "std": 1257
     }
    },
    "sources": {
@@ -5209,7 +5123,7 @@
    "nSources": 3,
    "spread": 160,
    "value1qb": 1177,
-   "valueSf": 1350,
+   "valueSf": 1341,
    "tier": 6
   },
   {
@@ -5222,7 +5136,6 @@
    "injury": null,
    "sleeperId": "6904",
    "espnId": "4040715",
-   "adp": null,
    "rosterPct": 0.98,
    "trend": -1346,
    "momentum": 0,
@@ -5250,13 +5163,13 @@
    "values": {
     "1qb": {
      "ppr": 1118,
-     "half": 1129,
-     "std": 1052
+     "half": 1131,
+     "std": 1057
     },
     "sf": {
-     "ppr": 4018,
-     "half": 4131,
-     "std": 4147
+     "ppr": 3990,
+     "half": 4125,
+     "std": 4135
     }
    },
    "sources": {
@@ -5267,7 +5180,7 @@
    "nSources": 3,
    "spread": 298,
    "value1qb": 1118,
-   "valueSf": 4018,
+   "valueSf": 3990,
    "tier": 6
   },
   {
@@ -5280,7 +5193,6 @@
    "injury": null,
    "sleeperId": "5872",
    "espnId": "3126486",
-   "adp": null,
    "rosterPct": 0.85,
    "trend": 494,
    "momentum": 0,
@@ -5308,13 +5220,13 @@
    "values": {
     "1qb": {
      "ppr": 1116,
-     "half": 1120,
-     "std": 1088
+     "half": 1122,
+     "std": 1093
     },
     "sf": {
-     "ppr": 1221,
-     "half": 1235,
-     "std": 1212
+     "ppr": 1213,
+     "half": 1233,
+     "std": 1208
     }
    },
    "sources": {
@@ -5325,7 +5237,7 @@
    "nSources": 3,
    "spread": 887,
    "value1qb": 1116,
-   "valueSf": 1221,
+   "valueSf": 1213,
    "tier": 6
   },
   {
@@ -5338,7 +5250,6 @@
    "injury": null,
    "sleeperId": "11564",
    "espnId": "4431452",
-   "adp": null,
    "rosterPct": 0.87,
    "trend": -2271,
    "momentum": 0,
@@ -5366,13 +5277,13 @@
    "values": {
     "1qb": {
      "ppr": 1070,
-     "half": 1068,
-     "std": 985
+     "half": 1071,
+     "std": 989
     },
     "sf": {
-     "ppr": 3628,
-     "half": 3716,
-     "std": 3725
+     "ppr": 3603,
+     "half": 3711,
+     "std": 3715
     }
    },
    "sources": {
@@ -5383,7 +5294,7 @@
    "nSources": 3,
    "spread": 284,
    "value1qb": 1070,
-   "valueSf": 3628,
+   "valueSf": 3603,
    "tier": 6
   },
   {
@@ -5396,10 +5307,9 @@
    "injury": "Questionable",
    "sleeperId": "4035",
    "espnId": "3054850",
-   "adp": null,
    "rosterPct": 0.65,
    "trend": 781,
-   "momentum": 0.28,
+   "momentum": 0.26,
    "outlook": {
     "g": 3,
     "fpg": 11.7,
@@ -5424,13 +5334,13 @@
    "values": {
     "1qb": {
      "ppr": 1035,
-     "half": 938,
-     "std": 806
+     "half": 940,
+     "std": 810
     },
     "sf": {
-     "ppr": 890,
-     "half": 781,
-     "std": 673
+     "ppr": 883,
+     "half": 780,
+     "std": 671
     }
    },
    "sources": {
@@ -5441,7 +5351,7 @@
    "nSources": 3,
    "spread": 348,
    "value1qb": 1035,
-   "valueSf": 890,
+   "valueSf": 883,
    "tier": 6
   },
   {
@@ -5454,7 +5364,6 @@
    "injury": null,
    "sleeperId": "11620",
    "espnId": "4431299",
-   "adp": null,
    "rosterPct": 0.88,
    "trend": -664,
    "momentum": 0,
@@ -5482,13 +5391,13 @@
    "values": {
     "1qb": {
      "ppr": 1034,
-     "half": 1023,
-     "std": 998
+     "half": 1025,
+     "std": 1003
     },
     "sf": {
-     "ppr": 1162,
-     "half": 1122,
-     "std": 1104
+     "ppr": 1154,
+     "half": 1120,
+     "std": 1101
     }
    },
    "sources": {
@@ -5499,7 +5408,7 @@
    "nSources": 3,
    "spread": 785,
    "value1qb": 1034,
-   "valueSf": 1162,
+   "valueSf": 1154,
    "tier": 6
   },
   {
@@ -5512,10 +5421,9 @@
    "injury": null,
    "sleeperId": "12495",
    "espnId": "4711533",
-   "adp": null,
    "rosterPct": 0.62,
    "trend": 852,
-   "momentum": 0.76,
+   "momentum": 0.65,
    "outlook": {
     "g": 3,
     "fpg": 11.1,
@@ -5539,14 +5447,14 @@
    },
    "values": {
     "1qb": {
-     "ppr": 1016,
-     "half": 1012,
-     "std": 1085
+     "ppr": 1013,
+     "half": 1010,
+     "std": 1087
     },
     "sf": {
-     "ppr": 915,
-     "half": 900,
-     "std": 905
+     "ppr": 906,
+     "half": 896,
+     "std": 901
     }
    },
    "sources": {
@@ -5555,8 +5463,8 @@
    },
    "nSources": 2,
    "spread": 414,
-   "value1qb": 1016,
-   "valueSf": 915,
+   "value1qb": 1013,
+   "valueSf": 906,
    "tier": 6
   },
   {
@@ -5569,7 +5477,6 @@
    "injury": "PUP",
    "sleeperId": "9753",
    "espnId": "4426385",
-   "adp": null,
    "rosterPct": 0.58,
    "trend": 892,
    "momentum": 0.07,
@@ -5591,13 +5498,13 @@
    "values": {
     "1qb": {
      "ppr": 963,
-     "half": 927,
-     "std": 891
+     "half": 929,
+     "std": 895
     },
     "sf": {
-     "ppr": 901,
-     "half": 887,
-     "std": 862
+     "ppr": 895,
+     "half": 886,
+     "std": 860
     }
    },
    "sources": {
@@ -5608,7 +5515,7 @@
    "nSources": 3,
    "spread": 724,
    "value1qb": 963,
-   "valueSf": 901,
+   "valueSf": 895,
    "tier": 6
   },
   {
@@ -5621,7 +5528,6 @@
    "injury": null,
    "sleeperId": "12517",
    "espnId": "4723086",
-   "adp": null,
    "rosterPct": 0.91,
    "trend": -2465,
    "momentum": 0,
@@ -5649,13 +5555,13 @@
    "values": {
     "1qb": {
      "ppr": 956,
-     "half": 897,
-     "std": 892
+     "half": 899,
+     "std": 896
     },
     "sf": {
-     "ppr": 1141,
-     "half": 1081,
-     "std": 1064
+     "ppr": 1133,
+     "half": 1079,
+     "std": 1061
     }
    },
    "sources": {
@@ -5666,7 +5572,7 @@
    "nSources": 3,
    "spread": 439,
    "value1qb": 956,
-   "valueSf": 1141,
+   "valueSf": 1133,
    "tier": 6
   },
   {
@@ -5679,10 +5585,9 @@
    "injury": "IR",
    "sleeperId": "13286",
    "espnId": "4685512",
-   "adp": null,
    "rosterPct": 0.82,
    "trend": -1918,
-   "momentum": -0.21,
+   "momentum": -0.2,
    "outlook": {
     "g": 3,
     "fpg": 4.7,
@@ -5707,13 +5612,13 @@
    "values": {
     "1qb": {
      "ppr": 918,
-     "half": 919,
-     "std": 919
+     "half": 921,
+     "std": 923
     },
     "sf": {
-     "ppr": 1049,
-     "half": 1051,
-     "std": 1063
+     "ppr": 1041,
+     "half": 1049,
+     "std": 1060
     }
    },
    "sources": {
@@ -5724,7 +5629,7 @@
    "nSources": 3,
    "spread": 623,
    "value1qb": 918,
-   "valueSf": 1049,
+   "valueSf": 1041,
    "tier": 6
   },
   {
@@ -5737,7 +5642,6 @@
    "injury": "NA",
    "sleeperId": "5850",
    "espnId": "4047365",
-   "adp": null,
    "rosterPct": 0.82,
    "trend": -382,
    "momentum": 0,
@@ -5759,13 +5663,13 @@
    "values": {
     "1qb": {
      "ppr": 844,
-     "half": 863,
-     "std": 874
+     "half": 865,
+     "std": 878
     },
     "sf": {
-     "ppr": 1021,
-     "half": 1028,
-     "std": 1069
+     "ppr": 1013,
+     "half": 1027,
+     "std": 1066
     }
    },
    "sources": {
@@ -5776,7 +5680,7 @@
    "nSources": 3,
    "spread": 427,
    "value1qb": 844,
-   "valueSf": 1021,
+   "valueSf": 1013,
    "tier": 6
   },
   {
@@ -5789,7 +5693,6 @@
    "injury": null,
    "sleeperId": "421",
    "espnId": "12483",
-   "adp": null,
    "rosterPct": 0.9,
    "trend": -683,
    "momentum": 0.04,
@@ -5817,13 +5720,13 @@
    "values": {
     "1qb": {
      "ppr": 810,
-     "half": 809,
-     "std": 790
+     "half": 811,
+     "std": 793
     },
     "sf": {
-     "ppr": 3235,
-     "half": 3228,
-     "std": 3294
+     "ppr": 3213,
+     "half": 3223,
+     "std": 3285
     }
    },
    "sources": {
@@ -5834,7 +5737,7 @@
    "nSources": 3,
    "spread": 586,
    "value1qb": 810,
-   "valueSf": 3235,
+   "valueSf": 3213,
    "tier": 6
   },
   {
@@ -5847,10 +5750,9 @@
    "injury": null,
    "sleeperId": "13298",
    "espnId": "4870653",
-   "adp": null,
    "rosterPct": 0.51,
    "trend": -156,
-   "momentum": 0.04,
+   "momentum": 0.05,
    "outlook": {
     "g": 4,
     "fpg": 7.6,
@@ -5875,13 +5777,13 @@
    "values": {
     "1qb": {
      "ppr": 779,
-     "half": 693,
-     "std": 663
+     "half": 695,
+     "std": 666
     },
     "sf": {
-     "ppr": 812,
-     "half": 722,
-     "std": 643
+     "ppr": 807,
+     "half": 721,
+     "std": 642
     }
    },
    "sources": {
@@ -5892,7 +5794,7 @@
    "nSources": 3,
    "spread": 712,
    "value1qb": 779,
-   "valueSf": 812,
+   "valueSf": 807,
    "tier": 6
   },
   {
@@ -5905,7 +5807,6 @@
    "injury": null,
    "sleeperId": "8126",
    "espnId": "4569587",
-   "adp": null,
    "rosterPct": 0.65,
    "trend": -112,
    "momentum": 0,
@@ -5933,13 +5834,13 @@
    "values": {
     "1qb": {
      "ppr": 772,
-     "half": 699,
-     "std": 641
+     "half": 701,
+     "std": 644
     },
     "sf": {
-     "ppr": 848,
-     "half": 765,
-     "std": 714
+     "ppr": 842,
+     "half": 764,
+     "std": 712
     }
    },
    "sources": {
@@ -5950,7 +5851,7 @@
    "nSources": 3,
    "spread": 641,
    "value1qb": 772,
-   "valueSf": 848,
+   "valueSf": 842,
    "tier": 6
   },
   {
@@ -5963,7 +5864,6 @@
    "injury": null,
    "sleeperId": "12533",
    "espnId": "4575131",
-   "adp": null,
    "rosterPct": 0.72,
    "trend": -81,
    "momentum": -0.01,
@@ -5991,13 +5891,13 @@
    "values": {
     "1qb": {
      "ppr": 771,
-     "half": 821,
-     "std": 874
+     "half": 823,
+     "std": 878
     },
     "sf": {
-     "ppr": 860,
-     "half": 880,
-     "std": 947
+     "ppr": 854,
+     "half": 878,
+     "std": 944
     }
    },
    "sources": {
@@ -6008,7 +5908,7 @@
    "nSources": 3,
    "spread": 782,
    "value1qb": 771,
-   "valueSf": 860,
+   "valueSf": 854,
    "tier": 6
   },
   {
@@ -6021,7 +5921,6 @@
    "injury": null,
    "sleeperId": "9756",
    "espnId": "4429205",
-   "adp": null,
    "rosterPct": 0.83,
    "trend": 9,
    "momentum": 0.08,
@@ -6049,13 +5948,13 @@
    "values": {
     "1qb": {
      "ppr": 748,
-     "half": 726,
-     "std": 741
+     "half": 728,
+     "std": 744
     },
     "sf": {
-     "ppr": 887,
-     "half": 897,
-     "std": 889
+     "ppr": 879,
+     "half": 896,
+     "std": 886
     }
    },
    "sources": {
@@ -6066,7 +5965,7 @@
    "nSources": 3,
    "spread": 731,
    "value1qb": 748,
-   "valueSf": 887,
+   "valueSf": 879,
    "tier": 6
   },
   {
@@ -6079,7 +5978,6 @@
    "injury": "IR",
    "sleeperId": "13281",
    "espnId": "4880281",
-   "adp": null,
    "rosterPct": 0.34,
    "trend": 247,
    "momentum": 0,
@@ -6101,13 +5999,13 @@
    "values": {
     "1qb": {
      "ppr": 732,
-     "half": 714,
-     "std": 688
+     "half": 716,
+     "std": 691
     },
     "sf": {
-     "ppr": 843,
-     "half": 815,
-     "std": 790
+     "ppr": 837,
+     "half": 814,
+     "std": 788
     }
    },
    "sources": {
@@ -6118,7 +6016,7 @@
    "nSources": 3,
    "spread": 464,
    "value1qb": 732,
-   "valueSf": 843,
+   "valueSf": 837,
    "tier": 6
   },
   {
@@ -6131,7 +6029,6 @@
    "injury": null,
    "sleeperId": "11435",
    "espnId": "4887558",
-   "adp": null,
    "rosterPct": 0.5,
    "trend": 960,
    "momentum": 0.92,
@@ -6159,13 +6056,13 @@
    "values": {
     "1qb": {
      "ppr": 715,
-     "half": 706,
-     "std": 783
+     "half": 708,
+     "std": 787
     },
     "sf": {
-     "ppr": 558,
-     "half": 629,
-     "std": 712
+     "ppr": 554,
+     "half": 628,
+     "std": 710
     }
    },
    "sources": {
@@ -6175,7 +6072,7 @@
    "nSources": 2,
    "spread": 452,
    "value1qb": 715,
-   "valueSf": 558,
+   "valueSf": 554,
    "tier": 6
   },
   {
@@ -6188,10 +6085,9 @@
    "injury": null,
    "sleeperId": "5012",
    "espnId": "3116365",
-   "adp": null,
    "rosterPct": 0.79,
    "trend": -76,
-   "momentum": -0.09,
+   "momentum": -0.08,
    "outlook": {
     "g": 4,
     "fpg": 9.7,
@@ -6216,13 +6112,13 @@
    "values": {
     "1qb": {
      "ppr": 685,
-     "half": 657,
-     "std": 637
+     "half": 658,
+     "std": 640
     },
     "sf": {
-     "ppr": 993,
-     "half": 939,
-     "std": 909
+     "ppr": 986,
+     "half": 938,
+     "std": 907
     }
    },
    "sources": {
@@ -6233,7 +6129,7 @@
    "nSources": 3,
    "spread": 556,
    "value1qb": 685,
-   "valueSf": 993,
+   "valueSf": 986,
    "tier": 6
   },
   {
@@ -6246,7 +6142,6 @@
    "injury": null,
    "sleeperId": "5947",
    "espnId": "3916433",
-   "adp": null,
    "rosterPct": 0.75,
    "trend": 144,
    "momentum": 0.05,
@@ -6274,13 +6169,13 @@
    "values": {
     "1qb": {
      "ppr": 667,
-     "half": 676,
-     "std": 691
+     "half": 677,
+     "std": 694
     },
     "sf": {
-     "ppr": 866,
-     "half": 851,
-     "std": 832
+     "ppr": 860,
+     "half": 850,
+     "std": 830
     }
    },
    "sources": {
@@ -6291,7 +6186,7 @@
    "nSources": 3,
    "spread": 665,
    "value1qb": 667,
-   "valueSf": 866,
+   "valueSf": 860,
    "tier": 6
   },
   {
@@ -6304,7 +6199,6 @@
    "injury": null,
    "sleeperId": "4943",
    "espnId": "3912547",
-   "adp": null,
    "rosterPct": 0.53,
    "trend": 553,
    "momentum": 0.05,
@@ -6332,13 +6226,13 @@
    "values": {
     "1qb": {
      "ppr": 647,
-     "half": 647,
-     "std": 639
+     "half": 648,
+     "std": 642
     },
     "sf": {
-     "ppr": 2236,
-     "half": 2224,
-     "std": 2216
+     "ppr": 2219,
+     "half": 2220,
+     "std": 2209
     }
    },
    "sources": {
@@ -6349,7 +6243,7 @@
    "nSources": 3,
    "spread": 401,
    "value1qb": 647,
-   "valueSf": 2236,
+   "valueSf": 2219,
    "tier": 6
   },
   {
@@ -6362,7 +6256,6 @@
    "injury": null,
    "sleeperId": "8121",
    "espnId": "4361432",
-   "adp": null,
    "rosterPct": 0.58,
    "trend": -6,
    "momentum": 0.12,
@@ -6390,13 +6283,13 @@
    "values": {
     "1qb": {
      "ppr": 644,
-     "half": 678,
-     "std": 711
+     "half": 679,
+     "std": 714
     },
     "sf": {
-     "ppr": 682,
-     "half": 718,
-     "std": 729
+     "ppr": 678,
+     "half": 717,
+     "std": 727
     }
    },
    "sources": {
@@ -6407,7 +6300,7 @@
    "nSources": 3,
    "spread": 690,
    "value1qb": 644,
-   "valueSf": 682,
+   "valueSf": 678,
    "tier": 6
   },
   {
@@ -6420,7 +6313,6 @@
    "injury": null,
    "sleeperId": "11563",
    "espnId": "4426338",
-   "adp": null,
    "rosterPct": 0.76,
    "trend": -1044,
    "momentum": 0,
@@ -6448,13 +6340,13 @@
    "values": {
     "1qb": {
      "ppr": 626,
-     "half": 619,
-     "std": 591
+     "half": 621,
+     "std": 594
     },
     "sf": {
-     "ppr": 2744,
-     "half": 2813,
-     "std": 2923
+     "ppr": 2725,
+     "half": 2808,
+     "std": 2915
     }
    },
    "sources": {
@@ -6465,7 +6357,7 @@
    "nSources": 3,
    "spread": 628,
    "value1qb": 626,
-   "valueSf": 2744,
+   "valueSf": 2725,
    "tier": 6
   },
   {
@@ -6478,7 +6370,6 @@
    "injury": null,
    "sleeperId": "11610",
    "espnId": "4569603",
-   "adp": null,
    "rosterPct": 0.28,
    "trend": 256,
    "momentum": 0.11,
@@ -6505,14 +6396,14 @@
    },
    "values": {
     "1qb": {
-     "ppr": 619,
-     "half": 600,
-     "std": 576
+     "ppr": 618,
+     "half": 602,
+     "std": 579
     },
     "sf": {
-     "ppr": 595,
+     "ppr": 589,
      "half": 573,
-     "std": 554
+     "std": 552
     }
    },
    "sources": {
@@ -6522,8 +6413,8 @@
    },
    "nSources": 3,
    "spread": 549,
-   "value1qb": 619,
-   "valueSf": 595,
+   "value1qb": 618,
+   "valueSf": 589,
    "tier": 6
   },
   {
@@ -6536,10 +6427,9 @@
    "injury": null,
    "sleeperId": "11586",
    "espnId": "4429096",
-   "adp": null,
    "rosterPct": 0.71,
    "trend": -347,
-   "momentum": -0.14,
+   "momentum": -0.13,
    "outlook": {
     "g": 4,
     "fpg": 5.5,
@@ -6564,13 +6454,13 @@
    "values": {
     "1qb": {
      "ppr": 610,
-     "half": 611,
-     "std": 624
+     "half": 613,
+     "std": 627
     },
     "sf": {
-     "ppr": 794,
-     "half": 798,
-     "std": 821
+     "ppr": 789,
+     "half": 797,
+     "std": 818
     }
    },
    "sources": {
@@ -6581,7 +6471,7 @@
    "nSources": 3,
    "spread": 549,
    "value1qb": 610,
-   "valueSf": 794,
+   "valueSf": 789,
    "tier": 6
   },
   {
@@ -6594,10 +6484,9 @@
    "injury": null,
    "sleeperId": "5045",
    "espnId": "3128429",
-   "adp": null,
    "rosterPct": 0.82,
    "trend": -557,
-   "momentum": -0.14,
+   "momentum": -0.13,
    "outlook": {
     "g": 4,
     "fpg": 4.4,
@@ -6622,13 +6511,13 @@
    "values": {
     "1qb": {
      "ppr": 609,
-     "half": 591,
-     "std": 570
+     "half": 592,
+     "std": 572
     },
     "sf": {
-     "ppr": 794,
-     "half": 764,
-     "std": 733
+     "ppr": 789,
+     "half": 763,
+     "std": 731
     }
    },
    "sources": {
@@ -6639,7 +6528,7 @@
    "nSources": 3,
    "spread": 813,
    "value1qb": 609,
-   "valueSf": 794,
+   "valueSf": 789,
    "tier": 6
   },
   {
@@ -6652,7 +6541,6 @@
    "injury": "Out",
    "sleeperId": "11566",
    "espnId": "4426348",
-   "adp": null,
    "rosterPct": 0.83,
    "trend": -1624,
    "momentum": -0.01,
@@ -6680,13 +6568,13 @@
    "values": {
     "1qb": {
      "ppr": 607,
-     "half": 599,
-     "std": 588
+     "half": 601,
+     "std": 591
     },
     "sf": {
-     "ppr": 2664,
-     "half": 2649,
-     "std": 2689
+     "ppr": 2645,
+     "half": 2645,
+     "std": 2681
     }
    },
    "sources": {
@@ -6697,7 +6585,7 @@
    "nSources": 3,
    "spread": 411,
    "value1qb": 607,
-   "valueSf": 2664,
+   "valueSf": 2645,
    "tier": 6
   },
   {
@@ -6710,7 +6598,6 @@
    "injury": null,
    "sleeperId": "6806",
    "espnId": "4241985",
-   "adp": null,
    "rosterPct": 0.78,
    "trend": -612,
    "momentum": 0,
@@ -6738,13 +6625,13 @@
    "values": {
     "1qb": {
      "ppr": 601,
-     "half": 647,
-     "std": 699
+     "half": 648,
+     "std": 702
     },
     "sf": {
-     "ppr": 779,
-     "half": 841,
-     "std": 898
+     "ppr": 773,
+     "half": 839,
+     "std": 896
     }
    },
    "sources": {
@@ -6755,7 +6642,7 @@
    "nSources": 3,
    "spread": 200,
    "value1qb": 601,
-   "valueSf": 779,
+   "valueSf": 773,
    "tier": 6
   },
   {
@@ -6768,7 +6655,6 @@
    "injury": null,
    "sleeperId": "10213",
    "espnId": "4428718",
-   "adp": null,
    "rosterPct": 0.37,
    "trend": 109,
    "momentum": -0.16,
@@ -6796,13 +6682,13 @@
    "values": {
     "1qb": {
      "ppr": 596,
-     "half": 612,
-     "std": 604
+     "half": 614,
+     "std": 607
     },
     "sf": {
-     "ppr": 622,
-     "half": 659,
-     "std": 655
+     "ppr": 617,
+     "half": 658,
+     "std": 653
     }
    },
    "sources": {
@@ -6813,7 +6699,7 @@
    "nSources": 3,
    "spread": 729,
    "value1qb": 596,
-   "valueSf": 622,
+   "valueSf": 617,
    "tier": 6
   },
   {
@@ -6826,10 +6712,9 @@
    "injury": null,
    "sleeperId": "11834",
    "espnId": "4569559",
-   "adp": null,
    "rosterPct": 0.65,
    "trend": 470,
-   "momentum": -0.01,
+   "momentum": 0,
    "outlook": {
     "g": 4,
     "fpg": 13.9,
@@ -6854,13 +6739,13 @@
    "values": {
     "1qb": {
      "ppr": 587,
-     "half": 573,
-     "std": 568
+     "half": 574,
+     "std": 570
     },
     "sf": {
-     "ppr": 859,
-     "half": 837,
-     "std": 817
+     "ppr": 853,
+     "half": 835,
+     "std": 814
     }
    },
    "sources": {
@@ -6871,7 +6756,7 @@
    "nSources": 3,
    "spread": 340,
    "value1qb": 587,
-   "valueSf": 859,
+   "valueSf": 853,
    "tier": 6
   },
   {
@@ -6884,7 +6769,6 @@
    "injury": null,
    "sleeperId": "6797",
    "espnId": "4038941",
-   "adp": null,
    "rosterPct": 0.72,
    "trend": -1669,
    "momentum": 0,
@@ -6912,13 +6796,13 @@
    "values": {
     "1qb": {
      "ppr": 581,
-     "half": 585,
-     "std": 582
+     "half": 586,
+     "std": 585
     },
     "sf": {
-     "ppr": 2466,
-     "half": 2488,
-     "std": 2481
+     "ppr": 2449,
+     "half": 2484,
+     "std": 2474
     }
    },
    "sources": {
@@ -6929,7 +6813,7 @@
    "nSources": 3,
    "spread": 710,
    "value1qb": 581,
-   "valueSf": 2466,
+   "valueSf": 2449,
    "tier": 6
   },
   {
@@ -6942,7 +6826,6 @@
    "injury": "IR",
    "sleeperId": "8408",
    "espnId": "4360569",
-   "adp": null,
    "rosterPct": 0.54,
    "trend": -671,
    "momentum": 0,
@@ -6970,13 +6853,13 @@
    "values": {
     "1qb": {
      "ppr": 572,
-     "half": 641,
-     "std": 718
+     "half": 642,
+     "std": 722
     },
     "sf": {
-     "ppr": 688,
-     "half": 710,
-     "std": 801
+     "ppr": 683,
+     "half": 709,
+     "std": 799
     }
    },
    "sources": {
@@ -6987,7 +6870,7 @@
    "nSources": 3,
    "spread": 293,
    "value1qb": 572,
-   "valueSf": 688,
+   "valueSf": 683,
    "tier": 6
   },
   {
@@ -7000,7 +6883,6 @@
    "injury": null,
    "sleeperId": "11624",
    "espnId": "4683062",
-   "adp": null,
    "rosterPct": 0.71,
    "trend": 64,
    "momentum": -0.04,
@@ -7028,13 +6910,13 @@
    "values": {
     "1qb": {
      "ppr": 547,
-     "half": 536,
-     "std": 511
+     "half": 537,
+     "std": 513
     },
     "sf": {
-     "ppr": 716,
-     "half": 690,
-     "std": 663
+     "ppr": 711,
+     "half": 689,
+     "std": 661
     }
    },
    "sources": {
@@ -7045,7 +6927,7 @@
    "nSources": 3,
    "spread": 314,
    "value1qb": 547,
-   "valueSf": 716,
+   "valueSf": 711,
    "tier": 6
   },
   {
@@ -7058,10 +6940,9 @@
    "injury": null,
    "sleeperId": "7553",
    "espnId": "4360248",
-   "adp": null,
    "rosterPct": 0.77,
    "trend": -1126,
-   "momentum": -0.17,
+   "momentum": -0.16,
    "outlook": {
     "g": 4,
     "fpg": 2.9,
@@ -7086,13 +6967,13 @@
    "values": {
     "1qb": {
      "ppr": 541,
-     "half": 517,
-     "std": 501
+     "half": 519,
+     "std": 503
     },
     "sf": {
-     "ppr": 597,
+     "ppr": 592,
      "half": 568,
-     "std": 554
+     "std": 552
     }
    },
    "sources": {
@@ -7103,7 +6984,7 @@
    "nSources": 3,
    "spread": 608,
    "value1qb": 541,
-   "valueSf": 597,
+   "valueSf": 592,
    "tier": 6
   },
   {
@@ -7116,10 +6997,9 @@
    "injury": null,
    "sleeperId": "1166",
    "espnId": "14880",
-   "adp": null,
    "rosterPct": 0.17,
    "trend": 300,
-   "momentum": 0.34,
+   "momentum": 0.33,
    "outlook": {
     "g": 4,
     "fpg": 19.7,
@@ -7144,13 +7024,13 @@
    "values": {
     "1qb": {
      "ppr": 539,
-     "half": 510,
-     "std": 466
+     "half": 512,
+     "std": 468
     },
     "sf": {
-     "ppr": 2347,
-     "half": 2423,
-     "std": 2460
+     "ppr": 2329,
+     "half": 2418,
+     "std": 2452
     }
    },
    "sources": {
@@ -7161,7 +7041,7 @@
    "nSources": 3,
    "spread": 402,
    "value1qb": 539,
-   "valueSf": 2347,
+   "valueSf": 2329,
    "tier": 6
   },
   {
@@ -7174,20 +7054,19 @@
    "injury": "OUT",
    "sleeperId": "3321",
    "espnId": "3116406",
-   "adp": null,
    "rosterPct": 0.29,
    "trend": 547,
-   "momentum": 0.54,
+   "momentum": 0.53,
    "values": {
     "1qb": {
      "ppr": 523,
-     "half": 513,
-     "std": 500
+     "half": 515,
+     "std": 502
     },
     "sf": {
-     "ppr": 512,
-     "half": 500,
-     "std": 494
+     "ppr": 508,
+     "half": 499,
+     "std": 492
     }
    },
    "sources": {
@@ -7196,7 +7075,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 523,
-   "valueSf": 512,
+   "valueSf": 508,
    "tier": 6
   },
   {
@@ -7209,7 +7088,6 @@
    "injury": null,
    "sleeperId": "6804",
    "espnId": "4036378",
-   "adp": null,
    "rosterPct": 0.51,
    "trend": -390,
    "momentum": 0,
@@ -7237,13 +7115,13 @@
    "values": {
     "1qb": {
      "ppr": 516,
-     "half": 509,
-     "std": 467
+     "half": 511,
+     "std": 469
     },
     "sf": {
-     "ppr": 2831,
-     "half": 2929,
-     "std": 2980
+     "ppr": 2812,
+     "half": 2925,
+     "std": 2972
     }
    },
    "sources": {
@@ -7254,7 +7132,7 @@
    "nSources": 3,
    "spread": 393,
    "value1qb": 516,
-   "valueSf": 2831,
+   "valueSf": 2812,
    "tier": 6
   },
   {
@@ -7267,7 +7145,6 @@
    "injury": null,
    "sleeperId": "11628",
    "espnId": "4432708",
-   "adp": null,
    "rosterPct": 0.72,
    "trend": -1238,
    "momentum": -0.07,
@@ -7295,13 +7172,13 @@
    "values": {
     "1qb": {
      "ppr": 476,
-     "half": 464,
-     "std": 447
+     "half": 465,
+     "std": 449
     },
     "sf": {
-     "ppr": 470,
-     "half": 456,
-     "std": 444
+     "ppr": 467,
+     "half": 455,
+     "std": 443
     }
    },
    "sources": {
@@ -7312,7 +7189,7 @@
    "nSources": 3,
    "spread": 311,
    "value1qb": 476,
-   "valueSf": 470,
+   "valueSf": 467,
    "tier": 6
   },
   {
@@ -7325,7 +7202,6 @@
    "injury": null,
    "sleeperId": "9758",
    "espnId": "4432577",
-   "adp": null,
    "rosterPct": 0.37,
    "trend": 58,
    "momentum": 0.13,
@@ -7353,13 +7229,13 @@
    "values": {
     "1qb": {
      "ppr": 476,
-     "half": 477,
-     "std": 447
+     "half": 478,
+     "std": 449
     },
     "sf": {
-     "ppr": 2242,
-     "half": 2299,
-     "std": 2284
+     "ppr": 2226,
+     "half": 2295,
+     "std": 2277
     }
    },
    "sources": {
@@ -7370,7 +7246,7 @@
    "nSources": 3,
    "spread": 682,
    "value1qb": 476,
-   "valueSf": 2242,
+   "valueSf": 2226,
    "tier": 6
   },
   {
@@ -7383,7 +7259,6 @@
    "injury": null,
    "sleeperId": "12474",
    "espnId": "4429059",
-   "adp": null,
    "rosterPct": 0.52,
    "trend": 133,
    "momentum": 0,
@@ -7411,13 +7286,13 @@
    "values": {
     "1qb": {
      "ppr": 472,
-     "half": 422,
-     "std": 415
+     "half": 423,
+     "std": 417
     },
     "sf": {
-     "ppr": 678,
-     "half": 656,
-     "std": 658
+     "ppr": 674,
+     "half": 655,
+     "std": 656
     }
    },
    "sources": {
@@ -7428,7 +7303,7 @@
    "nSources": 3,
    "spread": 448,
    "value1qb": 472,
-   "valueSf": 678,
+   "valueSf": 674,
    "tier": 6
   },
   {
@@ -7441,7 +7316,6 @@
    "injury": null,
    "sleeperId": "8110",
    "espnId": "4242355",
-   "adp": null,
    "rosterPct": 0.79,
    "trend": -241,
    "momentum": -0.05,
@@ -7469,13 +7343,13 @@
    "values": {
     "1qb": {
      "ppr": 455,
-     "half": 449,
-     "std": 501
+     "half": 450,
+     "std": 503
     },
     "sf": {
-     "ppr": 762,
-     "half": 731,
-     "std": 728
+     "ppr": 757,
+     "half": 730,
+     "std": 726
     }
    },
    "sources": {
@@ -7486,7 +7360,7 @@
    "nSources": 3,
    "spread": 178,
    "value1qb": 455,
-   "valueSf": 762,
+   "valueSf": 757,
    "tier": 6
   },
   {
@@ -7499,10 +7373,9 @@
    "injury": null,
    "sleeperId": "11581",
    "espnId": "4429023",
-   "adp": null,
    "rosterPct": 0.49,
    "trend": -789,
-   "momentum": -0.22,
+   "momentum": -0.2,
    "outlook": {
     "g": 4,
     "fpg": 6.5,
@@ -7527,13 +7400,13 @@
    "values": {
     "1qb": {
      "ppr": 438,
-     "half": 426,
-     "std": 411
+     "half": 427,
+     "std": 413
     },
     "sf": {
-     "ppr": 472,
-     "half": 419,
-     "std": 406
+     "ppr": 469,
+     "half": 418,
+     "std": 405
     }
    },
    "sources": {
@@ -7544,7 +7417,7 @@
    "nSources": 3,
    "spread": 480,
    "value1qb": 438,
-   "valueSf": 472,
+   "valueSf": 469,
    "tier": 6
   },
   {
@@ -7557,10 +7430,9 @@
    "injury": null,
    "sleeperId": "3634",
    "espnId": "2973405",
-   "adp": null,
    "rosterPct": 0.51,
    "trend": 455,
-   "momentum": 0.12,
+   "momentum": 0.11,
    "outlook": {
     "g": 4,
     "fpg": 12.3,
@@ -7585,13 +7457,13 @@
    "values": {
     "1qb": {
      "ppr": 429,
-     "half": 404,
-     "std": 373
+     "half": 405,
+     "std": 375
     },
     "sf": {
-     "ppr": 452,
+     "ppr": 449,
      "half": 401,
-     "std": 333
+     "std": 332
     }
    },
    "sources": {
@@ -7601,7 +7473,7 @@
    "nSources": 2,
    "spread": 1,
    "value1qb": 429,
-   "valueSf": 452,
+   "valueSf": 449,
    "tier": 6
   },
   {
@@ -7614,10 +7486,9 @@
    "injury": null,
    "sleeperId": "8134",
    "espnId": "4373678",
-   "adp": null,
    "rosterPct": 0.62,
    "trend": -59,
-   "momentum": -0.1,
+   "momentum": -0.09,
    "outlook": {
     "g": 4,
     "fpg": 7.4,
@@ -7642,13 +7513,13 @@
    "values": {
     "1qb": {
      "ppr": 426,
-     "half": 401,
-     "std": 372
+     "half": 402,
+     "std": 374
     },
     "sf": {
-     "ppr": 429,
-     "half": 391,
-     "std": 351
+     "ppr": 427,
+     "half": 390,
+     "std": 350
     }
    },
    "sources": {
@@ -7659,7 +7530,7 @@
    "nSources": 3,
    "spread": 388,
    "value1qb": 426,
-   "valueSf": 429,
+   "valueSf": 427,
    "tier": 6
   },
   {
@@ -7672,7 +7543,6 @@
    "injury": "Out",
    "sleeperId": "7021",
    "espnId": "4038815",
-   "adp": null,
    "rosterPct": 0.71,
    "trend": -1322,
    "momentum": -0.09,
@@ -7700,13 +7570,13 @@
    "values": {
     "1qb": {
      "ppr": 421,
-     "half": 374,
-     "std": 361
+     "half": 375,
+     "std": 363
     },
     "sf": {
-     "ppr": 619,
-     "half": 590,
-     "std": 540
+     "ppr": 614,
+     "half": 589,
+     "std": 538
     }
    },
    "sources": {
@@ -7717,7 +7587,7 @@
    "nSources": 3,
    "spread": 306,
    "value1qb": 421,
-   "valueSf": 619,
+   "valueSf": 614,
    "tier": 6
   },
   {
@@ -7730,10 +7600,9 @@
    "injury": null,
    "sleeperId": "13330",
    "espnId": "5083315",
-   "adp": null,
    "rosterPct": 0.58,
    "trend": 371,
-   "momentum": 0.27,
+   "momentum": 0.22,
    "outlook": {
     "g": 4,
     "fpg": 9.6,
@@ -7759,12 +7628,12 @@
     "1qb": {
      "ppr": 395,
      "half": 383,
-     "std": 403
+     "std": 404
     },
     "sf": {
-     "ppr": 673,
-     "half": 662,
-     "std": 677
+     "ppr": 667,
+     "half": 660,
+     "std": 675
     }
    },
    "sources": {
@@ -7775,7 +7644,7 @@
    "nSources": 3,
    "spread": 367,
    "value1qb": 395,
-   "valueSf": 673,
+   "valueSf": 667,
    "tier": 6
   },
   {
@@ -7788,7 +7657,6 @@
    "injury": null,
    "sleeperId": "4037",
    "espnId": "3116165",
-   "adp": null,
    "rosterPct": 0.6,
    "trend": -644,
    "momentum": -0.13,
@@ -7816,13 +7684,13 @@
    "values": {
     "1qb": {
      "ppr": 393,
-     "half": 384,
-     "std": 366
+     "half": 385,
+     "std": 368
     },
     "sf": {
-     "ppr": 671,
-     "half": 646,
-     "std": 620
+     "ppr": 666,
+     "half": 645,
+     "std": 618
     }
    },
    "sources": {
@@ -7833,7 +7701,7 @@
    "nSources": 3,
    "spread": 174,
    "value1qb": 393,
-   "valueSf": 671,
+   "valueSf": 666,
    "tier": 6
   },
   {
@@ -7846,7 +7714,6 @@
    "injury": null,
    "sleeperId": "9486",
    "espnId": "4428850",
-   "adp": null,
    "rosterPct": 0.55,
    "trend": 356,
    "momentum": -0.03,
@@ -7874,13 +7741,13 @@
    "values": {
     "1qb": {
      "ppr": 391,
-     "half": 398,
-     "std": 402
+     "half": 399,
+     "std": 404
     },
     "sf": {
-     "ppr": 627,
-     "half": 603,
-     "std": 600
+     "ppr": 623,
+     "half": 602,
+     "std": 598
     }
    },
    "sources": {
@@ -7891,7 +7758,7 @@
    "nSources": 3,
    "spread": 240,
    "value1qb": 391,
-   "valueSf": 627,
+   "valueSf": 623,
    "tier": 6
   },
   {
@@ -7904,7 +7771,6 @@
    "injury": null,
    "sleeperId": "3257",
    "espnId": "2578570",
-   "adp": null,
    "rosterPct": 0.1,
    "trend": 74,
    "momentum": 0,
@@ -7932,13 +7798,13 @@
    "values": {
     "1qb": {
      "ppr": 376,
-     "half": 366,
-     "std": 334
+     "half": 367,
+     "std": 335
     },
     "sf": {
-     "ppr": 1854,
-     "half": 1888,
-     "std": 1984
+     "ppr": 1841,
+     "half": 1885,
+     "std": 1979
     }
    },
    "sources": {
@@ -7949,7 +7815,7 @@
    "nSources": 3,
    "spread": 403,
    "value1qb": 376,
-   "valueSf": 1854,
+   "valueSf": 1841,
    "tier": 6
   },
   {
@@ -7962,7 +7828,6 @@
    "injury": "Out",
    "sleeperId": "5022",
    "espnId": "3121023",
-   "adp": null,
    "rosterPct": 0.78,
    "trend": -450,
    "momentum": 0,
@@ -7990,13 +7855,13 @@
    "values": {
     "1qb": {
      "ppr": 375,
-     "half": 360,
-     "std": 352
+     "half": 361,
+     "std": 354
     },
     "sf": {
-     "ppr": 705,
-     "half": 671,
-     "std": 649
+     "ppr": 701,
+     "half": 670,
+     "std": 647
     }
    },
    "sources": {
@@ -8007,7 +7872,7 @@
    "nSources": 3,
    "spread": 357,
    "value1qb": 375,
-   "valueSf": 705,
+   "valueSf": 701,
    "tier": 6
   },
   {
@@ -8020,7 +7885,6 @@
    "injury": null,
    "sleeperId": "5001",
    "espnId": "3117256",
-   "adp": null,
    "rosterPct": 0.57,
    "trend": 276,
    "momentum": 0,
@@ -8048,13 +7912,13 @@
    "values": {
     "1qb": {
      "ppr": 373,
-     "half": 360,
-     "std": 319
+     "half": 361,
+     "std": 321
     },
     "sf": {
-     "ppr": 845,
-     "half": 729,
-     "std": 685
+     "ppr": 839,
+     "half": 728,
+     "std": 683
     }
    },
    "sources": {
@@ -8065,7 +7929,7 @@
    "nSources": 3,
    "spread": 486,
    "value1qb": 373,
-   "valueSf": 845,
+   "valueSf": 839,
    "tier": 6
   },
   {
@@ -8078,20 +7942,19 @@
    "injury": "QUESTIONABLE",
    "sleeperId": "4018",
    "espnId": "3116385",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 386,
    "momentum": 0.12,
    "values": {
     "1qb": {
      "ppr": 364,
-     "half": 360,
-     "std": 356
+     "half": 361,
+     "std": 358
     },
     "sf": {
-     "ppr": 293,
-     "half": 288,
-     "std": 289
+     "ppr": 291,
+     "half": 287,
+     "std": 288
     }
    },
    "sources": {
@@ -8100,7 +7963,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 364,
-   "valueSf": 293,
+   "valueSf": 291,
    "tier": 6
   },
   {
@@ -8113,10 +7976,9 @@
    "injury": null,
    "sleeperId": "11576",
    "espnId": "4685247",
-   "adp": null,
    "rosterPct": 0.75,
    "trend": 482,
-   "momentum": 0.3,
+   "momentum": 0.25,
    "outlook": {
     "g": 4,
     "fpg": 6.5,
@@ -8140,14 +8002,14 @@
    },
    "values": {
     "1qb": {
-     "ppr": 346,
+     "ppr": 345,
      "half": 334,
-     "std": 332
+     "std": 333
     },
     "sf": {
-     "ppr": 295,
-     "half": 293,
-     "std": 295
+     "ppr": 293,
+     "half": 292,
+     "std": 294
     }
    },
    "sources": {
@@ -8157,8 +8019,8 @@
    },
    "nSources": 3,
    "spread": 246,
-   "value1qb": 346,
-   "valueSf": 295,
+   "value1qb": 345,
+   "valueSf": 293,
    "tier": 6
   },
   {
@@ -8171,7 +8033,6 @@
    "injury": null,
    "sleeperId": "8132",
    "espnId": "4373626",
-   "adp": null,
    "rosterPct": 0.28,
    "trend": -422,
    "momentum": 0.04,
@@ -8200,10 +8061,10 @@
     "1qb": {
      "ppr": 336,
      "half": 311,
-     "std": 270
+     "std": 271
     },
     "sf": {
-     "ppr": 312,
+     "ppr": 310,
      "half": 255,
      "std": 238
     }
@@ -8216,7 +8077,7 @@
    "nSources": 3,
    "spread": 90,
    "value1qb": 336,
-   "valueSf": 312,
+   "valueSf": 310,
    "tier": 6
   },
   {
@@ -8229,10 +8090,9 @@
    "injury": null,
    "sleeperId": "5849",
    "espnId": "3917315",
-   "adp": null,
    "rosterPct": 0.65,
    "trend": -362,
-   "momentum": -0.13,
+   "momentum": -0.12,
    "outlook": {
     "g": 3,
     "fpg": 7.2,
@@ -8257,13 +8117,13 @@
    "values": {
     "1qb": {
      "ppr": 327,
-     "half": 328,
-     "std": 328
+     "half": 329,
+     "std": 329
     },
     "sf": {
-     "ppr": 1427,
-     "half": 1414,
-     "std": 1382
+     "ppr": 1418,
+     "half": 1412,
+     "std": 1378
     }
    },
    "sources": {
@@ -8274,7 +8134,7 @@
    "nSources": 3,
    "spread": 434,
    "value1qb": 327,
-   "valueSf": 1427,
+   "valueSf": 1418,
    "tier": 6
   },
   {
@@ -8287,10 +8147,9 @@
    "injury": null,
    "sleeperId": "2505",
    "espnId": "2576925",
-   "adp": null,
    "rosterPct": 0.34,
    "trend": 326,
-   "momentum": 0.07,
+   "momentum": 0.06,
    "outlook": {
     "g": 4,
     "fpg": 10,
@@ -8316,12 +8175,12 @@
     "1qb": {
      "ppr": 323,
      "half": 312,
-     "std": 305
+     "std": 307
     },
     "sf": {
-     "ppr": 314,
+     "ppr": 312,
      "half": 301,
-     "std": 299
+     "std": 297
     }
    },
    "sources": {
@@ -8332,7 +8191,7 @@
    "nSources": 3,
    "spread": 399,
    "value1qb": 323,
-   "valueSf": 314,
+   "valueSf": 312,
    "tier": 6
   },
   {
@@ -8345,7 +8204,6 @@
    "injury": "Out",
    "sleeperId": "8136",
    "espnId": "4697815",
-   "adp": null,
    "rosterPct": 0.65,
    "trend": -482,
    "momentum": -0.06,
@@ -8374,12 +8232,12 @@
     "1qb": {
      "ppr": 319,
      "half": 314,
-     "std": 289
+     "std": 290
     },
     "sf": {
-     "ppr": 591,
-     "half": 596,
-     "std": 604
+     "ppr": 587,
+     "half": 595,
+     "std": 602
     }
    },
    "sources": {
@@ -8390,7 +8248,7 @@
    "nSources": 3,
    "spread": 68,
    "value1qb": 319,
-   "valueSf": 591,
+   "valueSf": 587,
    "tier": 6
   },
   {
@@ -8403,10 +8261,9 @@
    "injury": "Out",
    "sleeperId": "11625",
    "espnId": "4597500",
-   "adp": null,
    "rosterPct": 0.27,
    "trend": 203,
-   "momentum": -0.27,
+   "momentum": -0.26,
    "outlook": {
     "g": 2,
     "fpg": 10.7,
@@ -8432,12 +8289,12 @@
     "1qb": {
      "ppr": 315,
      "half": 309,
-     "std": 295
+     "std": 296
     },
     "sf": {
-     "ppr": 546,
-     "half": 527,
-     "std": 488
+     "ppr": 543,
+     "half": 526,
+     "std": 486
     }
    },
    "sources": {
@@ -8448,7 +8305,7 @@
    "nSources": 3,
    "spread": 222,
    "value1qb": 315,
-   "valueSf": 546,
+   "valueSf": 543,
    "tier": 6
   },
   {
@@ -8461,7 +8318,6 @@
    "injury": null,
    "sleeperId": "13294",
    "espnId": "4870795",
-   "adp": null,
    "rosterPct": 0.53,
    "trend": -323,
    "momentum": -0.02,
@@ -8490,12 +8346,12 @@
     "1qb": {
      "ppr": 299,
      "half": 294,
-     "std": 285
+     "std": 286
     },
     "sf": {
-     "ppr": 266,
+     "ppr": 264,
      "half": 260,
-     "std": 257
+     "std": 256
     }
    },
    "sources": {
@@ -8505,7 +8361,7 @@
    "nSources": 2,
    "spread": 195,
    "value1qb": 299,
-   "valueSf": 266,
+   "valueSf": 264,
    "tier": 6
   },
   {
@@ -8518,10 +8374,9 @@
    "injury": null,
    "sleeperId": "8154",
    "espnId": "4241474",
-   "adp": null,
    "rosterPct": 0.27,
    "trend": 141,
-   "momentum": 0.21,
+   "momentum": 0.2,
    "outlook": {
     "g": 4,
     "fpg": 12.1,
@@ -8547,11 +8402,11 @@
     "1qb": {
      "ppr": 298,
      "half": 305,
-     "std": 327
+     "std": 328
     },
     "sf": {
-     "ppr": 228,
-     "half": 255,
+     "ppr": 227,
+     "half": 254,
      "std": 303
     }
    },
@@ -8562,7 +8417,7 @@
    "nSources": 2,
    "spread": 36,
    "value1qb": 298,
-   "valueSf": 228,
+   "valueSf": 227,
    "tier": 6
   },
   {
@@ -8575,10 +8430,9 @@
    "injury": null,
    "sleeperId": "9511",
    "espnId": "4596334",
-   "adp": null,
    "rosterPct": 0.18,
    "trend": 47,
-   "momentum": 0.28,
+   "momentum": 0.27,
    "outlook": {
     "g": 4,
     "fpg": 7.7,
@@ -8603,13 +8457,13 @@
    "values": {
     "1qb": {
      "ppr": 290,
-     "half": 270,
+     "half": 271,
      "std": 250
     },
     "sf": {
-     "ppr": 257,
-     "half": 227,
-     "std": 208
+     "ppr": 256,
+     "half": 226,
+     "std": 207
     }
    },
    "sources": {
@@ -8619,7 +8473,7 @@
    "nSources": 2,
    "spread": 146,
    "value1qb": 290,
-   "valueSf": 257,
+   "valueSf": 256,
    "tier": 6
   },
   {
@@ -8632,10 +8486,9 @@
    "injury": null,
    "sleeperId": "9754",
    "espnId": "4429025",
-   "adp": null,
    "rosterPct": 0.52,
    "trend": -909,
-   "momentum": -0.23,
+   "momentum": -0.22,
    "outlook": {
     "g": 4,
     "fpg": 4.5,
@@ -8660,13 +8513,13 @@
    "values": {
     "1qb": {
      "ppr": 289,
-     "half": 284,
-     "std": 282
+     "half": 285,
+     "std": 283
     },
     "sf": {
-     "ppr": 247,
-     "half": 249,
-     "std": 266
+     "ppr": 245,
+     "half": 248,
+     "std": 265
     }
    },
    "sources": {
@@ -8677,7 +8530,7 @@
    "nSources": 3,
    "spread": 370,
    "value1qb": 289,
-   "valueSf": 247,
+   "valueSf": 245,
    "tier": 6
   },
   {
@@ -8690,7 +8543,6 @@
    "injury": null,
    "sleeperId": "13414",
    "espnId": "4696044",
-   "adp": null,
    "rosterPct": 0.34,
    "trend": 117,
    "momentum": -0.17,
@@ -8718,13 +8570,13 @@
    "values": {
     "1qb": {
      "ppr": 284,
-     "half": 284,
-     "std": 285
+     "half": 285,
+     "std": 286
     },
     "sf": {
      "ppr": 255,
-     "half": 256,
-     "std": 259
+     "half": 255,
+     "std": 258
     }
    },
    "sources": {
@@ -8748,10 +8600,9 @@
    "injury": null,
    "sleeperId": "11631",
    "espnId": "4432773",
-   "adp": null,
    "rosterPct": 0.67,
    "trend": -766,
-   "momentum": -0.11,
+   "momentum": -0.1,
    "outlook": {
     "g": 4,
     "fpg": 6.4,
@@ -8777,12 +8628,12 @@
     "1qb": {
      "ppr": 275,
      "half": 292,
-     "std": 299
+     "std": 301
     },
     "sf": {
-     "ppr": 602,
-     "half": 580,
-     "std": 558
+     "ppr": 598,
+     "half": 579,
+     "std": 556
     }
    },
    "sources": {
@@ -8793,7 +8644,7 @@
    "nSources": 3,
    "spread": 422,
    "value1qb": 275,
-   "valueSf": 602,
+   "valueSf": 598,
    "tier": 6
   },
   {
@@ -8806,7 +8657,6 @@
    "injury": "Out",
    "sleeperId": "4892",
    "espnId": "3052587",
-   "adp": null,
    "rosterPct": 0.35,
    "trend": -420,
    "momentum": 0,
@@ -8834,13 +8684,13 @@
    "values": {
     "1qb": {
      "ppr": 274,
-     "half": 278,
-     "std": 280
+     "half": 279,
+     "std": 281
     },
     "sf": {
-     "ppr": 1333,
-     "half": 1336,
-     "std": 1274
+     "ppr": 1324,
+     "half": 1334,
+     "std": 1270
     }
    },
    "sources": {
@@ -8851,7 +8701,7 @@
    "nSources": 3,
    "spread": 578,
    "value1qb": 274,
-   "valueSf": 1333,
+   "valueSf": 1324,
    "tier": 6
   },
   {
@@ -8864,7 +8714,6 @@
    "injury": null,
    "sleeperId": "13317",
    "espnId": "5220680",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -8892,13 +8741,13 @@
    "values": {
     "1qb": {
      "ppr": 271,
-     "half": 260,
-     "std": 292
+     "half": 261,
+     "std": 293
     },
     "sf": {
-     "ppr": 284,
+     "ppr": 282,
      "half": 271,
-     "std": 257
+     "std": 256
     }
    },
    "sources": {
@@ -8908,7 +8757,7 @@
    "nSources": 2,
    "spread": 193,
    "value1qb": 271,
-   "valueSf": 284,
+   "valueSf": 282,
    "tier": 6
   },
   {
@@ -8921,10 +8770,9 @@
    "injury": "Out",
    "sleeperId": "1479",
    "espnId": "15818",
-   "adp": null,
    "rosterPct": 0.43,
    "trend": 33,
-   "momentum": 0.05,
+   "momentum": 0.04,
    "outlook": {
     "g": 3,
     "fpg": 9.7,
@@ -8949,12 +8797,12 @@
    "values": {
     "1qb": {
      "ppr": 254,
-     "half": 236,
-     "std": 221
+     "half": 237,
+     "std": 222
     },
     "sf": {
-     "ppr": 241,
-     "half": 221,
+     "ppr": 239,
+     "half": 219,
      "std": 187
     }
    },
@@ -8966,7 +8814,7 @@
    "nSources": 3,
    "spread": 183,
    "value1qb": 254,
-   "valueSf": 241,
+   "valueSf": 239,
    "tier": 6
   },
   {
@@ -8979,7 +8827,6 @@
    "injury": null,
    "sleeperId": "7567",
    "espnId": "4371733",
-   "adp": null,
    "rosterPct": 0.66,
    "trend": -953,
    "momentum": -0.07,
@@ -9007,13 +8854,13 @@
    "values": {
     "1qb": {
      "ppr": 253,
-     "half": 229,
-     "std": 203
+     "half": 230,
+     "std": 204
     },
     "sf": {
-     "ppr": 216,
-     "half": 191,
-     "std": 148
+     "ppr": 214,
+     "half": 192,
+     "std": 147
     }
    },
    "sources": {
@@ -9023,7 +8870,7 @@
    "nSources": 2,
    "spread": 141,
    "value1qb": 253,
-   "valueSf": 216,
+   "valueSf": 214,
    "tier": 6
   },
   {
@@ -9036,7 +8883,6 @@
    "injury": null,
    "sleeperId": "7571",
    "espnId": "4360939",
-   "adp": null,
    "rosterPct": 0.24,
    "trend": 81,
    "momentum": -0.05,
@@ -9064,11 +8910,11 @@
    "values": {
     "1qb": {
      "ppr": 242,
-     "half": 263,
-     "std": 257
+     "half": 264,
+     "std": 259
     },
     "sf": {
-     "ppr": 229,
+     "ppr": 228,
      "half": 225,
      "std": 233
     }
@@ -9081,7 +8927,7 @@
    "nSources": 3,
    "spread": 543,
    "value1qb": 242,
-   "valueSf": 229,
+   "valueSf": 228,
    "tier": 6
   },
   {
@@ -9094,7 +8940,6 @@
    "injury": null,
    "sleeperId": "96",
    "espnId": "8439",
-   "adp": null,
    "rosterPct": 0.06,
    "trend": 0,
    "momentum": 0.08,
@@ -9123,12 +8968,12 @@
     "1qb": {
      "ppr": 240,
      "half": 227,
-     "std": 231
+     "std": 232
     },
     "sf": {
-     "ppr": 1259,
-     "half": 1251,
-     "std": 1205
+     "ppr": 1250,
+     "half": 1249,
+     "std": 1202
     }
    },
    "sources": {
@@ -9138,7 +8983,7 @@
    "nSources": 2,
    "spread": 129,
    "value1qb": 240,
-   "valueSf": 1259,
+   "valueSf": 1250,
    "tier": 6
   },
   {
@@ -9151,10 +8996,9 @@
    "injury": null,
    "sleeperId": "6819",
    "espnId": "4035687",
-   "adp": null,
    "rosterPct": 0.78,
    "trend": -729,
-   "momentum": -0.15,
+   "momentum": -0.14,
    "outlook": {
     "g": 3,
     "fpg": 5.3,
@@ -9180,12 +9024,12 @@
     "1qb": {
      "ppr": 235,
      "half": 228,
-     "std": 219
+     "std": 220
     },
     "sf": {
-     "ppr": 224,
-     "half": 217,
-     "std": 209
+     "ppr": 222,
+     "half": 216,
+     "std": 208
     }
    },
    "sources": {
@@ -9196,7 +9040,7 @@
    "nSources": 3,
    "spread": 244,
    "value1qb": 235,
-   "valueSf": 224,
+   "valueSf": 222,
    "tier": 6
   },
   {
@@ -9209,7 +9053,6 @@
    "injury": null,
    "sleeperId": "12509",
    "espnId": "4686612",
-   "adp": null,
    "rosterPct": 0.06,
    "trend": 50,
    "momentum": 0.09,
@@ -9238,12 +9081,12 @@
     "1qb": {
      "ppr": 232,
      "half": 223,
-     "std": 212
+     "std": 213
     },
     "sf": {
-     "ppr": 240,
+     "ppr": 238,
      "half": 229,
-     "std": 220
+     "std": 219
     }
    },
    "sources": {
@@ -9254,7 +9097,7 @@
    "nSources": 3,
    "spread": 340,
    "value1qb": 232,
-   "valueSf": 240,
+   "valueSf": 238,
    "tier": 6
   },
   {
@@ -9267,7 +9110,6 @@
    "injury": null,
    "sleeperId": "5870",
    "espnId": "3917792",
-   "adp": null,
    "rosterPct": 0.23,
    "trend": -62,
    "momentum": 0,
@@ -9295,13 +9137,13 @@
    "values": {
     "1qb": {
      "ppr": 231,
-     "half": 233,
-     "std": 234
+     "half": 234,
+     "std": 235
     },
     "sf": {
-     "ppr": 1089,
-     "half": 1087,
-     "std": 1087
+     "ppr": 1081,
+     "half": 1085,
+     "std": 1084
     }
    },
    "sources": {
@@ -9312,7 +9154,7 @@
    "nSources": 3,
    "spread": 413,
    "value1qb": 231,
-   "valueSf": 1089,
+   "valueSf": 1081,
    "tier": 6
   },
   {
@@ -9325,7 +9167,6 @@
    "injury": null,
    "sleeperId": "8161",
    "espnId": "4242512",
-   "adp": null,
    "rosterPct": 0.11,
    "trend": -120,
    "momentum": -0.09,
@@ -9353,13 +9194,13 @@
    "values": {
     "1qb": {
      "ppr": 229,
-     "half": 232,
-     "std": 235
+     "half": 233,
+     "std": 236
     },
     "sf": {
-     "ppr": 1061,
-     "half": 1051,
-     "std": 1043
+     "ppr": 1054,
+     "half": 1049,
+     "std": 1040
     }
    },
    "sources": {
@@ -9370,7 +9211,7 @@
    "nSources": 3,
    "spread": 593,
    "value1qb": 229,
-   "valueSf": 1061,
+   "valueSf": 1054,
    "tier": 6
   },
   {
@@ -9383,7 +9224,6 @@
    "injury": null,
    "sleeperId": "9480",
    "espnId": "4430539",
-   "adp": null,
    "rosterPct": 0.17,
    "trend": -122,
    "momentum": 0.06,
@@ -9412,12 +9252,12 @@
     "1qb": {
      "ppr": 223,
      "half": 213,
-     "std": 206
+     "std": 207
     },
     "sf": {
-     "ppr": 221,
+     "ppr": 219,
      "half": 210,
-     "std": 204
+     "std": 203
     }
    },
    "sources": {
@@ -9428,7 +9268,7 @@
    "nSources": 3,
    "spread": 205,
    "value1qb": 223,
-   "valueSf": 221,
+   "valueSf": 219,
    "tier": 6
   },
   {
@@ -9441,7 +9281,6 @@
    "injury": null,
    "sleeperId": "12522",
    "espnId": "4688380",
-   "adp": null,
    "rosterPct": 0.06,
    "trend": -87,
    "momentum": 0,
@@ -9470,12 +9309,12 @@
     "1qb": {
      "ppr": 223,
      "half": 202,
-     "std": 166
+     "std": 167
     },
     "sf": {
-     "ppr": 1112,
-     "half": 1148,
-     "std": 1146
+     "ppr": 1104,
+     "half": 1146,
+     "std": 1143
     }
    },
    "sources": {
@@ -9486,7 +9325,7 @@
    "nSources": 3,
    "spread": 291,
    "value1qb": 223,
-   "valueSf": 1112,
+   "valueSf": 1104,
    "tier": 6
   },
   {
@@ -9499,7 +9338,6 @@
    "injury": null,
    "sleeperId": "13337",
    "espnId": "4832955",
-   "adp": null,
    "rosterPct": 0.2,
    "trend": 142,
    "momentum": -0.15,
@@ -9528,12 +9366,12 @@
     "1qb": {
      "ppr": 221,
      "half": 222,
-     "std": 222
+     "std": 223
     },
     "sf": {
-     "ppr": 199,
+     "ppr": 197,
      "half": 198,
-     "std": 202
+     "std": 201
     }
    },
    "sources": {
@@ -9544,7 +9382,7 @@
    "nSources": 3,
    "spread": 205,
    "value1qb": 221,
-   "valueSf": 199,
+   "valueSf": 197,
    "tier": 6
   },
   {
@@ -9557,7 +9395,6 @@
    "injury": null,
    "sleeperId": "11559",
    "espnId": "4360423",
-   "adp": null,
    "rosterPct": 0.06,
    "trend": 95,
    "momentum": 0,
@@ -9586,12 +9423,12 @@
     "1qb": {
      "ppr": 217,
      "half": 219,
-     "std": 219
+     "std": 220
     },
     "sf": {
-     "ppr": 955,
-     "half": 941,
-     "std": 892
+     "ppr": 948,
+     "half": 939,
+     "std": 889
     }
    },
    "sources": {
@@ -9602,7 +9439,7 @@
    "nSources": 3,
    "spread": 404,
    "value1qb": 217,
-   "valueSf": 955,
+   "valueSf": 948,
    "tier": 6
   },
   {
@@ -9615,7 +9452,6 @@
    "injury": null,
    "sleeperId": "1373",
    "espnId": "15864",
-   "adp": null,
    "rosterPct": 0.09,
    "trend": 50,
    "momentum": 0,
@@ -9644,12 +9480,12 @@
     "1qb": {
      "ppr": 217,
      "half": 220,
-     "std": 221
+     "std": 222
     },
     "sf": {
-     "ppr": 1002,
-     "half": 1001,
-     "std": 929
+     "ppr": 995,
+     "half": 999,
+     "std": 926
     }
    },
    "sources": {
@@ -9660,7 +9496,7 @@
    "nSources": 3,
    "spread": 475,
    "value1qb": 217,
-   "valueSf": 1002,
+   "valueSf": 995,
    "tier": 6
   },
   {
@@ -9673,10 +9509,9 @@
    "injury": "IR",
    "sleeperId": "12487",
    "espnId": "4570037",
-   "adp": null,
    "rosterPct": 0.19,
    "trend": 0,
-   "momentum": -0.31,
+   "momentum": -0.29,
    "outlook": {
     "g": 3,
     "fpg": 6.4,
@@ -9701,13 +9536,13 @@
    "values": {
     "1qb": {
      "ppr": 217,
-     "half": 206,
-     "std": 196
+     "half": 207,
+     "std": 197
     },
     "sf": {
-     "ppr": 227,
+     "ppr": 226,
      "half": 215,
-     "std": 204
+     "std": 203
     }
    },
    "sources": {
@@ -9717,7 +9552,7 @@
    "nSources": 2,
    "spread": 156,
    "value1qb": 217,
-   "valueSf": 227,
+   "valueSf": 226,
    "tier": 6
   },
   {
@@ -9730,7 +9565,6 @@
    "injury": "IR",
    "sleeperId": "13345",
    "espnId": "4702555",
-   "adp": null,
    "rosterPct": 0.24,
    "trend": -203,
    "momentum": 0,
@@ -9759,12 +9593,12 @@
     "1qb": {
      "ppr": 216,
      "half": 219,
-     "std": 222
+     "std": 223
     },
     "sf": {
-     "ppr": 220,
-     "half": 221,
-     "std": 224
+     "ppr": 218,
+     "half": 220,
+     "std": 223
     }
    },
    "sources": {
@@ -9775,7 +9609,7 @@
    "nSources": 3,
    "spread": 547,
    "value1qb": 216,
-   "valueSf": 220,
+   "valueSf": 218,
    "tier": 6
   },
   {
@@ -9788,7 +9622,6 @@
    "injury": null,
    "sleeperId": "5844",
    "espnId": "4036133",
-   "adp": null,
    "rosterPct": 0.55,
    "trend": -42,
    "momentum": 0,
@@ -9817,10 +9650,10 @@
     "1qb": {
      "ppr": 209,
      "half": 200,
-     "std": 194
+     "std": 195
     },
     "sf": {
-     "ppr": 206,
+     "ppr": 205,
      "half": 196,
      "std": 192
     }
@@ -9833,7 +9666,7 @@
    "nSources": 3,
    "spread": 156,
    "value1qb": 209,
-   "valueSf": 206,
+   "valueSf": 205,
    "tier": 6
   },
   {
@@ -9846,10 +9679,9 @@
    "injury": null,
    "sleeperId": "4017",
    "espnId": "3122840",
-   "adp": null,
    "rosterPct": 0.09,
    "trend": 144,
-   "momentum": 0.17,
+   "momentum": 0.16,
    "outlook": {
     "g": 4,
     "fpg": 16.7,
@@ -9875,12 +9707,12 @@
     "1qb": {
      "ppr": 209,
      "half": 184,
-     "std": 167
+     "std": 168
     },
     "sf": {
-     "ppr": 1243,
-     "half": 1249,
-     "std": 1221
+     "ppr": 1235,
+     "half": 1246,
+     "std": 1217
     }
    },
    "sources": {
@@ -9891,7 +9723,7 @@
    "nSources": 3,
    "spread": 181,
    "value1qb": 209,
-   "valueSf": 1243,
+   "valueSf": 1235,
    "tier": 6
   },
   {
@@ -9904,7 +9736,6 @@
    "injury": "IR",
    "sleeperId": "8142",
    "espnId": "4360078",
-   "adp": null,
    "rosterPct": 0.63,
    "trend": -900,
    "momentum": 0,
@@ -9933,12 +9764,12 @@
     "1qb": {
      "ppr": 180,
      "half": 211,
-     "std": 229
+     "std": 230
     },
     "sf": {
-     "ppr": 140,
+     "ppr": 139,
      "half": 162,
-     "std": 201
+     "std": 200
     }
    },
    "sources": {
@@ -9949,7 +9780,7 @@
    "nSources": 3,
    "spread": 47,
    "value1qb": 180,
-   "valueSf": 140,
+   "valueSf": 139,
    "tier": 6
   },
   {
@@ -9962,10 +9793,9 @@
    "injury": null,
    "sleeperId": "11643",
    "espnId": "4682745",
-   "adp": null,
    "rosterPct": 0.25,
    "trend": 246,
-   "momentum": 0.05,
+   "momentum": 0.04,
    "outlook": {
     "g": 3,
     "fpg": 0.6,
@@ -9991,10 +9821,10 @@
     "1qb": {
      "ppr": 179,
      "half": 176,
-     "std": 174
+     "std": 175
     },
     "sf": {
-     "ppr": 139,
+     "ppr": 137,
      "half": 136,
      "std": 137
     }
@@ -10006,7 +9836,7 @@
    "nSources": 2,
    "spread": 116,
    "value1qb": 179,
-   "valueSf": 139,
+   "valueSf": 137,
    "tier": 6
   },
   {
@@ -10019,10 +9849,9 @@
    "injury": null,
    "sleeperId": "11630",
    "espnId": "4431492",
-   "adp": null,
    "rosterPct": 0.04,
    "trend": 43,
-   "momentum": 0.89,
+   "momentum": 0.87,
    "outlook": {
     "g": 4,
     "fpg": 11.2,
@@ -10048,11 +9877,11 @@
     "1qb": {
      "ppr": 178,
      "half": 185,
-     "std": 176
+     "std": 177
     },
     "sf": {
-     "ppr": 148,
-     "half": 153,
+     "ppr": 147,
+     "half": 152,
      "std": 167
     }
    },
@@ -10064,7 +9893,7 @@
    "nSources": 3,
    "spread": 270,
    "value1qb": 178,
-   "valueSf": 148,
+   "valueSf": 147,
    "tier": 6
   },
   {
@@ -10077,7 +9906,6 @@
    "injury": null,
    "sleeperId": "8111",
    "espnId": "4243331",
-   "adp": null,
    "rosterPct": 0.03,
    "trend": 0,
    "momentum": 0,
@@ -10105,11 +9933,11 @@
    "values": {
     "1qb": {
      "ppr": 159,
-     "half": 149,
+     "half": 150,
      "std": 148
     },
     "sf": {
-     "ppr": 153,
+     "ppr": 152,
      "half": 132,
      "std": 118
     }
@@ -10120,7 +9948,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 159,
-   "valueSf": 153,
+   "valueSf": 152,
    "tier": 6
   },
   {
@@ -10133,7 +9961,6 @@
    "injury": null,
    "sleeperId": "3214",
    "espnId": "3046439",
-   "adp": null,
    "rosterPct": 0.43,
    "trend": -164,
    "momentum": -0.04,
@@ -10161,11 +9988,11 @@
    "values": {
     "1qb": {
      "ppr": 147,
-     "half": 141,
-     "std": 139
+     "half": 142,
+     "std": 140
     },
     "sf": {
-     "ppr": 145,
+     "ppr": 144,
      "half": 138,
      "std": 138
     }
@@ -10177,7 +10004,7 @@
    "nSources": 2,
    "spread": 101,
    "value1qb": 147,
-   "valueSf": 145,
+   "valueSf": 144,
    "tier": 6
   },
   {
@@ -10190,7 +10017,6 @@
    "injury": "Out",
    "sleeperId": "5857",
    "espnId": "4036131",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -10218,13 +10044,13 @@
    "values": {
     "1qb": {
      "ppr": 146,
-     "half": 160,
-     "std": 195
+     "half": 161,
+     "std": 196
     },
     "sf": {
-     "ppr": 128,
+     "ppr": 127,
      "half": 163,
-     "std": 281
+     "std": 280
     }
    },
    "sources": {
@@ -10233,7 +10059,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 146,
-   "valueSf": 128,
+   "valueSf": 127,
    "tier": 6
   },
   {
@@ -10246,20 +10072,19 @@
    "injury": null,
    "sleeperId": null,
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
    "values": {
     "1qb": {
      "ppr": 136,
-     "half": 138,
-     "std": 141
+     "half": 139,
+     "std": 142
     },
     "sf": {
-     "ppr": 142,
+     "ppr": 141,
      "half": 144,
-     "std": 147
+     "std": 146
     }
    },
    "sources": {
@@ -10268,7 +10093,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 136,
-   "valueSf": 142,
+   "valueSf": 141,
    "tier": 6
   },
   {
@@ -10281,7 +10106,6 @@
    "injury": null,
    "sleeperId": "11603",
    "espnId": "4576297",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": -32,
    "momentum": 0,
@@ -10310,11 +10134,11 @@
     "1qb": {
      "ppr": 132,
      "half": 128,
-     "std": 124
+     "std": 125
     },
     "sf": {
-     "ppr": 126,
-     "half": 119,
+     "ppr": 125,
+     "half": 118,
      "std": 120
     }
    },
@@ -10325,7 +10149,7 @@
    "nSources": 2,
    "spread": 90,
    "value1qb": 132,
-   "valueSf": 126,
+   "valueSf": 125,
    "tier": 6
   },
   {
@@ -10338,7 +10162,6 @@
    "injury": null,
    "sleeperId": "11783",
    "espnId": "5083754",
-   "adp": null,
    "rosterPct": 0.05,
    "trend": 0,
    "momentum": 0,
@@ -10370,7 +10193,7 @@
      "std": 115
     },
     "sf": {
-     "ppr": 83,
+     "ppr": 82,
      "half": 79,
      "std": 69
     }
@@ -10381,7 +10204,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 127,
-   "valueSf": 83,
+   "valueSf": 82,
    "tier": 6
   },
   {
@@ -10394,7 +10217,6 @@
    "injury": null,
    "sleeperId": "12048",
    "espnId": "4429835",
-   "adp": null,
    "rosterPct": 0.16,
    "trend": 0,
    "momentum": 0,
@@ -10426,7 +10248,7 @@
      "std": 45
     },
     "sf": {
-     "ppr": 80,
+     "ppr": 79,
      "half": 67,
      "std": 19
     }
@@ -10437,7 +10259,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 126,
-   "valueSf": 80,
+   "valueSf": 79,
    "tier": 6
   },
   {
@@ -10450,7 +10272,6 @@
    "injury": null,
    "sleeperId": "13305",
    "espnId": "4686658",
-   "adp": null,
    "rosterPct": 0.21,
    "trend": -484,
    "momentum": 0,
@@ -10482,9 +10303,9 @@
      "std": 112
     },
     "sf": {
-     "ppr": 87,
-     "half": 85,
-     "std": 86
+     "ppr": 86,
+     "half": 84,
+     "std": 85
     }
    },
    "sources": {
@@ -10494,7 +10315,7 @@
    "nSources": 2,
    "spread": 55,
    "value1qb": 120,
-   "valueSf": 87,
+   "valueSf": 86,
    "tier": 6
   },
   {
@@ -10507,7 +10328,6 @@
    "injury": "Out",
    "sleeperId": "13296",
    "espnId": "4869645",
-   "adp": null,
    "rosterPct": 0.18,
    "trend": -66,
    "momentum": -0.18,
@@ -10539,7 +10359,7 @@
      "std": 104
     },
     "sf": {
-     "ppr": 115,
+     "ppr": 114,
      "half": 110,
      "std": 106
     }
@@ -10552,7 +10372,7 @@
    "nSources": 3,
    "spread": 124,
    "value1qb": 112,
-   "valueSf": 115,
+   "valueSf": 114,
    "tier": 6
   },
   {
@@ -10565,7 +10385,6 @@
    "injury": null,
    "sleeperId": "11637",
    "espnId": "4635008",
-   "adp": null,
    "rosterPct": 0.04,
    "trend": 75,
    "momentum": 1,
@@ -10599,7 +10418,7 @@
     "sf": {
      "ppr": 97,
      "half": 95,
-     "std": 94
+     "std": 93
     }
    },
    "sources": {
@@ -10622,7 +10441,6 @@
    "injury": null,
    "sleeperId": "9508",
    "espnId": "4428557",
-   "adp": null,
    "rosterPct": 0.4,
    "trend": -90,
    "momentum": 0,
@@ -10654,7 +10472,7 @@
      "std": 54
     },
     "sf": {
-     "ppr": 83,
+     "ppr": 82,
      "half": 59,
      "std": 43
     }
@@ -10666,7 +10484,7 @@
    "nSources": 2,
    "spread": 68,
    "value1qb": 99,
-   "valueSf": 83,
+   "valueSf": 82,
    "tier": 6
   },
   {
@@ -10679,7 +10497,6 @@
    "injury": null,
    "sleeperId": "8210",
    "espnId": "4360635",
-   "adp": null,
    "rosterPct": 0.04,
    "trend": 0,
    "momentum": 0,
@@ -10735,7 +10552,6 @@
    "injury": null,
    "sleeperId": "8172",
    "espnId": "4367209",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 0,
    "momentum": 0,
@@ -10791,10 +10607,9 @@
    "injury": null,
    "sleeperId": "10219",
    "espnId": "4362619",
-   "adp": null,
    "rosterPct": 0.17,
    "trend": -378,
-   "momentum": -0.07,
+   "momentum": -0.06,
    "outlook": {
     "g": 4,
     "fpg": 5.7,
@@ -10820,12 +10635,12 @@
     "1qb": {
      "ppr": 92,
      "half": 97,
-     "std": 141
+     "std": 142
     },
     "sf": {
-     "ppr": 61,
+     "ppr": 60,
      "half": 60,
-     "std": 86
+     "std": 85
     }
    },
    "sources": {
@@ -10835,7 +10650,7 @@
    "nSources": 2,
    "spread": 17,
    "value1qb": 92,
-   "valueSf": 61,
+   "valueSf": 60,
    "tier": 6
   },
   {
@@ -10848,10 +10663,9 @@
    "injury": null,
    "sleeperId": "9757",
    "espnId": "4599739",
-   "adp": null,
    "rosterPct": 0.16,
    "trend": 105,
-   "momentum": 0.07,
+   "momentum": 0.06,
    "outlook": {
     "g": 3,
     "fpg": 4.9,
@@ -10877,10 +10691,10 @@
     "1qb": {
      "ppr": 76,
      "half": 75,
-     "std": 74
+     "std": 75
     },
     "sf": {
-     "ppr": 61,
+     "ppr": 60,
      "half": 59,
      "std": 60
     }
@@ -10892,7 +10706,7 @@
    "nSources": 2,
    "spread": 49,
    "value1qb": 76,
-   "valueSf": 61,
+   "valueSf": 60,
    "tier": 6
   },
   {
@@ -10905,10 +10719,9 @@
    "injury": null,
    "sleeperId": "9482",
    "espnId": "4429086",
-   "adp": null,
    "rosterPct": 0.12,
    "trend": 44,
-   "momentum": 0.08,
+   "momentum": 0.09,
    "outlook": {
     "g": 4,
     "fpg": 10.7,
@@ -10962,7 +10775,6 @@
    "injury": "Questionable",
    "sleeperId": "12492",
    "espnId": "4600981",
-   "adp": null,
    "rosterPct": 0.03,
    "trend": 40,
    "momentum": -0.04,
@@ -10990,7 +10802,7 @@
    "values": {
     "1qb": {
      "ppr": 55,
-     "half": 53,
+     "half": 54,
      "std": 53
     },
     "sf": {
@@ -11019,10 +10831,9 @@
    "injury": "IR",
    "sleeperId": "9225",
    "espnId": "4429013",
-   "adp": null,
    "rosterPct": 0.15,
    "trend": -80,
-   "momentum": -0.16,
+   "momentum": -0.15,
    "outlook": {
     "g": 4,
     "fpg": 4.3,
@@ -11047,7 +10858,7 @@
    "values": {
     "1qb": {
      "ppr": 50,
-     "half": 48,
+     "half": 49,
      "std": 49
     },
     "sf": {
@@ -11076,7 +10887,6 @@
    "injury": null,
    "sleeperId": "10218",
    "espnId": "4686422",
-   "adp": null,
    "rosterPct": 0.05,
    "trend": 0,
    "momentum": -0.12,
@@ -11132,7 +10942,6 @@
    "injury": null,
    "sleeperId": "6039",
    "espnId": "3915411",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 0,
    "momentum": 0.04,
@@ -11188,7 +10997,6 @@
    "injury": null,
    "sleeperId": "8676",
    "espnId": "4032473",
-   "adp": null,
    "rosterPct": 0.34,
    "trend": -322,
    "momentum": 0,
@@ -11220,7 +11028,7 @@
      "std": 60
     },
     "sf": {
-     "ppr": 36,
+     "ppr": 35,
      "half": 36,
      "std": 43
     }
@@ -11232,7 +11040,7 @@
    "nSources": 2,
    "spread": 5,
    "value1qb": 41,
-   "valueSf": 36,
+   "valueSf": 35,
    "tier": 6
   },
   {
@@ -11245,7 +11053,6 @@
    "injury": "Questionable",
    "sleeperId": "4177",
    "espnId": "2991662",
-   "adp": null,
    "rosterPct": 0.13,
    "trend": 30,
    "momentum": 0.06,
@@ -11277,7 +11084,7 @@
      "std": 39
     },
     "sf": {
-     "ppr": 37,
+     "ppr": 36,
      "half": 36,
      "std": 42
     }
@@ -11289,7 +11096,7 @@
    "nSources": 2,
    "spread": 28,
    "value1qb": 41,
-   "valueSf": 37,
+   "valueSf": 36,
    "tier": 6
   },
   {
@@ -11302,7 +11109,6 @@
    "injury": null,
    "sleeperId": "7600",
    "espnId": "4361411",
-   "adp": null,
    "rosterPct": 0.2,
    "trend": 29,
    "momentum": 0,
@@ -11359,7 +11165,6 @@
    "injury": null,
    "sleeperId": "4993",
    "espnId": "3116164",
-   "adp": null,
    "rosterPct": 0.1,
    "trend": 25,
    "momentum": 0.14,
@@ -11391,7 +11196,7 @@
      "std": 31
     },
     "sf": {
-     "ppr": 39,
+     "ppr": 38,
      "half": 36,
      "std": 36
     }
@@ -11403,7 +11208,7 @@
    "nSources": 2,
    "spread": 24,
    "value1qb": 35,
-   "valueSf": 39,
+   "valueSf": 38,
    "tier": 6
   },
   {
@@ -11416,10 +11221,9 @@
    "injury": null,
    "sleeperId": "12493",
    "espnId": "4595342",
-   "adp": null,
    "rosterPct": 0.07,
    "trend": -153,
-   "momentum": -0.13,
+   "momentum": -0.12,
    "outlook": {
     "g": 4,
     "fpg": 5.9,
@@ -11448,7 +11252,7 @@
      "std": 31
     },
     "sf": {
-     "ppr": 38,
+     "ppr": 37,
      "half": 36,
      "std": 36
     }
@@ -11460,7 +11264,7 @@
    "nSources": 2,
    "spread": 23,
    "value1qb": 33,
-   "valueSf": 38,
+   "valueSf": 37,
    "tier": 6
   },
   {
@@ -11473,10 +11277,9 @@
    "injury": null,
    "sleeperId": "13311",
    "espnId": "4869961",
-   "adp": null,
    "rosterPct": 0.05,
    "trend": 13,
-   "momentum": 0.02,
+   "momentum": 0.01,
    "outlook": {
     "g": 4,
     "fpg": 3.6,
@@ -11507,7 +11310,7 @@
     "sf": {
      "ppr": 32,
      "half": 31,
-     "std": 33
+     "std": 32
     }
    },
    "sources": {
@@ -11530,7 +11333,6 @@
    "injury": "Out",
    "sleeperId": "2307",
    "espnId": "2576980",
-   "adp": null,
    "rosterPct": 0.19,
    "trend": 0,
    "momentum": -0.02,
@@ -11587,7 +11389,6 @@
    "injury": null,
    "sleeperId": "5995",
    "espnId": "4038441",
-   "adp": null,
    "rosterPct": 0.12,
    "trend": 0,
    "momentum": -0.01,
@@ -11643,7 +11444,6 @@
    "injury": null,
    "sleeperId": "2306",
    "espnId": "2969939",
-   "adp": null,
    "rosterPct": 0.03,
    "trend": 38,
    "momentum": 0,
@@ -11672,12 +11472,12 @@
     "1qb": {
      "ppr": 28,
      "half": 28,
-     "std": 26
+     "std": 27
     },
     "sf": {
-     "ppr": 189,
+     "ppr": 188,
      "half": 174,
-     "std": 151
+     "std": 150
     }
    },
    "sources": {
@@ -11687,7 +11487,7 @@
    "nSources": 2,
    "spread": 18,
    "value1qb": 28,
-   "valueSf": 189,
+   "valueSf": 188,
    "tier": 6
   },
   {
@@ -11700,7 +11500,6 @@
    "injury": null,
    "sleeperId": "13301",
    "espnId": "5081432",
-   "adp": null,
    "rosterPct": 0.07,
    "trend": 32,
    "momentum": 0,
@@ -11757,10 +11556,9 @@
    "injury": null,
    "sleeperId": "3271",
    "espnId": "2573401",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 20,
-   "momentum": 0.39,
+   "momentum": 0.37,
    "outlook": {
     "g": 3,
     "fpg": 11,
@@ -11786,12 +11584,12 @@
     "1qb": {
      "ppr": 28,
      "half": 27,
-     "std": 26
+     "std": 27
     },
     "sf": {
      "ppr": 32,
      "half": 31,
-     "std": 32
+     "std": 31
     }
    },
    "sources": {
@@ -11814,7 +11612,6 @@
    "injury": null,
    "sleeperId": "12472",
    "espnId": "4601080",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0.01,
@@ -11870,7 +11667,6 @@
    "injury": "IR",
    "sleeperId": "13417",
    "espnId": "4710714",
-   "adp": null,
    "rosterPct": 0.28,
    "trend": -675,
    "momentum": 0,
@@ -11921,7 +11717,6 @@
    "injury": null,
    "sleeperId": "7049",
    "espnId": "3886598",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 1,
    "momentum": 0.11,
@@ -11978,7 +11773,6 @@
    "injury": null,
    "sleeperId": "12536",
    "espnId": "4586312",
-   "adp": null,
    "rosterPct": 0.05,
    "trend": 0,
    "momentum": 0,
@@ -12007,10 +11801,10 @@
     "1qb": {
      "ppr": 18,
      "half": 46,
-     "std": 72
+     "std": 73
     },
     "sf": {
-     "ppr": 12,
+     "ppr": 11,
      "half": 18,
      "std": 37
     }
@@ -12021,7 +11815,7 @@
    "nSources": 1,
    "spread": 0,
    "value1qb": 18,
-   "valueSf": 12,
+   "valueSf": 11,
    "tier": 6
   },
   {
@@ -12034,7 +11828,6 @@
    "injury": null,
    "sleeperId": "4454",
    "espnId": "3045523",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -12090,7 +11883,6 @@
    "injury": null,
    "sleeperId": "4147",
    "espnId": "3116389",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 0,
    "momentum": 0,
@@ -12146,7 +11938,6 @@
    "injury": null,
    "sleeperId": "12535",
    "espnId": "5123663",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 0,
    "momentum": 0,
@@ -12202,7 +11993,6 @@
    "injury": "IR",
    "sleeperId": "9502",
    "espnId": "4366031",
-   "adp": null,
    "rosterPct": 0.28,
    "trend": -57,
    "momentum": 0,
@@ -12228,7 +12018,7 @@
      "std": 10
     },
     "sf": {
-     "ppr": 12,
+     "ppr": 11,
      "half": 10,
      "std": 10
     }
@@ -12240,7 +12030,7 @@
    "nSources": 2,
    "spread": 7,
    "value1qb": 11,
-   "valueSf": 12,
+   "valueSf": 11,
    "tier": 6
   },
   {
@@ -12253,7 +12043,6 @@
    "injury": "IR",
    "sleeperId": "13293",
    "espnId": "4870847",
-   "adp": null,
    "rosterPct": 0.09,
    "trend": -306,
    "momentum": 0,
@@ -12310,7 +12099,6 @@
    "injury": null,
    "sleeperId": "12502",
    "espnId": "4686728",
-   "adp": null,
    "rosterPct": 0.03,
    "trend": 0,
    "momentum": 0,
@@ -12366,7 +12154,6 @@
    "injury": null,
    "sleeperId": "4039",
    "espnId": "2977187",
-   "adp": null,
    "rosterPct": 0.13,
    "trend": -4,
    "momentum": 0,
@@ -12423,7 +12210,6 @@
    "injury": null,
    "sleeperId": "9504",
    "espnId": "4429022",
-   "adp": null,
    "rosterPct": 0.09,
    "trend": 0,
    "momentum": 0,
@@ -12479,10 +12265,9 @@
    "injury": null,
    "sleeperId": "13425",
    "espnId": "4596472",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 2,
-   "momentum": 0.05,
+   "momentum": 0.04,
    "outlook": {
     "g": 2,
     "fpg": 5.2,
@@ -12536,10 +12321,9 @@
    "injury": null,
    "sleeperId": "11571",
    "espnId": "4695404",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 2,
-   "momentum": 0.14,
+   "momentum": 0.13,
    "outlook": {
     "ros": 8,
     "rosG": 12,
@@ -12587,7 +12371,6 @@
    "injury": null,
    "sleeperId": "9479",
    "espnId": "4430802",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -12643,7 +12426,6 @@
    "injury": "IR",
    "sleeperId": "11583",
    "espnId": "4678008",
-   "adp": null,
    "rosterPct": 0.49,
    "trend": 0,
    "momentum": 0,
@@ -12699,7 +12481,6 @@
    "injury": null,
    "sleeperId": "13285",
    "espnId": "4682648",
-   "adp": null,
    "rosterPct": 0.07,
    "trend": 0,
    "momentum": -0.05,
@@ -12755,7 +12536,6 @@
    "injury": null,
    "sleeperId": "4066",
    "espnId": "3051876",
-   "adp": null,
    "rosterPct": 0.04,
    "trend": 0,
    "momentum": 0,
@@ -12811,7 +12591,6 @@
    "injury": "Questionable",
    "sleeperId": "11370",
    "espnId": "3149687",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 0,
    "momentum": 0,
@@ -12867,10 +12646,9 @@
    "injury": "Questionable",
    "sleeperId": "8180",
    "espnId": "4382466",
-   "adp": null,
    "rosterPct": 0.07,
    "trend": 0,
-   "momentum": -0.13,
+   "momentum": -0.12,
    "outlook": {
     "g": 3,
     "fpg": 3.4,
@@ -12923,7 +12701,6 @@
    "injury": null,
    "sleeperId": "7039",
    "espnId": "4241983",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -12952,7 +12729,7 @@
     "1qb": {
      "ppr": 2,
      "half": 19,
-     "std": 85
+     "std": 86
     },
     "sf": {
      "ppr": 2,
@@ -12979,7 +12756,6 @@
    "injury": "Questionable",
    "sleeperId": "13421",
    "espnId": "4831959",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13035,7 +12811,6 @@
    "injury": null,
    "sleeperId": "11729",
    "espnId": "4912274",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0.04,
@@ -13091,7 +12866,6 @@
    "injury": null,
    "sleeperId": "12499",
    "espnId": "4883647",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13147,7 +12921,6 @@
    "injury": "IR",
    "sleeperId": "3286",
    "espnId": "3043116",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -13203,7 +12976,6 @@
    "injury": "Out",
    "sleeperId": "6865",
    "espnId": "4242557",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -13259,7 +13031,6 @@
    "injury": null,
    "sleeperId": "8208",
    "espnId": "4362748",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13315,7 +13086,6 @@
    "injury": null,
    "sleeperId": "11647",
    "espnId": "4430968",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -13371,7 +13141,6 @@
    "injury": null,
    "sleeperId": "7528",
    "espnId": "4241457",
-   "adp": null,
    "rosterPct": 0.08,
    "trend": 0,
    "momentum": 0.04,
@@ -13427,7 +13196,6 @@
    "injury": "IR",
    "sleeperId": "4033",
    "espnId": "3123076",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 0,
    "momentum": 0,
@@ -13483,7 +13251,6 @@
    "injury": null,
    "sleeperId": "10234",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -13539,7 +13306,6 @@
    "injury": null,
    "sleeperId": "8119",
    "espnId": "4361409",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -13595,7 +13361,6 @@
    "injury": null,
    "sleeperId": "6271",
    "espnId": "3917914",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13651,7 +13416,6 @@
    "injury": null,
    "sleeperId": "8489",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -13707,7 +13471,6 @@
    "injury": null,
    "sleeperId": "3155",
    "espnId": "3051889",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13763,7 +13526,6 @@
    "injury": "Out",
    "sleeperId": "5008",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -13819,7 +13581,6 @@
    "injury": null,
    "sleeperId": "6427",
    "espnId": "4061956",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -13875,7 +13636,6 @@
    "injury": null,
    "sleeperId": "12699",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -13931,7 +13691,6 @@
    "injury": null,
    "sleeperId": "13424",
    "espnId": "4686468",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -13987,7 +13746,6 @@
    "injury": "Out",
    "sleeperId": "3269",
    "espnId": "2576581",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -14043,7 +13801,6 @@
    "injury": null,
    "sleeperId": "5985",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14099,7 +13856,6 @@
    "injury": null,
    "sleeperId": "11599",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14155,7 +13911,6 @@
    "injury": null,
    "sleeperId": "11056",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14211,7 +13966,6 @@
    "injury": null,
    "sleeperId": "5906",
    "espnId": "3930086",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -14267,7 +14021,6 @@
    "injury": null,
    "sleeperId": "7670",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14323,7 +14076,6 @@
    "injury": null,
    "sleeperId": "7694",
    "espnId": "4372780",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -14379,7 +14131,6 @@
    "injury": null,
    "sleeperId": "12473",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14435,7 +14186,6 @@
    "injury": "IR",
    "sleeperId": "11626",
    "espnId": "4430034",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -14491,7 +14241,6 @@
    "injury": null,
    "sleeperId": "6826",
    "espnId": "4258595",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -14547,7 +14296,6 @@
    "injury": null,
    "sleeperId": "11201",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14603,7 +14351,6 @@
    "injury": null,
    "sleeperId": "6783",
    "espnId": "4241463",
-   "adp": null,
    "rosterPct": 0.15,
    "trend": 0,
    "momentum": -0.06,
@@ -14659,7 +14406,6 @@
    "injury": null,
    "sleeperId": "13394",
    "espnId": "4879194",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -14715,7 +14461,6 @@
    "injury": null,
    "sleeperId": "13299",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14771,7 +14516,6 @@
    "injury": null,
    "sleeperId": "7536",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14827,7 +14571,6 @@
    "injury": null,
    "sleeperId": "2359",
    "espnId": "2576336",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -14883,7 +14626,6 @@
    "injury": null,
    "sleeperId": "4353",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -14939,7 +14681,6 @@
    "injury": null,
    "sleeperId": "11593",
    "espnId": "4360967",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -14995,7 +14736,6 @@
    "injury": null,
    "sleeperId": "8917",
    "espnId": "3676833",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -15051,7 +14791,6 @@
    "injury": null,
    "sleeperId": "10871",
    "espnId": "4372096",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15107,7 +14846,6 @@
    "injury": null,
    "sleeperId": "7090",
    "espnId": "4040655",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": -0.04,
@@ -15163,7 +14901,6 @@
    "injury": null,
    "sleeperId": "11597",
    "espnId": "4429148",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15219,10 +14956,9 @@
    "injury": "Out",
    "sleeperId": "6130",
    "espnId": "4040761",
-   "adp": null,
    "rosterPct": 0.04,
    "trend": 0,
-   "momentum": -0.23,
+   "momentum": -0.22,
    "outlook": {
     "g": 2,
     "fpg": 7.4,
@@ -15275,7 +15011,6 @@
    "injury": null,
    "sleeperId": "10225",
    "espnId": "4426485",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15331,7 +15066,6 @@
    "injury": null,
    "sleeperId": "6869",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -15387,7 +15121,6 @@
    "injury": null,
    "sleeperId": "13413",
    "espnId": "4912218",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -15443,7 +15176,6 @@
    "injury": null,
    "sleeperId": "7828",
    "espnId": "4240472",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15499,7 +15231,6 @@
    "injury": null,
    "sleeperId": "12817",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -15555,7 +15286,6 @@
    "injury": null,
    "sleeperId": "11627",
    "espnId": "4431280",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -15611,7 +15341,6 @@
    "injury": null,
    "sleeperId": "4144",
    "espnId": "3054212",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15667,7 +15396,6 @@
    "injury": null,
    "sleeperId": "6931",
    "espnId": "4240631",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15723,7 +15451,6 @@
    "injury": null,
    "sleeperId": "8204",
    "espnId": "4259305",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15779,7 +15506,6 @@
    "injury": null,
    "sleeperId": "8168",
    "espnId": "4430191",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0.09,
@@ -15835,7 +15561,6 @@
    "injury": null,
    "sleeperId": "13329",
    "espnId": "5150247",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -15891,7 +15616,6 @@
    "injury": "IR",
    "sleeperId": "12483",
    "espnId": "4603186",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -15947,7 +15671,6 @@
    "injury": null,
    "sleeperId": "13434",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16003,7 +15726,6 @@
    "injury": null,
    "sleeperId": "13338",
    "espnId": "4685307",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16059,7 +15781,6 @@
    "injury": null,
    "sleeperId": "9501",
    "espnId": "4427095",
-   "adp": null,
    "rosterPct": 0.02,
    "trend": 0,
    "momentum": 0,
@@ -16115,7 +15836,6 @@
    "injury": null,
    "sleeperId": "13277",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0.03,
@@ -16171,7 +15891,6 @@
    "injury": null,
    "sleeperId": "13420",
    "espnId": "4879276",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16227,7 +15946,6 @@
    "injury": null,
    "sleeperId": "7891",
    "espnId": "4242392",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16283,7 +16001,6 @@
    "injury": null,
    "sleeperId": "12540",
    "espnId": "4431268",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0,
@@ -16339,7 +16056,6 @@
    "injury": null,
    "sleeperId": "8225",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16395,7 +16111,6 @@
    "injury": null,
    "sleeperId": "11608",
    "espnId": "4569371",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
    "momentum": 0.04,
@@ -16451,7 +16166,6 @@
    "injury": null,
    "sleeperId": "8145",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16507,7 +16221,6 @@
    "injury": null,
    "sleeperId": "7842",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16563,7 +16276,6 @@
    "injury": null,
    "sleeperId": "10214",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16619,10 +16331,9 @@
    "injury": "Questionable",
    "sleeperId": "12718",
    "espnId": "4710855",
-   "adp": null,
    "rosterPct": 0.01,
    "trend": 0,
-   "momentum": 0.18,
+   "momentum": 0.16,
    "outlook": {
     "g": 4,
     "fpg": 5.8,
@@ -16675,7 +16386,6 @@
    "injury": null,
    "sleeperId": "11623",
    "espnId": "4569382",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16731,7 +16441,6 @@
    "injury": "IR",
    "sleeperId": "10226",
    "espnId": "4368003",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16787,7 +16496,6 @@
    "injury": null,
    "sleeperId": "6001",
    "espnId": "3127310",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16843,7 +16551,6 @@
    "injury": null,
    "sleeperId": "5409",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
@@ -16899,7 +16606,6 @@
    "injury": null,
    "sleeperId": "12485",
    "espnId": "4608810",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -16955,10 +16661,9 @@
    "injury": null,
    "sleeperId": "13264",
    "espnId": "4384852",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
-   "momentum": 0.82,
+   "momentum": 0.81,
    "outlook": {
     "g": 4,
     "fpg": 6.2,
@@ -17011,7 +16716,6 @@
    "injury": null,
    "sleeperId": "7587",
    "espnId": "4361577",
-   "adp": null,
    "rosterPct": 0,
    "trend": 0,
    "momentum": 0,
@@ -17067,7 +16771,6 @@
    "injury": null,
    "sleeperId": "7716",
    "espnId": null,
-   "adp": null,
    "rosterPct": null,
    "trend": 0,
    "momentum": 0,
