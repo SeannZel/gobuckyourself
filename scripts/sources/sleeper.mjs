@@ -13,7 +13,7 @@ export async function load({ lookbackHours = 168 } = {}) {
     const dump = await getJSON('https://api.sleeper.app/v1/players/nfl', { name: 'sleeper_players', timeoutMs: 60000 });
     for (const [sid, p] of Object.entries(dump)) {
       if (!POSITIONS.has(p.position) || !p.active) continue;
-      meta.set(sid, { name: p.full_name || `${p.first_name} ${p.last_name}`, pos: p.position, team: p.team || 'FA',
+      meta.set(sid, { name: p.full_name || `${p.first_name} ${p.last_name}`, pos: p.position, key: `${normName(p.full_name || '')}|${p.position}`, team: p.team || 'FA',
         age: p.age ?? null, injury: p.injury_status || null, searchRank: p.search_rank ?? null });
       byKey.set(`${normName(p.full_name || '')}|${p.position}`, sid);
     }

@@ -4,16 +4,18 @@ import { getJSON, normName, POSITIONS, rankToValue, log } from '../lib.mjs';
 
 export const id = 'fantasypros';
 export const label = 'FantasyPros ECR';
+// Before Week 2 use draft rankings; once games are played switch to rest-of-season (ROS) rankings.
 
 const SCORING = { ppr: 'PPR', half: 'HALF', std: 'STD' };
 
-export async function load({ season = new Date().getFullYear() } = {}) {
+export async function load({ season = new Date().getFullYear(), week = 1 } = {}) {
+  const type = week >= 2 ? 'ros' : 'draft';
   const key = process.env.FANTASYPROS_API_KEY;
   const players = new Map(); // key -> { name,pos,team, values:{[scoring]:value} }
   if (!key && !process.env.GBY_FIXTURES) { log('fantasypros: no FANTASYPROS_API_KEY, skipping'); return { players, skipped: true }; }
   for (const [scoring, code] of Object.entries(SCORING)) {
     try {
-      const data = await getJSON(`https://api.fantasypros.com/public/v2/json/nfl/${season}/consensus-rankings?type=draft&scoring=${code}&position=ALL`, {
+      const data = await getJSON(`https://api.fantasypros.com/public/v2/json/nfl/${season}/consensus-rankings?type=${type}&scoring=${code}&position=ALL`, {
         name: `fantasypros_${scoring}`, headers: { 'x-api-key': key || '' },
       });
       for (const p of data?.players || []) {
@@ -25,6 +27,6 @@ export async function load({ season = new Date().getFullYear() } = {}) {
       }
     } catch (e) { log(`fantasypros ${scoring} failed: ${e.message}`); }
   }
-  log(`fantasypros: ${players.size} players`);
-  return { players };
+  log(`fantasypros (${type}): ${players.size} players`);
+  return { players, type };
 }

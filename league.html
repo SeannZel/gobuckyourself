@@ -196,8 +196,8 @@
             <div><h5 class="fh">Best trade partners</h5>${plist(a.partners, x => `<div class="adv-partner"><b>${GIQ.esc(x.team.name)}</b><span>${x.iGet.length ? `has ${x.iGet.join('/')} you need` : ''}${x.iGet.length && x.theyGet.length ? ' · ' : ''}${x.theyGet.length ? `needs ${x.theyGet.join('/')} you have` : ''}</span></div>`)}</div>
           </div>
           <div class="adv-market">
-            <div><h5 class="fh">💹 Sell high (your roster)</h5>${plist(a.sellHigh, x => `<div class="adv-sig"><span>${GIQ.avatar(x.p)}</span><div>${pl(x.p)}<small>Valued ${x.p.pos}${x.m.valueRank}, producing ${x.p.pos}${x.m.ppgRank} (${x.m.ppg.toFixed(1)} ppg)</small></div></div>`)}</div>
-            <div><h5 class="fh">🛒 Buy low (${a.needs.length ? 'at your need positions' : 'around the league'})</h5>${plist(a.buyLow.slice(0, 4), x => `<div class="adv-sig"><span>${GIQ.avatar(x.p)}</span><div>${pl(x.p)} <span class="sub" style="font-size:11px">· ${GIQ.esc(x.team.name)}</span><small>Producing ${x.p.pos}${x.m.ppgRank} (${x.m.ppg.toFixed(1)} ppg), valued only ${x.p.pos}${x.m.valueRank}</small></div></div>`)}</div>
+            <div><h5 class="fh">💹 Sell high (your roster)</h5>${plist(a.sellHigh, x => `<div class="adv-sig"><span>${GIQ.avatar(x.p)}</span><div>${pl(x.p)}<small>${GIQ.esc(x.m.note)}</small></div></div>`)}</div>
+            <div><h5 class="fh">🛒 Buy low (${a.needs.length ? 'at your need positions' : 'around the league'})</h5>${plist(a.buyLow.slice(0, 4), x => `<div class="adv-sig"><span>${GIQ.avatar(x.p)}</span><div>${pl(x.p)} <span class="sub" style="font-size:11px">· ${GIQ.esc(x.team.name)}</span><small>${GIQ.esc(x.m.note)}</small></div></div>`)}</div>
           </div>
           <h5 class="fh" style="margin-top:18px">⭐ Recommended trades</h5>
           <div class="adv-picks">${a.picks.length ? a.picks.map((d, i) => `

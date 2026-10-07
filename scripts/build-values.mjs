@@ -15,26 +15,42 @@ import * as espn from './sources/espn.mjs';
 import * as sleeper from './sources/sleeper.mjs';
 import * as fantasypros from './sources/fantasypros.mjs';
 import * as pihs from './sources/pihs.mjs';
+import * as nflverse from './sources/nflverse.mjs';
+import * as sleeperproj from './sources/sleeperproj.mjs';
+import { buildModel } from './model.mjs';
+import { phaseWeights } from './aggregate.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const [fc, es, sl, fp, ph] = await Promise.all([
-  fantasycalc.load({ numTeams: config.numTeams }), espn.load(), sleeper.load(), fantasypros.load(), pihs.load(),
+// Schedule first: the current week decides preseason vs. in-season weighting and which weeks to project.
+const nfl = await nflverse.load();
+const week = nfl.week ?? 1;
+const [fc, es, sl, fp, ph, pj] = await Promise.all([
+  fantasycalc.load({ numTeams: config.numTeams }), espn.load(), sleeper.load(), fantasypros.load({ week }), pihs.load(),
+  sleeperproj.load({ season: nfl.season, fromWeek: week }),
 ]);
+// bye weeks: ESPN first, schedule as a fallback
+for (const t of new Set(nfl.games.flatMap(g => [g.home, g.away]))) if (!es.byes[t]) {
+  for (let w = 1; w <= 18; w++) if (!nfl.games.some(g => g.week === w && (g.home === t || g.away === t))) { es.byes[t] = w; break; }
+}
+const model = buildModel({ nfl, proj: pj, meta: sl.meta });
+log(`model: week ${model.week}, ${model.all?.length || 0} players modeled (usage ${model.usagePlayers}, projection weeks ${model.projWeeks}), phase t=${phaseWeights(week).t.toFixed(2)}`);
 
 if (fc.players.size === 0 && es.players.size === 0 && fp.players.size === 0) {
   log('no source returned data — keeping existing js/players.js'); process.exit(1);
 }
 
-const { players, qbUplift } = aggregate({ fc, espn: es, sleeper: sl, fp, pihs: ph });
+const { players, qbUplift, weights } = aggregate({ fc, espn: es, sleeper: sl, fp, pihs: ph, model });
 const meta = {
   generatedAt: new Date().toISOString(),
-  weights: config.weights,
+  week, season: nfl.season,
+  weights,            // effective weights this week (after the preseason → in-season hand-off)
   qbUplift,
   sources: [
     { id: 'fantasycalc', label: fantasycalc.label, players: fc.players.size },
-    { id: 'espn', label: espn.label, players: es.players.size },
-    { id: 'fantasypros', label: fantasypros.label, players: fp.players.size, skipped: !!fp.skipped },
+    { id: 'model', label: 'GBY projection model', players: model.all?.length || 0, detail: `Sleeper projections (${pj.weeks.size} wks) + nflverse usage + matchups + Vegas lines` },
+    { id: 'espn', label: espn.label, players: weights.espn ? es.players.size : 0, retired: !weights.espn },
+    { id: 'fantasypros', label: fp.type === 'ros' ? 'FantasyPros ROS' : fantasypros.label, players: fp.players.size, skipped: !!fp.skipped },
     { id: 'pihs', label: pihs.label, players: ph.players.size, skipped: !!ph.skipped },
     { id: 'sleeper', label: sleeper.label, players: sl.momentum.size },
   ],

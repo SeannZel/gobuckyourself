@@ -554,3 +554,15 @@ td.sub-num { color: var(--text-2); font-weight: 500; }
 .adv-why li { display: flex; gap: 8px; }
 .adv-why li span { flex: none; }
 @media (max-width: 900px) { .adv-top, .adv-market { grid-template-columns: 1fr; } .adv-positions { grid-template-columns: repeat(2, 1fr); } .adv-picks { grid-template-columns: 1fr; } }
+
+/* ---- player page: usage & outlook ---- */
+.pp-ol { display: grid; gap: 12px; }
+.pp-ol__row { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: baseline; font-size: 13px; }
+.pp-ol__row > span { color: var(--text-2); }
+.pp-ol__row > b { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.pp-ol__row > small { grid-column: 1 / -1; color: var(--text-3); font-size: 12px; line-height: 1.4; }
+.pp-ol__verdict { border-radius: 10px; padding: 8px 10px; font-size: 13px; line-height: 1.45; background: var(--bg-2); border: 1px solid var(--border); }
+.pp-ol__verdict b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+.pp-ol__verdict--hot b { color: var(--amber); }
+.pp-ol__verdict--cold b { color: #3ecf8e; }
+.pp-ol__verdict--even b { color: var(--text-3); }

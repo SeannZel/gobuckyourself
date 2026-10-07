@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 12 * * 2'   # Tuesdays 12:00 UTC — last week's fantasy points are final after Monday night
     - cron: '0 11 * * 3'   # Wednesdays 11:00 UTC (7am ET) — after PIHS publishes Tuesday night
+    - cron: '0 15 * * 6'   # Saturdays 15:00 UTC — fresh Vegas lines, injury designations and projections before Sunday
   workflow_dispatch:        # manual "Run workflow" button
 
 permissions:

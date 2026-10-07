@@ -8,10 +8,13 @@
 const ADVISOR = (() => {
   const POS = ['QB', 'RB', 'WR', 'TE'];
 
-  // ---------- market signals: production vs. value ----------
+  // ---------- market signals: production & usage vs. value ----------
   /**
-   * For every valued player, compare where he ranks at his position by value vs. by points per game.
-   * gap > 0  → produces better than he's valued (buy-low); gap < 0 → valued above production (sell-high).
+   * For every valued player, compare where he ranks at his position by value with where he ranks by
+   * points per game (results) and by expected points per game (usage — targets, carries, air yards, red-zone looks).
+   *  • buy-low:   his role or results rank well above his value, and he's been unlucky or under-valued
+   *  • sell-high: his value is propped up by results his usage doesn't support (scoring above expectation)
+   * `luck` = actual − expected points per game (nflverse expected-points model).
    */
   function marketSignals() {
     const all = GIQ.ranked('ALL');
@@ -19,18 +22,29 @@ const ADVISOR = (() => {
     for (const pos of POS) {
       const byValue = all.filter(p => p.pos === pos);
       const withPts = byValue.map(p => ({ p, s: GIQ.scoring(p) })).filter(x => x.s && x.s.games >= Math.min(2, x.s.through || 1) && x.s.avg != null);
-      const byPpg = [...withPts].sort((a, b) => b.s.avg - a.s.avg);
-      const ppgRank = new Map(byPpg.map((x, i) => [x.p.id, i + 1]));
+      const ppgRank = new Map([...withPts].sort((a, b) => b.s.avg - a.s.avg).map((x, i) => [x.p.id, i + 1]));
+      const withX = byValue.filter(p => p.outlook && p.outlook.g >= 2 && p.outlook.xfpg != null);
+      const xRank = new Map([...withX].sort((a, b) => b.outlook.xfpg - a.outlook.xfpg).map((p, i) => [p.id, i + 1]));
+      const relevant = pos === 'QB' || pos === 'TE' ? 18 : 40;
       byValue.forEach((p, i) => {
-        const vr = i + 1, pr = ppgRank.get(p.id), s = GIQ.scoring(p);
-        if (!pr) { out.set(p.id, { valueRank: vr, ppgRank: null, gap: 0, ppg: null }); return; }
-        const relevant = pos === 'QB' || pos === 'TE' ? 18 : 40;
-        const gap = vr - pr;
-        out.set(p.id, {
-          valueRank: vr, ppgRank: pr, gap, ppg: s.avg,
-          buyLow: gap >= 6 && pr <= relevant * 0.6 && vr <= relevant * 1.5,
-          sellHigh: gap <= -6 && vr <= relevant,
-        });
+        const vr = i + 1, pr = ppgRank.get(p.id) || null, xr = xRank.get(p.id) || null, s = GIQ.scoring(p);
+        const o = p.outlook && p.outlook.g >= 2 ? p.outlook : null;
+        const luck = o ? o.luck : null;
+        const gap = pr ? vr - pr : 0, xgap = xr ? vr - xr : 0;
+        let buyLow = false, sellHigh = false, note = '';
+        // role-based buy-low: usage ranks far above value and results lag the role
+        if (xr && xgap >= 6 && xr <= relevant * 0.6 && vr <= relevant * 1.5 && luck <= -1.5) {
+          buyLow = true; note = `Usage of a ${pos}${xr} (${o.xfpg.toFixed(1)} expected pts/game) but valued ${pos}${vr} — scoring ${Math.abs(luck).toFixed(1)}/game under his role`;
+        } else if (pr && gap >= 6 && pr <= relevant * 0.6 && vr <= relevant * 1.5 && (luck == null || luck < 3)) {
+          buyLow = true; note = `Producing ${pos}${pr} (${s.avg.toFixed(1)} ppg) but valued only ${pos}${vr}${luck != null ? ', backed by his usage' : ''}`;
+        }
+        // results running ahead of the role, or valued well above production
+        if (o && luck >= 4 && vr <= relevant && (!xr || xr > vr)) {
+          sellHigh = true; note = `Scoring ${luck.toFixed(1)} pts/game above what his usage produces (${o.fpg.toFixed(1)} vs ${o.xfpg.toFixed(1)} expected) — likely to cool off`;
+        } else if (pr && gap <= -6 && vr <= relevant && (luck == null || luck > -1.5)) {
+          sellHigh = true; note = `Valued ${pos}${vr} but producing like ${pos}${pr} (${s.avg.toFixed(1)} ppg)${xr && xr > vr ? ` with ${pos}${xr} usage` : ''}`;
+        }
+        out.set(p.id, { valueRank: vr, ppgRank: pr, xRank: xr, gap, xgap, luck, ppg: s ? s.avg : null, xfpg: o ? o.xfpg : null, buyLow, sellHigh, note });
       });
     }
     return out;
@@ -67,7 +81,8 @@ const ADVISOR = (() => {
     const ord = k => ['', '1st', '2nd', '3rd'][k] || `${k}th`;
 
     // sell-high on my roster, buy-low on everyone else's
-    const sellHigh = mine.players.map(p => ({ p, m: market.get(p.id) })).filter(x => x.m && x.m.sellHigh).sort((a, b) => a.m.gap - b.m.gap).slice(0, 4);
+    const sigStrength = m => Math.max(Math.abs(m.gap || 0), Math.abs(m.xgap || 0), Math.abs(m.luck || 0) * 2);
+    const sellHigh = mine.players.map(p => ({ p, m: market.get(p.id) })).filter(x => x.m && x.m.sellHigh).sort((a, b) => sigStrength(b.m) - sigStrength(a.m)).slice(0, 4);
     const buyLow = [];
     for (const t of LEAGUE.data.teams) {
       if (t.isMe) continue;
@@ -76,7 +91,7 @@ const ADVISOR = (() => {
         if (m && m.buyLow && (!mine.needs.length || mine.needs.includes(p.pos))) buyLow.push({ p, m, team: t });
       }
     }
-    buyLow.sort((a, b) => b.m.gap - a.m.gap);
+    buyLow.sort((a, b) => sigStrength(b.m) - sigStrength(a.m));
 
     // best partners: their surplus fills my needs, my surplus fills theirs
     const partners = LEAGUE.data.teams.filter(t => !t.isMe).map(t => {
@@ -114,8 +129,8 @@ const ADVISOR = (() => {
         reasons.push({ kind: 'surplus', text: `Deals from strength: you're ${ord(mine.posRank[pos])} at ${pos}, so you can afford it.` });
       }
       // market timing
-      for (const p of d.get) { const m = market.get(p.id); if (m && m.buyLow) { s += 0.9; reasons.push({ kind: 'market', text: `${p.name} is ${p.pos}${m.ppgRank} in points per game (${m.ppg.toFixed(1)}) but only ${p.pos}${m.valueRank} in value — buy low.` }); } }
-      for (const p of d.give) { const m = market.get(p.id); if (m && m.sellHigh) { s += 0.9; reasons.push({ kind: 'market', text: `${p.name} is valued as ${p.pos}${m.valueRank} but producing like ${p.pos}${m.ppgRank} — sell high.` }); } }
+      for (const p of d.get) { const m = market.get(p.id); if (m && m.buyLow) { s += 0.9; reasons.push({ kind: 'market', text: `Buy low on ${p.name}: ${m.note}.` }); } }
+      for (const p of d.give) { const m = market.get(p.id); if (m && m.sellHigh) { s += 0.9; reasons.push({ kind: 'market', text: `Sell high on ${p.name}: ${m.note}.` }); } }
       for (const p of d.get) { const m = market.get(p.id); if (m && m.sellHigh) s -= 0.6; }
       // why they'd say yes
       const helpsThem = d.give.filter(p => them.needs.includes(p.pos));
