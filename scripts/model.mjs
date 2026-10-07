@@ -154,10 +154,11 @@ export function buildModel({ nfl, proj, meta }) {
   // schedule-ease ranks per position (1 = easiest remaining schedule), from team-level factors
   for (const pos of ['QB', 'RB', 'WR', 'TE']) {
     const teams = new Map();
-    for (const r of all.filter(r => r.pos === pos)) if (!teams.has(r.team)) teams.set(r.team, [r.avgF, r.avgP]);
+    for (const r of all.filter(r => r.pos === pos)) if (sch.has(r.team) && !teams.has(r.team)) teams.set(r.team, [r.avgF, r.avgP]);
     const byRos = [...teams.entries()].sort((a, b) => b[1][0] - a[1][0]).map(([t]) => t);
     const byPo = [...teams.entries()].filter(([, v]) => v[1] != null).sort((a, b) => b[1][1] - a[1][1]).map(([t]) => t);
     for (const r of all.filter(r => r.pos === pos)) {
+      if (!teams.has(r.team)) continue; // free agents / unknown team codes get no schedule rank
       r.outlook.sos = byRos.indexOf(r.team) + 1; r.outlook.sosN = byRos.length;
       r.outlook.playoffSos = byPo.includes(r.team) ? byPo.indexOf(r.team) + 1 : null;
     }
