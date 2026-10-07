@@ -97,7 +97,7 @@
 
     function sourcesCell(p) {
       if (!p.sources) return '<span style="color:var(--text-3)">—</span>';
-      const names = { fantasycalc: 'FantasyCalc', model: 'GBY model', espn: 'ESPN ADP', fantasypros: 'FantasyPros', pihs: 'PeakedInHighSkool' };
+      const names = { fantasycalc: 'FantasyCalc', model: 'GBY model', fantasypros: 'FantasyPros', pihs: 'PeakedInHighSkool' };
       const tip = Object.entries(p.sources).map(([k, v]) => `${names[k] || k}: ${GIQ.fmt(v)}`).join('\n');
       const agree = p.spread < 800 ? 'agree' : p.spread < 2000 ? 'mixed' : 'split';
       return `<span class="src src--${agree}" title="${tip}">${p.nSources} · ${agree}</span>`;
@@ -125,7 +125,7 @@
       document.getElementById('rows').innerHTML = rows.map(p => `
         <tr data-id="${p.id}" style="cursor:pointer" title="Add to trade calculator">
           <td class="rank-no">${p.rank}</td>
-          <td class="player">${GIQ.avatar(p)}<div><div class="name"><a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a> ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)}${p.outlook && p.outlook.rosG ? ` · <span title="Projected PPR points per game, rest of season">Proj ${p.outlook.ppg.toFixed(1)}/g</span>` : p.adp ? ` · ADP ${p.adp.toFixed ? p.adp.toFixed(1) : p.adp}` : ''}</div></div></td>
+          <td class="player">${GIQ.avatar(p)}<div><div class="name"><a class="plink" href="${GIQ.playerUrl(p)}">${GIQ.esc(p.name)}</a> ${GIQ.injuryHtml(p)}</div><div class="meta">${GIQ.teamHtml(p.team)}${p.outlook && p.outlook.rosG ? ` · <span title="Projected PPR points per game, rest of season">Proj ${p.outlook.ppg.toFixed(1)}/g</span>` : ''}</div></div></td>
           <td><span class="pos pos--${p.pos}">${p.pos}</span></td>
           <td style="color:var(--text-2)">${p.pos}${posRank[p.id]}</td>
           <td class="num">${p.age}</td>
@@ -168,7 +168,7 @@
     });
     document.getElementById('export').addEventListener('click', () => {
       const rows = GIQ.ranked(state.pos);
-      const csv = ['rank,name,pos,team,age,bye,value,adp,sources'].concat(rows.map(p => [p.rank, `"${p.name}"`, p.pos, p.team, p.age, p.bye, p.value, p.adp ?? '', p.nSources ?? ''].join(','))).join('\n');
+      const csv = ['rank,name,pos,team,age,bye,value,proj_ppg,sources'].concat(rows.map(p => [p.rank, `"${p.name}"`, p.pos, p.team, p.age, p.bye, p.value, p.outlook && p.outlook.rosG ? p.outlook.ppg : '', p.nSources ?? ''].join(','))).join('\n');
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
       a.download = `gobuckyourself-${GIQ.settings.format}-${GIQ.settings.scoring}.csv`;

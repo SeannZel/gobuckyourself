@@ -1,6 +1,6 @@
 // The GoBuckYourself value algorithm: blend the live trade market (FantasyCalc), the PIHS redraft chart,
 // expert rest-of-season consensus (FantasyPros) and our production model (projections + usage + matchups + Vegas),
-// nudged by waiver momentum (Sleeper), into one 0–10,000 scale. Preseason ADP (ESPN) fades out as games are played.
+// nudged by waiver momentum (Sleeper), into one 0–10,000 scale. ESPN supplies only byes, % rostered and injuries.
 import config from './config.mjs';
 import { vorpOrder } from './model.mjs';
 
@@ -21,13 +21,13 @@ export function phaseWeights(week, cfg = config) {
 export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }, model = null }) {
   const cfg = config;
   const { weights } = phaseWeights(model?.week, cfg);
-  // How much more a QB is worth in Superflex, learned from FantasyCalc so ADP/ECR sources get the same treatment.
+  // How much more a QB is worth in Superflex, learned from FantasyCalc so the expert and chart sources get the same treatment.
   const qbRatios = [];
   for (const p of fc.players.values()) if (p.pos === 'QB' && p.values.sf?.ppr && p.values['1qb']?.ppr) qbRatios.push(p.values.sf.ppr / p.values['1qb'].ppr);
   const qbUplift = clamp(median(qbRatios), 1, 3);
 
   // Union of every player any source knows about.
-  const keys = new Set([...fc.players.keys(), ...(weights.espn ? espn.players.keys() : []), ...fp.players.keys(), ...pihs.players.keys()]);
+  const keys = new Set([...fc.players.keys(), ...fp.players.keys(), ...pihs.players.keys()]);
   // The model can surface breakout players no market source has caught up on yet (needs projection + 2 games of usage).
   if (model?.ok && weights.model) {
     const known = new Set([...keys].map(k => String(fc.players.get(k)?.sleeperId || sleeper.byKey.get(k) || '')));
@@ -55,12 +55,6 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
         if (!a) return null;
         const v = a.values[format]?.[scoring] ?? (a.values[format]?.ppr != null ? a.values[format].ppr * cfg.scoringMult[scoring][pos] : null);
         return v ?? null;
-      }
-      if (src === 'espn') {
-        if (!b) return null;
-        let v = b.value * cfg.scoringMult[scoring][pos];
-        if (format === 'sf' && pos === 'QB') v *= qbUplift;
-        return v;
       }
       if (src === 'fantasypros') {
         if (!c) return null;
@@ -111,7 +105,7 @@ export function aggregate({ fc, espn, sleeper, fp, pihs = { players: new Map() }
       age: meta?.age ?? a?.age ?? d?.age ?? null, bye: espn.byes?.[meta?.team || a?.team || m?.team || b?.team] ?? null,
       injury: meta?.injury || b?.injury || null,
       sleeperId, espnId: a?.espnId || b?.espnId || null,
-      adp: weights.espn ? (b?.adp ?? null) : null, rosterPct: b?.rosterPct ?? a?.rosterPct ?? null,
+      rosterPct: b?.rosterPct ?? a?.rosterPct ?? null,
       trend: a?.trend ?? 0, momentum: Math.round(momentum * 100) / 100,
       ...(m ? { outlook: m.outlook } : {}),
     });

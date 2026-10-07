@@ -5,12 +5,12 @@ export default {
   // Missing sources are dropped and the rest renormalized.
   //   fantasycalc — live trade market (real trades)          pihs — PeakedInHighSkool weekly redraft chart
   //   model       — GBY production model (projections + usage + matchups + Vegas, see scripts/model.mjs)
-  //   fantasypros — expert consensus, rest-of-season          espn — preseason ADP (faded out, see below)
-  weights: { fantasycalc: 0.35, model: 0.30, pihs: 0.20, fantasypros: 0.15, espn: 0.25 },
-  // Preseason → in-season hand-off. `t` goes 0 → 1 between the first unplayed week `start` and `start + span`:
-  // preseason signals (ESPN ADP) are multiplied by (1 − t), production signals (model) by t.
-  // Week 1 (nothing played): ADP full, model off. Week 4 onward: ADP gone, model at full weight.
-  phase: { start: 1, span: 3, preseason: ['espn'], production: ['model'] },
+  //   fantasypros — expert consensus, rest-of-season
+  // (ESPN is used only for bye weeks, % rostered and injury status — its preseason ADP is no longer part of the value.)
+  weights: { fantasycalc: 0.35, model: 0.30, pihs: 0.20, fantasypros: 0.15 },
+  // The model ramps in as games are played: `t` goes 0 → 1 between the first unplayed week `start` and `start + span`,
+  // and production signals are multiplied by t (Week 1: off, Week 4 onward: full weight).
+  phase: { start: 1, span: 3, preseason: [], production: ['model'] },
   // Replacement level for value-over-replacement (12 teams; QB, 2 RB, 2 WR, TE, FLEX (+ SF) plus bench depth).
   replacement: {
     '1qb': { QB: 13, RB: 30, WR: 36, TE: 13 },

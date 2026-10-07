@@ -105,7 +105,7 @@
     const $ = id => document.getElementById(id);
     const qs = new URLSearchParams(location.search);
     const FMT_KEYS = ['1qb.ppr', '1qb.half', '1qb.std', 'sf.ppr', 'sf.half', 'sf.std'];
-    const SRC = { fantasycalc: 'FantasyCalc', model: 'GBY model', espn: 'ESPN ADP', pihs: 'PeakedInHighSkool', fantasypros: 'FantasyPros' };
+    const SRC = { fantasycalc: 'FantasyCalc', model: 'GBY model', pihs: 'PeakedInHighSkool', fantasypros: 'FantasyPros' };
     let history = null;
 
     function findPlayer() {
@@ -133,7 +133,7 @@
       $('pp-photo').innerHTML = GIQ.avatar(p);
       $('pp-tags').innerHTML = `<span class="pos pos--${p.pos}">${p.pos}${posRank}</span> <span class="tier">Overall #${p.rank}</span> <span class="tier">Tier ${GIQ.tierOf(p.value)}</span> ${GIQ.injuryHtml(p)}`;
       $('pp-name').textContent = p.name;
-      $('pp-meta').innerHTML = [GIQ.teamHtml(p.team), p.age ? `Age ${p.age}` : '', p.bye ? `Bye wk ${p.bye}` : '', p.adp ? `ADP ${(+p.adp).toFixed(1)}` : '', p.rosterPct != null ? `${Math.round(p.rosterPct * 100)}% rostered` : ''].filter(Boolean).join(' · ');
+      $('pp-meta').innerHTML = [GIQ.teamHtml(p.team), p.age ? `Age ${p.age}` : '', p.bye ? `Bye wk ${p.bye}` : '', p.rosterPct != null ? `${Math.round(p.rosterPct * 100)}% rostered` : ''].filter(Boolean).join(' · ');
       $('pp-fmt').textContent = fmtLabel();
       $('pp-val').textContent = GIQ.fmt(p.value);
       const pts = points();

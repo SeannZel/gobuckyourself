@@ -49,7 +49,6 @@ const meta = {
   sources: [
     { id: 'fantasycalc', label: fantasycalc.label, players: fc.players.size },
     { id: 'model', label: 'GBY projection model', players: model.all?.length || 0, detail: `Sleeper projections (${pj.weeks.size} wks) + nflverse usage + matchups + Vegas lines` },
-    { id: 'espn', label: espn.label, players: weights.espn ? es.players.size : 0, retired: !weights.espn },
     { id: 'fantasypros', label: fp.type === 'ros' ? 'FantasyPros ROS' : fantasypros.label, players: fp.players.size, skipped: !!fp.skipped },
     { id: 'pihs', label: pihs.label, players: ph.players.size, skipped: !!ph.skipped },
     { id: 'sleeper', label: sleeper.label, players: sl.momentum.size },

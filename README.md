@@ -32,8 +32,8 @@ Requires Node 18+. The script is resilient: any source that fails is logged and 
 | Source | What it provides | Weight | Auth |
 |---|---|---|---|
 | **FantasyCalc** `api.fantasycalc.com/values/current` | Trade-market values for 1QB/SF × PPR/half/std, 30-day trend, tiers | 35% | none |
-| **GBY production model** (`scripts/model.mjs`) | Rest-of-season points → VORP → mapped onto the market value curve. Inputs: Sleeper weekly projections (`api.sleeper.app/projections`), nflverse/ffopportunity expected points & usage, nflverse `games.csv` schedule + Vegas lines, dynastyprocess ID crosswalk | 30% in-season (phased in weeks 1–4) | none |
-| **ESPN Fantasy** `lm-api-reads.fantasy.espn.com` | ADP, % rostered, injury status, team bye weeks | 25% preseason, phased out by Week 4 | none (undocumented public endpoint) |
+| **GBY production model** (`scripts/model.mjs`) | Rest-of-season points → VORP → mapped onto the market value curve. Inputs: Sleeper weekly projections (`api.sleeper.app/projections`), nflverse/ffopportunity expected points & usage, nflverse `games.csv` schedule + Vegas lines, dynastyprocess ID crosswalk | 30% (ramps in over weeks 1–4) | none |
+| **ESPN Fantasy** `lm-api-reads.fantasy.espn.com` | % rostered, injury status, team bye weeks (ADP no longer used) | — | none (undocumented public endpoint) |
 | **FantasyPros** `api.fantasypros.com` | Expert consensus rankings per scoring format (ROS in-season, draft preseason) | 15% | `FANTASYPROS_API_KEY` env var — skipped if unset |
 | **PeakedInHighSkool** (Patreon Google Sheet) | Weekly trade value chart, 0–100 scale, per format | 20% | `PIHS_SHEETS` env var — JSON map of `"<format>.<scoring>"` → sheet URL; skipped if unset |
 | **Sleeper** `api.sleeper.app` | Player metadata (team, age, injury) + weekly trending adds/drops | ±3% momentum | none |
