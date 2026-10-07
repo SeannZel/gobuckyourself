@@ -212,12 +212,12 @@ const LEAGUE = (() => {
   };
   function findTrades(opts = {}) {
     const me = myTeam(); if (!me) return Object.assign([], { stats: { teams: 0, strict: 0, stretch: 0 } });
-    const { offerOnly = null, wantPos = new Set(), givePos = new Set(), mustStart = false, edge = 0, max = 24 } = opts;
+    const { offerOnly = null, wantPos = new Set(), givePos = new Set(), mustStart = false, edge = 0, max = 24, partner = null, perTeam = null } = opts;
     const vm = valueMap();
     const mine = roster(me, vm).players;
     const myBase = lineup(mine);
     const myPool = mine.filter(p => p.value >= 250 && (!offerOnly || !offerOnly.size || offerOnly.has(p.id)) && (!givePos.size || givePos.has(p.pos))).slice(0, 20);
-    const others = data.teams.filter(t => !t.isMe).map(t => {
+    const others = data.teams.filter(t => !t.isMe && (partner == null || t.rosterId === +partner)).map(t => {
       const theirs = roster(t, vm).players;
       // every piece I receive must match the positions I asked for
       return { t, theirs, base: lineup(theirs), pool: theirs.filter(p => p.value >= 250 && (!wantPos.size || wantPos.has(p.pos))).slice(0, 20) };
@@ -269,7 +269,7 @@ const LEAGUE = (() => {
         const seen = new Set();
         found.sort((x, y) => y.rank - x.rank).forEach(d => {
           const k = d.get.map(p => p.id).sort().join('+');
-          if (seen.has(k) || seen.size >= P.perTeam) return; seen.add(k); out.push(d);
+          if (seen.has(k) || seen.size >= (perTeam || P.perTeam)) return; seen.add(k); out.push(d);
         });
       }
       return out;

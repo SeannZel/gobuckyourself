@@ -81,6 +81,12 @@
         <div class="card__body" id="adv-body"><div class="empty">Analyzing your team…</div></div>
       </div>
 
+      <div class="card" style="margin-top:18px" id="h2h">
+        <div class="card__head" style="flex-wrap:wrap;gap:10px"><div><h3>🤝 Trade partner breakdown</h3><p class="sub lg-small" style="margin:2px 0 0">Pick a leaguemate to see how your rosters line up, who to target, what they'd want from you, and the best offers to send.</p></div>
+          <select class="select" id="h2h-select"></select></div>
+        <div class="card__body" id="h2h-body"><div class="empty">Pick a team to analyze.</div></div>
+      </div>
+
       <div class="card" style="margin-top:18px">
         <div class="card__head"><div><h3>🏆 Power rankings</h3><p class="sub lg-small" style="margin:2px 0 0">Power = optimal starting lineup value + 20% of the top four bench players. Position columns rank each team's starters (1 = strongest, greener = stronger). Click a team to see its roster.</p></div></div>
         <div class="table-wrap" style="border:0;border-radius:0 0 var(--radius) var(--radius)">
@@ -117,7 +123,7 @@
       </div>
 
       <div class="card" style="margin-top:18px">
-        <div class="card__head"><h3>📋 Rosters</h3><select class="select" id="roster-select"></select></div>
+        <div class="card__head" style="flex-wrap:wrap;gap:10px"><h3>📋 Rosters</h3><div style="display:flex;gap:8px;align-items:center"><button class="btn btn--sm" id="roster-h2h" hidden>Trade with this team →</button><select class="select" id="roster-select"></select></div></div>
         <div class="card__body lg-roster" id="roster"></div>
       </div>
     </div>
@@ -170,7 +176,7 @@
       $('lg-meta').textContent = `${d.season} · ${d.size} teams · ${d.detected.format === 'sf' ? 'Superflex' : '1QB'} · ${({ ppr: 'PPR', half: 'Half PPR', std: 'Standard' })[d.detected.scoring]} · Starters: ${d.slots.map(s => LEAGUE.SLOT_LABEL[s] || s).join(', ')}`;
       const me = LEAGUE.myTeam();
       $('me-select').innerHTML = (me ? '' : '<option value="">Pick your team…</option>') + d.teams.map(t => `<option value="${t.rosterId}" ${t.isMe ? 'selected' : ''}>${GIQ.esc(t.name)}${t.owner && t.owner !== t.name ? ' (' + GIQ.esc(t.owner) + ')' : ''}</option>`).join('');
-      renderAdvisor(); renderPower(); renderTrades(); renderRosterSelect(); renderRoster();
+      renderAdvisor(); renderH2HSelect(); renderH2H(); renderPower(); renderTrades(); renderRosterSelect(); renderRoster();
     }
 
     // ---- Trade Advisor ----
@@ -193,7 +199,7 @@
           <div class="adv-top">
             <div><h5 class="fh">Your team</h5><div class="adv-positions">${['QB', 'RB', 'WR', 'TE'].map(posCell).join('')}</div>
               <p class="sub lg-small">${a.needs.length ? `Biggest need: <b>${a.needs[0]}</b>.` : 'No glaring holes.'} ${a.surplus.length ? `Trade chips on your bench: ${a.surplus.map(pl).join(', ')}.` : ''}</p></div>
-            <div><h5 class="fh">Best trade partners</h5>${plist(a.partners, x => `<div class="adv-partner"><b>${GIQ.esc(x.team.name)}</b><span>${x.iGet.length ? `has ${x.iGet.join('/')} you need` : ''}${x.iGet.length && x.theyGet.length ? ' · ' : ''}${x.theyGet.length ? `needs ${x.theyGet.join('/')} you have` : ''}</span></div>`)}</div>
+            <div><h5 class="fh">Best trade partners</h5>${plist(a.partners, x => `<div class="adv-partner" data-partner="${x.team.rosterId}" title="Open the trade partner breakdown"><b>${GIQ.esc(x.team.name)}</b><span>${x.iGet.length ? `has ${x.iGet.join('/')} you need` : ''}${x.iGet.length && x.theyGet.length ? ' · ' : ''}${x.theyGet.length ? `needs ${x.theyGet.join('/')} you have` : ''}</span></div>`)}</div>
           </div>
           <div class="adv-market">
             <div><h5 class="fh">💹 Sell high (your roster)</h5>${plist(a.sellHigh, x => `<div class="adv-sig"><span>${GIQ.avatar(x.p)}</span><div>${pl(x.p)}<small>${GIQ.esc(x.m.note)}</small></div></div>`)}</div>
@@ -214,6 +220,78 @@
       }, 20);
     }
     $('adv-refresh').addEventListener('click', renderAdvisor);
+    $('adv-body').addEventListener('click', e => { const el = e.target.closest('[data-partner]'); if (el && !e.target.closest('a')) openPartner(+el.dataset.partner); });
+
+    // ---- Trade partner breakdown ----
+    let partnerId = null;
+    try { const v = localStorage.getItem('gby-h2h'); if (v) partnerId = +v; } catch (_) {}
+    function renderH2HSelect() {
+      const me = LEAGUE.myTeam();
+      if (partnerId != null && (!LEAGUE.team(partnerId) || LEAGUE.team(partnerId).isMe)) partnerId = null;
+      const rows = LEAGUE.powerRankings();
+      $('h2h-select').innerHTML = '<option value="">Pick a team…</option>' + rows.filter(r => !r.team.isMe).map(r =>
+        `<option value="${r.team.rosterId}" ${r.team.rosterId === partnerId ? 'selected' : ''}>${GIQ.esc(r.team.name)} · #${r.rank} power</option>`).join('');
+      $('h2h-select').disabled = !me;
+    }
+    function openPartner(id) {
+      partnerId = id; try { localStorage.setItem('gby-h2h', String(id)); } catch (_) {}
+      renderH2HSelect(); renderH2H(); $('h2h').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function renderH2H() {
+      const body = $('h2h-body');
+      if (!LEAGUE.myTeam()) { body.innerHTML = '<div class="empty">Pick your team above first.</div>'; return; }
+      if (partnerId == null) { body.innerHTML = '<div class="empty">Pick a leaguemate to see the best trades to make with them.</div>'; return; }
+      body.innerHTML = '<div class="empty">Analyzing every combination with this team…</div>';
+      setTimeout(() => {
+        const a = ADVISOR.analyzePartner(partnerId); if (!a) { body.innerHTML = '<div class="empty">Couldn\'t analyze this team.</div>'; return; }
+        const ord = k => k + (k % 100 >= 11 && k % 100 <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' })[k % 10] || 'th');
+        const t = a.partner, pr = LEAGUE.powerRankings().find(r => r.team.rosterId === t.rosterId);
+        const fit = a.iGet.length && a.theyGet.length ? ['great', 'Great fit'] : a.fit > 0 ? ['some', 'Some fit'] : ['value', 'Value trades only'];
+        const cell = (rank, need, str) => {
+          const cls = need ? 'need' : str ? 'str' : '';
+          return `<div class="h2h-vs__cell ${cls ? 'h2h-vs__cell--' + cls : ''}"><b>${ord(rank)}</b><em>${need ? 'Need' : str ? 'Strength' : ''}</em></div>`;
+        };
+        const vs = a.positions.map(x => {
+          const toMe = a.iGet.includes(x.pos), toThem = a.theyGet.includes(x.pos);
+          const arrow = toMe && toThem ? '⇄' : toMe ? '←' : toThem ? '→' : '·';
+          return `<div class="h2h-vs__row"><span class="pos pos--${x.pos}">${x.pos}</span>${cell(x.mine, x.myNeed, x.myStrength)}<span class="h2h-vs__arrow ${toMe || toThem ? 'h2h-vs__arrow--fit' : ''}" title="${toMe ? 'They can fill your need' : ''}${toMe && toThem ? ' · ' : ''}${toThem ? 'You can fill their need' : ''}">${arrow}</span>${cell(x.theirs, x.theirNeed, x.theirStrength)}</div>`;
+        }).join('');
+        const tags = arr => arr.length ? `<div class="h2h-p__tags">${arr.map(x => `<span class="lg-tag ${x.k ? 'lg-tag--' + x.k : ''}">${GIQ.esc(x.t)}</span>`).join('')}</div>` : '';
+        const prow = (x, numHtml, sub) => `<div class="h2h-p">${GIQ.avatar(x.p)}<div class="h2h-p__main"><b>${plink(x.p)}</b> ${GIQ.injuryHtml(x.p)}<small>${GIQ.teamHtml(x.p.team)} · <span class="pos pos--${x.p.pos}">${x.p.pos}</span> · ${GIQ.fmt(x.p.value)}${sub ? ' · ' + sub : ''}</small>${x.note ? `<small>${GIQ.esc(x.note)}</small>` : ''}${tags(x.tags)}</div><div class="h2h-p__num">${numHtml}</div></div>`;
+        const targets = a.targets.length ? a.targets.map(x => prow(x, `<span class="up">+${(x.gainPct * 100).toFixed(1)}%</span><small>your lineup</small><a class="lg-link" style="font-size:11px" href="trade-calculator.html?b=${x.p.id}" title="Open the calculator with ${GIQ.esc(x.p.name)} on their side and get suggestions to balance it">Build offer →</a>`, x.starter ? 'starts for them' : 'their bench')).join('') : '<div class="sub lg-small">None of their players would improve your starting lineup.</div>';
+        const bait = a.bait.length ? a.bait.map(x => prow(x, `<span class="up">+${(x.gainPct * 100).toFixed(1)}%</span><small>${x.costPct > 0.0005 ? `costs you ${(x.costPct * 100).toFixed(1)}%` : 'free for you'}</small>`, '')).join('') : '<div class="sub lg-small">Nothing on your roster would crack their lineup.</div>';
+        const icon = { lineup: '📈', need: '🎯', surplus: '♻️', market: '💹', them: '🤝' };
+        const offers = a.offers.length ? a.offers.map((d, i) => `
+            <div class="adv-pick">
+              <div class="adv-pick__head"><span class="adv-num">${i + 1}</span><b>${d.give.length}-for-${d.get.length}</b>
+                ${({ likely: '<span class="lg-tag lg-tag--good">Likely accepted</span>', maybe: '<span class="lg-tag lg-tag--warn">Worth a shot</span>', long: '<span class="lg-tag lg-tag--bad">Long shot</span>' })[d.odds]}</div>
+              <div class="idea__side"><span class="idea__lbl">Give</span><div class="brow__players">${d.give.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+              <div class="idea__side"><span class="idea__lbl idea__lbl--get">Get</span><div class="brow__players">${d.get.map(chip).join('<span class="brow__plus">+</span>')}</div></div>
+              <ul class="adv-why">${d.reasons.slice(0, 5).map(r => `<li><span>${icon[r.kind]}</span>${GIQ.esc(r.text)}</li>`).join('')}</ul>
+              <div class="lg-deal__foot">
+                <span class="lg-stat">You <b class="${d.myPct >= 0 ? 'up' : 'down'}">${pct(d.myPct)}</b></span>
+                <span class="lg-stat">Them <b class="${d.theirPct >= 0 ? 'up' : 'down'}">${pct(d.theirPct)}</b></span>
+                <span class="lg-stat">Value ${d.fairPct >= 0 ? '+' : ''}${(d.fairPct * 100).toFixed(0)}% for you</span>
+                <a class="btn btn--sm btn--primary" href="trade-calculator.html?a=${d.give.map(p => p.id).join(',')}&b=${d.get.map(p => p.id).join(',')}">Open in calculator →</a></div>
+            </div>`).join('') : `<div class="empty">No deal with ${GIQ.esc(t.name)} improves your lineup without hurting theirs much. Start from the targets above in the trade calculator.</div>`;
+        body.innerHTML = `
+          <div class="h2h-head">${teamBadge(t)}<div class="h2h-head__name"><b>${GIQ.esc(t.name)}</b><small>${GIQ.esc(t.owner || '')} · ${t.wins}-${t.losses}${t.ties ? '-' + t.ties : ''} · #${pr ? pr.rank : '–'} in power rankings</small></div><span class="h2h-fit h2h-fit--${fit[0]}">${fit[1]}</span></div>
+          <div class="h2h-top">
+            <div><h5 class="fh">Position ranks (1 = best of ${a.n})</h5>
+              <div class="h2h-vs"><div class="h2h-vs__legend"><span></span><span>You</span><span></span><span>${GIQ.esc(t.name)}</span></div>${vs}</div></div>
+            <div><h5 class="fh">Why trade with them</h5><ul class="h2h-why">${a.fitText.map(x => `<li>${GIQ.esc(x)}</li>`).join('')}</ul></div>
+          </div>
+          <div class="h2h-lists">
+            <div><h5 class="fh">🎯 Who to target</h5>${targets}</div>
+            <div><h5 class="fh">🎣 What they'd want from you</h5>${bait}</div>
+          </div>
+          <h5 class="fh" style="margin-top:18px">⭐ Best offers to send</h5>
+          <div class="adv-picks">${offers}</div>
+          <p class="sub lg-small">Scored ${a.candidates} possible deals with ${GIQ.esc(t.name)} at fair, slight-edge and solid-edge value. Lineup % = change in your optimal starting lineup value.</p>`;
+      }, 20);
+    }
+    $('h2h-select').addEventListener('change', e => { const v = e.target.value; if (v) openPartner(+v); else { partnerId = null; renderH2H(); } });
+
 
     function renderPower() {
       const rows = LEAGUE.powerRankings(), n = rows.length;
@@ -270,6 +348,7 @@
     function renderRosterSelect() {
       const d = LEAGUE.data; const me = LEAGUE.myTeam();
       if (viewRoster == null) viewRoster = me ? me.rosterId : d.teams[0]?.rosterId;
+      const vt = LEAGUE.team(viewRoster); $('roster-h2h').hidden = !me || !vt || vt.isMe;
       $('roster-select').innerHTML = d.teams.map(t => `<option value="${t.rosterId}" ${t.rosterId === viewRoster ? 'selected' : ''}>${GIQ.esc(t.name)}${t.isMe ? ' (you)' : ''}</option>`).join('');
     }
     function renderRoster() {
@@ -303,7 +382,8 @@
       LEAGUE.connect({ leagueId: b.dataset.league, username: b.dataset.user }); boot();
     });
     $('me-select').addEventListener('change', e => { LEAGUE.setMyTeam(e.target.value); viewRoster = +e.target.value; render(); });
-    $('roster-select').addEventListener('change', e => { viewRoster = +e.target.value; renderRoster(); });
+    $('roster-select').addEventListener('change', e => { viewRoster = +e.target.value; renderRosterSelect(); renderRoster(); });
+    $('roster-h2h').addEventListener('click', () => openPartner(viewRoster));
     $('power').addEventListener('click', e => { const tr = e.target.closest('tr[data-roster]'); if (!tr) return; viewRoster = +tr.dataset.roster; renderRosterSelect(); renderRoster(); $('roster').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
     $('refresh').addEventListener('click', () => boot(true));
     $('disconnect').addEventListener('click', () => { LEAGUE.disconnect(); viewRoster = null; show('connect'); });
@@ -336,7 +416,7 @@
       clearTimeout(edgeTimer); edgeTimer = setTimeout(renderTrades, 120);
     });
     document.addEventListener('giq:settings', () => { if (LEAGUE.data) render(); });
-    document.addEventListener('giq:scoring', () => { if (LEAGUE.data) { renderAdvisor(); renderRoster(); renderTrades(); } });
+    document.addEventListener('giq:scoring', () => { if (LEAGUE.data) { renderAdvisor(); renderH2H(); renderRoster(); renderTrades(); } });
     GIQ.loadScoring();
     document.addEventListener('DOMContentLoaded', () => boot());
   </script>

@@ -72,13 +72,54 @@ const ADVISOR = (() => {
     return { map, median, n };
   }
 
+  // ---------- score one candidate deal in context, with human-readable reasons ----------
+  const ord = k => ['', '1st', '2nd', '3rd'][k] || `${k}th`;
+  function scoreDeal(d, { map, mine, market, n }) {
+    const them = map.get(d.team.rosterId);
+    const reasons = [];
+    let s = d.myPct * 100;                                      // lineup gain, in %
+    // fills my needs
+    const needHits = d.get.filter(p => mine.needs.includes(p.pos));
+    if (needHits.length) {
+      const worst = needHits.map(p => p.pos).sort((a, b) => mine.posRank[b] - mine.posRank[a])[0];
+      s += 1.5 * needHits.length * (mine.posRank[worst] / n);
+      reasons.push({ kind: 'need', text: `Fills a need at ${worst}: you rank ${ord(mine.posRank[worst])} of ${n} there.` });
+    }
+    // spends surplus instead of starters
+    const fromBench = d.give.filter(p => !mine.starters.has(p.id));
+    if (fromBench.length) {
+      s += 1.0 * fromBench.length;
+      reasons.push({ kind: 'surplus', text: `Uses depth you're not starting: ${fromBench.map(p => p.name).join(' and ')}.` });
+    } else if (d.give.some(p => mine.strengths.includes(p.pos))) {
+      s += 0.5;
+      const pos = d.give.find(p => mine.strengths.includes(p.pos)).pos;
+      reasons.push({ kind: 'surplus', text: `Deals from strength: you're ${ord(mine.posRank[pos])} at ${pos}, so you can afford it.` });
+    }
+    // market timing
+    for (const p of d.get) { const m = market.get(p.id); if (m && m.buyLow) { s += 0.9; reasons.push({ kind: 'market', text: `Buy low on ${p.name}: ${m.note}.` }); } }
+    for (const p of d.give) { const m = market.get(p.id); if (m && m.sellHigh) { s += 0.9; reasons.push({ kind: 'market', text: `Sell high on ${p.name}: ${m.note}.` }); } }
+    for (const p of d.get) { const m = market.get(p.id); if (m && m.sellHigh) s -= 0.6; }
+    // why they'd say yes
+    const helpsThem = d.give.filter(p => them.needs.includes(p.pos));
+    if (helpsThem.length) {
+      s += 0.8;
+      const pos = helpsThem[0].pos;
+      reasons.push({ kind: 'them', text: `${d.team.name} ranks ${ord(them.posRank[pos])} at ${pos}, so ${helpsThem[0].name} fills a hole for them.` });
+    } else if (d.mutual) reasons.push({ kind: 'them', text: `It improves ${d.team.name}'s lineup too (${(d.theirPct * 100).toFixed(1)}%).` });
+    if (d.mutual) s += 0.8;
+    if (d.stretch) s -= 0.8;
+    s += Math.max(0, d.fairPct) * 2;                              // a little credit for winning on value
+    s += ({ likely: 1.0, maybe: 0.3, long: -0.8 })[d.odds];       // …but realistic offers come first
+    reasons.unshift({ kind: 'lineup', text: `Your starting lineup gets ${(d.myPct * 100).toFixed(1)}% better.` });
+    return { ...d, score: s, reasons };
+  }
+
   // ---------- recommendations ----------
   function analyze() {
     const me = LEAGUE.myTeam(); if (!me) return null;
     const { map, n } = profiles();
     const mine = map.get(me.rosterId);
     const market = marketSignals();
-    const ord = k => ['', '1st', '2nd', '3rd'][k] || `${k}th`;
 
     // sell-high on my roster, buy-low on everyone else's
     const sigStrength = m => Math.max(Math.abs(m.gap || 0), Math.abs(m.xgap || 0), Math.abs(m.luck || 0) * 2);
@@ -107,45 +148,8 @@ const ADVISOR = (() => {
       const k = d.team.rosterId + ':' + d.give.map(p => p.id).sort() + '>' + d.get.map(p => p.id).sort();
       if (!seen.has(k)) { seen.add(k); candidates.push(d); }
     }
-    const scored = candidates.map(d => {
-      const them = map.get(d.team.rosterId);
-      const reasons = [];
-      let s = d.myPct * 100;                                      // lineup gain, in %
-      // fills my needs
-      const needHits = d.get.filter(p => mine.needs.includes(p.pos));
-      if (needHits.length) {
-        const worst = needHits.map(p => p.pos).sort((a, b) => mine.posRank[b] - mine.posRank[a])[0];
-        s += 1.5 * needHits.length * (mine.posRank[worst] / n);
-        reasons.push({ kind: 'need', text: `Fills a need at ${worst}: you rank ${ord(mine.posRank[worst])} of ${n} there.` });
-      }
-      // spends surplus instead of starters
-      const fromBench = d.give.filter(p => !mine.starters.has(p.id));
-      if (fromBench.length) {
-        s += 1.0 * fromBench.length;
-        reasons.push({ kind: 'surplus', text: `Uses depth you're not starting: ${fromBench.map(p => p.name).join(' and ')}.` });
-      } else if (d.give.some(p => mine.strengths.includes(p.pos))) {
-        s += 0.5;
-        const pos = d.give.find(p => mine.strengths.includes(p.pos)).pos;
-        reasons.push({ kind: 'surplus', text: `Deals from strength: you're ${ord(mine.posRank[pos])} at ${pos}, so you can afford it.` });
-      }
-      // market timing
-      for (const p of d.get) { const m = market.get(p.id); if (m && m.buyLow) { s += 0.9; reasons.push({ kind: 'market', text: `Buy low on ${p.name}: ${m.note}.` }); } }
-      for (const p of d.give) { const m = market.get(p.id); if (m && m.sellHigh) { s += 0.9; reasons.push({ kind: 'market', text: `Sell high on ${p.name}: ${m.note}.` }); } }
-      for (const p of d.get) { const m = market.get(p.id); if (m && m.sellHigh) s -= 0.6; }
-      // why they'd say yes
-      const helpsThem = d.give.filter(p => them.needs.includes(p.pos));
-      if (helpsThem.length) {
-        s += 0.8;
-        const pos = helpsThem[0].pos;
-        reasons.push({ kind: 'them', text: `${d.team.name} ranks ${ord(them.posRank[pos])} at ${pos}, so ${helpsThem[0].name} fills a hole for them.` });
-      } else if (d.mutual) reasons.push({ kind: 'them', text: `It improves ${d.team.name}'s lineup too (${(d.theirPct * 100).toFixed(1)}%).` });
-      if (d.mutual) s += 0.8;
-      if (d.stretch) s -= 0.8;
-      s += Math.max(0, d.fairPct) * 2;                              // a little credit for winning on value
-      s += ({ likely: 1.0, maybe: 0.3, long: -0.8 })[d.odds];       // …but realistic offers come first
-      reasons.unshift({ kind: 'lineup', text: `Your starting lineup gets ${(d.myPct * 100).toFixed(1)}% better.` });
-      return { ...d, score: s, reasons };
-    }).sort((a, b) => b.score - a.score);
+    const ctx = { map, mine, market, n };
+    const scored = candidates.map(d => scoreDeal(d, ctx)).sort((a, b) => b.score - a.score);
 
     // top picks: at most 2 per partner, no repeated centerpiece, and never the same package offered twice
     const picks = [], perTeam = new Map(), usedGet = new Set(), usedGive = new Set();
@@ -159,5 +163,78 @@ const ADVISOR = (() => {
     return { me, mine, n, needs: mine.needs, strengths: mine.strengths, surplus: mine.surplus, sellHigh, buyLow: buyLow.slice(0, 6), partners, picks, candidates: candidates.length };
   }
 
-  return { analyze, marketSignals };
+  // ---------- head-to-head: everything worth knowing about trading with one specific team ----------
+  function analyzePartner(rosterId) {
+    const me = LEAGUE.myTeam(); if (!me) return null;
+    const partner = LEAGUE.team(rosterId); if (!partner || partner.isMe) return null;
+    const { map, n } = profiles();
+    const mine = map.get(me.rosterId), them = map.get(partner.rosterId);
+    const market = marketSignals();
+    const myBase = mine.lineup.score, theirBase = them.lineup.score;
+
+    // position-by-position: who's stronger where, and where the needs line up
+    const positions = POS.map(pos => ({
+      pos, mine: mine.posRank[pos], theirs: them.posRank[pos],
+      myNeed: mine.needs.includes(pos), theirNeed: them.needs.includes(pos),
+      myStrength: mine.strengths.includes(pos), theirStrength: them.strengths.includes(pos),
+      mySurplus: mine.surplus.filter(p => p.pos === pos), theirSurplus: them.surplus.filter(p => p.pos === pos),
+    }));
+    // a real fit: they're strong (or deep) where you're weak — not just slightly less weak
+    const iGet = positions.filter(x => x.myNeed && (x.theirSurplus.length || (!x.theirNeed && x.theirs < x.mine))).map(x => x.pos);
+    const theyGet = positions.filter(x => x.theirNeed && (x.mySurplus.length || (!x.myNeed && x.mine < x.theirs))).map(x => x.pos);
+    const fit = iGet.length * 1.2 + theyGet.length;
+    const fitText = [];
+    for (const pos of iGet) { const sp = them.surplus.filter(p => p.pos === pos);
+      fitText.push(`You're ${ord(mine.posRank[pos])} at ${pos}; they're ${ord(them.posRank[pos])}${sp.length ? ` with ${sp.map(p => p.name).join(' and ')} on the bench` : ''} — they have what you need.`); }
+    for (const pos of theyGet) { const sp = mine.surplus.filter(p => p.pos === pos);
+      fitText.push(`They're ${ord(them.posRank[pos])} at ${pos}; you're ${ord(mine.posRank[pos])}${sp.length ? ` with ${sp.map(p => p.name).join(' and ')} on your bench` : ''} — you have what they need.`); }
+    if (!fitText.length) fitText.push('Your rosters don\'t line up naturally — deals here will be about value, not filling holes.');
+
+    // how much one player would add to a lineup
+    const addGain = (base, players, p) => LEAGUE.lineup(players.concat([p])).score - base;
+    const loseCost = (base, players, p) => base - LEAGUE.lineup(players.filter(x => x.id !== p.id)).score;
+
+    // their players, ranked by how much each would improve MY lineup (and how much it costs them to lose him)
+    const targets = them.players.filter(p => p.value >= 250).map(p => {
+      const gain = addGain(myBase, mine.players, p), cost = loseCost(theirBase, them.players, p);
+      const m = market.get(p.id);
+      const tags = [];
+      if (!them.starters.has(p.id)) tags.push({ k: 'good', t: 'On their bench' });
+      if (m?.buyLow) tags.push({ k: 'good', t: 'Buy low' });
+      if (m?.sellHigh) tags.push({ k: 'warn', t: 'Running hot' });
+      if (mine.needs.includes(p.pos)) tags.push({ k: '', t: `Fills your ${p.pos} need` });
+      return { p, gain, gainPct: gain / myBase, cost, costPct: cost / theirBase, starter: them.starters.has(p.id), tags, note: m?.note || '' };
+    }).filter(x => x.gain > 0).sort((a, b) => (b.gainPct - 0.5 * b.costPct) - (a.gainPct - 0.5 * a.costPct)).slice(0, 6);
+
+    // my players they'd value most (their lineup gain) — what to dangle
+    const bait = mine.players.filter(p => p.value >= 250).map(p => {
+      const gain = addGain(theirBase, them.players, p), cost = loseCost(myBase, mine.players, p);
+      const m = market.get(p.id);
+      const tags = [];
+      if (!mine.starters.has(p.id)) tags.push({ k: 'good', t: 'Your bench' });
+      if (m?.sellHigh) tags.push({ k: 'good', t: 'Sell high' });
+      if (them.needs.includes(p.pos)) tags.push({ k: '', t: `Fills their ${p.pos} need` });
+      return { p, gain, gainPct: gain / theirBase, cost, costPct: cost / myBase, tags };
+    }).filter(x => x.gain > 0).sort((a, b) => (b.gainPct - 0.7 * b.costPct) - (a.gainPct - 0.7 * a.costPct)).slice(0, 6);
+
+    // concrete offers: fair, slight edge and solid edge, scored with the same logic as the Trade Advisor
+    const seen = new Set(), candidates = [];
+    for (const edge of [0, 0.1, 0.2]) for (const d of LEAGUE.findTrades({ edge, max: 200, partner: partner.rosterId, perTeam: 25 })) {
+      const k = d.give.map(p => p.id).sort() + '>' + d.get.map(p => p.id).sort();
+      if (!seen.has(k)) { seen.add(k); candidates.push(d); }
+    }
+    const ctx = { map, mine, market, n };
+    const scored = candidates.map(d => scoreDeal(d, ctx)).sort((a, b) => b.score - a.score);
+    // variety: never the same package twice, and each player you'd receive headlines at most two offers
+    const offers = [], usedGive = new Set(), getCount = new Map();
+    for (const d of scored) {
+      if (offers.length >= 6) break;
+      const gk = d.give.map(p => p.id).sort().join('+');
+      if (usedGive.has(gk) || d.get.some(p => (getCount.get(p.id) || 0) >= 2)) continue;
+      offers.push(d); usedGive.add(gk); d.get.forEach(p => getCount.set(p.id, (getCount.get(p.id) || 0) + 1));
+    }
+    return { me, partner, mine, them, n, positions, iGet, theyGet, fit, fitText, targets, bait, offers, candidates: candidates.length };
+  }
+
+  return { analyze, analyzePartner, marketSignals };
 })();
